@@ -11,3 +11,14 @@ Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
+
+{{{
+			var testButton : Sprite = new Sprite();
+			testButton.graphics.beginFill(0xEFEFEF);
+			testButton.graphics.drawRect(0, 0, 100, 20);
+			testButton.addEventListener(MouseEvent.CLICK, onClick);
+			testButton.addChild(tf);
+			testButton.x = testButton.y = 100;
+					
+			addChild(testButton);
+}}}
