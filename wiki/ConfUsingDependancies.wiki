@@ -1,1 +1,23 @@
 How to use dependancies in Configuration
+
+A dependancy is a reference of a property used as part of the value of another property.
+Dependancies can be define anywere insinde a configuration  property value.
+
+To create dependancy, use the following sytaxe :
+*${*thePropertyName*}*
+
+A simple example :
+
+{{{
+<conf>
+   <desc>This example has been wrote by ${author}</desc>
+   <author>Pierre Lepers</author>
+</conf>
+}}}
+
+{{{
+trace( Conf.desc );
+// This example has been wrote by Pierre Lepers
+}}}
+
+Note that the order of properies in xml file doesn't matter to solve dependancies.
