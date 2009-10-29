@@ -64,11 +64,35 @@ If the child node has a more complex content (_child.hasComplexeContent()_ equal
 When a complexe property is redefined (eg. using _Conf.setProperty()_ or multiple child nodes with the same name.) contents of children are concatenated.
 
 
+{{{
 
+<conf>
+	<filesize>10</filesize>
+	<filesize>ten</filesize>
 
+	<filelist>
+		<file>file1.txt</file>
+	</filelist>
 
+	<filelist>
+		<file>file2.txt</file>
+		<file>file3.txt</file>
+	</filelist>
+	
+</conf>
 
+}}}
 
+{{{
+trace( Conf.filesize );
+// --> ten
+
+trace( Conf.filelist );
+//<file>file1.txt</file>
+//<file>file2.txt</file>
+//<file>file3.txt</file>
+
+}}}
 
 
 
