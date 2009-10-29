@@ -12,6 +12,16 @@ Here is the list of master features, detailed bellow:
  * Namespace support, to avoid naming conflicts.
 
 
+= How to start =
+
+Configuration class is a singleton, the simplest way to acces to it is using _Conf_ global property.
+
+{{{
+import fr.digitas.flowearth.conf.Conf;
+
+trace( Conf.getString( "myProperty" ));
+}}}
+
 = Conf file format =
 
 As in ECMAScript, a Property is simply defined by a name (or QName) and a value. Native Property's value is always a String.
