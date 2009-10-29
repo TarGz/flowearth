@@ -7,7 +7,7 @@ Configuration class store a collection of properties retreive from a specific xm
 Here is the list of master features, detailed bellow:
  * Each properties can depends of other properies
  * Easily externalize parts of conf files into sub files
- * Easily externalize misc datas.
+ * Easily externalize extra datas.
  * switch/case like feature
  * Namespace support, to avoid naming conflicts.
 
@@ -40,5 +40,3 @@ private fucntion onConfLoaded( e : Event ) : void {
    trace( Conf.hasProperty( "myProperty" ) );
 }
 }}}
-
-
