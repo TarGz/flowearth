@@ -21,7 +21,7 @@ Properties of a conf file are extract listing all childrens of the root node.
 ====start with a simple example====
 Here is a conf file with 3 properties.
 {{{
-<conf>
+<confExample>
 	<simple>my simple property</simple>
 	<complex>
 		<foo>bar</foo>
@@ -29,7 +29,7 @@ Here is a conf file with 3 properties.
 		<foo>bar</foo>
 	</complexe>
 	<basic_dependancy>${simple} roxx!</basic_dependancy>
-</conf>
+</confExample>
 }}}
 
   * "simple" have the value "my simple property"
