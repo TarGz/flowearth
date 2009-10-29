@@ -27,7 +27,9 @@ Note that three names are reserved :
   * externalData (list of external properties values)
   * switch (
 
-example :
+== example :==
+
+Here is a simple conf file, defining three properties.
 
 {{{
 <conf>
