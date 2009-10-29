@@ -3,3 +3,4 @@
   * [http://code.google.com/p/flowearth/wiki/Documentation Documentation]
     * [http://code.google.com/p/flowearth/wiki/Configuration Configuration]
     * [http://code.google.com/p/flowearth/wiki/Batcher Batcher]
+  * [http://code.google.com/p/flowearth/w/list all pages]
