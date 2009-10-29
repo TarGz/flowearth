@@ -13,7 +13,7 @@ You can also call a property on Configuration instance itself:
 Conf.myProperty;
 }}}
 
-In any case, Configuration always return the solved value of the property, it mean all dependancy ( _${myDependancyProp}_ ) will be replaced by the correct value.
+In any case, Configuration always return the solved value of the property, it mean all dependancies ( _${myDependancyProp}_ ) will be replaced by the correct value.
 
 == getString ==
 This method return the native value of the property (each conf props are stored as String even if prop have a complexe xml content).
