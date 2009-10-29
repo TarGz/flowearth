@@ -144,10 +144,15 @@ In any case, Configuration always return the solved value of the property, it me
 
 == getString ==
 This method return the native value of the property (each conf props are stored as String even if prop have a complexe xml content).
+
+{{{
+Conf.getString( "myProperty" );
+}}}
+
 If the property have a simple content, the value of _text().toXMLString()_ is return.
 If the property have a complexe content, the value of _children().toXMLString()_ is return.
 
-butin this last case, you may prefered to use _getDatas()_ method.
+But in this last case, you may prefered to use _getDatas()_ method.
 
 == getDatas ==
 This method return an XML representation of the given property. 
@@ -174,11 +179,12 @@ Conf.getString( "complex" );
 <b>world</b>"
 
 Conf.getDatas( "complex" );
-// XML Object
+// XML Object :
+//
 <complex>
     <a>hello</a>
     <b>world</b>
- </complex>
+</complex>
 
 
 }}}
@@ -196,12 +202,10 @@ Configuration class extends _flash.utils.Proxy_. So you can acces to properties 
  * If prop has simple content, the String value is return as using _getString()_ method.
  * If prop has complexe content, a XML is return, as using _getDatas()_ method
 
-You can also use Namespace when using the _Proxy_ acces.
+You can also use Namespace when using the _Proxy_ acces. ( see 
 
 {{{
-namespace ns = "http://monnamespace.com";
-
-Conf.ns::myProperty;
+Conf.myProperty;
 }}}
 
 
