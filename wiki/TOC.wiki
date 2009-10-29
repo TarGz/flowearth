@@ -2,7 +2,7 @@
   * [http://code.google.com/p/flowearth/wiki/Introduction Introduction]
   * [http://code.google.com/p/flowearth/wiki/Documentation Documentation]
     * [http://code.google.com/p/flowearth/wiki/ConfigurationUsage Configuration]
-      * [http://code.google.com/p/flowearth/wiki/ConfBasics Let's start]
+      * [http://code.google.com/p/flowearth/wiki/ConfBasics Properties acces]
       * [http://code.google.com/p/flowearth/wiki/ConfFileFormat The conf file format]
       * [http://code.google.com/p/flowearth/wiki/ConfUsingDependancies Using dependancies]
       * [http://code.google.com/p/flowearth/wiki/ConfUsingNamespace Using namespaces]
