@@ -22,6 +22,25 @@ import fr.digitas.flowearth.conf.Conf;
 trace( Conf.getString( "myProperty" ));
 }}}
 
+But you can also use the classic _getInstance()_
+{{{
+import fr.digitas.flowearth.conf.Configuration;
+
+trace( Configuration.getInstance().getString( "myProperty" ) );
+}}}
+
+But before ask it for properties values, you need to load a property file.
+
+{{{
+Conf.addEventListener( Event.COMPLETE, onConfLoaded );
+
+Conf.loadXml( "myConfFile.xml" );
+
+private fucntion onConfLoaded( e : Event ) : void {
+   trace( Conf.hasProperty( "myProperty" ) );
+}
+}}}
+
 = Conf file format =
 
 As in ECMAScript, a Property is simply defined by a name (or QName) and a value. Native Property's value is always a String.
