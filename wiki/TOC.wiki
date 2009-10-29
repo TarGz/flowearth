@@ -1,6 +1,6 @@
   * [http://code.google.com/p/flowearth/wiki/Wikihome Home]
   * [http://code.google.com/p/flowearth/wiki/Introduction Introduction]
   * [http://code.google.com/p/flowearth/wiki/Documentation Documentation]
-    * [http://code.google.com/p/flowearth/wiki/Configuration_usage Configuration]
+    * [http://code.google.com/p/flowearth/wiki/ConfigurationUsage Configuration]
     * [http://code.google.com/p/flowearth/wiki/Batcher_usage Batcher]
   * [http://code.google.com/p/flowearth/w/list all pages]
