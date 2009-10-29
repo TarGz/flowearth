@@ -2,19 +2,36 @@ Configuration usage
 
 = Introduction =
 
-Add your content here.
+Configuration class store a collection of properties retreive from a specific xml format.
+
+Here is the list of master features, detailed bellow:
+ * Each properties can depends of other properies
+ * Easily externalize parts of conf files into sub files
+ * Easily externalize misc datas.
+ * Namespace support, to avoid naming conflicts.
 
 
-== Basic example : Property solving and acces ==
+= Conf file format =
+
+As in ECMAScript, a Property is simply defined by a name (or QName) and a value. Native Property value is always a String.
+
+Properties of a conf file are extract listing all childrens of the root node. 
+The name of the property is set using the _XML.name()_ value of the given child.
+The value of the property is set depending children content type :
+  * if the children has a simple text content (_children.hasSimpleContent()_ equals _true_), the value is set using _children.text()_).
+  * if the children has a more complex content (_children.hasComplexeContent()_ equals _true_), the value is set using _children.children().toXMLString()_).
 
 {{{
+
 <conf>
 	<basedir>${basepath}</basedir>
-	<local>en_GB</local>
 	
 	<assets_dir>${basedir}/${local}/assets</assets_dir>
 	<flv_dir>${assets_dir}/flvs</flv_dir>
+
+	<local>en_GB</local>
 </conf>
+
 }}}
 
 {{{
