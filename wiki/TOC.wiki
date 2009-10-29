@@ -6,5 +6,6 @@
       * [http://code.google.com/p/flowearth/wiki/ConfFileFormat The conf file format]
       * [http://code.google.com/p/flowearth/wiki/ConfUsingDependancies Using dependancies]
       * [http://code.google.com/p/flowearth/wiki/ConfUsingNamespace Using namespaces]
+      * [http://code.google.com/p/flowearth/wiki/ConfExamples Examples]
     * [http://code.google.com/p/flowearth/wiki/Batcher_usage Batcher]
   * [http://code.google.com/p/flowearth/w/list all pages]
