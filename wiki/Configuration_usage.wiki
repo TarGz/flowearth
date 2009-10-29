@@ -42,7 +42,17 @@ Here is a simple conf file, defining three properties.
 	<basic_dependancy>${simple} roxx!</basic_dependancy>
 </conf>
 }}}
-		
+
+  * "simple" have the value "my simple property"
+  * "complex" have the following value :
+{{{
+<foo>bar</foo>
+<foo>bar</foo>
+<foo>bar</foo>
+}}}
+  * "basic_dependancy" have the value "my simple property roxx!"
+
+
 		
 
 
