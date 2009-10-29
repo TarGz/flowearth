@@ -22,7 +22,7 @@ import fr.digitas.flowearth.conf.Conf;
 trace( Conf.getString( "myProperty" ) );
 
 //---------------------------------------------
-//But you can also use the classic _getInstance()_
+//But you can also use the classic getInstance()
 
 import fr.digitas.flowearth.conf.Configuration;
 
@@ -74,7 +74,7 @@ Here is a conf file with 3 properties.
 
 The name of the property is set using the _XML.name()_ value of the given child. The propery is stored inside the same namespace than the child.
 
-To acces to a property see 
+For details about acces to a property see 
 [ConfigurationUsage#Retreive_a_property 'Retreive a property' chapter].
 
 Note that three names are reserved :
@@ -89,7 +89,7 @@ The value of the property is set depending child node content type :
 If the child node has a simple text content (_child.hasSimpleContent()_ equals _true_), the value is set using _child.text()_).
 When you redefine a property having a simple content, the old value is erased and replaced by the new one. So if two children with the same name are found in conf files, only the last child parsed will be used.
 ====Complex content====
-If the child node has a more complex content (_child.hasComplexeContent()_ equals _true_), the value is set using _child.children().toXMLString()_).
+If the child node has a complex content (_child.hasComplexeContent()_ equals _true_), the value is set using _child.children().toXMLString()_.
 When a complexe property is redefined (eg. using _Conf.setProperty()_ or multiple child nodes with the same name.) contents of children are concatenated.
 
 
@@ -141,6 +141,41 @@ trace( Conf.filelist );
 </conf>
 
 }}}
+
+= Retreive a property =
+
+Configuration class provide several methods to acces to a property :
+
+  * getString()
+  * getDatas()
+  * getNumber()
+
+You can also call a property on Configuration instance itself:
+{{{
+Conf.myProperty;
+}}}
+
+In any case, Configuration always return the solved value of the property, it mean all dependancy ( _${myDependancyProp}_ ) will be replaced by the correct value.
+
+== getString ==
+This method return the native value of the property (each conf props are stored as String even if prop have a complexe xml content).
+If the property have a simple content, the value of _text().toXMLString()_ is return.
+If the property have a complexe content, the value of _children().toXMLString()_ is return.
+
+butin this last case, you may prefered to use_getDatas()_ method.
+
+== getDatas ==
+This method return an XML representation of the given property. 
+The _String_ value of the property is surrounded by a xml tag named with the local name of the prop, then returned as an XML object.
+
+{{{
+
+}}}
+
+Notes :
+  * this method always remove the namespace of the property  from the xml result.
+  * A new instance of XML is created each to you call _getDatas()_ method.
+
 
 {{{
 public function ConfSampleA() {
