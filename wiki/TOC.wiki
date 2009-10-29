@@ -1,5 +1,5 @@
-  * Home
+  * [http://code.google.com/p/flowearth/wiki/Home Home]
   * [http://code.google.com/p/flowearth/wiki/Introduction Introduction]
-  * Documentation
-    * Configuration
-    * Batcher
+  * [http://code.google.com/p/flowearth/wiki/Documentation Documentation]
+    * [http://code.google.com/p/flowearth/wiki/Configuration Configuration]
+    * [http://code.google.com/p/flowearth/wiki/Batcher Batcher]
