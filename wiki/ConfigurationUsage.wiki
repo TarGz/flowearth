@@ -46,7 +46,7 @@ Here is a conf file with 3 properties.
 The name of the property is set using the _XML.name()_ value of the given child. The propery is stored inside the same namespace than the child.
 
 To acces to a property see 
-[ConfigurationUsage#Retreive_a_property this chapter].
+[ConfigurationUsage#Retreive_a_property 'Retreive a property' chapter].
 
 Note that three names are reserved :
   * externalConf (list of external conf files)
