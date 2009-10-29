@@ -22,7 +22,7 @@ Properties of a conf file are extract listing all childrens of the root node.
 
 The name of the property is set using the _XML.name()_ value of the given child. The propery is stored inside the same namespace than the child.
 To acces to a property see 
-[ConfigurationUsage#Details]
+[ConfigurationUsage#Retreive a property]
 
 Note that three names are reserved :
   * externalConf (list of external conf files)
