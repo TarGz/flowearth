@@ -19,14 +19,14 @@ Configuration class is a singleton, the simplest way to acces to it is using _Co
 {{{
 import fr.digitas.flowearth.conf.Conf;
 
-trace( Conf.getString( "myProperty" ));
-}}}
+trace( Conf.getString( "myProperty" ) );
 
-But you can also use the classic _getInstance()_
-{{{
+//---------------------------------------------
+//But you can also use the classic _getInstance()_
+
 import fr.digitas.flowearth.conf.Configuration;
 
-trace( Configuration.getInstance().getString( "myProperty" ) );
+trace( Configuration.getInstance( ).getString( "myProperty" ) );
 }}}
 
 But before ask it for properties values, you need to load a property file.
