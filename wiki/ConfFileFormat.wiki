@@ -1,13 +1,85 @@
-#summary One-sentence summary of this page.
+Configuration file format
 
-= Introduction =
+= Conf file format =
 
-Add your content here.
+As in ECMAScript, a Property is simply defined by a name (or QName) and a value. Native Property's value is always a String.
+
+Properties of a conf file are extract listing all childrens of the root node.
+
+====start with a simple example====
+Here is a conf file with 3 properties.
+{{{
+<confExample>
+	<simple>my simple property</simple>
+	<complex>
+		<foo>bar</foo>
+		<foo>bar</foo>
+		<foo>bar</foo>
+	</complexe>
+	<basic_dependancy>${simple} roxx!</basic_dependancy>
+</confExample>
+}}}
+
+  * "simple" have the value "my simple property"
+  * "complex" have the following value :
+{{{
+"<foo>bar</foo>
+<foo>bar</foo>
+<foo>bar</foo>"
+}}}
+  * "basic_dependancy" have the value "my simple property roxx!"
+
+=== property name ===
+
+The name of the property is set using the _XML.name()_ value of the given child. The propery is stored inside the same namespace than the child.
+
+For details about acces to a property see 
+[ConfigurationUsage#Retreive_a_property 'Retreive a property' chapter].
+
+Note that three names are reserved :
+  * externalConf (list of external conf files)
+  * externalData (list of external properties values)
+  * switch ( switch/case parsing )
+
+=== property value===
+
+The value of the property is set depending child node content type :
+====Simple content====
+If the child node has a simple text content (_child.hasSimpleContent()_ equals _true_), the value is set using _child.text()_).
+When you redefine a property having a simple content, the old value is erased and replaced by the new one. So if two children with the same name are found in conf files, only the last child parsed will be used.
+====Complex content====
+If the child node has a complex content (_child.hasComplexeContent()_ equals _true_), the value is set using _child.children().toXMLString()_.
+When a complexe property is redefined (eg. using _Conf.setProperty()_ or multiple child nodes with the same name.) contents of children are concatenated.
 
 
-= Details =
+{{{
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+<conf>
+	<filesize>10</filesize>
+	<filesize>ten</filesize>
+
+	<filelist>
+		<file>file1.txt</file>
+	</filelist>
+
+	<filelist>
+		<file>file2.txt</file>
+		<file>file3.txt</file>
+	</filelist>
+	
+</conf>
+
+}}}
+
+{{{
+trace( Conf.filesize );
+// ten
+
+trace( Conf.filelist );
+// <filelist>
+//   <file>file1.txt</file>
+//   <file>file2.txt</file>
+//   <file>file3.txt</file>
+// </filelist>
+
+}}}
