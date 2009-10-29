@@ -85,12 +85,14 @@ When a complexe property is redefined (eg. using _Conf.setProperty()_ or multipl
 
 {{{
 trace( Conf.filesize );
-// --> ten
+// ten
 
 trace( Conf.filelist );
-//<file>file1.txt</file>
-//<file>file2.txt</file>
-//<file>file3.txt</file>
+// <filelist>
+//   <file>file1.txt</file>
+//   <file>file2.txt</file>
+//   <file>file3.txt</file>
+// </filelist>
 
 }}}
 
