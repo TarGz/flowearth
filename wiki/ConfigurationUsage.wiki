@@ -36,7 +36,7 @@ Conf.addEventListener( Event.COMPLETE, onConfLoaded );
 
 Conf.loadXml( "myConfFile.xml" );
 
-private fucntion onConfLoaded( e : Event ) : void {
+private function onConfLoaded( e : Event ) : void {
    trace( Conf.hasProperty( "myProperty" ) );
 }
 }}}
