@@ -2,5 +2,5 @@
 Documentation and examples of Flowearth features
 
 This documentation provides detailed documentation fo the following features:
-  * Configuration
-  * Batcher
+  * [http://code.google.com/p/flowearth/wiki/Configuration_usage Configuration]
+  * [http://code.google.com/p/flowearth/wiki/Batcher_usage Batcher]
