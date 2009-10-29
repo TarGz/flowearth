@@ -32,11 +32,15 @@ Note that three names are reserved :
 
 === property value===
 
-The value of the property is set depending child content type :
+The value of the property is set depending child node content type :
 ====Simple content====
-If the child has a simple text content (_child.hasSimpleContent()_ equals _true_), the value is set using _child.text()_).
+If the child node has a simple text content (_child.hasSimpleContent()_ equals _true_), the value is set using _child.text()_).
+When you redefine a property having a simple content, the old value is erased and replaced by the new one. So if two children with the same name are found in conf files, only the last child parsed will be used.
 ====Complex content====
-If the children has a more complex content (_child.hasComplexeContent()_ equals _true_), the value is set using _child.children().toXMLString()_).
+If the child node has a more complex content (_child.hasComplexeContent()_ equals _true_), the value is set using _child.children().toXMLString()_).
+When a complexe property is redefined (eg. using _Conf.setProperty()_ or multiple child nodes with the same name.) contents of children are concatenated.
+
+
 
 
 
