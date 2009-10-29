@@ -127,21 +127,6 @@ trace( Conf.filelist );
 
 
 
-
-
-{{{
-
-<conf>
-	<basedir>${basepath}</basedir>
-	
-	<assets_dir>${basedir}/${local}/assets</assets_dir>
-	<flv_dir>${assets_dir}/flvs</flv_dir>
-
-	<local>en_GB</local>
-</conf>
-
-}}}
-
 = Retreive a property =
 
 Configuration class provide several methods to acces to a property :
@@ -185,15 +170,15 @@ The _String_ value of the property is surrounded by a xml tag named with the loc
 Conf.getString( "complex" );
 // String value :
 //
-//"<a>hello</a>
-//<b>world</b>"
+"<a>hello</a>
+<b>world</b>"
 
 Conf.getDatas( "complex" );
 // XML Object
-// <complex>
-//    <a>hello</a>
-//    <b>world</b>
-// </complex>
+<complex>
+    <a>hello</a>
+    <b>world</b>
+ </complex>
 
 
 }}}
@@ -201,6 +186,38 @@ Conf.getDatas( "complex" );
 Notes :
   * this method always remove the namespace of the property  from the xml result.
   * A new instance of XML is created each to you call _getDatas()_ method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{{
+
+<conf>
+	<basedir>${basepath}</basedir>
+	
+	<assets_dir>${basedir}/${local}/assets</assets_dir>
+	<flv_dir>${assets_dir}/flvs</flv_dir>
+
+	<local>en_GB</local>
+</conf>
+
+}}}
 
 
 {{{
