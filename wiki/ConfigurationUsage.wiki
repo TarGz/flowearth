@@ -162,13 +162,39 @@ This method return the native value of the property (each conf props are stored 
 If the property have a simple content, the value of _text().toXMLString()_ is return.
 If the property have a complexe content, the value of _children().toXMLString()_ is return.
 
-butin this last case, you may prefered to use_getDatas()_ method.
+butin this last case, you may prefered to use _getDatas()_ method.
 
 == getDatas ==
 This method return an XML representation of the given property. 
 The _String_ value of the property is surrounded by a xml tag named with the local name of the prop, then returned as an XML object.
 
 {{{
+// XML
+
+<confFile>
+   <!-- create a complex property "complex" -->
+   <complex>
+      <a>hello</a>
+      <b>world</b>
+   </complex>
+
+</confFile>
+
+// AS
+
+Conf.getString( "complex" );
+// String value :
+//
+//"<a>hello</a>
+//<b>world</b>"
+
+Conf.getDatas( "complex" );
+// XML Object
+// <complex>
+//    <a>hello</a>
+//    <b>world</b>
+// </complex>
+
 
 }}}
 
