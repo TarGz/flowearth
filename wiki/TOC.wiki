@@ -1,6 +1,5 @@
-
   * Home
-  * Introduction
+  * [http://code.google.com/p/flowearth/wiki/Introduction Introduction]
   * Documentation
     * Configuration
     * Batcher
