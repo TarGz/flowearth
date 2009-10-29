@@ -3,12 +3,45 @@ Examples
 
 = Simple start =
 
-Add your content here.
+
+{{{
+
+<conf>
+	<basedir>${basepath}</basedir>
+	
+	<assets_dir>${basedir}/${local}/assets</assets_dir>
+	<flv_dir>${assets_dir}/flvs</flv_dir>
+
+	<local>en_GB</local>
+</conf>
+
+}}}
 
 
-= Details =
+{{{
+public function ConfSampleA() {
+	//-----°1
+	Conf.setProperty( "basepath", "." );
+	Conf.grabParam( loaderInfo );
+	
+	//-----°2
+	Conf.addEventListener( Event.COMPLETE , onConfLoaded );
+	Conf.loadXml( new URLRequest ( Conf.getString("basepath") + "/confSampleA.conf") );
+}
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+private function onConfLoaded(event : Event) : void {
+	
+	//-----°3
+	trace( "°3",  Conf.getString( "assets_dir" ) );
+	
+	//-----°4
+	Conf.setProperty( "local", "fr_FR" );
+	trace( "°4", Conf.getString( "assets_dir" ) );
+
+	//-----°5
+	trace( "°5", Conf.getString( "basepath" ) );
+	// --> if flashvar exist 		"../../../../../samples/fr/digitas/flowearth/conf"
+	// --> if swf is standalone		"."
+	
+}
+}}}
