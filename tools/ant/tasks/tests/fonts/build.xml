@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     9 oct. 2009 14:50:20                                                        
+
+     font provider task tests    
+     font provider task test
+                   
+     lepersp                                                                
+     ====================================================================== -->
+<project name="Digitas Fmk - test ant tasks" default="main" basedir="../../../../../">
+	<description>
+            font provider task test
+    </description>
+
+	<property name="FMK_HOME" location="${basedir}" />
+	<loadproperties srcfile="${FMK_HOME}/build.config" />
+	<loadproperties srcfile="${FMK_HOME}/.properties" />
+
+	<taskdef resource="digitasAnt.tasks" classpath="${digitas.antTasks.jar}" />
+
+	
+	<!-- ================================= 
+          target: main              
+         ================================= -->
+	<target name="main" depends="init" description="font provider task test">
+
+		<ant antfile="D:\work\workspaces\as3\BI_refactoring\tools\ant/antTasks\build\build.xml">
+		</ant>
+		
+
+		<createFont classname="FontA"
+		            swf="${TEST_HOME}/output/fontA.swf"
+		            compiler="${digitas.mxmlc}" 
+		            keepgenerated="false" >
+			
+			<font fontfamily="arial" 
+			      fontweight="normal"
+			      sourcefile="C:/WINDOWS/Fonts/ARIAL.ttf"
+			      unicoderange="U+0000-U+0001" />
+			
+			<font fontfamily="arial_bold_italic"
+			      fontweight="bold"
+			      fontstyle="italic"
+			      sourcename="Arial"
+			      unicoderange="U+0000-U+0001" />
+		
+			<arg line="-debug=true"/>
+		
+		</createFont>
+
+		<createFont classname="com.test.FontB"
+		            swf="${TEST_HOME}/output/fontB.swf"
+		            compiler="${digitas.mxmlc}"
+		            keepgenerated="false">
+		</createFont>
+		
+		<createFont swf="${TEST_HOME}/output/fontC.swf"
+		            compiler="${digitas.mxmlc}"
+		            keepgenerated="false">
+			
+			<font fontfamily="arial"
+			      fontweight="normal"
+			      sourcefile="C:/WINDOWS/Fonts/ARIAL.ttf"
+			      unicoderange="U+0000-U+0001" />
+			
+			<font fontfamily="arial_bold"
+			      fontweight="bold"
+			      sourcename="Arial"
+			      unicoderange="U+0000-U+0001" />
+		</createFont>
+
+
+
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="init">
+		<property name="TEST_HOME"
+		          location="${FMK_HOME}/tools/ant/antTasks/tests/fonts" />
+
+	</target>
+
+
+</project>

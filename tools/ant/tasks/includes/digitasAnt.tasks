@@ -1,0 +1,6 @@
+createFont = bi.ant.FontProviderWrapper
+compileFla = bi.ant.FlashExe
+versionClass = bi.ant.VersionClass
+versionClassAS2 = bi.ant.VersionClassAs2
+aes = bi.ant.crypto.AESCrypt
+arcfour = bi.ant.crypto.ARC4Crypt
