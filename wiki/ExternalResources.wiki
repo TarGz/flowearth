@@ -46,7 +46,9 @@ trace( Conf.localized );
 == more external! ==
 
 You can put several external request into a externalConf tag.
+
 You can put several externalConf tag into the same conf.
+
 you can also put externalConf tag in external conf.
 
 {{{
