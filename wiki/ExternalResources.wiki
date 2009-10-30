@@ -76,3 +76,33 @@ you can also put externalConf tag in external conf.
 
 </config>
 }}}
+
+== enforce namespace ==
+
+To enforce an external conf file to be stored in the same namespace than the externalConf tag, use _inheritSpace="true"_
+
+{{{
+<conf 
+      xmlns="defaultNs" 
+      xmlns:nsa="nsaNs" 
+>
+
+   <externalConf>
+      <file>external_A.xml</file>
+   </externalConf>
+
+   <externalConf inheritSpace="true">
+      <file>external_B.xml</file>
+   </externalConf>
+
+   <nsa:externalConf inheritSpace="true">
+      <file>external_C.xml</file>
+   </nsa:externalConf>
+</conf>
+
+}}}
+
+in this example :
+   * external_A.xml will keep his own namespace, or global namespace if the file have no namespace.
+   * external_B.xml, the *default* namespace of this file will be replaced by the "globalNs" one. If the file have no namespace, all prop will be stored in "defaultNs". But prefixed namespace will not be modified.
+   * external_C.xml, the same that external_B, but the new namsepace will be "nsaNs" and not "defaultNs" 
