@@ -10,8 +10,9 @@ The "complete" event of Configuration instance is dispatched when all external r
 
 = externalConf =
 
+--- conf.xml ---
 {{{
-<!-- conf.xml -->
+
 <config>
 
    <local>en_GB</local>
@@ -23,17 +24,17 @@ The "complete" event of Configuration instance is dispatched when all external r
    <localized>French word "merci" mean "${localprop}" in ${local}</localized>
 
 </config>
+}}}
 
-<!-- ./traduction/en_GB/sub_config.xml -->
-
+--- ./traduction/en_GB/sub_config.xml ---
+{{{
 <config>
    <localprop>thanks</localprop>
 </config>
 }}}
-
+---
 {{{
 trace( Conf.localized );
 
 // French word "merci" mean "thanks" in en_GB
 }}}
-
