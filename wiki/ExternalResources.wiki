@@ -10,6 +10,10 @@ The "complete" event of Configuration instance is dispatched when all external r
 
 = externalConf =
 
+== basic example ==
+
+in the following example, we loading an external config, depending local. Note that you can use property define in external conf as dependancy of any other property.
+
 --- conf.xml ---
 {{{
 
@@ -37,4 +41,36 @@ The "complete" event of Configuration instance is dispatched when all external r
 trace( Conf.localized );
 
 // French word "merci" mean "thanks" in en_GB
+}}}
+
+== more external! ==
+
+You can put several external request into a externalConf tag.
+You can put several externalConf tag into the same conf.
+you can also put externalConf tag in external conf.
+
+{{{
+<config>
+
+   <externalConf>
+      <file>external_A.xml</file>
+      <file>external_B.xml</file>
+   </externalConf>
+
+   <externalConf>
+      <file>external_C.xml</file>
+   </externalConf>
+
+</config>
+}}}
+
+--- external_A.xml ---
+{{{
+<config>
+   
+   <externalConf>
+      <file>external_A_1.xml</file>
+   </externalConf>
+
+</config>
 }}}
