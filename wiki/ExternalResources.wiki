@@ -106,3 +106,48 @@ in this example :
    * external_A.xml will keep his own namespace, or global namespace if the file have no namespace.
    * external_B.xml, the *default* namespace of this file will be replaced by the "globalNs" one. If the file have no namespace, all prop will be stored in "defaultNs". But prefixed namespace will not be modified.
    * external_C.xml, the same that external_B, but the new namsepace will be "nsaNs" and not "defaultNs" 
+
+= externalData =
+
+== basic example ==
+
+--- conf.xml
+{{{
+<conf>
+
+   <externalData>
+      <file id="myData">./data/mydatas.xml</file>
+   </externalData>
+
+</conf>
+}}}
+
+--- mydatas.xml
+{{{
+<list>
+   <item id="1"/>
+   <item id="2"/>
+   <item id="3"/> 
+</list>
+}}}
+
+{{{
+trace( Conf.getString( "myData" ) );
+// String output
+
+"<list>
+   <item id="1"/>
+   <item id="2"/>
+   <item id="3"/> 
+</list>"
+
+trace( Conf.getDatas( "myData" ) );
+// XML output
+<myData>
+  <list>
+     <item id="1"/>
+     <item id="2"/>
+     <item id="3"/> 
+  </list>
+</myData>
+}}}
