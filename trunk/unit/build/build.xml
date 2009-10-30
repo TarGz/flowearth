@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     7 oct. 2009 10:19:03                                                        
+
+     Build Unit Tests    
+     Build Unit Tests
+                   
+     lepersp                                                                
+     ====================================================================== -->
+<project name="Digitas Fmk - Unit Tests" default="main" basedir="../../">
+	<description>
+            Build Unit Tests
+    </description>
+	
+
+	<property name="FMK_HOME" location="${basedir}" />
+	<loadproperties srcfile="${basedir}/build.config" />
+	<loadproperties srcfile="${basedir}/.properties" />
+
+	<!-- ================================= 
+          target: main              
+         ================================= -->
+	<target name="main" depends="init" description="Build Unit Tests">
+		<antcall target="_build_bench_site" />
+		<antcall target="_build_crypted_assets" />
+		<antcall target="FP9 Build" />
+		<antcall target="FP10 Build" />
+
+	</target>
+
+
+	<!-- ================================= 
+          target: FP9 Build              
+         ================================= -->
+	<target name="FP9 Build" depends="init" description="build FP9 binaries">
+		<property name="target-player" value="9" />
+		<antcall target="_Build" inheritall="true" />
+	</target>
+
+	<!-- ================================= 
+          target: FP10 Build              
+         ================================= -->
+	<target name="FP10 Build" depends="init" description="build FP10 binaries">
+		<property name="target-player" value="10" />
+		<antcall target="_Build" inheritall="true" />
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: _Build                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="_Build">
+		<antcall target="_build_unit_tests" />
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: _build_bench_site                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="_build_bench_site" depends="init">
+		<exec executable="${digitas.mxmlc}">
+			<arg line="-l '${FMK_HOME}/framework/bin/fp9/flowearth.swc'" />
+			<arg line="-sp '${UNIT_HOME}/src'" />
+			<arg line="-incremental" />
+			<arg line="-o '${UNIT_HOME}/deploy/assets/swf/site.swf'" />
+			<arg line=" -- '${UNIT_HOME}/src/fr/digitas/flowearth/site/Main.as'" />
+		</exec>
+		<exec executable="${digitas.mxmlc}">
+			<arg line="-l '${FMK_HOME}/framework/bin/fp9/flowearth.swc'" />
+			<arg line="-sp '${UNIT_HOME}/src'" />
+			<arg line="-incremental" />
+			<arg line="-o '${UNIT_HOME}/deploy/assets/swf/preload.swf'" />
+			<arg line=" -- '${UNIT_HOME}/src/fr/digitas/flowearth/site/Preload.as'" />
+		</exec>
+		<exec executable="${digitas.mxmlc}">
+			<arg line="-l '${FMK_HOME}/framework/bin/fp9/flowearth.swc'" />
+			<arg line="-sp '${UNIT_HOME}/src'" />
+			<arg line="-incremental" />
+			<arg line="-o '${UNIT_HOME}/deploy/assets/swf/rsl.swf'" />
+			<arg line=" -- '${UNIT_HOME}/src/fr/digitas/flowearth/site/Rsl.as'" />
+		</exec>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+	          target: _build_crypted_assets                      
+	         - - - - - - - - - - - - - - - - - -->
+
+	<target name="_build_crypted_assets" depends="init">
+		<arcfour key="0ZYcJVImM/GlgjtA"
+		         dir="${UNIT_HOME}/deploy/assets/crypto_arc4/"
+		         bom="cryp">
+			<fileset dir="${UNIT_HOME}/deploy/assets" id="1">
+				<include name="/img/large.jpg*" />
+			</fileset>
+		</arcfour>
+		<aes key="0ZYcJVImM/GlgjtA"
+		     iv="0ZYcJVImM/GlgjtA"
+		     dir="${UNIT_HOME}/deploy/assets/crypto/"
+		     bom="cryp">
+			<fileset dir="${UNIT_HOME}/deploy/assets" id="1">
+				<include name="/xmls/*.xml" />
+				<include name="/swf/*.swf" />
+				<include name="/img/large.jpg*" />
+				<include name="/img/avatarMoy.jpg*" />
+				<exclude name="/swf/site.swf*" />
+			</fileset>
+		</aes>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: _build_unit_tests                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="_build_unit_tests" depends="init">
+		<exec executable="${digitas.mxmlc}">
+			<arg line="-l '${FMK_HOME}/framework/bin/fp${target-player}/flowearth.swc'" />
+			<arg line="-sp '${UNIT_HOME}/src'" />
+			<arg line="-debug='true'" />
+			<!--arg line="-incremental" /-->
+			<arg line="-use-network='false'" />
+			<arg line="-default-size 800 900 " />
+			<arg line="-default-frame-rate 31" />
+			<arg line="-default-background-color 0xFFFFFF" />
+			<arg line="-load-config+='${constsConfFile}'" />
+			<arg line="-o '${UNIT_HOME}/deploy/unitTest_fp${target-player}.swf'" />
+			<arg line=" -- '${UNIT_HOME}/src/fr/digitas/flowearth/Runner.as'" />
+		</exec>
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="init">
+		<property name="UNIT_HOME" location="${FMK_HOME}/unit" />
+		<property name="constsConfFile"
+		          location="${UNIT_HOME}/build/compile_consts.xml" />
+	</target>
+
+
+	<taskdef resource="digitasAnt.tasks" classpath="${digitas.antTasks.jar}" />
+	
+
+</project>
