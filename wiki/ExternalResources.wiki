@@ -1,0 +1,39 @@
+How to externalize resources with Conf
+
+= Introduction =
+
+You can use two special xml tag to externalize resources from a conf file :
+  * _externalConf_ : will load one or more conf files
+  * _externalData_ : will load a file and put the content into a property
+
+The "complete" event of Configuration instance is dispatched when all external resources have been loaded.
+
+= externalConf =
+
+{{{
+<!-- conf.xml -->
+<config>
+
+   <local>en_GB</local>
+
+   <externalConf>
+      <file>./traduction/${local}/sub_config.xml</file>
+   </externalConf>
+
+   <localized>French word "merci" mean "${localprop}" in ${local}</localized>
+
+</config>
+
+<!-- ./traduction/en_GB/sub_config.xml -->
+
+<config>
+   <localprop>thanks</localprop>
+</config>
+}}}
+
+{{{
+trace( Conf.localized );
+
+// French word "merci" mean "thanks" in en_GB
+}}}
+
