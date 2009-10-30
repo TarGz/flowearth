@@ -21,7 +21,7 @@
           target: main              
          ================================= -->
 	<target name="main" depends="init" description="Build Unit Tests">
-		<antcall target="_build_bench_site" />
+		<!--antcall target="_build_bench_site" /-->
 		<antcall target="_build_crypted_assets" />
 		<antcall target="FP9 Build" />
 		<antcall target="FP10 Build" />

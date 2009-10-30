@@ -78,7 +78,7 @@
 		</exec>
 		
 		<exec executable="${digitas.mxmlc}">
-			<arg line="-l ${digitas.dir.fmk}/bin/fp9/fmk.swc"/>
+			<arg line="-l ${digitas.dir.fmk}/bin/fp9/flowearth.swc"/>
 			<arg line="-sp ${CONFITUR_HOME}/test/output/src"/>
 			<arg line="-debug"/>
 			<arg line="-output ${CONFITUR_HOME}/test/mainTest.swf"/>
