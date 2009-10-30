@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     19 oct. 2009 15:17:16                                                        
+
+     Digitas - docs samples    
+     Build docs samples swf
+                   
+     lepersp                                                                
+     ====================================================================== -->
+<project name="Digitas Fmk - Build docs Samples" default="main" basedir="../../../../">
+    <description>
+            Build docs samples swf
+    </description>
+	
+	<property name="FMK_HOME" location="${basedir}" />
+	<loadproperties srcfile="${FMK_HOME}/build.config" />
+	<loadproperties srcfile="${FMK_HOME}/.properties" />
+
+    <!-- ================================= 
+          target: main              
+         ================================= -->
+    <target name="main" depends="init" description="Build docs samples swf">
+        
+    	<exec executable="${digitas.mxmlc}">
+    		<arg line="${defaultArgs}"/>
+    		<arg line="-o ${sampleDir}/fr/digitas/flowearth/command/BatcherSampleA.swf"/>
+    		<arg line="-- ${sampleDir}/fr/digitas/flowearth/command/BatcherSampleA.as"/>
+    	</exec>
+
+    	<exec executable="${digitas.mxmlc}">
+    		<arg line="${defaultArgs}"/>
+    		<arg line="-o ${sampleDir}/fr/digitas/flowearth/conf/ConfSampleA.swf"/>
+    		<arg line="-- ${sampleDir}/fr/digitas/flowearth/conf/ConfSampleA.as"/>
+    	</exec>
+    	
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="init">
+    	<property name="sampleDir" value="${FMK_HOME}/framework/docs/samples"/>
+    	<property name="defaultArgs" value="-sp ${sampleDir}/sampleslib -l ${FMK_HOME}/framework/bin/fp9/flowearth.swc -default-size 400 400 -default-background-color 0xF8F8F8 -debug"/>
+    </target>
+
+</project>
+

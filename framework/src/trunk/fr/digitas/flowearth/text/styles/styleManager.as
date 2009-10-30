@@ -10,19 +10,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-package fr.digitas.flowearth {
-	/**
-	 * Classe autogénéré par la tacheAnt du framework
-	 * 
-	 * @author AntTask
-	 */
-	final public class Version {
-
-		static public const major : uint = 2;
-		static public const minor : uint = 5;
-		static public const build : uint = 25;
-
-		static public const player : String = "9";
-
-	}
+package fr.digitas.flowearth.text.styles {
+/**
+ * @author Pierre Lepers
+ */
+public var styleManager : StyleManagerClass = StyleManagerClass._start();
 }

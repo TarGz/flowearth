@@ -10,19 +10,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-package fr.digitas.flowearth {
+package fr.digitas.flowearth.text.fonts {
+
 	/**
-	 * Classe autogénéré par la tacheAnt du framework
-	 * 
-	 * @author AntTask
+	 * @author Pierre Lepers
 	 */
-	final public class Version {
+	public interface IFontsProvider {
 
-		static public const major : uint = 2;
-		static public const minor : uint = 5;
-		static public const build : uint = 25;
-
-		static public const player : String = "9";
-
+		/**
+		 * return an Array of <code>Font</code> classes
+		 */
+		function getFonts() : Array;
 	}
 }
