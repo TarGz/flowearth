@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     6 oct. 2009 14:21:17                                                        
+
+     Complete build    
+     Complete build
+                   
+     Pierre Lepers                                                                
+     ====================================================================== -->
+<project name="Digitas Fmk" default="main" basedir=".">
+    <description>
+            Complete build
+    </description>
+	
+
+	<property name="FMK_HOME" location="${basedir}"/>
+	<loadproperties srcfile="${FMK_HOME}/build.config"/>
+	<loadproperties srcfile="${FMK_HOME}/.properties"/>
+
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="main" description="Complete build">
+        <ant antfile="${digitas.dir.antTasks}/build/build.xml"/>
+        <ant antfile="${digitas.dir.fmk}/build/build.xml"/>
+        <ant antfile="${digitas.dir.fmk}/docs/tutorials/build.xml"/>
+        <ant antfile="${digitas.dir.units}/build/build.xml"/>
+    </target>
+
+
+
+</project>
