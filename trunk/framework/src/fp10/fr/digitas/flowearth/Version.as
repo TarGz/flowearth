@@ -20,7 +20,7 @@ package fr.digitas.flowearth {
 
 		static public const major : uint = 2;
 		static public const minor : uint = 5;
-		static public const build : uint = 14;
+		static public const build : uint = 16;
 
 		static public const player : String = "10";
 
