@@ -1,0 +1,13 @@
+<conf>
+
+	<depI>${depH}I</depI>
+	<depH>${depG}H</depH>	
+	<depG>${depF}G</depG>	
+	<depF>${depE}F</depF>	
+	
+	
+
+	<externalConf>
+		<file><![CDATA[${xmlURL}/deep_dep_part2.xml]]></file>
+	</externalConf>
+</conf>

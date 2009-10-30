@@ -1,0 +1,163 @@
+<conf>
+	
+<!-- 
+	used in AbstractNodeTest
+-->
+	<nodeDescriptorA>
+		<node id="ndA" default="C">
+			<node id="A">
+				<node id="AA">
+					<node id="AAA" />
+					<node id="AAB" />
+				</node>
+				<node id="AB">
+					<node id="ABA" />
+					<node id="ABB" />
+				</node>
+			</node>
+			<node id="B">
+				<node id="BA">
+					<node id="BAA" />
+					<node id="BAB" />
+				</node>
+				<node id="BB">
+					<node id="BBA" />
+					<node id="BBB" />
+				</node>
+			</node>
+			<node id="C" default="CB">
+				<node id="CA" default="CAB">
+					<node id="CAA" />
+					<node id="CAB" />
+				</node>
+				<node id="CB" default="CBA">
+					<node id="CBA" default="CBAA">
+						<node id="CBAA" default="CBAAA">
+							<node id="CBAAA" />
+						</node>
+					</node>
+						<node id="CBAB" />
+					<node id="CBB" />
+				</node>
+			</node>
+		</node>
+	</nodeDescriptorA>
+
+<!-- 
+	used in NodeTest 
+-->
+	<nodeDescriptorB>
+		<node id="ndB">
+			<node id="A">
+				<node id="A">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+				<node id="B">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+				<node id="C">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+						<!-- ext here -->
+				</node>
+			</node>
+			<node id="B">
+				<node id="A">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+				<node id="B">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+				<node id="C">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+			</node>
+			<node id="C">
+				<node id="A">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+				<node id="B">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+				<node id="C">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+			</node>
+		</node>
+	</nodeDescriptorB>
+
+	<nodeDescriptorBExt>
+		<node id="C">
+			<node id="A">
+				<node id="A">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+				<node id="B">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+				<node id="C">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+			</node>
+			<node id="B">
+				<node id="A">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+				<node id="B">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+				<node id="C">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+			</node>
+			<node id="C">
+				<node id="A">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+				<node id="B">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+				<node id="C">
+					<node id="A" />
+					<node id="B" />
+					<node id="C" />
+				</node>
+			</node>
+		</node>
+	</nodeDescriptorBExt>
+
+
+</conf>

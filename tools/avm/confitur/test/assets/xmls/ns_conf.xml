@@ -1,0 +1,18 @@
+<conf
+	xmlns:nsA="http://www.digitas.fr.flash.conftest/ns/nsA"
+	xmlns:nsB="http://www.digitas.fr.flash.conftest/ns/nsB" >
+
+
+	<nsPropnoNs>propNons</nsPropnoNs>
+	<nsA:nsProp1>prop1 nsA</nsA:nsProp1>
+	<nsB:nsProp1>prop1 nsB</nsB:nsProp1>
+
+
+	<nsB:nsProp2>${nsProp1}ZZZ</nsB:nsProp2>
+	<nsProp2>${nsB::nsProp1}ZZZ</nsProp2>
+	<nsA:nsProp2>${nsB::nsProp1}ZZZ</nsA:nsProp2>
+
+	<!--nsB:nsProp3>${nsPropnoNs}-ZZZ</nsB:nsProp3-->
+	<nsB:nsProp3>${nsPropnoNs}-ZZZ</nsB:nsProp3>
+	
+</conf>
