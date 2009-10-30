@@ -1,0 +1,9 @@
+<conf>
+
+	<depE>${depD}E</depE>	
+	<depD>${depC}D</depD>	
+	<depC>${depB}C</depC>	
+	<depB>${depA}B</depB>	
+	<depA>A</depA>	
+
+</conf>

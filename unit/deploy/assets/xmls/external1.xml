@@ -1,0 +1,19 @@
+<translation>
+	<loading><![CDATA[CHARGEMENT]]></loading>
+	<loadingComplete><![CDATA[CHARGEMENT TERMINE]]></loadingComplete>
+	<loadingExternalMedias><![CDATA[CHARGEMENT DES MEDIAS]]></loadingExternalMedias>
+	<initialization><![CDATA[INITIALISATION]]></initialization>
+	
+	<lockedProp><![CDATA[locked modified]]></lockedProp>
+
+	<externalConf>
+		<file><![CDATA[${xmlURL}/${external2}]]></file>
+		<file><![CDATA[${xmlURL}/siteTrees.xml]]></file>
+	</externalConf>
+	
+	<mediaToPreload>
+		<noeud_a_la_con>
+			<file><![CDATA[${imgURL}/largeExternal1.jpg]]></file>
+		</noeud_a_la_con>
+	</mediaToPreload>
+</translation>

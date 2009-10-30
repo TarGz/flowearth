@@ -1,0 +1,23 @@
+<translation>
+
+	<property4><![CDATA[${property3}/4]]></property4>
+	<lang><![CDATA[en]]></lang>
+	
+	<lockedProp><![CDATA[locked modified]]></lockedProp>
+
+	<!-- 	
+			testXml2 existe deja dans le conf principale,
+			puisque c'est un contenu complexe, le contenu est ajouté au contenu existant
+	-->
+	<testXml2>
+		<test3>
+			<scaleMode>${scaleMode}</scaleMode>
+			<${align}>noued align</${align}>
+		</test3>
+	</testXml2>
+
+	<externalConf>
+		<file><![CDATA[${xmlURL}/${extManagerDatas}]]></file>
+	</externalConf>
+	
+</translation>
