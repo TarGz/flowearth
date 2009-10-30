@@ -1,0 +1,29 @@
+/* inline comment */
+
+/* 
+multiline 
+comment 
+*/
+
+
+.basicStyleA {
+	fontSize: 8;
+    color: 0xFFFFFF;
+	autoSize: "left";
+}
+
+basicStyleB {
+	fontSize :10;
+    color : #FFFFFF;
+    /* inside comment */
+	autoSize:left;
+}
+
+.basicstylec {
+	fontSize :  10;
+    color  :  #FFFFFF;
+    /* 
+    inside multiline comment 
+    */
+	autoSize:left;
+}
