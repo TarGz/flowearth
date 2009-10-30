@@ -131,6 +131,7 @@ in this example :
 </list>
 }}}
 
+--- AS
 {{{
 trace( Conf.getString( "myData" ) );
 // String output
