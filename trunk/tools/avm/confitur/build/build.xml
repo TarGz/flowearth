@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     24 oct. 2009 21:16:20                                                        
+
+     Conf parser executable    
+     description
+                   
+     pierre                                                                
+     ====================================================================== -->
+<project name="Digitas Fmk - AVM Confitur" default="main" basedir="../../../../">
+
+	<description>
+            build digitas ant tasks
+    </description>
+
+	<property name="FMK_HOME" location="${basedir}" />
+	<loadproperties srcfile="${basedir}/build.config" />
+	<loadproperties srcfile="${basedir}/.properties" />
+
+	<!-- ================================= 
+          target: main              
+         ================================= -->
+	<target name="main" depends="init" description="description">
+		<antcall target="compile">
+		</antcall>
+		<antcall target="test">
+		</antcall>
+
+	</target>
+
+	<!-- ================================= 
+          target: compile              
+         ================================= -->
+	<target name="compile" depends="init" description="description">
+
+		<java jar="${digitas.asc}" fork="true">
+			<arg line="-import ${digitas.tamarin.libs.builtin}" />
+			<arg line="-import ${digitas.tamarin.libs.toplevel}" />
+			<arg line="-in ${CONFITUR_HOME}/src/flash_net.as" />
+			<arg line="-in ${CONFITUR_HOME}/src/flash_utils.as" />
+			<arg line="-in ${digitas.dir.fmk}/src/trunk/fr/digitas/flowearth/conf/AbstractConfiguration.as" />
+			<arg line="-in ${digitas.dir.fmk}/src/trunk/fr/digitas/flowearth/conf/externals/ExternalFile.as" />
+			<arg line="-in ${digitas.dir.fmk}/src/trunk/fr/digitas/flowearth/toolbox/VariablesTools.as" />
+			<arg line="-in ${digitas.dir.fmk}/src/trunk/fr/digitas/flowearth/toolbox/URLRequestHelper.as" />
+			<arg line="-in ${CONFITUR_HOME}/src/Configuration.as" />
+			<arg line="-d" />
+			<arg line="-strict" />
+			<arg line="-exe ${digitas.tamarin.avmplus}" />
+			<arg line="${CONFITUR_HOME}/src/Main.as" />
+		</java>
+
+		<move file="${CONFITUR_HOME}/src/Main.abc" tofile="${CONFITUR_HOME}/lib/confitur.abc" />
+		<move file="${CONFITUR_HOME}/src/Main.exe" tofile="${CONFITUR_HOME}/bin/confitur.exe" />
+
+	</target>
+
+
+	<!-- ================================= 
+          target: execute              
+         ================================= -->
+	<target name="test" depends="init" description="description">
+
+		<exec executable="${CONFITUR_HOME}/bin/confitur.exe">
+
+			<arg line="-dir ${CONFITUR_HOME}/test" />
+			<arg line="-in assets/xmls/verysimple.xml" />
+			<arg line="-report output/completeConf.txt" />
+		</exec>
+
+		<exec executable="${CONFITUR_HOME}/bin/confitur.exe">
+
+			<arg line="-dir ${CONFITUR_HOME}/test" />
+			<arg line="-in assets/xmls/completeConf.xml" />
+			<arg line="-report output/completeConf.txt" />
+			<arg line="-sp ${CONFITUR_HOME}/test/output/src" />
+			<arg line="-class fr.digitas.flowearth.conf.Confitur" />
+			<arg line="-qn" />
+		</exec>
+		
+		<exec executable="${digitas.mxmlc}">
+			<arg line="-l ${digitas.dir.fmk}/bin/fp9/fmk.swc"/>
+			<arg line="-sp ${CONFITUR_HOME}/test/output/src"/>
+			<arg line="-debug"/>
+			<arg line="-output ${CONFITUR_HOME}/test/mainTest.swf"/>
+			<arg line="-- ${CONFITUR_HOME}/test/output/src/MainTest.as"/>
+		</exec>
+
+	</target>
+
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="init">
+
+		<property name="CONFITUR_HOME" value="${digitas.dir.avm}/confitur" />
+
+	</target>
+
+</project>

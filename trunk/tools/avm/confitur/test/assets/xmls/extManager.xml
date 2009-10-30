@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<conf>
+
+	<!-- M E D I A   T O   P R E L O A D -->
+	<mediaToPreload>
+		<noeud_a_la_con>
+			<file id="preload"><![CDATA[${swfURL}/preload.swf]]></file>
+		</noeud_a_la_con>
+	</mediaToPreload>
+
+	<!-- M E D I A   T O   P R E L O A D -->
+	<bitmapToPreload>
+		<file id="btp_large_enc"><![CDATA[${cryptURL}_arc4/img/large.jpg]]></file>
+		<file id="secure_btp"><![CDATA[${distSecureDomain}/pict.jpg]]></file>
+		<file id="unsecure_btp"><![CDATA[${distUnsecureDomain}/pict.jpg]]></file>
+		<noeud_a_la_con>
+			<file id="btp_large"><![CDATA[${imgURL}/large.jpg]]></file>
+		</noeud_a_la_con>
+	</bitmapToPreload>
+
+	
+	<!-- R S L  Manager -->
+	<rsl>
+		<file url="rsla"/>
+		<file url="rslCorrupt"/>
+	</rsl>
+	<rsla>${swfURL}/rsl.swf</rsla>
+	<rslCorrupt>${swfURL}/corruptCryptRsl.swf</rslCorrupt>
+	
+
+	<!-- S O U N D -->
+	<soundLibrairies>
+		<file url="soundsFile">
+			<def>bi.portfolio.sounds.Roll</def>
+			<def>bi.portfolio.sounds.Double</def>
+		</file>
+	</soundLibrairies>
+	<soundsFile>${swfURL}/sounds.swf</soundsFile>
+
+</conf>

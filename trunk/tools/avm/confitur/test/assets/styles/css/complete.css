@@ -1,0 +1,52 @@
+
+@font-face {
+	src : url( "maFont.swf" );
+}
+
+.completeStyle {
+	alpha : .67;
+	rotation : 12.85;
+	scaleX : 1.05;
+	scaleY : 1.05;
+	height : 12.5;
+	sharpness : 12.5;
+	thickness : 12.5;
+	width : 12.5;
+	x : 12.5;
+	y : 12.5;
+	
+	antiAliasType : normal;
+	autoSize : none;
+	blendMode : darken;
+	gridFitType :subpixel;
+	htmlText : totottotottotottotottotottotottotottotottotottotottotottotottotottotottotottotottotottotot;
+	name : totot;
+	restrict : A-Z;
+	text : totottotottotottotottotottotottotottotottotottotottotottotottotottotottotottotottotottotot;
+	type : dynamic;
+	
+	background : true;
+	border : true;
+	cacheAsBitmap : true;
+	condenseWhite : false;
+	displayAsPassword : true;
+	doubleClickEnabled : true;
+	embedFonts : true;
+	mouseEnabled : false;
+	mouseWheelEnabled : true;
+	visible : false;
+	multiline : true;
+	selectable : true;
+	tabEnabled : true;
+	useRichTextClipboard : true;
+	wordWrap : true;
+	
+	backgroundColor : 0xD456A1;
+	borderColor : 0xD456A1;
+	textColor : 0x345678;
+	maxChars : 12;
+	scrollH : 2;
+	scrollV : 2;
+	tabIndex : 1;
+}
+
