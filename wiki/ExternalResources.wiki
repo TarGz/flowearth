@@ -151,3 +151,7 @@ trace( Conf.getDatas( "myData" ) );
   </list>
 </myData>
 }}}
+
+Use id attribute if the file node to specify in which property the data will be stored.
+
+An external data can be any text file.
