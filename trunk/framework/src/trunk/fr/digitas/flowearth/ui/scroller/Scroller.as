@@ -21,7 +21,7 @@ package fr.digitas.flowearth.ui.scroller {
 	 * dispatché lorsque la scrollbar à été affiché ou supprimé
 	 * @see Scroller#DISPLAY_SCROLL
 	 */
-	[Event(name="dispayScroll", type="bi.event.BoolEvent")]
+	[Event(name="dispayScroll", type="fr.digitas.flowearth.event.BoolEvent")]
 	
 
 	/**

@@ -54,12 +54,13 @@ package fr.digitas.flowearth.mvc.address {
 		private static function _initialize() : Boolean {
 			if (_availability) {
 				ExternalInterface.addCallback( 'getSWFAddressValue' , function():String {
-					return _value
+					return _value;
 				} );
 				ExternalInterface.addCallback( 'setSWFAddressValue' , _setValue );
 			}
 			_interval = setInterval( _check , 10 );
 			return true;
+			_initializer;
 		}
 
 		private static var _initializer : Boolean = _initialize( );

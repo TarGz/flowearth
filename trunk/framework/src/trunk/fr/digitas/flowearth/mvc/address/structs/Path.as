@@ -74,7 +74,7 @@ package fr.digitas.flowearth.mvc.address.structs {
 		/**
 		 * lazy creation of node's branch
 		 */
-		protected function _getNodes( until : INode = null ) : Array {
+		protected function _getNodes() : Array {
 			if( ! _nodes ) _nodes = _solveNodes( );
 			return _nodes;
 		}

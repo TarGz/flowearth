@@ -28,7 +28,11 @@ package fr.digitas.flowearth.event {
 			super( type, bubble, cancelable );
 			_array = array;
 		}
-		
+
+		override public function clone() : Event {
+			return new ArrayEvent( type, _array, bubbles, cancelable );
+		}
+
 		
 		private var _array : Array;
 	}

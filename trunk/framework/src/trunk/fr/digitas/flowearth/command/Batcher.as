@@ -211,7 +211,7 @@ package fr.digitas.flowearth.command {
 	 * @eventType ErrorEvent#ERROR
 	 */
 
-	[Event( name = "error", type = "bi.event.BatchErrorEvent" )]	
+	[Event( name = "error", type = "fr.digitas.flowearth.event.BatchErrorEvent" )]	
 
 	/**
 	 * Dispatched when an error occur while current <code>IBatchable</code> is processed.
