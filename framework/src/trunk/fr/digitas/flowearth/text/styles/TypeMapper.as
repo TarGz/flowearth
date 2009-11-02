@@ -22,7 +22,10 @@ package fr.digitas.flowearth.text.styles {
 		public static function transtype( prop : String, value : String ) : * {
 			return ( _map[ prop ] || _null_transtyper as Object )( value );
 		}
-
+		
+		
+		private static var _isinit : Boolean = _init();
+		
 		private static function _init() : Boolean {
 			_map = new Dictionary();
 			// INT
@@ -124,9 +127,6 @@ package fr.digitas.flowearth.text.styles {
 		//_____________________________________________________________________________
 		//																	   PRIVATES
 		public static var _map : Dictionary;
-	
-		private static var _isinit : Boolean = _init();
-		
 		
 	}
 }

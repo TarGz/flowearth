@@ -37,7 +37,7 @@ package fr.digitas.flowearth.conf {
 	 * Dispatched when a file's loading begin (including externalsXmlConf and externalData ) 
 	 * @eventType StatusEvent#STATUS
 	 */
-	[Event( name = "status", type = "flash.events.BatchStatusEvent" )]
+	[Event( name = "status", type = "fr.digitas.flowearth.event.BatchStatusEvent" )]
 
 	/**
 	 * dispatch the overall progression of loading.

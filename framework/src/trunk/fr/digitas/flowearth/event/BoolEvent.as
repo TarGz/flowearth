@@ -19,6 +19,10 @@ package fr.digitas.flowearth.event {	import flash.events.Event;
 		
 		public function BoolEvent (type : String, flag : Boolean, bubble : Boolean = false, cancelable : Boolean = false) {
 			super(type, bubble, cancelable );
-			_flag = flag;		}		
+			_flag = flag;		}
+		override public function clone() : Event {
+			return new BoolEvent( type, _flag, bubbles, cancelable );
+		}
+
 		private var _flag : Boolean;
 			}}

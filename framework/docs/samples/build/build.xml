@@ -7,41 +7,52 @@
                    
      lepersp                                                                
      ====================================================================== -->
-<project name="Digitas Fmk - Build docs Samples" default="main" basedir="../../../../">
-    <description>
+<project name="Digitas Fmk - Build docs Samples"
+         default="main"
+         basedir="../../../../">
+	<description>
             Build docs samples swf
     </description>
-	
+
 	<property name="FMK_HOME" location="${basedir}" />
 	<loadproperties srcfile="${FMK_HOME}/build.config" />
 	<loadproperties srcfile="${FMK_HOME}/.properties" />
 
-    <!-- ================================= 
+	<taskdef resource="flexTasks.tasks"
+	         classpath="${digitas.flex}/ant/lib/flexTasks.jar" />
+
+
+	<!-- ================================= 
           target: main              
          ================================= -->
-    <target name="main" depends="init" description="Build docs samples swf">
-        
-    	<exec executable="${digitas.mxmlc}">
-    		<arg line="${defaultArgs}"/>
-    		<arg line="-o ${sampleDir}/fr/digitas/flowearth/command/BatcherSampleA.swf"/>
-    		<arg line="-- ${sampleDir}/fr/digitas/flowearth/command/BatcherSampleA.as"/>
-    	</exec>
+	<target name="main" depends="init" description="Build docs samples swf">
 
-    	<exec executable="${digitas.mxmlc}">
-    		<arg line="${defaultArgs}"/>
-    		<arg line="-o ${sampleDir}/fr/digitas/flowearth/conf/ConfSampleA.swf"/>
-    		<arg line="-- ${sampleDir}/fr/digitas/flowearth/conf/ConfSampleA.as"/>
-    	</exec>
-    	
-    </target>
+		<mxmlc file="${sampleDir}/fr/digitas/flowearth/command/BatcherSampleA.as"
+		       output="${sampleDir}/fr/digitas/flowearth/command/BatcherSampleA.swf"
+		       debug="true">
+			<default-size width="400" height="400" />
+			<default-background-color>0xF8F8F8</default-background-color>
+			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
+			<source-path path-element="${sampleDir}/sampleslib" />
+		</mxmlc>
 
-    <!-- - - - - - - - - - - - - - - - - - 
+		<mxmlc file="${sampleDir}/fr/digitas/flowearth/conf/ConfSampleA.as"
+		       output="${sampleDir}/fr/digitas/flowearth/conf/ConfSampleA.swf"
+		       debug="true">
+			<default-size width="400" height="400" />
+			<default-background-color>0xF8F8F8</default-background-color>
+			<library-path  file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
+			<source-path path-element="${sampleDir}/sampleslib" />
+		</mxmlc>
+
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
           target: init                      
          - - - - - - - - - - - - - - - - - -->
-    <target name="init">
-    	<property name="sampleDir" value="${FMK_HOME}/framework/docs/samples"/>
-    	<property name="defaultArgs" value="-sp ${sampleDir}/sampleslib -l ${FMK_HOME}/framework/bin/fp9/flowearth.swc -default-size 400 400 -default-background-color 0xF8F8F8 -debug"/>
-    </target>
+	<target name="init">
+		<property name="sampleDir" value="${FMK_HOME}/framework/docs/samples" />
+	</target>
 
 </project>
 

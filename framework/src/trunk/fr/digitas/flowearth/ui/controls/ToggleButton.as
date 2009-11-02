@@ -18,7 +18,7 @@ package fr.digitas.flowearth.ui.controls {	import fr.digitas.flowearth.event.Bo
 	import flash.events.MouseEvent;
 	import flash.ui.Keyboard;	
 
-	/**	 * dispatché au changement d'etat du bouton	 * @see ToggleButton#TOGGLE	 */	[Event(name="onToggle", type="bi.event.BoolEvent")]
+	/**	 * dispatché au changement d'etat du bouton	 * @see ToggleButton#TOGGLE	 */	[Event(name="onToggle", type="fr.digitas.flowearth.event.BoolEvent")]
 	
 	/**
 	 * @author Pierre Lepers

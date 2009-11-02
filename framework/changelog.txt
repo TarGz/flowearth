@@ -1,0 +1,4 @@
+v2.5.43
+	override clone in BoolEvent and ArrayEvent.
+	fix some event Metadatas package
+	custom PMD ruleset

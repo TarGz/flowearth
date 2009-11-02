@@ -37,7 +37,7 @@ package fr.digitas.flowearth.net {
 	/**
 	 * dispatché lorsque l'item a été annulé
 	 * @see BatchEvent#DISPOSED
-	 */[Event(name="dispose", type="bi.command.BatchEvent")]
+	 */[Event(name="dispose", type="fr.digitas.flowearth.event.BatchEvent")]
 	
 	/**
 	 * dispatch la progression du loading
@@ -47,21 +47,21 @@ package fr.digitas.flowearth.net {
 	/**
 	 * dispatch un message status au demarrage, centralisé par le batcher
 	 * @see StatusEvent#STATUS
-	 */[Event(name="status", type="bi.event.BatchStatusEvent")]	
+	 */[Event(name="status", type="fr.digitas.flowearth.event.BatchStatusEvent")]	
 	
 	/**
 	 * dispatch une eventuelle erreur sur le loading
-	 */[Event(name="batchError", type="bi.event.BatchErrorEvent")]	
+	 */[Event(name="batchError", type="fr.digitas.flowearth.event.BatchErrorEvent")]	
 	 
 	/**
 	 * dispatché lorsque l'Ibatchable est ajouté a un  batcher, le batcher est en parametre de l'event( BatchEvent.item )
 	 * @see BatchEvent#ADDED
-	 */[Event( name = "addedToBatch", type = "bi.command.BatchEvent" )]	
+	 */[Event( name = "addedToBatch", type = "fr.digitas.flowearth.event.BatchEvent" )]	
 	 
 	/**
 	 * dispatché lorsque l'Ibatchable est supprimé d'un batcher. dispatché aussi juste apres le COMPLETE
 	 * @see BatchEvent#REMOVED
-	 */[Event( name = "removedFromBatch", type = "bi.command.BatchEvent" )]	
+	 */[Event( name = "removedFromBatch", type = "fr.digitas.flowearth.event.BatchEvent" )]	
 
 	/**
 	 * Classe de base pour BatchURLLoaderItem et BatchLoaderItem
