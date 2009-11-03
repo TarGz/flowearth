@@ -1,14 +1,21 @@
-////////////////////////////////////////////////////////////////////////////////
-//
-//  DIGITAS FRANCE / VIVAKI COMMUNICATIONS
-//  Copyright 2008-2009 Digitas France
-//  All Rights Reserved.
-//
-//  NOTICE: Digitas permits you to use, modify, and distribute this file
-//  in accordance with the terms of the license agreement accompanying it.
-//
-////////////////////////////////////////////////////////////////////////////////
-
+/* ***** BEGIN LICENSE BLOCK *****
+ * Copyright (C) 2007-2009 Digitas France
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * The Initial Developer of the Original Code is
+ * Digitas France Flash Team
+ *
+ * Contributor(s):
+ *   Digitas France Flash Team
+ *
+ * ***** END LICENSE BLOCK ***** */
 
 package fr.digitas.flowearth.conf {
 	import fr.digitas.flowearth.conf.ExternalFile;
@@ -21,12 +28,14 @@ package fr.digitas.flowearth.conf {
 	use namespace AS3;
 	
 	/**
-	 * The <code>Configuration</code> is designed to parse a specific xml format
+	 * The <code>Configuration</code> is designed to store properties parsed from a specific xml format.
+	 * see <a href="http://code.google.com/p/flowearth/wiki/ConfigurationUsage">wiki</a> for details about Configuration.
 	 * 
 	 * @example The most basic example about configuration 
 	 * @includeExample ConfSampleA.as
 	 * 
 	 * @author Pierre Lepers
+	 * @see http://code.google.com/p/flowearth/wiki/ConfigurationUsage
 	 */
 	public class AbstractConfiguration extends Proxy {
 
@@ -158,7 +167,6 @@ package fr.digitas.flowearth.conf {
 		public function setProperty ( propName : Object, value : * ) : void 
 		{
 			var name : QName = new QName( propName );
-//			Logger.warn( "bi.conf.Configuration - setProperty -- " , name , name.localName, name.uri );
 			var prop : ConfProperty = _pProvider.getProperty( name );
 			
 			if( ! prop ) {
@@ -167,7 +175,6 @@ package fr.digitas.flowearth.conf {
 				propNode.addNamespace( name );
 				propNode.setName( name );
 				
-//				var propNode : XML = <{name}/>;
 				propNode.appendChild( value );
 				 _pProvider.setProperty( name , prop = new ConfProperty( propNode ) );
 			}
@@ -205,7 +212,6 @@ package fr.digitas.flowearth.conf {
 		 */
 		public function deleteSpace( uri : String = null ) : void 
 		{
-			// TODO unit test
 			_pProvider.deleteSpace( uri ) ;
 		}
 
@@ -221,7 +227,6 @@ package fr.digitas.flowearth.conf {
 			propNode.setName( name );
 			propNode.appendChild( str );
 			
-//			Logger.fatal( "bi.conf.Configuration - solve -- ", propNode );
 			return new LazySolver( new ConfProperty( propNode), _pProvider ).solve();
 		}
 
@@ -292,7 +297,7 @@ package fr.digitas.flowearth.conf {
 		{
 			var name : QName = new QName( pName);
 			var prop : ConfProperty = _pProvider.getProperty( name );
-			if( ! prop ) throw new Error( "[bi.conf.Configuration] - la propriété '" + String( pName ) + "' n'existe pas" );
+			if( ! prop ) throw new Error( "Unable to find '" + String( pName ) + "' property" );
 			if( ! prop.resolved ) _resolveProperty( prop );
 			return prop;
 		}

@@ -1,14 +1,21 @@
-////////////////////////////////////////////////////////////////////////////////
-//
-//  DIGITAS FRANCE / VIVAKI COMMUNICATIONS
-//  Copyright 2008-2009 Digitas France
-//  All Rights Reserved.
-//
-//  NOTICE: Digitas permits you to use, modify, and distribute this file
-//  in accordance with the terms of the license agreement accompanying it.
-//
-////////////////////////////////////////////////////////////////////////////////
-
+/* ***** BEGIN LICENSE BLOCK *****
+ * Copyright (C) 2007-2009 Digitas France
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * The Initial Developer of the Original Code is
+ * Digitas France Flash Team
+ *
+ * Contributor(s):
+ *   Digitas France Flash Team
+ *
+ * ***** END LICENSE BLOCK ***** */
 
 package fr.digitas.flowearth.mvc.address.structs.utils {
 	import fr.digitas.flowearth.mvc.address.structs.INode;			
@@ -24,28 +31,6 @@ package fr.digitas.flowearth.mvc.address.structs.utils {
 			node.scan( t );
 			return t.result;
 			
-//			var tab : String = StringUtility.multiply( "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" , indent );
-//			var str : String = "";
-//			var params : String = "";
-//			if( node.getParams( ) ) params = node.getParams( ).toString( );
-//			
-//			if( node.isActive( ) )
-//				str += tab + "<b>id : " + node.getId( ) + "  </b><i>" + params + "</i>";
-//			else
-//				str += tab + "id : " + node.getId( ) + "<i>" + params + "</i>";
-//			
-//			if( node.getDefaultId( ) )
-//				str += "<i>" + node.getDefaultId( ) + "</i>";
-//			
-//			str += "</br>";
-//			
-//			var iter : IIterator = node.getChilds( );
-//			var i : INode;
-//			while ( iter.hasNext( ) ) {
-//				i = iter.next( ) as INode;
-//				str += tab + htmlString( i , indent + 1 );
-//			}
-//			return str;
 		}
 	}
 }
