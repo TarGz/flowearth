@@ -77,7 +77,8 @@
 
 		<mxmlc file="${tutoDir}/${tuto_name}/src/fr/digitas/tutorial/nodes/Main.as"
 		       output="${tutoDir}/${tuto_name}/deploy/${tuto_name}.swf"
-		       debug="true">
+		       debug="true"
+		       strict="true">
 			<default-size width="400" height="400" />
 			<default-background-color>0xF8F8F8</default-background-color>
 			<library-path file="${tutoDir}/${tuto_name}/fla/assets.swc"

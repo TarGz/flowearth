@@ -1,26 +1,32 @@
-////////////////////////////////////////////////////////////////////////////////
-//
-//  DIGITAS FRANCE / VIVAKI COMMUNICATIONS
-//  Copyright 2008-2009 Digitas France
-//  All Rights Reserved.
-//
-//  NOTICE: Digitas permits you to use, modify, and distribute this file
-//  in accordance with the terms of the license agreement accompanying it.
-//
-////////////////////////////////////////////////////////////////////////////////
-
+/* ***** BEGIN LICENSE BLOCK *****
+ * Copyright (C) 2007-2009 Digitas France
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * The Initial Developer of the Original Code is
+ * Digitas France Flash Team
+ *
+ * Contributor(s):
+ *   Digitas France Flash Team
+ *
+ * ***** END LICENSE BLOCK ***** */
 
 package fr.digitas.flowearth.command {
 	import fr.digitas.flowearth.core.IIterator;
 	import fr.digitas.flowearth.core.Pile;	
 
 	/**
-	 * Collection pour le batcher Batcher
+	 * Batcher's queue.
 	 * 
-	 * <p>Batch etends Pile mais empeche les doublon, et implemente IIterator</p>
 	 * @author Pierre Lepers
 	 */
-	public class Batch extends Pile implements IIterator {
+	internal final class Batch extends Pile implements IIterator {
 	
 		public static const FIFO : Number = 0;
 		public static const LIFO : Number = 1;
@@ -48,13 +54,13 @@ package fr.digitas.flowearth.command {
 		
 		
 		override public function addItem( item : * ) : int {
-			if( ! item ) throw new ArgumentError( "Impossible d'ajouter un Item null a un Batch" );
+			if( ! item ) throw new ArgumentError( "the item parameter must be not null." );
 			if( indexOf(item) > -1 ) return -1;
 			return super.addItem( item );
 		}
 
 		override public function addItemAt( item : * , index : uint ) : void {
-			if( ! item ) throw new ArgumentError( "Impossible d'ajouter un Item null a un Batch");
+			if( ! item ) throw new ArgumentError( "the item parameter must be not null.");
 			if( indexOf(item) > -1 ) return;
 			super.addItemAt( item, index );
 		}
