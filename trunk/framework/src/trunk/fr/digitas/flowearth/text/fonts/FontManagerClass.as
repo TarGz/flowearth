@@ -35,7 +35,6 @@ package fr.digitas.flowearth.text.fonts {
 			var fonts : Array = provider.getFonts();
 			for each (var font : Class in fonts) 
 				Font.registerFont( font );
-				
 			_updateEmbedded();
 		}
 		
@@ -58,7 +57,6 @@ package fr.digitas.flowearth.text.fonts {
 
 		private var _embeddedFonts : Dictionary;
 
-
 		//_____________________________________________________________________________
 		//																		 STATIC
 		
@@ -70,6 +68,5 @@ package fr.digitas.flowearth.text.fonts {
 		
 		private static var _instance : FontManagerClass;
 
-		
 	}
 }

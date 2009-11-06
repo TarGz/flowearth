@@ -66,6 +66,9 @@ package fr.digitas.flowearth.conf {
 									"testDeleteNoRecursif",
 									"testDeleteRecursif" ,
 									
+									"testSwitch",
+									"testNsSwitch",
+									
 									// gestion des namespaces
 									
 									"testBaseNs",
@@ -342,6 +345,18 @@ package fr.digitas.flowearth.conf {
 											  </datasInNs>
 											</propWithNsDtl>, 
 											XML( Conf.defNs::propWithNsDtl ) 	);
+			
+		}
+		
+		public function testSwitch() : void {
+			assertEquals( "testSwitch", "ok", Conf.getString("switch_result") );
+		}
+		
+		public function testNsSwitch() : void {
+			assertTrue( "testNsSwitchExist", Conf.hasProperty( new QName( defNs, "ns_switch_result" ) ) );
+			assertFalse( "testNsSwitchExist", Conf.hasProperty( "ns_switch_result" ) );
+			assertEquals( "testNsSwitch", "ns_ok", Conf.defNs::ns_switch_result );
+			assertEquals( "testNsSwitch", "ns_ok", Conf.getString( new QName( defNs, "ns_switch_result" ) ) );
 			
 		}
 		
