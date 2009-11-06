@@ -348,7 +348,7 @@ package fr.digitas.flowearth.conf {
 			var switchNode : XML;
 			var ns : Namespace = xml.namespace();
 			
-			for each( switchNode in xml.child( SWITCH_NODE  ) ) 
+			for each( switchNode in xml.children().( localName() == SWITCH_NODE ) ) 
 			{
 				var prop : String = getString( new QName( ns.uri, switchNode.@property ) );
 				

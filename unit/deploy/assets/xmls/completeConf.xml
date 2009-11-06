@@ -74,7 +74,18 @@
 		<file id="css_extends"><![CDATA[${cssURL}/extends.css]]></file>
 	</externalData>
 
-	
+	<switch_prop>abcd</switch_prop>
+	<switch property="switch_prop">
+		<case value="abcd">
+			<switch_result>ok</switch_result>
+		</case>
+		<case value="dcba">
+			<switch_result>ko</switch_result>
+		</case>
+		<default>
+			<switch_result>ko</switch_result>
+		</default>
+	</switch>
 	
 	<!-- TEST Contenus XML -->
 	<testXml2>
