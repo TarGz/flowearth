@@ -1,7 +1,0 @@
-#summary One-sentence summary of this page.
-[http://terraz.org/BI/flowearth/flowEarth_logo_400.jpg]
-
-FlowEarth is ligthwave AS3 Frmaework powevred by [Digitas http://www.digitas.fr]
-
-= Details =
-
