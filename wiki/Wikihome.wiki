@@ -1,7 +1,40 @@
 #summary One-sentence summary of this page.
+#labels Featured
 [http://terraz.org/BI/flowearth/flowEarth_logo_400.jpg]
 
-= summary  =
-FlowEarth is ligthwave AS3 Frmaework powevred by [Digitas http://www.digitas.fr]
+FlowEarth is ligthwave AS3 Framework powevred by [Digitas.fr http://www.digitas.fr] 
 
-= Details =
+== Details ==
+
+The development of FlowEarth started 3 years.
+This framework is used on all Digitas.fr Flash projects.
+
+== Core Idea ==
+ * Simplify a project’s setup by using templates
+ * Increase the quality by reusing what has already been tested and debugged
+ * Separate the data from the design and motion
+ * Make deployments, localization and deliveries easier
+ * Normalize Digitas’s project
+
+== Features == 
+ *=== Conf ===
+  Externalize all your data in XML files
+ *=== Batch ===
+  Exectute queue of tasks with an unlimited level of recursivity
+ *=== Style ===
+  Externalise all font styles in CSS files + use external font files
+ *=== Tree ===
+  Manage navigation, Swfadress and SEO
+
+Each feature can be used as a stand alone or with the full package
+
+== Compatibility ==
+Flash 9 and 10
+ *SwfAdress
+ *SwfObject
+ *Papervision and all other 3D tools
+ *Tweener and all other tweening tools
+
+
+
+
