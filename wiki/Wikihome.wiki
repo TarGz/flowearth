@@ -1,8 +1,8 @@
-#summary One-sentence summary of this page.
 #labels Featured
 [http://terraz.org/BI/flowearth/flowEarth_logo_400.jpg]
 
-FlowEarth is ligthwave AS3 Framework powevred by [Digitas.fr http://www.digitas.fr] 
+
+FlowEarth is ligthwave AS3 Framework powevred by [http://www.digitas.fr Digitas.fr] 
 
 == Details ==
 
@@ -30,11 +30,7 @@ Each feature can be used as a stand alone or with the full package
 
 == Compatibility ==
 Flash 9 and 10
- *SwfAdress
- *SwfObject
- *Papervision and all other 3D tools
- *Tweener and all other tweening tools
-
-
-
-
+ * SwfAdress
+ * SwfObject
+ * Papervision and all other 3D tools
+ * Tweener and all other tweening tools
