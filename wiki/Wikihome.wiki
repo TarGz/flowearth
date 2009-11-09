@@ -18,7 +18,7 @@ This framework is used on all Digitas.fr Flash projects.
 
 == Features == 
  *=== Conf ===
-  Externalize all your data in XML files
+  Externalize all your data in XML files. [ConfigurationUsage]
  *=== Batch ===
   Exectute queue of tasks with an unlimited level of recursivity
  *=== Style ===
