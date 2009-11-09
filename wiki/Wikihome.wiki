@@ -1,21 +1,4 @@
 #labels Featured
-[http://terraz.org/BI/flowearth/flowEarth_logo_400.jpg]
-
-
-FlowEarth is ligthwave AS3 Framework powevred by [http://www.digitas.fr Digitas.fr] 
-
-== Details ==
-
-The development of FlowEarth started 3 years.
-This framework is used on all Digitas.fr Flash projects.
-
-== Core Idea ==
- * Simplify a project’s setup by using templates
- * Increase the quality by reusing what has already been tested and debugged
- * Separate the data from the design and motion
- * Make deployments, localization and deliveries easier
- * Normalize Digitas’s project
-
 == Features == 
  *=== Conf ===
   Externalize all your data in XML files. [ConfigurationUsage usage]
