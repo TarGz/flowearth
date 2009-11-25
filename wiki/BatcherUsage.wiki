@@ -1,13 +1,18 @@
 #summary One-sentence summary of this page.
 
 = Introduction =
+Execute a queue of actions represented by IBatchable items. Each item is executed when the previous one has dispatched a Event.COMPLETE.
 
-Add your content here.
+Batcher class implement itself IBatchable, in other hand, a batcher can be added as an IBatchable item of a parent batcher.
 
+Batcher events flow is designed to can be use with deep batcher structure. Most of events bubbles into batchers structure, and provide reference to the "leaf" having initiate this event. In most of case, this lets you listening events on the only root batcher to handle all items events.
 
-= Details =
+Batcher internaly use Pile to store his IBatchables collection. Pile's methods are implemented by Batcher to manipulate queue of IBatchables.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+    * addItem()
+    * addItemAt()
+    * removeItem()
+    * removeItemAt()
+    * swapItems()
+    * setItemIndex()
+    * ...
