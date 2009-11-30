@@ -31,7 +31,64 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 	import flash.net.URLVariables;
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;	
+	
+	
+	/**
+	 * Dispatched when a child is added to this current INode
+	 * 
+	 * <p>This event has the following properties :</p>
+	 * <table class='innertable'>
+	 * <tr><th>bubbles</th><th>true. This event bubbles in nodes structure</th></tr>
+	 * <tr><th>cancelable</th><th>false</th></tr>
+	 * <tr><th>currentTarget</th><th>The object that is actively processing the Event object with an event listener.</th></tr>
+	 * <tr><th>target</th><th>the <code>INode</code> object in witch a new INode is added.</th></tr>
+	 * </table>
+	 * 
+	 * @eventType NodeEvent.CHILD_ADDED
+	 */
+	[Event( name = "_child_nodeAdded", type = "fr.digitas.flowearth.event.NodeEvent" )]
 
+	/**
+	 * Dispatched when the default child of this node change
+	 * 
+	 * <p>This event has the following properties :</p>
+	 * <table class='innertable'>
+	 * <tr><th>bubbles</th><th>false</th></tr>
+	 * <tr><th>cancelable</th><th>false</th></tr>
+	 * </table>
+	 * 
+	 * @eventType NodeEvent.DEFAULT_CHANGE
+	 */
+	[Event( name = "_defaultChange", type = "fr.digitas.flowearth.event.NodeEvent" )]
+
+	/**
+	 * Dispatched when the parameters associated with this node change
+	 * 
+	 * <p>This event has the following properties :</p>
+	 * <table class='innertable'>
+	 * <tr><th>bubbles</th><th>false</th></tr>
+	 * <tr><th>cancelable</th><th>false</th></tr>
+	 * </table>
+	 * 
+	 * @eventType NodeEvent.PARAM_CHANGE
+	 */
+	[Event( name = "_nodeParamChange", type = "fr.digitas.flowearth.event.NodeEvent" )]
+	
+	
+	/**
+	 * Dispatched when the node is added to a parent node
+	 * 
+	 * <p>This event has the following properties :</p>
+	 * <table class='innertable'>
+	 * <tr><th>bubbles</th><th>false</th></tr>
+	 * <tr><th>cancelable</th><th>false</th></tr>
+	 * </table>
+	 * 
+	 * @eventType NodeEvent.ADDED  
+	 */
+	[Event( name = "_nodeAdded", type = "fr.digitas.flowearth.event.NodeEvent" )]
+	
+	
 	/**
 	 * Absract node. Base class to INode objects.
 	 * Handle Collection nature of node's structure

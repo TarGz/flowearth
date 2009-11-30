@@ -34,13 +34,17 @@ package fr.digitas.flowearth.ui.layout.renderer {
 		internal var _margin : Rectangle;
 		internal var _padding : Rectangle;
 		internal var _type : String;
+		internal var _width : Number;
+		internal var _height: Number;
 	
 		
 		public function init( padding : Rectangle, margin : Rectangle, w : Number, h : Number ) : void {
 			_margin = margin;
 			_padding = padding;
+			_width = w;
+			_height = h;
 		}
-		
+
 		public function getType() :String {
 			return _type;
 		}

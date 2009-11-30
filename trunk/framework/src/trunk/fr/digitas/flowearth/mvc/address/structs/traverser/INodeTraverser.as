@@ -21,6 +21,8 @@ package fr.digitas.flowearth.mvc.address.structs.traverser {
 	import fr.digitas.flowearth.mvc.address.structs.INode;				
 
 	/**
+	 * 
+	 * 
 	 * @author Pierre Lepers
 	 */
 	public interface INodeTraverser {

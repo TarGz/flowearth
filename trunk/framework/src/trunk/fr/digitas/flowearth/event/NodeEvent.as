@@ -42,7 +42,10 @@ package fr.digitas.flowearth.event {
 		public static const DEFAULT_CHANGE 	: String = "_defaultChange";
 
 
-		
+		override public function get target() : Object {
+			return _ntarget;
+		}
+
 		public function get nodeTarget() : INode {
 			return _ntarget;
 		}

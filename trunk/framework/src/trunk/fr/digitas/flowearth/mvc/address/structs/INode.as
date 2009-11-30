@@ -81,6 +81,9 @@ package fr.digitas.flowearth.mvc.address.structs {
 		/**
 		 * add the given child to list of childs, 
 		 * if a child with the same id already exist, given child is not added and the function return this old child.
+		 * 
+		 * @param node the <code>INode</code> to add.
+		 * @return the node added or the already existing node.
 		 */
 		function addChild( node : INode ) : INode;
 		
@@ -91,6 +94,8 @@ package fr.digitas.flowearth.mvc.address.structs {
 		
 		/**
 		 * return the currently active path of this node, null if node isn't active.
+		 * 
+		 * <p>This lets you retreive all active descendants nodes.</p>
 		 */
 		function get activePath() : IPath;
 		
@@ -105,7 +110,12 @@ package fr.digitas.flowearth.mvc.address.structs {
 		 */
 		function scan( traverser : INodeTraverser ) : void;
 		
-		
+		/**
+		 * build a node structure , based on the given descriptor.
+		 * 
+		 * @param descriptor the <code>INodeDescriptor</code> used to build the structure.
+		 * @param target the node to describe, or if null, this node itself.
+		 */
 		function describe( descriptor : INodeDescriptor, target : INode = null ) : void
 	}
 		
