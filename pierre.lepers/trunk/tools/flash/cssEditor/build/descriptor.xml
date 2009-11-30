@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<application 
+	xmlns="http://ns.adobe.com/air/application/1.5"
+	minimumPatchLevel="0">
+<!-- AIR Application Descriptor File. See http://www.adobe.com/go/learn_air_1.0_application_descriptor_en. -->
+	<id>com.example.ExampleApplication</id>
+	<name>
+		<text xml:lang="en">Example Co. Example Application 1.0</text>
+	</name>
+	<version>1.0</version>
+	<filename>Example Application</filename>
+	<description>
+		<text xml:lang="en">This is a sample Adobe AIR application.</text>
+	</description>
+	<copyright>Copyright 2008, Example Co., Inc.</copyright>
+	<initialWindow>
+		<content>deploy/cssEditor.swf</content>
+		<title>Example Application</title>
+		<systemChrome>standard</systemChrome>
+		<transparent>false</transparent>
+		<visible>true</visible>
+		<minimizable>true</minimizable>
+		<maximizable>true</maximizable>
+		<resizable>true</resizable>
+		<width>1024</width>
+		<height>768</height>
+		<x>150</x>
+		<y>150</y>
+	</initialWindow>
+	<installFolder>Example Company/Example Application</installFolder>
+	<programMenuFolder>Example Company/Example Application</programMenuFolder>
+	<icon>
+		<image16x16>assets/icons/AIRApp_16.png</image16x16>
+		<image32x32>assets/icons/AIRApp_32.png</image32x32>
+		<image48x48>assets/icons/AIRApp_48.png</image48x48>
+		<image128x128>assets/icons/AIRApp_128.png</image128x128>
+	</icon>
+	<customUpdateUI>false</customUpdateUI>
+	<allowBrowserInvocation>false</allowBrowserInvocation>
+	<fileTypes>
+		
+	</fileTypes>
+</application>
