@@ -1,0 +1,7 @@
+/*conflict test with basic.css */
+
+basicSTYLEC {
+	fontSize : 12;
+    color  :  0x000000;
+	autoSize:right;
+}

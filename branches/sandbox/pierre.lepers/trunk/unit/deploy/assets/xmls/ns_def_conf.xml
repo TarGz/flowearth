@@ -1,0 +1,27 @@
+<conf
+	xmlns="http://www.digitas.fr.flash.conftest/ns/defaultNsDefConf">
+
+
+	<propWithNsDtl>
+		<node>prop</node>
+		${nsDtl}
+	</propWithNsDtl>
+	
+	<externalData>
+		<file id="nsDtl"><![CDATA[${xmlURL}/ns_dataToLoad.xml]]></file>
+	</externalData>
+
+	<ns_switch_prop>ns_abcd</ns_switch_prop>
+	<switch property="ns_switch_prop">
+		<case value="ns_abcd">
+			<ns_switch_result>ns_ok</ns_switch_result>
+		</case>
+		<case value="dcba">
+			<ns_switch_result>ns_ko</ns_switch_result>
+		</case>
+		<default>
+			<ns_switch_result>ns_ko</ns_switch_result>
+		</default>
+	</switch>
+
+</conf>

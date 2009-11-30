@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     19 oct. 2009 15:17:16                                                        
+
+     Digitas - docs samples    
+     Build docs samples swf
+                   
+     lepersp                                                                
+     ====================================================================== -->
+<project name="Digitas Fmk - tutorials" default="main" basedir="../../../">
+	<description>
+            Build docs samples swf
+    </description>
+
+	<property name="FMK_HOME" location="${basedir}" />
+	<loadproperties srcfile="${FMK_HOME}/build.config" />
+	<loadproperties srcfile="${FMK_HOME}/.properties" />
+
+	<taskdef resource="digitasAnt.tasks" classpath="${digitas.antTasks.jar}" />
+	<taskdef resource="flexTasks.tasks"
+	         classpath="${digitas.flex}/ant/lib/flexTasks.jar" />
+
+	<!-- ================================= 
+          target: main              
+         ================================= -->
+	<target name="main" depends="init" description="Build all tutorials">
+		<antcall target="batcher_events_flow" />
+		<antcall target="node_events_flow" />
+
+	</target>
+
+	<!-- ================================= 
+          target: batcher_events_flow              
+         ================================= -->
+
+	<target name="batcher_events_flow"
+	        depends="init"
+	        description="Build batcher_events_flow">
+
+
+		<property name="tuto_name" value="batcher_events_flow" />
+
+
+		<compileFla outputprop="ftrace" logoutput="true" logerror="true">
+			<fileset dir="${tutoDir}/${tuto_name}/fla/" includes="*.fla" />
+		</compileFla>
+
+		<mxmlc file="${tutoDir}/${tuto_name}/src/fr/digitas/tutorial/batcher/Main.as"
+		       output="${tutoDir}/${tuto_name}/deploy/${tuto_name}.swf"
+		       debug="true">
+			<default-size width="400" height="400" />
+			<default-background-color>0xF8F8F8</default-background-color>
+			<library-path file="${tutoDir}/${tuto_name}/fla/assets.swc"
+			              append="true" />
+			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc"
+			              append="true" />
+			<source-path path-element="${tutoDir}/${tuto_name}/src" />
+		</mxmlc>
+
+
+
+	</target>
+
+
+	<!-- ================================= 
+          target: node_events_flow              
+         ================================= -->
+	<target name="node_events_flow"
+	        depends="init"
+	        description="Build node_events_flow">
+
+		<property name="tuto_name" value="node_events_flow" />
+
+		<compileFla logoutput="true" logerror="true">
+			<fileset dir="${tutoDir}/${tuto_name}/fla/" includes="*.fla" />
+		</compileFla>
+
+		<mxmlc file="${tutoDir}/${tuto_name}/src/fr/digitas/tutorial/nodes/Main.as"
+		       output="${tutoDir}/${tuto_name}/deploy/${tuto_name}.swf"
+		       debug="true"
+		       strict="true">
+			<default-size width="400" height="400" />
+			<default-background-color>0xF8F8F8</default-background-color>
+			<library-path file="${tutoDir}/${tuto_name}/fla/assets.swc"
+			              append="true" />
+			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc"
+			              append="true" />
+			<source-path path-element="${tutoDir}/${tuto_name}/src" />
+		</mxmlc>
+
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="init">
+		<property name="tutoDir" value="${FMK_HOME}/framework/docs/tutorials" />
+		<property name="defaultArgs"
+		          value="-l ${FMK_HOME}/framework/bin/fp9/flowearth.swc -default-size 400 400 -default-background-color 0xF8F8F8 -debug" />
+	</target>
+
+</project>
+

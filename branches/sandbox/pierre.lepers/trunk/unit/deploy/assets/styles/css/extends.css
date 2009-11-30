@@ -1,0 +1,22 @@
+.extC>extB{
+	background : false;
+	size : 12;
+}
+
+extA {
+	color : 0xFF0000;
+	size : 10;
+}
+
+extB>extA{
+	background : true;
+	size : 8;
+}
+
+.extD>.extC{
+	color : 0x000000;
+}
+
+.extE>.extD{
+	background : true;
+}

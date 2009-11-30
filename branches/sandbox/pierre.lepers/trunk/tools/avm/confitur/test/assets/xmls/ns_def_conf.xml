@@ -1,0 +1,14 @@
+<conf
+	xmlns="http://www.digitas.fr.flash.conftest/ns/defaultNsDefConf">
+
+
+	<propWithNsDtl>
+		<node>prop</node>
+		${nsDtl}
+	</propWithNsDtl>
+	
+	<externalData>
+		<file id="nsDtl"><![CDATA[${xmlURL}/ns_dataToLoad.xml]]></file>
+	</externalData>
+	
+</conf>

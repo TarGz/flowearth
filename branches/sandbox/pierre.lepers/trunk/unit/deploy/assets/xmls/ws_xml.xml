@@ -1,0 +1,98 @@
+<conf>
+	<!-- F O R U M -->
+	<XML_GetForumAdvInfo>
+		<Loreal_Reference_IN_GetForumAdvInfo>
+		  <SessionID>${SessionID}</SessionID>
+		  <ForumAdvId>${ForumAdvId}</ForumAdvId>
+		  <ForumAdvName>${ForumAdvName}</ForumAdvName>
+		</Loreal_Reference_IN_GetForumAdvInfo>
+	</XML_GetForumAdvInfo>
+	
+	<XML_SaveForumAdvPostInfo>
+		<Loreal_Reference_IN_SaveForumAdvPostInfo>
+		<SessionID>${SessionID}</SessionID>
+		<ForumAdvId>${ForumAdvId}</ForumAdvId>
+		<ForumAdvPostId>${ForumAdvPostId}</ForumAdvPostId>
+		<FpParentId />
+		<FpSubject><![CDATA[##FpSubject##]]></FpSubject>
+		<FpText><![CDATA[##FpText##]]></FpText>
+		<FpApproved>${FpApproved}</FpApproved>
+		<FpValid>${FpValid}</FpValid>
+		<FpExtendedProperties>
+				<!-- R E V E A L A T O R -->
+				<mw_revealator_last_name>${mw_revealator_last_name}</mw_revealator_last_name>
+				<mw_revealator_first_name>${mw_revealator_first_name}</mw_revealator_first_name>
+				<mw_revealator_telephone>${mw_revealator_telephone}</mw_revealator_telephone>
+				<mw_revealator_email>${mw_revealator_email}</mw_revealator_email>
+				<mw_revealator_newsletter>${mw_revealator_newsletter}</mw_revealator_newsletter>
+				<!-- R E V E A L E D -->
+				<mw_revealed_initiative_name>${mw_revealed_initiative_name}</mw_revealed_initiative_name>
+				<mw_revealed_kind>${mw_revealed_kind}</mw_revealed_kind>
+				<mw_revealed_en_desc>${mw_revealed_en_desc}</mw_revealed_en_desc>
+				<mw_revealed_local_desc>${mw_revealed_local_desc}</mw_revealed_local_desc>
+				<mw_revealed_picture>${mw_revealed_picture}</mw_revealed_picture>
+				<mw_revealed_picture_preview>${mw_revealed_picture}</mw_revealed_picture_preview>
+				<mw_revealed_video>${mw_revealed_video}</mw_revealed_video>
+				<mw_revealed_website_video>${mw_revealed_website_video}</mw_revealed_website_video>
+		</FpExtendedProperties>
+		</Loreal_Reference_IN_SaveForumAdvPostInfo>
+	</XML_SaveForumAdvPostInfo>
+	
+	<!-- C U S T O M E R -->
+	<XML_WS_tellAFriend>
+		<Loreal_Reference_IN_TellAFriend>
+			<SessionID>${SessionID}</SessionID>
+			<TemplateName>${TemplateName}</TemplateName>
+			<Friend>
+				<FirstName>${FirstName}</FirstName>
+				<Email>${Email}</Email>
+			</Friend>
+			<Customs>
+				<mw_revealed_initiative_name>${mw_revealed_initiative_name}</mw_revealed_initiative_name>
+				<ForumId>${ForumId}</ForumId>
+				<PostID>${PostID}</PostID>
+			</Customs>
+		</Loreal_Reference_IN_TellAFriend>
+	</XML_WS_tellAFriend>
+	
+	
+	<XML_CreatUserInfo>
+		<Loreal_Reference_IN_SaveCustomerInfo>
+		  <FirstName>${FirstName}</FirstName>
+		  <LastName>${LastName}</LastName>
+		  <Title>${Title}</Title>
+		  <BirthDate>${BirthDate}</BirthDate>
+		  <Email>${Email}</Email>
+		  <AddressLine1>${AddressLine1}</AddressLine1>
+		  <AddressLine2>${AddressLine2}</AddressLine2>
+		  <City>${City}</City>
+		  <Zip>${Zip}</Zip>
+		  <State>${State}</State>
+		  <CountryName>${CountryName}</CountryName>
+		  <CountryCode>${CountryCode}</CountryCode>
+		  <Phone>${Phone}</Phone>
+		  <DynamicProperties>
+			<mw_revealed_website_url>${mw_revealed_website_url}</mw_revealed_website_url>
+			<mw_revealed_fax>${mw_revealed_fax}</mw_revealed_fax>
+		  </DynamicProperties>
+		  <Role>${Role}</Role>
+		</Loreal_Reference_IN_SaveCustomerInfo>
+		
+		
+	</XML_CreatUserInfo>
+	
+	<!-- P A I N T E R -->
+	<XML_ResizePicture>
+		<Loreal_Reference_IN_ResizePicture>
+		  <SourceFilename>${SourceFilename}</SourceFilename>
+		  <DestinationFilename>${DestinationFilename}</DestinationFilename>
+		  <Extension>${Extension}</Extension>
+		  <EncodingParameters>
+		 	 <Quality>${Quality}</Quality>
+		  </EncodingParameters>
+		  <Overwrite>${Overwrite}</Overwrite>
+		  <Width>${Width}</Width>
+		  <Height>${Height}</Height>
+		</Loreal_Reference_IN_ResizePicture>
+	</XML_ResizePicture>
+</conf>

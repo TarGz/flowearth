@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     6 oct. 2009 14:29:15                                                        
+
+     Build Framework Binaries    
+     Build Framework Binaries
+                   
+     lepersp                                                                
+     ====================================================================== -->
+<project name="Digitas Fmk - Framework Binaries"
+         default="main"
+         basedir="../../">
+	<description>
+            Build Framework Binaries
+    </description>
+
+	<property name="FMK_HOME" location="${basedir}" />
+	<loadproperties srcfile="${FMK_HOME}/build.config" />
+	<loadproperties srcfile="${FMK_HOME}/.properties" />
+
+	<taskdef resource="flexTasks.tasks"
+	         classpath="${digitas.flex}/ant/lib/flexTasks.jar" />
+
+
+	<!-- ================================= 
+          target: main              
+         ================================= -->
+	<target name="main" depends="init" description="Build Framework Binaries">
+
+		<buildnumber file="${digitas.dir.fmk}/build/buildnumber.txt" />
+		<loadproperties srcfile="${digitas.dir.fmk}/build/buildnumber.txt" />
+		
+		<antcall target="FP9 Build" />
+		<antcall target="FP10 Build" />
+		<antcall target="buildDocs" />
+	</target>
+
+
+	<!-- ================================= 
+          target: FP9 Build              
+         ================================= -->
+	<target name="FP9 Build" depends="init" description="build FP9 binaries">
+		<property name="target-player" value="9" />
+		<antcall target="_Build" inheritall="true" />
+	</target>
+
+	<!-- ================================= 
+          target: FP10 Build              
+         ================================= -->
+	<target name="FP10 Build" depends="init" description="build FP10 binaries">
+		<property name="target-player" value="10" />
+		<antcall target="_Build" inheritall="true" />
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: _pre_Build                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="_pre_Build">
+		<antcall target="_version_class" />
+		<copy todir="${temp_src}">
+			<fileset dir="${digitas.dir.fmk}/src/trunk" includes="**/*" />
+		</copy>
+		<copy todir="${temp_src}" overwrite="true">
+			<fileset dir="${digitas.dir.fmk}/src/fp${target-player}"
+			         includes="**/*" />
+		</copy>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: _Build                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="_Build">
+		<antcall target="_pre_Build" inheritall="true" />
+		<antcall target="_run_pmd" />
+		<antcall target="_build_swc" />
+		<antcall target="_post_Build" inheritall="true" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: _run_pmd                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="_run_pmd" if="digitas.flex.pmd">
+		<taskdef name="flexPmd"
+		         classname="com.adobe.ac.pmd.ant.FlexPmdAntTask"
+		         classpath="${digitas.flex.pmd}/flex-pmd-ant-task-${digitas.flex.pmd.version}.jar">
+			<classpath>
+				<pathelement location="${digitas.flex.pmd}/flex-pmd-ruleset-api-${digitas.flex.pmd.version}.jar" />
+				<pathelement location="${digitas.flex.pmd}/flex-pmd-ruleset-${digitas.flex.pmd.version}.jar" />
+				<pathelement location="${digitas.flex.pmd}/flex-pmd-core-${digitas.flex.pmd.version}.jar" />
+				<pathelement location="${digitas.flex.pmd}/as3-plugin-utils-${digitas.flex.pmd.version}.jar" />
+				<pathelement location="${digitas.flex.pmd}/as3-parser-${digitas.flex.pmd.version}.jar" />
+				<pathelement location="${digitas.flex.pmd}/pmd-4.2.2.jar" />
+				<pathelement location="${digitas.flex.pmd}/commons-lang-2.4.jar" />
+				<pathelement location="${digitas.flex.pmd}/flex-pmd-files-${digitas.flex.pmd.version}.jar" />
+				<pathelement location="${digitas.flex.pmd}/as3-parser-api-${digitas.flex.pmd.version}.jar" />
+				<pathelement location="${digitas.flex.pmd}/plexus-utils-1.0.2.jar" />
+			</classpath>
+		</taskdef>
+		<flexPmd ruleset="${digitas.dir.fmk}/build/pmd_ruleset.xml"
+		         sourceDirectory="${temp_src}"
+		         outputDirectory="${digitas.dir.fmk}/bin/fp${target-player}/pmd_report" />
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: _Build_swc                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="_build_swc">
+
+		<compc output="${digitas.dir.fmk}/bin/fp${target-player}/flowearth.swc"
+		       strict="true"
+		       optimize="false"
+		       compute-digest="false"
+		       target-player="${target-player}"
+		       link-report="${digitas.dir.fmk}/bin/fp${target-player}/report.xml">
+			<include-file name="fp${target-player}_v${digitas.version.major}.${digitas.version.minor}.${build.number}.txt"
+			              path="${digitas.dir.fmk}/build/buildnumber.txt" />
+			<include-sources dir="${temp_src}" includes="**/*" />
+			<include-libraries file="${digitas.dir.fmk}/assets/CS3Component.swc"
+			                   append="true" />
+			<jvmarg line="${digitas.jvm.args}" />
+		</compc>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: _post_Build                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="_post_Build">
+		<delete dir="${temp_src}" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: _version_class                     
+         - - - - - - - - - - - - - - - - - -->
+	<target name="_version_class">
+		<copy file="${digitas.dir.fmk}/build/Version.as.tpl"
+		      tofile="${digitas.dir.fmk}/src/fp${target-player}/fr/digitas/flowearth/Version.as"
+		      overwrite="true">
+			<filterset>
+				<filter token="MAJOR" value="${digitas.version.major}" />
+				<filter token="MINOR" value="${digitas.version.minor}" />
+				<filter token="BUILD" value="${build.number}" />
+				<filter token="TARGET" value="${target-player}" />
+			</filterset>
+		</copy>
+	</target>
+
+
+	<!-- ================================= 
+          target: buildDocs              
+         ================================= -->
+	<target name="buildDocs" depends="init" description="Build framework docs">
+		<ant antfile="${digitas.dir.fmk}/docs/samples/build/build.xml" />
+		<antcall target="_buildReference" />
+	</target>
+
+	<!-- ================================= 
+          target: manualBuildDocs              
+         ================================= -->
+	<target name="forceBuildDocs"
+	        depends="init"
+	        description="Force Build framework docs even if digitas.buildDoc prop is not defined">
+		<property name="digitas.buildDoc" value="ok" />
+		<antcall target="_buildReference" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+	          target: _buildReference                   
+	         - - - - - - - - - - - - - - - - - -->
+	<target name="_buildReference" depends="init" if="digitas.buildDoc">
+		<asdoc output="${digitas.dir.fmk}/docs/reference"
+		       debug="true"
+		       target-player="9.0.45"
+		       examples-path="${digitas.dir.fmk}/docs/samples"
+		       main-title="Digitas Framework - v${digitas.version.major}.${digitas.version.minor}.${build.number}"
+		       window-title="Digitas Framework - v${digitas.version.major}.${digitas.version.minor}.${build.number}"
+		       templates-path="${digitas.dir.fmk}/docs/templates">
+			<source-path path-element="${digitas.dir.fmk}/src/trunk" />
+			<doc-sources path-element="${digitas.dir.fmk}/src/trunk" />
+			<jvmarg line="${digitas.jvm.args}" />
+		</asdoc>
+
+	</target>
+
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: name                      
+         - - - - - - - - - - - - - - - - - -->
+
+	<target name="test" depends="init">
+		<compileFla>
+			<fileset dir="${FMK_HOME}">
+				<include name="**/*.fla" />
+			</fileset>
+		</compileFla>
+	</target>
+
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="init">
+		<property name="temp_src" value="${digitas.dir.fmk}/src/temp" />
+	</target>
+
+</project>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flex-config>
+	<compiler>
+		
+
+
+		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+		<!--            U N I T  T E S T          -->
+		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<define>
+			    <name>UT_CONFIG::slTestConf</name>
+			    <value>'assets/xmls/completeConf.xml'</value>
+			</define>
+			<define>
+			    <name>UT_CONFIG::distSecureDomain</name>
+			    <value>'http://secure.twittearth.org'</value>
+			</define>
+			<define>
+			    <name>UT_CONFIG::distUnsecureDomain</name>
+			    <value>'http://unsecure.twittearth.org'</value>
+			</define>
+			<define>
+			    <name>UT_CONFIG::verbose</name>
+			    <value>true</value>
+			</define>
+		
+
+
+		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+		<!--            ? ? ? ? ? ?               -->
+		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+		
+	</compiler>
+</flex-config>

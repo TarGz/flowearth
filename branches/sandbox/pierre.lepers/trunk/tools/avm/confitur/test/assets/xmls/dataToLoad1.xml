@@ -1,0 +1,9 @@
+<root>
+	<noeud>cool</noeud>
+	<dyn>${lang}</dyn>
+	<arbo>
+		<noeud>
+			cool
+		</noeud>
+	</arbo>
+</root>

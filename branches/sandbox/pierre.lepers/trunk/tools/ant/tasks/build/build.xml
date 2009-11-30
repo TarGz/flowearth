@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     23 mars 2009 15:24:37                                                        
+
+     Digitas Ant Tasks    
+     build digitas ant tasks
+                   
+     lepersp                                                                
+     ====================================================================== -->
+<project name="Digitas Fmk - Ant Tasks" default="main" basedir="../../../../">
+	<description>
+            build digitas ant tasks
+    </description>
+	
+	<property name="FMK_HOME" location="${basedir}" />
+	<loadproperties srcfile="${basedir}/build.config" />
+	<loadproperties srcfile="${basedir}/.properties" />
+
+	<!-- ================================= 
+          target: main              
+         ================================= -->
+	<target name="main" depends="init" description="build digitas ant tasks">
+		<antcall target="clean" />
+		
+		<antcall target="_buildIncludes" />
+		<antcall target="prepare" />
+		<antcall target="compile" />
+		<antcall target="jar" />
+		<antcall target="clean" />
+	</target>
+
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: clean                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="clean">
+
+		<delete dir="${digitas.ant.classes}" />
+		<delete file="${module.jar}" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: prepare                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="prepare">
+		<mkdir dir="${digitas.ant.bin}" />
+		<mkdir dir="${digitas.ant.classes}" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: compile                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="compile">
+		<mkdir dir="${digitas.ant.classes}" />
+		<javac executable="${digitas.javac}" 
+		       fork="true"
+		       source="1.5"
+		       target="1.5"
+		       debug="on" 
+		       srcdir="${digitas.ant.src}"
+		       destdir="${digitas.ant.classes}" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: jar                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="jar">
+		<jar destfile="${digitas.ant.jar}" >
+			<fileset dir="${digitas.ant.inc}" includes="**/*" />
+			<fileset dir="${digitas.ant.classes}"
+			         includes="**/*.class"/>
+			
+		</jar>
+	</target>
+	
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: _buildIncludes                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="_buildIncludes">
+    	<copy todir="${digitas.ant.inc}/fontprovider/fr/digitas/flowearth/text/fonts/" file="${FMK_HOME}/framework/src/trunk/fr/digitas/flowearth/text/fonts/IFontsProvider.as"></copy>
+    </target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="init">
+		<loadproperties srcfile="${digitas.dir.antTasks}/build/build.properties" />
+	</target>
+
+</project>

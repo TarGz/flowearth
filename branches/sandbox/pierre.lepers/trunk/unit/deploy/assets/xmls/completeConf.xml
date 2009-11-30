@@ -1,0 +1,102 @@
+<configurations>
+	<!-- L A N G -->
+	<lang><![CDATA[fr]]></lang>
+	<country><![CDATA[${lang}/france]]></country>
+	
+	<!-- B A S E   U R L -->
+	<baseURL>assets/</baseURL>
+	<cryptURL><![CDATA[${baseURL}]]></cryptURL>
+	<swfURL><![CDATA[${baseURL}swf]]></swfURL>
+	<imgURL><![CDATA[${baseURL}img]]></imgURL>
+	<xmlURL><![CDATA[${baseURL}xmls]]></xmlURL>
+	<cssURL><![CDATA[${baseURL}styles/css]]></cssURL>
+	
+	<!-- F L A S H -->
+	<scaleMode><![CDATA[noscale]]></scaleMode>
+	<showMenu><![CDATA[false]]></showMenu>
+	<align><![CDATA[T]]></align>
+
+
+	<lockedProp lock="1"><![CDATA[locked]]></lockedProp>
+
+	<lockedProp><![CDATA[locked modified]]></lockedProp>
+
+
+	
+	
+	<sum123><![CDATA[${sum12} - ${property3}]]></sum123>
+	<sum12><![CDATA[${property1} - ${property2}]]></sum12>
+	<property1><![CDATA[maProp1]]></property1> 
+	<property2><![CDATA[maProp2]]></property2>
+	<property3><![CDATA[maProp3]]></property3>
+	
+	<definedAfter><![CDATA[${what}/definedAfter]]></definedAfter>
+	<definedAfterCplx><c><c>${whatCplx}/definedAfterCplx</c></c></definedAfterCplx>
+
+	<!-- F I L E S -->
+	<siteMainFile>
+		<file><![CDATA[${baseURL}swf/site.swf]]></file>
+	</siteMainFile>
+
+	<extManagerDatas><![CDATA[extManager.xml]]></extManagerDatas>
+	<external2><![CDATA[external2.xml]]></external2>
+	<dtl2><![CDATA[dataToLoad2.xml]]></dtl2>
+	
+	<datatl2><![CDATA[${xmlURL}/${dtl2}]]></datatl2>
+	
+	<nsProp1>prop1 no ns</nsProp1>
+	
+	<!-- XML CONF FILES -->
+	<!-- detect tous les noeuds "file"-->
+	<externalConf>
+		<truc>
+			<file><![CDATA[${xmlURL}/external1.xml]]></file>
+			<file><![CDATA[${xmlURL}/ws_xml.xml]]></file>
+			<file><![CDATA[${xmlURL}/deep_dep_part1.xml]]></file>
+			<file><![CDATA[${xmlURL}/ns_conf.xml]]></file>
+			<file><![CDATA[${xmlURL}/ns_def_conf.xml]]></file>
+		</truc>
+	</externalConf>
+	
+	<externalData>
+		<file id="data1"><![CDATA[${xmlURL}/dataToLoad1_1.xml]]></file>
+		<file id="data1"><![CDATA[${xmlURL}/dataToLoad1_2.xml]]></file>
+		<noeud_a_la_con>
+			<file id="data2" url="datatl2"/>
+		</noeud_a_la_con>
+	</externalData>
+
+	<externalData>
+		<file id="css_basic"><![CDATA[${cssURL}/basic.css]]></file>
+		<file id="css_basic_conflict"><![CDATA[${cssURL}/basic_conflict.css]]></file>
+		<file id="css_invalid"><![CDATA[${cssURL}/invalid.css]]></file>
+		<file id="css_complete"><![CDATA[${cssURL}/complete.css]]></file>
+		<file id="css_extends"><![CDATA[${cssURL}/extends.css]]></file>
+	</externalData>
+
+	<switch_prop>abcd</switch_prop>
+	<switch property="switch_prop">
+		<case value="abcd">
+			<switch_result>ok</switch_result>
+		</case>
+		<case value="dcba">
+			<switch_result>ko</switch_result>
+		</case>
+		<default>
+			<switch_result>ko</switch_result>
+		</default>
+	</switch>
+	
+	<!-- TEST Contenus XML -->
+	<testXml2>
+		<test1>
+			<scaleMode>${scaleMode}</scaleMode>
+			<${align}>noued align</${align}>
+		</test1>
+		<test2>
+			<scaleMode>${scaleMode}</scaleMode>
+			<${align}>noued align</${align}>
+		</test2>
+	</testXml2>
+
+</configurations>

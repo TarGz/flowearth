@@ -1,0 +1,142 @@
+
+--------------------------------
+	Setup
+--------------------------------
+
+	Use <taskdef> to add digitas ant task to your project:
+	
+	<project name="MyAntProject">
+	
+		<taskdef resource="digitasAnt.tasks" classpath=".../path/to/digitasAntTasks.jar" />
+		
+		...
+		
+	</project>
+	
+	
+------------------------------------------------------------------------------------------
+	Overview
+------------------------------------------------------------------------------------------
+
+	Following tasks are available :
+	
+		- createFont 	: build a framework compatible swf file containing one or more fonts.
+		- aes			: encrypt a list of files using standard AES cipher in CBC mode ( Cipher Block Chaining ) (also called Rijndael).
+		- arcfour		: encrypt a list of file using arcfour (ARC4) algrithm.
+		
+		
+		
+------------------------------------------------------------------------------------------
+	createFont
+------------------------------------------------------------------------------------------
+		
+		Attributes :
+			
+			classname 	: 	the fully qualified document's class name of the generated fla. 
+							Give a unique class name for avoid definition's conflict when this font lib will be loaded in your application.
+							(not mandatory : if missing, a class name is created, based on the font name of the first font listed , take care of definition conflict ))
+			swf			:	path of the output swf
+			compiler	:	path of the mxmlc compiler (.exe)
+			keepgenerated : If true, keep the generated .as files.
+
+			
+		Nested Elements
+		
+			font [1,n]
+				fontfamily		: 	name to give to generated font class ( textFormat.font = "fontfamily" )
+				fontweight		: 	"bold" to compile font in bold style, "normal" is default value
+				fontstyle		: 	"italic" to compile font in italic style, "normal" is default value
+				sourcefile  	: 	the True Type font file, used to compile this font. mandatory if "sourcename" missing
+				sourcename  	: 	the OS name of the font to compile. mandatory if "sourcefile" missing
+				unicoderange  	: 	the unicode range to compile 
+									or the 
+									name of the lang id of a language-range compiler argument
+				chars  			: 	can be used instead of unicoderange, a String with all chars to embed
+									
+			arg [0,n]
+				addition args passed to mxmlc compiler. 
+				You can for example provide an additionnal -load-config argument with an flex config listing ranges per local.
+				
+				
+		EXEMPLE
+		
+			build.xml
+			-------------------------------------------------
+			
+			<project name="Compile Fonts">
+				
+				<taskdef resource="digitasAnt.tasks" classpath="path/to/digitasAntTasks.jar" />
+				
+				<target name="compile">
+				 
+					<createFont classname="com.example.FontA"
+					            swf="output/fontA.swf"
+					            compiler="${mxmlc}"
+					            keepgenerated="false" >
+						
+						<font fontfamily="arial"
+						      fontweight="normal"
+						      sourcefile="C:/WINDOWS/Fonts/ARIAL.ttf"
+						      unicoderange="U+0000-U+0005,U+0008" />
+						
+						<font fontfamily="arial_bold"
+						      fontweight="bold"
+						      sourcename="Arial"
+						      unicoderange="en_GB" /> <!-- U+0020-U+024F,U+20AC -->
+						      
+						<arg line="-load-config+='flexconfig/ranges_config.xml'" />
+						
+					</createFont>
+					
+				</target>
+			</project>
+		
+		
+			ranges_config.xml
+			-------------------------------------------------
+			<flex-config>
+				<compiler>
+					<fonts>
+			
+						<languages>
+							<language-range>
+								<lang>en_GB</lang>
+								<range>U+0020-U+024F,U+20AC</range>
+							</language-range>
+						</languages>
+			
+					</fonts>
+				</compiler>
+			</flex-config>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<arcfour key="0ZYcJVImM/GlgjtA"
+		         dir="${UNIT_HOME}/deploy/assets/crypto_arc4/"
+		         bom="cryp">
+			<fileset dir="${UNIT_HOME}/deploy/assets" id="1">
+				<include name="/img/large.jpg*" />
+			</fileset>
+		</arcfour>
+		
+		<aes key="0ZYcJVImM/GlgjtA"
+		     iv="0ZYcJVImM/GlgjtA"
+		     dir="${UNIT_HOME}/deploy/assets/crypto/"
+		     bom="cryp">
+			<fileset dir="${UNIT_HOME}/deploy/assets" id="1">
+				<include name="/xmls/*.xml" />
+				<include name="/swf/*.swf" />
+				<include name="/img/large.jpg*" />
+				<include name="/img/avatarMoy.jpg*" />
+				<exclude name="/swf/site.swf*" />
+			</fileset>
+		</aes>
