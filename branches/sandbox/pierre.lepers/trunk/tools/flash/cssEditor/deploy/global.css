@@ -1,0 +1,97 @@
+.product_description_l {
+	autoSize: left;
+	textAlign: left;
+}
+
+kjsdhfkj {
+	thickness: 20;
+	sharpness: 0;
+	fo: 20;
+	gridFitType: pixel;
+}
+
+.volume_highlightqsd {
+	color: #731b0a;
+}
+
+.tooltip_toto {
+	autoSize: left;
+	multilinessqdqd: false;
+	fontSize: 9;
+	antiAliasType: advanced;
+	y: -2;
+	selectable: false;
+	color: #ffffff;
+	fontFamily: verdana;
+	wordWrap: false;
+}
+
+.volume_switch {
+	au: left;
+	multiline: false;
+	wordWrap: false;
+	fontFamily: GillSans_MT;
+	fontSize: 12;
+	color: #bebebe;
+}
+
+.home_title {
+	fontSize: 30;
+	color: #010101;
+}
+
+.nav_btn_label {
+	fontFamily: GillSans_MT;
+	fontSize: 12;
+	gridFitType: pixel;
+	thickness: 20;
+	sharpness: 0;
+	color: #731b0a;
+}
+
+.product_description_r {
+	autoSize: right;
+	textAlign: right;
+}
+
+.nav_main_label {
+	fontSize: 18;
+	gridFitType: pixel;
+	thickness: 20;
+	sharpness: 0;
+	color: #ffffff;
+}
+
+.defaulqsdq {
+	autoSize: left;
+	multiline: false;
+	textDecorati: false;
+	selectabl: false;
+	wordWrap: false;
+	fontWei: _sans;
+	antiAliasType: advanced;
+	color: #000000;
+}
+
+.product_description {
+	y: -3;
+	leading: -1;
+	fon: _sans;
+	fontSize: 12;
+	color: #731b0a;
+}
+
+.productqsdqsd {
+	condenseWhite: true;
+	wordWrap: false;
+	fontSize: 12;
+	gridFitType: pixel;
+	sharpness: 0;
+	multiline: true;
+	leading: -1;
+	antiAliasType: advanced;
+	color: #731b0a;
+	fontFamily: _sans;
+	thickness: 80;
+}
+

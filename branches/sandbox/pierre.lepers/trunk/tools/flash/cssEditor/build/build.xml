@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     23 mars 2009 15:24:37                                                        
+
+     Digitas Ant Tasks    
+     build digitas ant tasks
+                   
+     lepersp                                                                
+     ====================================================================== -->
+<project name="Digitas Fmk - CSS Editor" default="main" basedir="../../../../">
+	<description>
+            build digitas ant tasks
+    </description>
+	
+	<property name="FMK_HOME" location="${basedir}" />
+	<loadproperties srcfile="${basedir}/build.config" />
+	<loadproperties srcfile="${basedir}/.properties" />
+
+	<!-- ================================= 
+          target: main              
+         ================================= -->
+	<target name="main" depends="init" description="build CSS Editor">
+		<antcall target="clean" />
+		<antcall target="prepare" />
+		<antcall target="compile" />
+		<antcall target="package" />
+	</target>
+
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: clean                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="clean">
+
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: prepare                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="prepare">
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: compile                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="compile">
+		<exec executable="${air_amxmlc}">
+			<arg line="-debug"/>
+			<arg line="-sp ${projectDir}/offline"/>
+			<arg line="-sp ${projectDir}/src"/>
+			<arg line="-l ${digitas.dir.fmk}/bin/fp9/flowearth.swc"/>
+			<arg line="-l ${projectDir}/swc/assets.swc"/>
+			<arg line="-o ${projectDir}/deploy/cssEditor.swf"/>
+			<arg line="-- ${projectDir}/src/fr/digitas/flowearth/csseditor/Main.as"/>
+		</exec>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: package                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="package">
+		
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: launch                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="launch" depends="init,compile">
+		<exec executable="${air_adl}" dir="${projectDir}">
+			<arg line="build/descriptor.xml ${projectDir}/"/>
+		</exec>
+	</target>
+	
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="init">
+		<loadproperties srcfile="${digitas.dir.antTasks}/build/build.properties" />
+		<property name="projectDir" value="${basedir}/tools/flash/cssEditor"/>
+	</target>
+
+</project>
