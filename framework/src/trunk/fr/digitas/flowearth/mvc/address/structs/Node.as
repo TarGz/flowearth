@@ -25,7 +25,54 @@ package fr.digitas.flowearth.mvc.address.structs {
 	import fr.digitas.flowearth.mvc.address.structs.descriptor.INodeDescriptor;
 	import fr.digitas.flowearth.mvc.address.structs.intern.ProcessPath;
 	import fr.digitas.flowearth.mvc.address.structs.proxy.WeakNode;	
+	
+	/**
+	 * Dispatched when activation of any descendant or this node itself change
+	 * 
+	 * <p>This event has the following properties :</p>
+	 * <table class='innertable'>
+	 * <tr><th>bubbles</th><th>true. This event bubbles in nodes structure</th></tr>
+	 * <tr><th>cancelable</th><th>false</th></tr>
+	 * <tr><th>currentTarget</th><th>The object that is actively processing the Event object with an event listener.</th></tr>
+	 * <tr><th>target</th><th>the <code>INode</code> which has been activated</th></tr>
+	 * </table>
+	 * 
+	 * @eventType NodeEvent.PATH_CHANGE
+	 */
+	[Event( name = "_pathChange", type = "fr.digitas.flowearth.event.NodeEvent" )]
 
+	/**
+	 * Dispatched when activation state of this node change.
+	 * 
+	 * <p>This event has the following properties :</p>
+	 * <table class='innertable'>
+	 * <tr><th>bubbles</th><th>false</th></tr>
+	 * <tr><th>cancelable</th><th>false</th></tr>
+	 * <tr><th>currentTarget</th><th>The object that is actively processing the Event object with an event listener.</th></tr>
+	 * <tr><th>target</th><th>this node itself</th></tr>
+	 * </table>
+	 * 
+	 * @eventType NodeEvent.CHANGE
+	 */
+	[Event( name = "_nodeChange", type = "fr.digitas.flowearth.event.NodeEvent" )]
+
+	/**
+	 * Dispatched when a child's activation state change.
+	 * 
+	 * <p>This event has the following properties :</p>
+	 * <table class='innertable'>
+	 * <tr><th>bubbles</th><th>false</th></tr>
+	 * <tr><th>cancelable</th><th>false</th></tr>
+	 * <tr><th>currentTarget</th><th>The object that is actively processing the Event object with an event listener.</th></tr>
+	 * <tr><th>target</th><th>this node itself</th></tr>
+	 * </table>
+	 * 
+	 * @eventType NodeEvent.CHILD_CHANGE
+	 */
+	[Event( name = "_child_nodeChange", type = "fr.digitas.flowearth.event.NodeEvent" )]
+	
+	
+	
 	/**
 	 * Concrete implementation of AbstractNode
 	 * Handle activation/deactivation action of node's branch, result of sync with a model (eg. browser Url segment) 
@@ -43,6 +90,7 @@ package fr.digitas.flowearth.mvc.address.structs {
 			return _activePath;
 		}
 
+		/** @inheritDoc */
 		override public function activate( path : IPath = null ) : void {
 			
 			if( path ) {
@@ -176,7 +224,7 @@ package fr.digitas.flowearth.mvc.address.structs {
 			_pendingSwitch = true;
 		}
 
-		
+		/** @inheritDoc */
 		override public function path() : IPath {
 			var pchain : Array = [ _id ];
 			var n : INode = this;
@@ -186,13 +234,15 @@ package fr.digitas.flowearth.mvc.address.structs {
 			var pStr : String = pchain.shift( ) + AbstractPath.DEVICE_SEP + pchain.join( AbstractPath.SEPARATOR );
 			return new Path( pStr );
 		}
-
+		
+		/** @inheritDoc */
 		override public function getCurrentChild() : INode {
 			for each (var n : INode in _childs) 
 				if( n.isActive( ) ) return n;
 			return null;
 		}
-
+		
+		/** @inheritDoc */
 		override public function addChild(node : INode) : INode {
 			var result : INode = super.addChild( node );
 			result.addEventListener( NodeEvent.CHANGE , onChildChange , true , - 20000 );
@@ -213,14 +263,15 @@ package fr.digitas.flowearth.mvc.address.structs {
 			var n : INode = new WeakNode( this );
 			return n;
 		}
-
+		
+		/** @inheritDoc */
 		bi_internal function _activate( path : ProcessPath ) : void {
 			if( _activePath ) _activePath.dispose( );
 			_activePath = path;
 			_active = true;
 			//dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE , this , false ) );
 		}
-
+		/** @inheritDoc */
 		bi_internal function _deactivate() : Array {
 			//debug
 			if( ! _active ) throw new Error( "bi.mvc.address.structs.Node - _deactivate : already unactive node "+getId() );
@@ -246,7 +297,7 @@ package fr.digitas.flowearth.mvc.address.structs {
 			res.unshift( this );
 			return res;
 		}
-
+		/** @inheritDoc */
 		override protected function createNode( descriptor : INodeDescriptor ) : INode {
 			return new Node( descriptor );
 		}
@@ -258,30 +309,8 @@ package fr.digitas.flowearth.mvc.address.structs {
 		}
 
 		protected var _activePath : ProcessPath;
+		
 		protected var _pendingSwitch : Boolean = false;
-	}
-}
-
-
-import fr.digitas.flowearth.mvc.address.structs.Node;
-
-class BranchNode {
-
-	internal var prev : BranchNode;
-
-	private var next : BranchNode;
-
-	private var node : Node;
-
-	internal function push( bn : BranchNode ) : void {
-		next = bn;
-		bn.prev = this;
-	}
-
-	internal function dispose() : void {
-		node = null;
-		if( next ) next.dispose( );
-		next = null;
-		prev = null;
+		
 	}
 }

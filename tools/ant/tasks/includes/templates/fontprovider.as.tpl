@@ -1,7 +1,7 @@
 package ${fptpl_package} 
 {
 	
-	import org.owflow.text.fonts.IFontsProvider;
+	import fr.digitas.flowearth.text.fonts.IFontsProvider;
 	import flash.display.Sprite;
 	import flash.system.Security;
 	

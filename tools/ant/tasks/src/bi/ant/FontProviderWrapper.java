@@ -95,7 +95,6 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 					String base = getProject().getBaseDir()
 							.getAbsolutePath();
 					outputDir = new File(base + File.separatorChar + output);
-					log(base + File.separatorChar + output);
 					if (outputDir.exists() && outputDir.isDirectory()) {
 						path = base + File.separatorChar + output
 								+ File.separatorChar + getClassPath();
@@ -131,7 +130,6 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 			
 			
 			compile( asFile , outputDir);
-			log( "exist"+asFile.exists() );
 		} else {
 			throw new BuildException("Missing resources", getLocation());
 		}
@@ -160,7 +158,6 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
         {
             try
             {
-            	log( resourceDir + resources[i] );
                 InputStream inputStream = getClass().getResourceAsStream(resourceDir + resources[i]);
                 bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                 String path = null;
@@ -228,18 +225,14 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 		
 		getCompileTask().setExecutable( compilerPath );
 		
-		log( "exist"+asFile.exists() );
 		
 		Argument arg;
 		arg = getCompileTask().createArg();
 		arg.setLine( "-sp '"+sourcePath.getAbsolutePath().replace( '\\', '/')+"'" );
-		log( "-sp '"+sourcePath.getAbsolutePath().replace( '\\', '/')+"'" );
 		arg = getCompileTask().createArg();
 		arg.setLine( "-o '"+swf+"'" );
-		log( "-o '"+swf+"'" );
 		arg = getCompileTask().createArg();
 		arg.setLine( "-- '"+asFile.getAbsolutePath().replace( '\\', '/')+"'" );
-		log( "-- '"+asFile.getAbsolutePath().replace( '\\', '/')+"'" );
 		
 		
 		
@@ -270,13 +263,11 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 
 
 	public void setDynamicAttribute(String name, String value) {
-		if (name.equals("rin du tout")) {
-			
-		} else {
-			throw new BuildException(
-					"The <createFont> task doesn't support the \"" + name
-							+ "\" attribute.", getLocation());
-		}
+		
+		throw new BuildException(
+				"The <createFont> task doesn't support the \"" + name
+						+ "\" attribute.", getLocation() );
+		
 	}
 
 	public void setCompiler(String compilerPath) {
@@ -284,13 +275,15 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 	}
 
 	public void addConfiguredFont( Font font ) {
+		font.setProject( getProject() );
 		fonts.add( font );
 		if( font == null ) 
 			throw new BuildException(
 					"aieaie", getLocation());
+		log( "-------------" );
 		log( font.fontFamily );
 		log( font.fontWeight );
-		log( font.unicodeRange );
+		log( font.getUnicodeRange() );
 	}
 
 	public Argument createArg() {
@@ -309,7 +302,6 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 		if( ! swfFile.isAbsolute() )
 			this.swf = getProject().getBaseDir().getAbsolutePath()+File.separatorChar+this.swf;
 		
-		log( this.swf );
 	}
 
 	public void setKeepGenerated(Boolean flag) {
@@ -365,8 +357,6 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 
 	private String getOutput() {
 		File swfFile = new File( swf );
-		log( "aaaaaa" + swfFile.getParent()+File.separatorChar+"_generated" );
-		log( "bbbbbb" + swf );
 		return swfFile.getParent()+File.separatorChar+"_generated";
 	}
 	
@@ -388,11 +378,8 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 
 	private String getClassPath() {
 		String name = getFullClassName();
-		log( name );
 		name = name.replaceAll("\\.", "/" );
-		log( name );
 		name = name+".as";
-		log( name );
 		return name;
 	}
 	

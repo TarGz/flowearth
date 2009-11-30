@@ -44,6 +44,8 @@ package fr.digitas.flowearth.ui.layout {
 	 */
 	public class Layout extends Sprite implements IDisplayObjectContainer {
 		
+		public static const CHANGING : String = "_l_changing";
+		
 		/**
 		 * Contient la liste des element a positionné.
 		 * Si cette prop est null, la displayList est utilisé
@@ -230,6 +232,7 @@ package fr.digitas.flowearth.ui.layout {
 		 * met a jour l'affichage ( range les items )
 		 */
 		public function update( e : Event = null ) : void {
+			dispatchEvent( new Event( CHANGING ) );
 			_renderer.init( _padding, _margin, _width, _height );
 			var i : int;
 			if( itemList ) {

@@ -51,6 +51,7 @@
 				unicoderange  	: 	the unicode range to compile 
 									or the 
 									name of the lang id of a language-range compiler argument
+				chars  			: 	can be used instead of unicoderange, a String with all chars to embed
 									
 			arg [0,n]
 				addition args passed to mxmlc compiler. 
