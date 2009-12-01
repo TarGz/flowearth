@@ -24,7 +24,7 @@
          ================================= -->
 	<target name="main" depends="init" description="font provider task test">
 
-		<ant antfile="D:\work\workspaces\as3\BI_refactoring\tools\ant/antTasks\build\build.xml">
+		<ant antfile="${digitas.dir.antTasks}/build/build.xml">
 		</ant>
 		
 
