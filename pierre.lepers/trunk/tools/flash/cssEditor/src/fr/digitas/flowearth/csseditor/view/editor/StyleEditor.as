@@ -18,19 +18,28 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		public function StyleEditor() {
 			addChildAt( bg = new StyleEditorBg_FC(), 0 );
 			addChild( _scroll = new Scroller_FC() );
+			_scroll.addEventListener( Scroller.SCROLL_CHANGE , onScrollChange );
 			_initKeyManager();
 			super( );
 		}
 		
+		private function onScrollChange(event : Event) : void {
+			if( !_table ) return;
+			_table.renderZone( _scroll.bounds );
+		}
 
+		
 		public function setCss( css : CSS ) : void {
 			dispose( );
 			_css = css;
+			_css.addEventListener( Event.CLOSE , onCssClosed );
 			_scroll.addChild( _table = new StylesTable() );
 			_table.addEventListener( Event.RESIZE , onTableResize );
 			_table.init( css );
 			_table.width = bg.width;
+			_scroll.update( );
 		}
+		
 
 		override public function set width(value : Number) : void {
 			bg.width = value;
@@ -44,17 +53,24 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		}
 		
 		private function dispose() : void {
+			if( _css )
+				_css.removeEventListener( Event.CLOSE , onCssClosed );
 			_css = null;
-			if( _table )
+			if( _table ) {
 				_scroll.removeChild( _table );
+				_table.dispose();
+			}
 			_table = null;
 		}
 		
+		private function onCssClosed(event : Event) : void {
+			dispose();
+		}
 		
 		private function onTableResize(event : Event) : void {
 			if( event.bubbles )
 				event.stopImmediatePropagation( );
-			_scroll.invalidate();
+			_scroll.update();
 		}
 		
 		
@@ -64,8 +80,12 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		
 		private function onKeyDown(event : KeyboardEvent) : void {
 			
-			if( event.ctrlKey && event.charCode == "s".charCodeAt(0) )
-				save();
+			if( event.ctrlKey ) {
+				if( event.charCode == "s".charCodeAt(0) )
+					save();
+				else if( event.ctrlKey && event.charCode == "w".charCodeAt(0) )
+					_css.close();
+			}
 		}
 		
 		private function save() : Boolean {
@@ -78,5 +98,6 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		private var _table : StylesTable;
 		
 		private var _scroll : Scroller;
+		
 	}
 }

@@ -5,7 +5,8 @@ package fr.digitas.flowearth.csseditor.view.editor {
 	import fr.digitas.flowearth.ui.layout.Layout;
 	import fr.digitas.flowearth.ui.layout.renderer.TopJustifyRenderer;
 	
-	import flash.display.Sprite;	
+	import flash.display.Sprite;
+	import flash.geom.Rectangle;		
 
 	/**
 	 * @author Pierre Lepers
@@ -36,6 +37,8 @@ package fr.digitas.flowearth.csseditor.view.editor {
 				renderer = _layout.removeChildAt( 0 ) as StyleItemRenderer;
 				renderer.dispose();
 			}
+			removeChild( _layout );
+			_layout = null;
 		}
 
 		
@@ -55,6 +58,17 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		}
 
 		private var _layout : Layout;
+		
+		public function renderZone(bounds : Rectangle) : void {
+			if( bounds.equals( _prevRenderBounds ) ) return; 
+			var item : StyleItemRenderer;
+			for (var i : int = 0; i < _layout.numChildren ; i++) {
+				item = _layout.getChildAt( i ) as StyleItemRenderer;
+				item.render = ( item.getBounds( item.parent ).intersects( bounds ) );
+			}
+			_prevRenderBounds = bounds;
+		}
 
+		private var _prevRenderBounds : Rectangle = new Rectangle();
 	}
 }

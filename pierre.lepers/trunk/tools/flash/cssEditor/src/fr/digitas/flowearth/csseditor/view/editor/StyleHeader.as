@@ -1,15 +1,12 @@
 package fr.digitas.flowearth.csseditor.view.editor {
-	import fr.digitas.flowearth.csseditor.data.completion.StyleExtendCompletionProvider;	
-	import fr.digitas.flowearth.ui.form.CompletionInputField;	
-	
 	import fl.controls.ComboBox;
 	
 	import fr.digitas.flowearth.csseditor.data.StyleData;
+	import fr.digitas.flowearth.csseditor.data.completion.StyleExtendCompletionProvider;
 	import fr.digitas.flowearth.csseditor.event.StyleEvent;
+	import fr.digitas.flowearth.ui.form.CompletionInputField;
 	import fr.digitas.flowearth.ui.form.InputField;
 	
-	import flash.display.MovieClip;
-	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.events.TextEvent;
@@ -19,16 +16,8 @@ package fr.digitas.flowearth.csseditor.view.editor {
 	/**
 	 * @author Pierre Lepers
 	 */
-	public class StyleHeader extends Sprite {
-		
-		public var cArrow : Sprite;
-		
-		public var bg : MovieClip;
-		
-		public var nameLabel : TextField;
-		public var superLabel : TextField;
-		public var extendsLabel : TextField;
-		
+	public final class StyleHeader extends StyleHeader_CF {
+
 		public var extendsCb : ComboBox;
 		
 		private var nameInput : InputField;
@@ -38,6 +27,10 @@ package fr.digitas.flowearth.csseditor.view.editor {
 
 		
 		public function StyleHeader() {
+			_build();
+		}
+		
+		private function _build() : void {
 			nameLabel.autoSize = TextFieldAutoSize.LEFT;
 			superLabel.autoSize = TextFieldAutoSize.LEFT;
 			extendsLabel.autoSize = TextFieldAutoSize.LEFT;
@@ -62,7 +55,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			_sData.addEventListener( StyleEvent.RENAME , updateName );
 			_sData.addEventListener( StyleEvent.SUPER_CHANGE , updateSuper );
 			
-			superInput.setProvider( StyleExtendCompletionProvider.getCompletionProvider( sData ) );
+			superInput.setProvider( new StyleExtendCompletionProvider( sData ) );
 			
 			updateName();
 			updateSuper();
@@ -72,6 +65,10 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		public function dispose() : void {
 			_sData.removeEventListener( StyleEvent.RENAME , updateName );
 			_sData.removeEventListener( StyleEvent.SUPER_CHANGE , updateSuper);
+			nameInput.removeEventListener( Event.CHANGE , onInputName );
+			superInput.removeEventListener( Event.CHANGE , onInputSuper );
+			bg.removeEventListener( MouseEvent.MOUSE_DOWN , bgDown );
+			extendsLabel.removeEventListener( MouseEvent.CLICK , onAddSuper );
 			_sData = null;
 		}
 		

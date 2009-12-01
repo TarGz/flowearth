@@ -11,7 +11,7 @@
 	<description>
             build digitas ant tasks
     </description>
-	
+
 	<property name="FMK_HOME" location="${basedir}" />
 	<loadproperties srcfile="${basedir}/build.config" />
 	<loadproperties srcfile="${basedir}/.properties" />
@@ -46,21 +46,53 @@
          - - - - - - - - - - - - - - - - - -->
 	<target name="compile">
 		<exec executable="${air_amxmlc}">
-			<arg line="-debug"/>
-			<arg line="-sp ${projectDir}/offline"/>
-			<arg line="-sp ${projectDir}/src"/>
-			<arg line="-l ${digitas.dir.fmk}/bin/fp9/flowearth.swc"/>
-			<arg line="-l ${projectDir}/swc/assets.swc"/>
-			<arg line="-o ${projectDir}/deploy/cssEditor.swf"/>
-			<arg line="-- ${projectDir}/src/fr/digitas/flowearth/csseditor/Main.as"/>
+			<arg line="-debug=true" />
+			<arg line="-sp ${projectDir}/offline" />
+			<arg line="-sp ${projectDir}/src" />
+			<arg line="-l ${digitas.dir.fmk}/bin/fp9/flowearth.swc" />
+			<arg line="-l ${projectDir}/swc/assets.swc" />
+			<arg line="-l ${projectDir}/swc/colorPicker.swc" />
+			<arg line="-o ${projectDir}/deploy/cssEditor.swf" />
+			<arg line="-- ${projectDir}/src/fr/digitas/flowearth/csseditor/Main.as" />
 		</exec>
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
           target: package                      
          - - - - - - - - - - - - - - - - - -->
-	<target name="package">
-		
+	<target name="package" depends="certificate">
+		<exec executable="${air_adt}" dir="${projectDir}">
+			
+			<arg line="-package -storetype pkcs12 -keystore build/certificate.p12 -storepass 39#wnetx3tl install/CssEditor.air build/descriptor.xml deploy/cssEditor.swf" />
+			<!--
+			<arg value="-package" />
+			
+			<arg value="-storetype" />
+			<arg value="pkcs12" />
+			
+			<arg value="-keystore" />
+			<arg value="build/certificate.p12" />
+			
+			<arg value="CssEditor.air" />
+			<arg value="build/descriptor.xml" />
+			-->
+		</exec>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: certificate                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="certificate">
+		<exec executable="${air_adt}" dir="${projectDir}">
+			<arg value="-certificate" />
+			
+			<arg value="-cn" />
+			<arg value="cssEditorCert" />
+			
+			<arg value="2048-RSA" />
+			<arg value="build/certificate.p12" />
+			<arg value="39#wnetx3tl" />
+		</exec>
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
@@ -68,10 +100,10 @@
          - - - - - - - - - - - - - - - - - -->
 	<target name="launch" depends="init,compile">
 		<exec executable="${air_adl}" dir="${projectDir}">
-			<arg line="build/descriptor.xml ${projectDir}/"/>
+			<arg line="build/descriptor.xml ${projectDir}/" />
 		</exec>
 	</target>
-	
+
 
 
 	<!-- - - - - - - - - - - - - - - - - - 
@@ -79,7 +111,9 @@
          - - - - - - - - - - - - - - - - - -->
 	<target name="init">
 		<loadproperties srcfile="${digitas.dir.antTasks}/build/build.properties" />
-		<property name="projectDir" value="${basedir}/tools/flash/cssEditor"/>
+		<property name="projectDir" value="${basedir}/tools/flash/cssEditor" />
+		<property name="APP_NAME" value="CssEditor"/> 
+
 	</target>
 
 </project>

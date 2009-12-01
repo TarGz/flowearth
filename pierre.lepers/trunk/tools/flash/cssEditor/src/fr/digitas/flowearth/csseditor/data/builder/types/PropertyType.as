@@ -6,12 +6,15 @@ package fr.digitas.flowearth.csseditor.data.builder.types {
 	public class PropertyType {
 
 		
-		
-		public function PropertyType( nativeType : Class ) {
-			
+		public function getNativeType() : Class {
+			return _nativeType;
 		}
 		
-		private var nativeType : Class;
+		public function PropertyType( nativeType : Class ) {
+			_nativeType = nativeType;
+		}
+
+		private var _nativeType : Class;
 		
 	}
 }

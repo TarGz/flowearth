@@ -1,4 +1,7 @@
 package fr.digitas.flowearth.csseditor.view.editor {
+	import fr.digitas.flowearth.ui.layout.ILayoutItem;	
+	import fr.digitas.flowearth.csseditor.view.editor.helper.HelperFactory;	
+	import fr.digitas.flowearth.csseditor.view.editor.helper.AbstractHelper;	
 	import fr.digitas.flowearth.core.IIterator;
 	import fr.digitas.flowearth.csseditor.data.StyleProperty;
 	import fr.digitas.flowearth.csseditor.data.completion.CSSCompletion;
@@ -20,7 +23,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 	/**
 	 * @author Pierre Lepers
 	 */
-	public class PropertyItemRenderer extends Sprite {
+	public class PropertyItemRenderer extends Sprite implements ILayoutItem {
 
 		public var nameLabel : TextField;
 		public var valueLabel : TextField;
@@ -29,6 +32,10 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		private var _errorField : ErrorField;
 		
 		public function PropertyItemRenderer() {
+			_build();
+		}
+		
+		private function _build() : void {
 			nameLabel.autoSize = TextFieldAutoSize.LEFT;
 			_nameInput = new CompletionInputField( nameLabel );
 			_nameInput.setProvider( CSSCompletion.getPropNamesCompletions() );
@@ -38,6 +45,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			_valueInput = new InputField( valueLabel );
 			_valueInput.addEventListener( Event.CHANGE , onValueInputChange );
 			
+			
 			_errorField = new ErrorField( );
 			_errorField.x = _errorField.y = 3;
 			addChild( _errorField );
@@ -45,7 +53,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			bg.addEventListener( MouseEvent.MOUSE_DOWN , bgDown );
 			focusRect = false;
 		}
-		
+
 		private function bgDown(event : MouseEvent) : void {
 			stage.focus = this;
 		}
@@ -53,6 +61,9 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		public function init(prop : StyleProperty) : void {
 			if( _prop ) throw new Error( "fr.digitas.flowearth.csseditor.view.editor.PropertyItemRenderer - double init ! " );
 			_prop = prop;
+			
+			_buildhelper();
+			
 			prop.addEventListener( PropertyEvent.RENAME , updateName );
 			prop.addEventListener( PropertyEvent.STRVALUE_CHANGE , updateStrValue );
 			prop.addEventListener( Event.CHANGE , onPropChange );
@@ -62,12 +73,23 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			checkValidity( );
 		}
 		
+		private function _buildhelper() : void {
+			_helper = HelperFactory.getHelper( _prop );
+			if( _helper ) {
+				addChild( _helper );
+				_helper.x = 380;
+			}
+		}
+
 		public function dispose() : void {
 			_prop.removeEventListener( PropertyEvent.RENAME , updateName );
 			_prop.removeEventListener( PropertyEvent.STRVALUE_CHANGE , updateStrValue );
 			_prop.removeEventListener( Event.CHANGE , onPropChange );
 			_prop.removeEventListener( ValidityEvent.VALIDITY_CHANGE , onValidityEvent );
 			_prop = null;
+			
+			if( _helper ) _helper.dispose();
+			
 			_errorField.clear();
 		}
 
@@ -80,8 +102,6 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		}
 
 		private function updateStrValue(event : PropertyEvent = null ) : void {
-			Console.log("label "+valueLabel);
-			Console.log("prop "+_prop);
 			valueLabel.text = _prop.strValue || "null";
 		}
 		
@@ -118,5 +138,15 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		protected var _nameInput : CompletionInputField;
 
 		protected var _valueInput : InputField;
+		
+		protected var _helper : AbstractHelper;
+		
+		public function getWidth() : Number {
+			return 0;
+		}
+		
+		public function getHeight() : Number {
+			return 22;
+		}
 	}
 }

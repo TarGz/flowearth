@@ -6,7 +6,7 @@ package fr.digitas.flowearth.ui.tabs {
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.geom.Rectangle;
-	import flash.utils.Dictionary;		
+	import flash.utils.Dictionary;	
 
 	/**
 	 * @author Pierre Lepers
@@ -19,6 +19,10 @@ package fr.digitas.flowearth.ui.tabs {
 			_buildLayout( );
 			_aItems = [];
 			_tabMap = new Dictionary( );
+			_ctrls = new TabsControls( this );
+			_ctrls.y = 4;
+			
+			addChild( _ctrls );
 		}
 
 		public function addItem( tdata : TabData ) : void {
@@ -31,15 +35,19 @@ package fr.digitas.flowearth.ui.tabs {
 			_aItems.push( tdata );
 			_tabMap[ tdata ] = tab;
 			_layout.update( );
+			tdata.dispatchEvent( new Event( Event.OPEN ) );
 		}
 
 		public function removeItem( tdata : TabData ) : void {
 			if( _aItems.indexOf( tdata ) == -1 ) return;
 			var tab : Tab = _tabMap[ tdata ];
+			if( ! tdata.dispatchEvent( new Event( Event.CLOSING, false, true ) ) ) return;
 			_layout.removeChild( tab );
 			_layout.itemList.splice( _layout.itemList.indexOf( tab ), 1 );
-			_aItems.splice( _aItems.indexOf( tab ), 1 );
+			_aItems.splice( _aItems.indexOf( tdata ), 1 );
 			tab.dispose( );
+			if( _currentItem == tdata ) _currentItem = null;
+			tdata.dispatchEvent( new Event( Event.CLOSE ) );
 		}
 		
 		public function getItemAt( index : int ) : TabData {
@@ -55,6 +63,7 @@ package fr.digitas.flowearth.ui.tabs {
 			_currentItem = tdata;
 			
 			var tab : Tab = _tabMap[ tdata ];
+			
 			tab.selected = true;
 			reorder( tab );
 			if( _currentTabData )
@@ -77,6 +86,8 @@ package fr.digitas.flowearth.ui.tabs {
 		
 		override public function set width(value : Number) : void {
 			bg.width = value;
+			_ctrls.x = value - 2;
+			
 			onChanging( null );
 		}
 
@@ -100,7 +111,7 @@ package fr.digitas.flowearth.ui.tabs {
 			for (var i : int = 0; i < _layout.numChildren ; i++) 
 				ts += _layout.getChildAt( i ).width;
 			
-			if( ts > bg.width - 100 ) {
+			if( ts > bg.width - _ctrls.width - 20 ) {
 				var rest : Number = ( ts - bg.width + 100 ) / ( _layout.numChildren - 1 );
 				_layout.margin = new Rectangle( 0, 0, -rest );
 			} else {
@@ -133,5 +144,10 @@ package fr.digitas.flowearth.ui.tabs {
 		private var _tabMap : Dictionary;
 
 		private var _layout : Layout;
+		private var _ctrls : TabsControls;
+		
+		public function get controls() : TabsControls {
+			return _ctrls;
+		}
 	}
 }

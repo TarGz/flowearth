@@ -1,4 +1,5 @@
 package fr.digitas.flowearth.csseditor.data {
+	import fr.digitas.flowearth.csseditor.data.builder.Transtyper;	
 	import fr.digitas.flowearth.csseditor.data.builder.types.PropertyType;	
 	import fr.digitas.flowearth.core.Iterator;	
 	import fr.digitas.flowearth.core.IIterator;	
@@ -15,12 +16,12 @@ package fr.digitas.flowearth.csseditor.data {
 	/**
 	 * @author Pierre Lepers
 	 */
-	public class StyleProperty extends EventDispatcher {
+	public final class StyleProperty extends EventDispatcher {
 
 		
 		
 		public function StyleProperty( name : String ) {
-			_name = name;
+			setName( name );
 			_validityStates = [];
 		}
 		
@@ -28,7 +29,7 @@ package fr.digitas.flowearth.csseditor.data {
 		
 		private var _strValue : String;
 
-		private var _value : String;
+		private var _value : *;
 		private var _name : String;
 
 		private var _type : PropertyType;
@@ -41,17 +42,18 @@ package fr.digitas.flowearth.csseditor.data {
 			if( strValue == "null" ) strValue = null;
 			if( _strValue == strValue ) return;
 			_strValue = strValue;
+			value = Transtyper.transtype( this );
 			dispatchEvent( new PropertyEvent( PropertyEvent.STRVALUE_CHANGE , this ) );
-			_change();
 		}
 		
-		public function get value() : String {
+		public function get value() : * {
 			return _value;
 		}
 		
 		public function set value( value : * ) : void {
 			if( _value == value ) return;
 			_value = value;
+			strValue = Transtyper.stringify( this );
 			dispatchEvent( new PropertyEvent( PropertyEvent.VALUE_CHANGE , this ) );
 			_change();
 		}

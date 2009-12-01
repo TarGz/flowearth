@@ -1,10 +1,16 @@
 package fr.digitas.flowearth.ui.colorpicker {
+	import fr.digitas.flowearth.event.UintEvent;	
+	
+	import flash.events.MouseEvent;	
 	import flash.display.Sprite;
 	
 	/**
 	 * @author Pierre Lepers
 	 */
 	public class TilesCanvas extends Sprite {
+		
+		public static const OVER_COLOR : String  = "overcolor";
+		public static const SELECT_COLOR : String  = "selectcolor";
 		
 		public function TilesCanvas() {
 			_build( );
@@ -19,12 +25,30 @@ package fr.digitas.flowearth.ui.colorpicker {
 				col = _tiles[ x ];
 				for (var y : int = 0; y < 12; y++) {
 					tile = col[y];
-					tile.x = x*10;
-					tile.y = y*10;
+					tile.x = x*11;
+					tile.y = y*11;
 					addChild(tile);
 				}
 				
 			}
+			
+			graphics.beginFill( 0 );
+			graphics.drawRect(0, 0, 21 * 11 + 1, 12*11 + 1 );
+			
+			addEventListener( MouseEvent.MOUSE_OVER , onMouseOver );
+			addEventListener( MouseEvent.MOUSE_UP , onClick );
+		}
+		
+		private function onMouseOver(event : MouseEvent) : void {
+			var tgt : Tile = event.target as Tile;
+			if( tgt )
+				dispatchEvent( new UintEvent( OVER_COLOR, tgt.color ) );
+		}
+
+		private function onClick(event : MouseEvent) : void {
+			var tgt : Tile = event.target as Tile;
+			if( tgt )
+				dispatchEvent( new UintEvent( SELECT_COLOR , tgt.color ) );
 		}
 
 		private function _buildTiles() : Array {
