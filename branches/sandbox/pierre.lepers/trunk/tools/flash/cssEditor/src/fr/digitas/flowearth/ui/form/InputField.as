@@ -19,20 +19,16 @@ package fr.digitas.flowearth.ui.form {
 			_tf = tf;
 			_init();
 			
-			//addEventListener( Event.ADDED_TO_STAGE, onAdded );
-			addEventListener( Event.REMOVED_FROM_STAGE, onRemoved );
 		}
 		
 		public function get tf() : TextField {
 			return _tf;
 		}
 
-//		private function onAdded( e : Event ) : void {
-//		}
 		
-		private function onRemoved( e : Event ) : void {
+//		private function onRemoved( e : Event ) : void {
 //			stage.removeEventListener( MouseEvent.MOUSE_DOWN , onStageDown );
-		}
+//		}
 		
 
 		public function get text() : String {
@@ -63,6 +59,8 @@ package fr.digitas.flowearth.ui.form {
 			
 			addEventListener( KeyboardEvent.KEY_DOWN , keyDown, true, 100 );
 			addEventListener( KeyboardEvent.KEY_UP , keyUp, true, 100 );
+//			
+//			addEventListener( Event.REMOVED_FROM_STAGE, onRemoved );
 		}
 		
 

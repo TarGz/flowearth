@@ -34,7 +34,8 @@ package fr.digitas.flowearth.csseditor.view {
 		}
 		
 		private function onCurrentChange(event : CSSEvent) : void {
-			cssEditor.setCss( event.css );
+			if( event.css )
+				cssEditor.setCss( event.css );
 		}
 
 		private function _buildViews() : void {

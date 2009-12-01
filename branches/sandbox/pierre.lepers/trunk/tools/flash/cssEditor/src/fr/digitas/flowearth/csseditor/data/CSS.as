@@ -4,6 +4,7 @@ package fr.digitas.flowearth.csseditor.data {
 	import fr.digitas.flowearth.csseditor.data.builder.CSSParser;
 	import fr.digitas.flowearth.csseditor.event.CSSEvent;
 	import fr.digitas.flowearth.csseditor.io.IFileManager;
+	import fr.digitas.flowearth.csseditor.view.console.Console;
 	import fr.digitas.flowearth.text.styles.styleManager;
 	
 	import flash.events.Event;
@@ -78,6 +79,16 @@ package fr.digitas.flowearth.csseditor.data {
 			cssBa.writeUTFBytes( getPlainValue() );
 			fm.saveFile( filepath , cssBa );
 			fileSystemSync = true;
+		}
+		
+		public function close( force : Boolean = false ) : void {
+			if( ! force && ! _fileSystemSync ) {
+				// TODO alert JS
+				Console.log( "JS popup for closing "+filepath );
+				return;
+			}
+			CSSProvider.instance.removeCss( this );
+			dispatchEvent( new Event( Event.CLOSE ) );
 		}
 
 		private function onDatasChange(event : Event) : void {

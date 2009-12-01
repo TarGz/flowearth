@@ -7,9 +7,10 @@ package fr.digitas.flowearth.csseditor.view.editor {
 	import fr.digitas.flowearth.ui.layout.Layout;
 	import fr.digitas.flowearth.ui.layout.renderer.TopJustifyRenderer;
 	
+	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.utils.Dictionary;	
+	import flash.utils.Dictionary;		
 
 	/**
 	 * @author Pierre Lepers
@@ -28,13 +29,19 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			
 			_sdata.addEventListener( PropertyEvent.ADDED , onStyleAdded );
 			_sdata.addEventListener( PropertyEvent.REMOVED , onStyleRemoved );
-			updateList( );
+			updateHeight();
 		}
 		
 		public function dispose() : void {
 			_sdata.removeEventListener( PropertyEvent.ADDED , onStyleAdded );
 			_sdata.removeEventListener( PropertyEvent.REMOVED , onStyleRemoved );
 			_sdata = null;
+			cacheAsBitmap = false;
+			var item : PropertyItemRenderer;
+			while( _layout.numChildren > 0 ) {
+				item = _layout.removeChildAt( 0 ) as PropertyItemRenderer;
+				item.dispose();
+			}
 		}
 		
 		internal function set quickAddItem( flag : Boolean ) : void {
@@ -59,8 +66,10 @@ package fr.digitas.flowearth.csseditor.view.editor {
 
 		private function onStyleAdded(event : PropertyEvent) : void {
 			addPropItem( event.prop );
-			updateLayout();
+			updateLayout( );
 		}
+		
+		
 
 		private function onStyleRemoved(event : PropertyEvent) : void {
 			removePropItem( event.prop );
@@ -69,19 +78,26 @@ package fr.digitas.flowearth.csseditor.view.editor {
 
 		
 		
-		private function updateList( ) : void {
+		private function _lazyBuild( ) : void {
+			if( _builded ) return;
 			_rendererMap = new Dictionary();
 			var prop : StyleProperty;
 			var iter : IIterator = _sdata.getProps();
+			var renderer : PropertyItemRenderer;
 			while( prop = iter.next() as StyleProperty ) {
-				addPropItem( prop );
+				renderer = _rendererMap[ prop ] = new PropertyItemRenderer_FC( );
+				renderer.init( prop );
+				_layout.addChild( renderer );
 			}
+			_layout.update();
+			_builded = true;
 		}
 
 		private function addPropItem( prop : StyleProperty ) : void {
 			var renderer : PropertyItemRenderer = _rendererMap[ prop ] = new PropertyItemRenderer_FC( );
 			renderer.init( prop );
 			_layout.addChild( renderer );
+			updateHeight();
 		}
 
 		private function removePropItem( prop : StyleProperty ) : void {
@@ -89,19 +105,36 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			_layout.removeChild( renderer );
 			renderer.dispose();
 			delete _rendererMap[ prop ];
+			updateHeight();
 		}
 
 		
+		override public function get height() : Number {
+			return bg.height;
+		}
 		
-		
+
 		override public function set width(value : Number) : void {
 			_layout.width = value;
+			bg.width = value;
 		}
 		
 		private function _buildLayout() : void {
+			addChild( bg = new Shape() );
+			bg.graphics.beginFill( 0xFFFFFF );
+			bg.graphics.drawRect(0, 0, 100, 100 );
+
 			_layout = new Layout( );
 			_layout.renderer = new TopJustifyRenderer();
 			addChild( _layout );
+			
+		}
+		
+		
+		private function updateHeight( ) : void {
+			if( bg.height == _sdata.length * 22 ) return;
+			bg.height = _sdata.length * 22;
+			dispatchEvent( new Event( Event.RESIZE , true ) );
 		}
 		
 		private function updateLayout() : void {
@@ -111,8 +144,8 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			dispatchEvent( new Event( Event.RESIZE , true ) );
 		}
 
-		
-		
+		private var bg : Shape;
+
 		private var _layout : Layout;
 
 		private var _rendererMap : Dictionary;
@@ -121,5 +154,19 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		
 		private var _quickAdd : QuickPropertyAdd;
 		
+		private var _builded : Boolean = false;
+		
+		private var _render : Boolean = false;
+		
+		public function get render() : Boolean {
+			return _render;
+		}
+		
+		public function set render(render : Boolean) : void {
+			if( render == _render ) return;
+			_render = render;
+			_lazyBuild();
+			cacheAsBitmap = ! render;
+		}
 	}
 }

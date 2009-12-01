@@ -1,4 +1,5 @@
 package fr.digitas.flowearth.csseditor.data.builder {
+	import fr.digitas.flowearth.csseditor.data.lexem.StyleAsPropConverter;	
 	import fr.digitas.flowearth.csseditor.data.CSSData;
 	import fr.digitas.flowearth.csseditor.data.StyleData;
 	import fr.digitas.flowearth.csseditor.data.StyleProperty;
@@ -24,9 +25,10 @@ package fr.digitas.flowearth.csseditor.data.builder {
 		private static function buildStyle( sdata : StyleData , obj : Object ) : void {
 			
 			var prop : StyleProperty;
-			
+			var convertedName : String;
 			for (var pname : String in obj ) {
-				prop = new StyleProperty( pname );
+				convertedName = StyleAsPropConverter.convert( pname );
+				prop = new StyleProperty( convertedName );
 				prop.strValue = obj[ pname ];
 				sdata.addProperty( prop );
 			}

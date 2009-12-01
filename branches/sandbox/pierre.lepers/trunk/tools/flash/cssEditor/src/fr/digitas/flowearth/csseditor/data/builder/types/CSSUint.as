@@ -9,7 +9,7 @@ package fr.digitas.flowearth.csseditor.data.builder.types {
 		
 		public function CSSUint( value : uint = 0) {
 			this.value = value;
-			super( uint );
+			super( CSSUint );
 		}
 		
 		public var value : uint;

@@ -23,6 +23,10 @@ package fr.digitas.flowearth.csseditor.data {
 		}
 		
 		
+		public function get length() : uint {
+			return _length;
+		}
+		
 		public function get cssData() : CSSData {
 			return _cssData;
 		}
@@ -30,6 +34,7 @@ package fr.digitas.flowearth.csseditor.data {
 		public function addProperty( prop : StyleProperty ) : void {
 			if( _dProps[ prop.name ] != undefined ) throw new Error( "fr.digitas.flowearth.csseditor.data.StyleData - addProperty : already exist" );
 			_aProps.push( prop );
+			_length ++;
 			_dProps[ prop.name ] = prop;
 			prop.addEventListener( PropertyEvent.RENAME , onPropRename );
 			prop.addEventListener( Event.CHANGE , onPropChange );
@@ -41,6 +46,7 @@ package fr.digitas.flowearth.csseditor.data {
 			_dProps[ prop.name ].removeEventListener( Event.CHANGE , onPropChange );
 			delete _dProps[ prop.name ];
 			_aProps.splice( _aProps.indexOf( prop ) , 1 );
+			_length --;
 			dispatchEvent( new PropertyEvent( PropertyEvent.REMOVED, prop ) );
 		}
 
@@ -121,6 +127,8 @@ package fr.digitas.flowearth.csseditor.data {
 		private var _aProps : Array;
 		
 		private var _dProps : Dictionary;
+		
+		private var _length : uint = 0;
 		
 		internal var _cssData : CSSData;
 		

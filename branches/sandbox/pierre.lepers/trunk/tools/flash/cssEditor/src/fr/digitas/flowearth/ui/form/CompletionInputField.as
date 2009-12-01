@@ -83,8 +83,10 @@ package fr.digitas.flowearth.ui.form {
 		}
 
 		override protected function onEnterKey() : void {
-			if( _completionList )
+			if( _completionList ) {
 				tf.text = _completionList.getFocusedItem( )._cdata.completion;
+				dispatchEvent( new Event( Event.CHANGE ) );
+			}
 			super.onEnterKey( );
 		}
 

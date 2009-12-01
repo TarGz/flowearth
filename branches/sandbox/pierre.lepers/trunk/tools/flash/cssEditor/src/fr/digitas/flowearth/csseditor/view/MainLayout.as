@@ -1,4 +1,5 @@
 package fr.digitas.flowearth.csseditor.view {
+	import fr.digitas.flowearth.csseditor.view.console.Infos;	
 	import fr.digitas.flowearth.csseditor.view.console.Console;
 	import fr.digitas.flowearth.ui.canvas.Canvas;
 	import fr.digitas.flowearth.ui.canvas.CanvasLayout;
@@ -54,6 +55,9 @@ package fr.digitas.flowearth.csseditor.view {
 
 			// EDITOR CANVAS
 			_editorCanvas.addContent( new EditorCanvas(), true );
+
+			// EDITOR CANVAS
+			_rtoolsCanvas.addContent( new Infos( ) );
 		}
 
 		

@@ -8,19 +8,42 @@ package fr.digitas.flowearth.csseditor.data.completion {
 	/**
 	 * @author Pierre Lepers
 	 */
-	public class StyleExtendCompletionProvider  {
+	public class StyleExtendCompletionProvider extends CompletionProvider {
+
 		
-		public static function getCompletionProvider( style : StyleData ) : CompletionProvider {
-			var res : CompletionProvider = new CompletionProvider();
+		
+		public function StyleExtendCompletionProvider( style : StyleData ) {
+			this.style = style;
+			super();
+		}
+		
+
+		override public function getItems() : IIterator {
+			if( !_lazyBuilded ) _lazyBuild();
+			return super.getItems( );
+		}
+
+		override public function getFilteredItems(str : String) : Array {
+			if( !_lazyBuilded ) _lazyBuild();
+			return super.getFilteredItems( str );
+		}
+		
+		private function _lazyBuild() : void {
+			_lazyBuilded = true;
+			
 			var iter : IIterator = style.cssData.getStyles();
 			var item : StyleData;
 			while( iter.hasNext() ) {
 				item = iter.next() as StyleData;
 				if( item != style ) 
-					res.addItem( getCompletionData( item ) );
+					addItem( getCompletionData( item ) );
 			}
-			return res;
 		}
+
+		private var _lazyBuilded : Boolean = false;
+
+		private var style : StyleData;
+
 		
 		private static function getCompletionData(item : StyleData) : CompletionData {
 			var res : CompletionData = new CompletionData();

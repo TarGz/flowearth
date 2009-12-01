@@ -10,11 +10,11 @@ package fr.digitas.flowearth.csseditor.data.builder {
 	public class Transtyper {
 		
 		public static function transtype( prop : StyleProperty ) : * {
-			return ( _typers[ prop.type ] || _null_transtyper )( prop.strValue );
+			return ( _typers[ prop.type.getNativeType() ] || _null_transtyper as Object )( prop.strValue );
 		}
 
 		public static function stringify( prop : StyleProperty ) : * {
-			return ( _typers[ prop.type ] || _null_stringifyer )( prop.value );
+			return ( _stringifyers[ prop.type.getNativeType() ] || _null_stringifyer as Object )( prop.value );
 		}
 		
 		
@@ -47,11 +47,10 @@ package fr.digitas.flowearth.csseditor.data.builder {
 		//_____________________________________________________________________________
 		//																	TRANSTYPERS
 		
-		private static function _cssUint_transtyper( value : String ) : CSSUint {
+		private static function _cssUint_transtyper( value : String ) : uint {
 			if( value.charAt( 0 ) == "#" )
 				value = "0x"+value.substr( 1 );
-			var res : CSSUint = new CSSUint( parseInt( value ) );
-			return res;
+			return parseInt( value );
 		}
 		
 		private static function _int_transtyper( value : String ) : int {
@@ -85,8 +84,8 @@ package fr.digitas.flowearth.csseditor.data.builder {
 		//_____________________________________________________________________________
 		//																	TRANSTYPERS
 		
-		private static function _cssUint_stringifyer( value : CSSUint ) : String {
-			return "#"+value.value.toString( 16 );
+		private static function _cssUint_stringifyer( value : uint ) : String {
+			return "#"+value.toString( 16 );
 		}
 		
 		private static function _int_stringifyer( value : int ) : String {

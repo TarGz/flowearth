@@ -3,6 +3,8 @@ package fr.digitas.flowearth.csseditor.view.editor {
 	import fr.digitas.flowearth.csseditor.data.CSS;
 	import fr.digitas.flowearth.csseditor.data.CSSProvider;
 	import fr.digitas.flowearth.csseditor.event.CSSEvent;
+	import fr.digitas.flowearth.csseditor.view.console.Console;
+	import fr.digitas.flowearth.ui.tabs.CloseControl_FC;
 	import fr.digitas.flowearth.ui.tabs.TabData;
 	import fr.digitas.flowearth.ui.tabs.Tabs;
 	import fr.digitas.flowearth.ui.tabs.Tabs_FC;
@@ -20,6 +22,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			
 			tabs = new Tabs_FC();
 			addChild( tabs );
+			tabs.controls.addControl( new CloseControl_FC( ) );
 			_dataMap = new Dictionary();
 			build();
 			CSSProvider.instance.addEventListener( CSSEvent.ADDED , onCssAdded );
@@ -60,10 +63,13 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		}
 		
 		private function onCurrentChange(event : CSSEvent) : void {
-			tabs.currentItem = getTabData( event.css );
+			if( event.css )
+				tabs.currentItem = getTabData( event.css );
 		}
 		
 		private function onTabChange( event : Event ) : void {
+			if( !tabs.currentItem ) return;
+			
 			var css : CSS = ( tabs.currentItem as CssTabData ).css;
 			CSSProvider.instance.currentCss = css;
 		}
@@ -74,13 +80,16 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		}
 
 		private function removeCss(css : CSS) : void {
-			tabs.removeItem( getTabData( css ) );
+			var tdata : TabData = getTabData( css );
+			if( tdata )
+				tabs.removeItem( tdata );
 		}
 		
 		private function getTabData( css : CSS ) : CssTabData {
 			var tabData : CssTabData;
 			for (var i : int = 0; i < tabs.length; i++) {
 				tabData = tabs.getItemAt( i ) as CssTabData;
+				Console.log( tabData.label );
 				if( tabData.css == css ) 
 					return tabData;
 				
@@ -104,7 +113,10 @@ package fr.digitas.flowearth.csseditor.view.editor {
 
 import fr.digitas.flowearth.csseditor.data.CSS;
 import fr.digitas.flowearth.csseditor.event.CSSEvent;
+import fr.digitas.flowearth.csseditor.view.console.Console;
 import fr.digitas.flowearth.ui.tabs.TabData;
+
+import flash.events.Event;
 
 class CssTabData extends TabData {
 
@@ -115,7 +127,21 @@ class CssTabData extends TabData {
 		_css = css;
 		css.addEventListener( CSSEvent.PATH_CHANGE , onLabelChange );
 		css.addEventListener( CSSEvent.FILE_SYNC , onLabelChange );
+		addEventListener( Event.CLOSING , onClosing );
+		addEventListener( Event.CLOSE , onClose );
 		onLabelChange( );
+	}
+	
+	private function onClose(event : Event) : void {
+		_css.close(  );
+	}
+
+	private function onClosing(event : Event) : void {
+		if( ! _css.fileSystemSync ) {
+			Console.log( "JS popup for closing "+_css.filepath );
+			event.preventDefault();
+		}
+		
 	}
 
 	private function onLabelChange(event : CSSEvent = null ) : void {

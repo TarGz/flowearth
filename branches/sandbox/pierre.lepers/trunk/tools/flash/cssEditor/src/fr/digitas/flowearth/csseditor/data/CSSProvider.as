@@ -2,9 +2,10 @@ package fr.digitas.flowearth.csseditor.data {
 	import fr.digitas.flowearth.core.IIterator;
 	import fr.digitas.flowearth.core.Iterator;
 	import fr.digitas.flowearth.csseditor.event.CSSEvent;
+	import fr.digitas.flowearth.csseditor.view.console.Console;
 	
 	import flash.events.EventDispatcher;
-	import flash.utils.Dictionary;		
+	import flash.utils.Dictionary;	
 
 	/**
 	 * @author Pierre Lepers
@@ -32,6 +33,7 @@ package fr.digitas.flowearth.csseditor.data {
 		}
 
 		public function removeCss( css : CSS ) : void {
+			Console.log( "fr.digitas.flowearth.csseditor.data.CSSProvider - removeCss -- "+css.filepath );
 			if( _dCss[ css.filepath ] == undefined ) 
 				 return;
 				

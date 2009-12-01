@@ -11,7 +11,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 	/**
 	 * @author Pierre Lepers
 	 */
-	public class StyleItemRenderer extends Sprite implements ILayoutItem {
+	public final class StyleItemRenderer extends Sprite implements ILayoutItem {
 		
 		public function StyleItemRenderer() {
 			_buildView();
@@ -20,8 +20,10 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			addEventListener( FocusEvent.FOCUS_OUT , focusOut );
 			addEventListener( FocusEvent.MOUSE_FOCUS_CHANGE , mfocusChange );
 		}
-		
 
+		
+		
+		
 		internal function init( sData : StyleData ) : void {
 			_header.init( sData );
 			_list.init( sData );
@@ -37,6 +39,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			value;
 		}
 		
+
 		
 		public function getWidth() : Number {
 			return 0;
@@ -44,21 +47,32 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		
 		public function getHeight() : Number {
 			if( _collapse )
-				return _header.height;
-			return _list.height + _list.y;
+				return Math.round( _header.height );
+			return Math.round( _list.height + _list.y );
 		}
 		
 		public function dispose() : void {
+			removeEventListener( FocusEvent.FOCUS_IN , focusIn );
+			removeEventListener( FocusEvent.FOCUS_OUT , focusOut );
+			removeEventListener( FocusEvent.MOUSE_FOCUS_CHANGE , mfocusChange );
+			_header.cArrow.removeEventListener( MouseEvent.CLICK , switchCollapse );
 			_header.dispose();
-			_list.dispose();
+			_list.dispose( );
+			_header = null;
+			_list = null;
 		}
-		
+
 		public function get collapse() : Boolean {
 			return _collapse;
 		}
 		
 		public function set collapse(collapse : Boolean) : void {
+			if( _collapse == collapse ) return;
 			_collapse = collapse;
+			if( _collapse )
+				removeChild( _list );
+			else
+				addChild( _list );
 			_list.visible = ! _collapse;
 			_header.collapse( _collapse );
 			dispatchEvent( new Event( Event.RESIZE, true ) );
@@ -67,7 +81,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		private var _collapse : Boolean = false;
 
 		private function _buildView() : void {
-			_header = new StyleHeader_FC();
+			_header = new StyleHeader();
 			_header.collapse( _collapse );
 			_header.cArrow.addEventListener( MouseEvent.CLICK , switchCollapse );
 			addChild( _header );
@@ -75,8 +89,11 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			_list = new PropertyList( );
 			addChild( _list );
 			_list.y = _header.height;
+
+			_header.visible = 
+			_list.visible = false;
 		}
-		
+
 		private function switchCollapse(event : MouseEvent) : void {
 			collapse = !collapse;
 		}
@@ -108,5 +125,19 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		private var _lockFocus : Boolean = false;
 		private var _header : StyleHeader;
 		private var _list : PropertyList;
+		
+		private var _render : Boolean = false;
+		
+		public function get render() : Boolean {
+			return _render;
+		}
+		
+		public function set render(render : Boolean) : void {
+			if( render == _render ) return;
+			_render = render;
+			_header.visible = 
+			_list.visible = render;
+			_list.render = render;
+		}
 	}
 }

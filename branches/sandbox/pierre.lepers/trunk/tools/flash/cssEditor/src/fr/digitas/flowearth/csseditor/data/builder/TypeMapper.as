@@ -1,15 +1,13 @@
 package fr.digitas.flowearth.csseditor.data.builder {
-	import flash.text.TextDisplayMode;	
-	import flash.text.TextFieldType;	
-	import flash.text.GridFitType;	
-	import flash.display.BlendMode;	
-	import flash.text.TextFieldAutoSize;	
-	import flash.text.AntiAliasType;	
-	
-	import fr.digitas.flowearth.csseditor.data.builder.types.StringEnum;	
-	import fr.digitas.flowearth.csseditor.data.builder.types.PropertyType;	
 	import fr.digitas.flowearth.csseditor.data.builder.types.CSSUint;
+	import fr.digitas.flowearth.csseditor.data.builder.types.PropertyType;
+	import fr.digitas.flowearth.csseditor.data.builder.types.StringEnum;
 	
+	import flash.display.BlendMode;
+	import flash.text.AntiAliasType;
+	import flash.text.GridFitType;
+	import flash.text.TextFieldAutoSize;
+	import flash.text.TextFieldType;
 	import flash.utils.Dictionary;		
 
 	/**
@@ -18,7 +16,7 @@ package fr.digitas.flowearth.csseditor.data.builder {
 	public class TypeMapper {
 		
 		public static function getType( prop : String ) : PropertyType {
-			return ( _map[ prop ] || null );
+			return ( _map[ prop ] || new PropertyType( String ) );
 		}
 		
 		
@@ -72,7 +70,7 @@ package fr.digitas.flowearth.csseditor.data.builder {
 			// STRING
 			_map[ "antiAliasType" ] 	= new StringEnum( [ AntiAliasType.NORMAL , AntiAliasType.ADVANCED ] );
 			_map[ "autoSize" ] 			= new StringEnum( [ TextFieldAutoSize.NONE , TextFieldAutoSize.LEFT , TextFieldAutoSize.CENTER , TextFieldAutoSize.RIGHT ] );
-			_map[ "blendMode" ] 		= new StringEnum( [ BlendMode.ADD, BlendMode.ALPHA, BlendMode.DARKEN, BlendMode.DIFFERENCE, BlendMode.ERASE, BlendMode.HARDLIGHT, BlendMode.INVERT, BlendMode.LAYER, BlendMode.LIGHTEN, BlendMode.MULTIPLY, BlendMode.NORMAL, BlendMode.OVERLAY, BlendMode.SCREEN, BlendMode.SHADER, BlendMode.SUBTRACT ] );
+			_map[ "blendMode" ] 		= new StringEnum( [ BlendMode.ADD, BlendMode.ALPHA, BlendMode.DARKEN, BlendMode.DIFFERENCE, BlendMode.ERASE, BlendMode.HARDLIGHT, BlendMode.INVERT, BlendMode.LAYER, BlendMode.LIGHTEN, BlendMode.MULTIPLY, BlendMode.NORMAL, BlendMode.OVERLAY, BlendMode.SCREEN, BlendMode.SUBTRACT ] );
 			_map[ "gridFitType" ] 		= new StringEnum( [ GridFitType.NONE, GridFitType.PIXEL, GridFitType.SUBPIXEL ] );
 			_map[ "type" ] 				= new StringEnum( [ TextFieldType.DYNAMIC, TextFieldType.INPUT ] );
 			
