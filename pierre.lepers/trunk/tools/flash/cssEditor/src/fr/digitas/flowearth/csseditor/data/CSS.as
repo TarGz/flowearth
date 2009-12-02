@@ -1,4 +1,5 @@
 package fr.digitas.flowearth.csseditor.data {
+	import fr.digitas.flowearth.csseditor.data.fonts.FontsData;	
 	import fr.digitas.flowearth.csseditor.App;
 	import fr.digitas.flowearth.csseditor.data.builder.CSSBuilder;
 	import fr.digitas.flowearth.csseditor.data.builder.CSSParser;
@@ -27,6 +28,8 @@ package fr.digitas.flowearth.csseditor.data {
 			
 			_datas = new CSSData( );
 			_datas.addEventListener( Event.CHANGE , onDatasChange );
+
+			_fonts = new FontsData( );
 //			_file = file;
 		}
 		
@@ -53,6 +56,7 @@ package fr.digitas.flowearth.csseditor.data {
 			dispatchEvent( new CSSEvent( CSSEvent.PATH_CHANGE, this ) );
 		}
 		
+
 		public function invalidate() : void {
 			_plainValue = null;
 			dispatchEvent( new CSSEvent( CSSEvent.INVALIDATE , this ) );
@@ -71,6 +75,10 @@ package fr.digitas.flowearth.csseditor.data {
 		
 		public function get datas() : CSSData {
 			return _datas;
+		}
+
+		public function get fontsDatas() : FontsData {
+			return _fonts;
 		}
 		
 		public function save() : void {
@@ -115,6 +123,8 @@ package fr.digitas.flowearth.csseditor.data {
 		private var _filepath : String;
 		
 		private var _datas : CSSData;
+
+		private var _fonts : FontsData;
 
 		private var _fileSystemSync : Boolean = false;
 

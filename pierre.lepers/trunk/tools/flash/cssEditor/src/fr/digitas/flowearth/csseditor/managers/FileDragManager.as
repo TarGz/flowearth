@@ -1,6 +1,7 @@
 package fr.digitas.flowearth.csseditor.managers {
 	import fr.digitas.flowearth.csseditor.data.CSS;
 	import fr.digitas.flowearth.csseditor.data.CSSProvider;
+	import fr.digitas.flowearth.csseditor.view.console.Console;
 	
 	import flash.desktop.ClipboardFormats;
 	import flash.desktop.NativeDragActions;
@@ -9,7 +10,8 @@ package fr.digitas.flowearth.csseditor.managers {
 	import flash.events.NativeDragEvent;
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
-	import flash.filesystem.FileStream;		
+	import flash.filesystem.FileStream;
+	import flash.utils.ByteArray;		
 
 	/**
 	 * @author Pierre Lepers
@@ -54,7 +56,14 @@ package fr.digitas.flowearth.csseditor.managers {
 		}
 
 		private function handleSwfFile(file : File) : void {
-			
+			var css : CSS = CSSProvider.instance.currentCss;
+			if( ! css ) {
+				// TODO handle no css open ,with message
+				return;
+			}
+			Console.log( "fr.digitas.flowearth.csseditor.managers.FileDragManager - handleSwfFile -- "+file.nativePath  );
+			css.fontsDatas.loadFonts( file.nativePath );
+				
 		}
 
 		private function handleCssFile( file : File ) : void {
@@ -75,6 +84,15 @@ package fr.digitas.flowearth.csseditor.managers {
 			var fileContent:String = fileStream.readUTFBytes(fileStream.bytesAvailable);
 			fileStream.close();
 			return fileContent;
+		} 
+
+		private function getFileBytes(_file : File) : ByteArray {
+			var fileStream:FileStream = new FileStream();
+			fileStream.open(_file, FileMode.READ);
+			var fileBytes : ByteArray = new ByteArray();
+			fileStream.readBytes( fileBytes, 0, fileStream.bytesAvailable);
+			fileStream.close();
+			return fileBytes;
 		} 
 		
 	}
