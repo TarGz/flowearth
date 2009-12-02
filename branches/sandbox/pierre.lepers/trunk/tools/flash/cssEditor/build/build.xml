@@ -39,19 +39,29 @@
           target: prepare                      
          - - - - - - - - - - - - - - - - - -->
 	<target name="prepare">
+		<exec executable="${digitas.amxmlc}">
+			<arg line="-debug=true" />
+			<arg line="-sp ${projectDir}/src" />
+			<arg line="-l ${digitas.dir.fmk}/bin/fp9/flowearth.swc" />
+			<arg line="-external-library-path+=${projectDir}/swc/assets.swc" />
+			<arg line="-o ${projectDir}/deploy/fontSandbox.swf" />
+			<arg line="-link-report ${projectDir}/deploy/fontSandbox_report.xml" />
+			<arg line="-- ${projectDir}/src/fr/digitas/flowearth/csseditor/fonts/FontSandbox.as" />
+		</exec>
+		
+		<copy file="${projectDir}/deploy/fontSandbox.swf" tofile="C:/Documents and Settings/pierre/Application Data/fr.digitas.flowearth.cssEditor/Local Store/fontSandbox.swf"></copy>
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
           target: compile                      
          - - - - - - - - - - - - - - - - - -->
 	<target name="compile">
-		<exec executable="${air_amxmlc}">
+		<exec executable="${digitas.amxmlc}">
 			<arg line="-debug=true" />
 			<arg line="-sp ${projectDir}/offline" />
 			<arg line="-sp ${projectDir}/src" />
 			<arg line="-l ${digitas.dir.fmk}/bin/fp9/flowearth.swc" />
 			<arg line="-l ${projectDir}/swc/assets.swc" />
-			<arg line="-l ${projectDir}/swc/colorPicker.swc" />
 			<arg line="-o ${projectDir}/deploy/cssEditor.swf" />
 			<arg line="-- ${projectDir}/src/fr/digitas/flowearth/csseditor/Main.as" />
 		</exec>
@@ -61,7 +71,7 @@
           target: package                      
          - - - - - - - - - - - - - - - - - -->
 	<target name="package" depends="certificate">
-		<exec executable="${air_adt}" dir="${projectDir}">
+		<exec executable="${digitas.adt}" dir="${projectDir}">
 			
 			<arg line="-package -storetype pkcs12 -keystore build/certificate.p12 -storepass 39#wnetx3tl install/CssEditor.air build/descriptor.xml deploy/cssEditor.swf" />
 			<!--
@@ -83,7 +93,7 @@
           target: certificate                      
          - - - - - - - - - - - - - - - - - -->
 	<target name="certificate">
-		<exec executable="${air_adt}" dir="${projectDir}">
+		<exec executable="${digitas.adt}" dir="${projectDir}">
 			<arg value="-certificate" />
 			
 			<arg value="-cn" />
@@ -99,7 +109,7 @@
           target: launch                      
          - - - - - - - - - - - - - - - - - -->
 	<target name="launch" depends="init,compile">
-		<exec executable="${air_adl}" dir="${projectDir}">
+		<exec executable="${digitas.adl}" dir="${projectDir}">
 			<arg line="build/descriptor.xml ${projectDir}/" />
 		</exec>
 	</target>
