@@ -1,4 +1,6 @@
 package fr.digitas.flowearth.csseditor.view {
+	import fr.digitas.flowearth.csseditor.view.console.Infos_FC;	
+	import fr.digitas.flowearth.csseditor.view.preview.Preview;	
 	import fr.digitas.flowearth.csseditor.view.console.Infos;	
 	import fr.digitas.flowearth.csseditor.view.console.Console;
 	import fr.digitas.flowearth.ui.canvas.Canvas;
@@ -51,13 +53,15 @@ package fr.digitas.flowearth.csseditor.view {
 			
 			
 			// CONSOLE
-			_bottomCanvas.addContent( new Console(), true );
+			_bottomCanvas.addContent(  new Preview( ), true );
 
 			// EDITOR CANVAS
 			_editorCanvas.addContent( new EditorCanvas(), true );
 
 			// EDITOR CANVAS
-			_rtoolsCanvas.addContent( new Infos( ) );
+			_rtoolsCanvas.addContent( new Infos_FC( ) );
+			_rtoolsCanvas.addContent( new Console(), true );
+//			_rtoolsCanvas.addContent( new Preview( ), true );
 		}
 
 		

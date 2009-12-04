@@ -1,16 +1,15 @@
 package fr.digitas.flowearth.csseditor.view.editor {
-	import fr.digitas.flowearth.ui.layout.ILayoutItem;	
-	import fr.digitas.flowearth.csseditor.view.editor.helper.HelperFactory;	
-	import fr.digitas.flowearth.csseditor.view.editor.helper.AbstractHelper;	
 	import fr.digitas.flowearth.core.IIterator;
 	import fr.digitas.flowearth.csseditor.data.StyleProperty;
 	import fr.digitas.flowearth.csseditor.data.completion.CSSCompletion;
 	import fr.digitas.flowearth.csseditor.data.errors.ValidityState;
 	import fr.digitas.flowearth.csseditor.event.PropertyEvent;
 	import fr.digitas.flowearth.csseditor.event.ValidityEvent;
-	import fr.digitas.flowearth.csseditor.view.console.Console;
+	import fr.digitas.flowearth.csseditor.view.editor.helper.AbstractHelper;
+	import fr.digitas.flowearth.csseditor.view.editor.helper.HelperFactory;
 	import fr.digitas.flowearth.ui.form.CompletionInputField;
 	import fr.digitas.flowearth.ui.form.InputField;
+	import fr.digitas.flowearth.ui.layout.ILayoutItem;
 	
 	import flash.display.MovieClip;
 	import flash.display.Sprite;

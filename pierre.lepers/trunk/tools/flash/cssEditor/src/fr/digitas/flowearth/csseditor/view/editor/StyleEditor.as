@@ -17,9 +17,11 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		
 		public function StyleEditor() {
 			addChildAt( bg = new StyleEditorBg_FC(), 0 );
-			addChild( _scroll = new Scroller_FC() );
+			_scroll = new Scroller_FC();
+			addChild( _scroll );
 			_scroll.addEventListener( Scroller.SCROLL_CHANGE , onScrollChange );
 			_initKeyManager();
+			
 			super( );
 		}
 		

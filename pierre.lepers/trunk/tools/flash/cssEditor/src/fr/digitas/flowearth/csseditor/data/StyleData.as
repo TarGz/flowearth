@@ -116,6 +116,11 @@ package fr.digitas.flowearth.csseditor.data {
 		}
 		
 		
+		public function focus() : void {
+			_cssData.currentStyle = this;
+		}
+
+		
 		private function _change() : void {
 			dispatchEvent( new Event( Event.CHANGE ) );
 		}

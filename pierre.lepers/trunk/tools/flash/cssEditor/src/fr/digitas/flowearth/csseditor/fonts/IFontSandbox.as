@@ -1,6 +1,5 @@
 package fr.digitas.flowearth.csseditor.fonts {
-	import fr.digitas.flowearth.text.fonts.IFontsProvider;
-	
+	import flash.display.Loader;
 	import flash.text.TextField;		
 
 	/**
@@ -10,7 +9,9 @@ package fr.digitas.flowearth.csseditor.fonts {
 	
 		function getStyledTf( styleName : Object, htmlText : String ) : TextField;
 		
-		function registerFonts( provider : IFontsProvider ) : void;
+		function loadFonts( fontFileUrl : String ) : Loader;
+
+		function registerFonts( provider : Object ) : void;
 	
 	}
 }
