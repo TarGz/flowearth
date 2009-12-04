@@ -1,8 +1,8 @@
 package fr.digitas.flowearth.csseditor.data {
-	import fr.digitas.flowearth.csseditor.data.fonts.FontsData;	
 	import fr.digitas.flowearth.csseditor.App;
 	import fr.digitas.flowearth.csseditor.data.builder.CSSBuilder;
 	import fr.digitas.flowearth.csseditor.data.builder.CSSParser;
+	import fr.digitas.flowearth.csseditor.data.fonts.FontsData;
 	import fr.digitas.flowearth.csseditor.event.CSSEvent;
 	import fr.digitas.flowearth.csseditor.io.IFileManager;
 	import fr.digitas.flowearth.csseditor.view.console.Console;
@@ -10,7 +10,7 @@ package fr.digitas.flowearth.csseditor.data {
 	
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
-	import flash.utils.ByteArray;	
+	import flash.utils.ByteArray;		
 
 	/**
 	 * @author Pierre Lepers
@@ -60,6 +60,9 @@ package fr.digitas.flowearth.csseditor.data {
 		public function invalidate() : void {
 			_plainValue = null;
 			dispatchEvent( new CSSEvent( CSSEvent.INVALIDATE , this ) );
+			
+			// TODO debug line
+			register();
 		}
 		
 		public function getPlainValue() : String {
@@ -70,7 +73,7 @@ package fr.digitas.flowearth.csseditor.data {
 
 		public function setPlainValue( val : String) : void {
 			CSSParser.parse( val, _datas );
-			
+			invalidate();
 		}
 		
 		public function get datas() : CSSData {
@@ -111,7 +114,7 @@ package fr.digitas.flowearth.csseditor.data {
 		
 		private function register() : void {
 			unregister( );
-			styleManager.addCss( getPlainValue() , _filepath , _filepath );
+			styleManager.addCss( getPlainValue( ) , _filepath , _filepath );
 		}
 
 		private function unregister() : void {

@@ -25,6 +25,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		
 		
 		internal function init( sData : StyleData ) : void {
+			_sData = sData;
 			_header.init( sData );
 			_list.init( sData );
 		}
@@ -45,6 +46,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			return 0;
 		}
 		
+
 		public function getHeight() : Number {
 			if( _collapse )
 				return Math.round( _header.height );
@@ -60,6 +62,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			_list.dispose( );
 			_header = null;
 			_list = null;
+			_sData = null;
 		}
 
 		public function get collapse() : Boolean {
@@ -113,6 +116,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 				_lockFocus = false;
 				return;
 			}
+			_sData.focus();
 			_list.quickAddItem = true;
 		}
 		
@@ -125,6 +129,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		private var _lockFocus : Boolean = false;
 		private var _header : StyleHeader;
 		private var _list : PropertyList;
+		private var _sData : StyleData;
 		
 		private var _render : Boolean = false;
 		

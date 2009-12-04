@@ -22,7 +22,7 @@ package fr.digitas.flowearth.csseditor.view.editor.helper {
 		private static function _getHelperMap() : Dictionary {
 			var res : Dictionary = new Dictionary();
 			
-//			res[ "fr.digitas.flowearth.csseditor.data.builder.types::StringEnum" ] 		= get_StringEnumHelper;
+			res[ "fr.digitas.flowearth.csseditor.data.builder.types::StringEnum" ] 		= get_StringEnumHelper;
 			res[ "fr.digitas.flowearth.csseditor.data.builder.types::CSSUint" ] 		= get_ColorHelper;
 			
 			res[ "fr.digitas.flowearth.csseditor.data.builder.types::PropertyType" ] 	= get_genericType;

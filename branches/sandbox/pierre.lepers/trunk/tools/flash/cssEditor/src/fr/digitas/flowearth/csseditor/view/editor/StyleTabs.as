@@ -89,7 +89,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			var tabData : CssTabData;
 			for (var i : int = 0; i < tabs.length; i++) {
 				tabData = tabs.getItemAt( i ) as CssTabData;
-				Console.log( tabData.label );
+//				Console.log( tabData.label );
 				if( tabData.css == css ) 
 					return tabData;
 				
