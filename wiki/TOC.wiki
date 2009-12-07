@@ -8,4 +8,5 @@
       * [http://code.google.com/p/flowearth/wiki/ConfUsingNamespace Using namespaces]
       * [http://code.google.com/p/flowearth/wiki/ConfExamples Examples]
     * [http://code.google.com/p/flowearth/wiki/BatcherUsage Batcher]
+      * [http://code.google.com/p/flowearth/wiki/BatcherStart How to start]
   * [http://code.google.com/p/flowearth/w/list all pages]
