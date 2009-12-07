@@ -10,6 +10,8 @@ Node is the base elements of a site-tree structure, he's defined by :
 
 =create structure using descriptor=
 
-==INodeDescriptor==
+See [http://code.google.com/p/flowearth/wiki/INodeDescriptor INodeDescriptor details] for more infos.
+
+=add node to NodeSystem=
 
  
