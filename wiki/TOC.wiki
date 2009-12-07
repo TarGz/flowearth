@@ -9,6 +9,7 @@
       * [http://code.google.com/p/flowearth/wiki/ConfExamples Examples]
     * [http://code.google.com/p/flowearth/wiki/BatcherUsage Batcher]
       * [http://code.google.com/p/flowearth/wiki/BatcherStart How to start]
+      * [http://code.google.com/p/flowearth/wiki/BatcherStructs Deep structures of batchers]
       * [http://code.google.com/p/flowearth/wiki/BatcherBuiltinitems Built in items]
         * [http://code.google.com/p/flowearth/wiki/BatchLoaderItem BatchLoaderItem]
         * [http://code.google.com/p/flowearth/wiki/BatchURLLoaderItem BatchURLLoaderItem]
