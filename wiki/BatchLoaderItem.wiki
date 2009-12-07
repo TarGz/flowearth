@@ -6,9 +6,11 @@ When loading is complete you can acces to this the loader object via BatchLoader
 
 You can listening for LoaderInfo events directly on BatchLoaderItem instance :
 
-* Event.INIT
-* Event.COMPLETE
-* ProgressEvent.PROGRESS
-* IOErrorEvent.IO_ERROR
-* SecurityErrorEvent.SECURITY_ERROR
-* Event.OPEN		
+ * Event.INIT
+ * Event.COMPLETE
+ * ProgressEvent.PROGRESS
+ * ErrorEvent.ERROR
+ * Event.OPEN
+
+
+ IOErrorEvent.IO_ERROR and SecurityErrorEvent.SECURITY_ERROR are listening on loaderInfo object and redispatched as a simple ErrorEvent.ERROR event.
