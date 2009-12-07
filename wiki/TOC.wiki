@@ -18,4 +18,6 @@
         * [http://code.google.com/p/flowearth/wiki/BatchURLLoaderItem BatchURLLoaderItem]
       * [http://code.google.com/p/flowearth/wiki/IBatchableImplement Implement IBatchable]
     * [http://code.google.com/p/flowearth/wiki/NodeUsage Node]
+      * [http://code.google.com/p/flowearth/wiki/NodeDetails the Node object]
+      * [http://code.google.com/p/flowearth/wiki/NodeEventsFlow Node events]
   * [http://code.google.com/p/flowearth/w/list all pages]
