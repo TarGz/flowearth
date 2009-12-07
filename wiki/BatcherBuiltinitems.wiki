@@ -1,0 +1,5 @@
+#List of implementation of IBatchable
+
+Here is the list of IBatchable's implementations you can find in Flowearth
+
+   * BatchLoaderItem
