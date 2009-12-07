@@ -6,7 +6,7 @@ A batcher object is itself IBatchable. This mean that you can add a batcher to t
 
 = Structure Example =
 
-Here is a simple example about different way to handle completion of items in batchers structure.
+Here is a simple example of a batchers structure.
 
 {{{
 
@@ -67,6 +67,8 @@ function createItem( url : String ) : BatchLoaderItem {
 
 == Handle completion ==
 
+Using the previous structure, here is different way to handle completion on batchers structure.
+
 {{{
 
 mainBatcher.addEventListener( Event.COMPLETE, overallComplete );
@@ -118,4 +120,38 @@ function onPictComplete ( e : BatchEvent ) : void {
 
 3. / 4. We add BatchEvent.ITEM_COMPLETE on each sub batcher to specificaly handle completion of thumbs and picts
 
+== Handle Errors ==
 
+Using the previous structure, here is different way to handle errors on batchers structure.
+
+{{{
+mainBatcher.addEventListener( Event.COMPLETE, onError );
+pictsBatcher.addEventListener( Event.COMPLETE, onPictError );
+
+function onError ( e : BatchErrorEvent ) : void {
+   trace( e.item );
+}
+
+function onPictError ( e : BatchErrorEvent ) : void {
+   trace( "error while loading picture" );
+   trace( e.item );
+}
+
+}}}
+
+Listening ErrorEvent.ERROR on the root batcher let you handle all errors happening in the structure.
+
+As well as ITEM_COMPLETE and all bubbling events, you can specifically listen Error on sub batchers.
+
+== Handle Progression ==
+Using the previous structure, here is different way to handle progression on batchers structure.
+
+{{{
+
+mainBatcher.addEventListener( ProgressEvent.PROGRESS, onProgress );
+
+function onProgress ( e : ProgressEvent ) : void {
+   
+}
+
+}}}
