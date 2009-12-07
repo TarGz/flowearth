@@ -1,25 +1,20 @@
   * [http://code.google.com/p/flowearth/wiki/Wikihome Home]
   * [http://code.google.com/p/flowearth/wiki/Introduction Introduction]
   * [http://code.google.com/p/flowearth/wiki/Documentation Documentation]
-
     * [http://code.google.com/p/flowearth/wiki/ConfigurationUsage Configuration]
       * [http://code.google.com/p/flowearth/wiki/ConfBasics Properties acces]
       * [http://code.google.com/p/flowearth/wiki/ConfFileFormat The conf file format]
       * [http://code.google.com/p/flowearth/wiki/ConfUsingDependancies Using dependancies]
       * [http://code.google.com/p/flowearth/wiki/ConfUsingNamespace Using namespaces]
       * [http://code.google.com/p/flowearth/wiki/ConfExamples Examples]
-
     * [http://code.google.com/p/flowearth/wiki/BatcherUsage Batcher]
       * [http://code.google.com/p/flowearth/wiki/BatcherStart How to start]
       * [http://code.google.com/p/flowearth/wiki/BatcherStructs Deep structures of batchers]
         * [http://code.google.com/p/flowearth/wiki/BatcherStructs#Handle_completion Handle completion]
         * [http://code.google.com/p/flowearth/wiki/BatcherStructs#Handle_errors Handle errors]        
         * [http://code.google.com/p/flowearth/wiki/BatcherStructs#Handle_progression Handle progression]
-
       * [http://code.google.com/p/flowearth/wiki/BatcherBuiltinitems Built in items]
         * [http://code.google.com/p/flowearth/wiki/BatchLoaderItem BatchLoaderItem]
         * [http://code.google.com/p/flowearth/wiki/BatchURLLoaderItem BatchURLLoaderItem]
-
       * [http://code.google.com/p/flowearth/wiki/IBatchableImplement Implement IBatchable]
-
   * [http://code.google.com/p/flowearth/w/list all pages]
