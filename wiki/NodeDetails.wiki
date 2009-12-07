@@ -1,0 +1,15 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Node is the base elements of a site-tree structure, he's defined by :
+ * an id
+ * a parent node
+ * a collection of childs nodes
+ * an activation state (boolean)
+
+=create structure using descriptor=
+
+==INodeDescriptor==
+
+ 
