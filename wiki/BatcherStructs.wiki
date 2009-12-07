@@ -1,0 +1,6 @@
+#How to work with Batchers structures
+
+= Introduction =
+
+A batcher object is itself IBatchable. This mean that you can add a batcher to the queue of another parent batcher (and so on).
+
