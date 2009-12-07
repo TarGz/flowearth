@@ -6,7 +6,7 @@
   Exectute queue of tasks with an unlimited level of recursivity [BatcherUsage usage]
  *=== Style ===
   Externalise all font styles in CSS files + use external font files
- *=== Tree ===
+ *=== Node ===
   Manage navigation, Swfadress and SEO
 
 Each feature can be used as a stand alone or with the full package
