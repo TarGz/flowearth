@@ -1,13 +1,7 @@
-#summary One-sentence summary of this page.
+#introduction to node's structures
 
 = Introduction =
 
-Add your content here.
+Node object is an element of a tree structure used to represent a website site-tree.
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+The node structure is design to let you synchronize your views depending on a unique path, cibling node in the structure.
