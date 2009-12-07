@@ -2,4 +2,92 @@
 
 = Introduction =
 
-You can implement your own IBatchable
+If you implement your own IBatchable classes, you must respect following rules in order to avoid freeze of batcher execution.
+
+=rules=
+
+==COMPLETE, ERROR or DISPOSED==
+
+ * Event.COMPLETE
+ * ErrorEvent.ERROR
+ * BatchEvent.DISPOSED
+
+All of these events are listen by the parent batcher and cause deletion of the IBatchable form the batcher queue. (and execution of the next one).
+
+
+
+In all cases, your implementation must dispatch one of these events.
+
+==execute()==
+This method is called by Batcher to start execution of this item. Event.COMPLETE or ErrorEvent.ERROR must happen after calling of this method in order to be listen by Batcher.
+
+
+==dispose()==
+This method is called by Batcher when the batcher itself is disposed. This method should stop execution of the item, free memory etc.
+Note that if you manually called this method you should dispatch BatchEvent.DISPOSED in the implementation to notify parent batcher that this item is not valid anymore and must be removed from the queue.
+
+==PROGRESS and STATUS==
+
+Dispatch these event is optional
+
+ProgressEvent.PROGRESS let user handle overall progression of items of a batcher.
+StatusEvent.STATUS bubble in batcher structure and let user grab all status on the root batcher of a structure.
+
+=Example : asynchronous ShaderJob=
+
+
+{{{
+
+public class BatchabelShaderJob extends EventDispatcher implements IBatchable {
+	
+	public function get job() : ShaderJob {
+		return _job;
+	}
+	
+	public function BatchabelShaderJob( shader : Shader = null, target:Object = null, width:int = 0, height:int = 0 ) {
+		super( );
+		_job = new ShaderJob( shader , target , width , height );
+		_job.addEventListener( ShaderEvent.COMPLETE , onShaderComplete );
+	}
+
+	public function execute() : void {
+		
+		try {
+			_job.start( );
+			_pTimer = new Timer( 250 );
+			_pTimer.addEventListener( TimerEvent.TIMER , onProgresstick );
+			_pTimer.start();
+		} catch ( e : Error ) {
+			dispatchEvent( new ErrorEvent( ErrorEvent.ERROR, false, false , e.message ) );
+		}
+	}
+	
+	public function dispose() : void {
+		_pTimer.stop();
+		_pTimer.removeEventListener( TimerEvent.TIMER , onProgresstick );
+		_pTimer = null;
+		
+		_job.cancel();
+		_job = null;
+	}
+	
+	public function get weight() : Number {
+		return null;
+	}
+	
+	private function onShaderComplete(event : ShaderEvent) : void {
+		dispatchEvent( new Event( Event.COMPLETE ) );
+	}
+	
+	
+	private function onProgresstick(event : TimerEvent) : void {
+		if( _job.progress != undefined )
+		dispatchEvent( new ProgressEvent( ProgressEvent.PROGRESS, false, false, _job.progress * 10000, 10000 ) );
+	}
+	
+	private var _job : ShaderJob;
+	
+	private var _pTimer : Timer;
+}
+
+}}}
