@@ -2,12 +2,40 @@
 
 = Introduction =
 
-Add your content here.
+Here is some simple usages examples of Bacther
 
+== Load some pictures ==
 
-= Details =
+{{{
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+var batcher : Batcher;
+
+buildBatcher();
+
+function buildBatcher() : void {
+    batcher = new Batcher();
+    
+    loadPicture( baseUrl+"/pict_01.jpg" );
+    loadPicture( baseUrl+"/pict_02.jpg" );
+    loadPicture( baseUrl+"/pict_03.jpg" );
+    
+    batcher.addEventListener( BatchEvent.ITEM_COMPLETE , onItemComplete );
+}
+
+function loadPicture( url : String ) : void {        
+    var request : URLRequest = new URLRequest( url );
+    var item : BatchLoaderItem = new BatchLoaderItem( request );
+    batcher.addItem( item );
+}
+
+private function onItemComplete(event : BatchEvent) : void {
+    var item : BatchLoaderItem = event.item as BatchLoaderItem;
+    var loader : Loader = item.loader;
+    
+    addChild( loader );
+}
+}}}
+
+== Different way to handle completion==
+
+== Handle errors ==
