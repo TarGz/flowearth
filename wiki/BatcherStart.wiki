@@ -13,14 +13,17 @@ var batcher : Batcher;
 buildBatcher();
 
 function buildBatcher() : void {
+    // 1
     batcher = new Batcher();
+    // 2
+    batcher.addEventListener( BatchEvent.ITEM_COMPLETE , onItemComplete );
+    // 3
     batcher.start();
-
+    // 4
     loadPicture( "picts/pict_01.jpg" );
     loadPicture( "picts/pict_02.jpg" );
     loadPicture( "picts/pict_03.jpg" );
     
-    batcher.addEventListener( BatchEvent.ITEM_COMPLETE , onItemComplete );
 }
 
 function loadPicture( url : String ) : void {        
@@ -38,8 +41,19 @@ private function onItemComplete(event : BatchEvent) : void {
 
 }}}
 
-In this example, we create a new instance of batcher, then add 3 BatchLoaderItem instance into it.
-You can call _start_ method on batcher before add any item. The first item added will start automatically. (Note that if call _start_ method on an emmpty batcher it will immediately dispatch a Event.COMPLETE event.)
+In this example, 
+
+1 - we create a new instance of batcher, 
+
+2 - then add listener for BatchEvent.ITEM_COMPLETE event to handle each item completion. The BatchEvent provide a reference to the IBatchble which has complete.
+
+Note that you could also listen Event.COMPLETE event on each item.
+
+3 - You can call _start_ method on batcher before add any item. The first item added will start automatically. (Note that if call _start_ method on an emmpty batcher it will immediately dispatch a Event.COMPLETE event.)
+
+4 - We add 3 BatchLoaderItem instance into it. They will immediatelly start to be sequentially executed.
+
+
 
 == Different way to handle completion==
 
