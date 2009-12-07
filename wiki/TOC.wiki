@@ -20,4 +20,5 @@
     * [http://code.google.com/p/flowearth/wiki/NodeUsage Node]
       * [http://code.google.com/p/flowearth/wiki/NodeDetails the Node object]
       * [http://code.google.com/p/flowearth/wiki/NodeEventsFlow Node events]
+      * [http://code.google.com/p/flowearth/wiki/INodeDescriptor INodeDescriptor details]
   * [http://code.google.com/p/flowearth/w/list all pages]
