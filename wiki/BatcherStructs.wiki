@@ -149,9 +149,27 @@ Using the previous structure, here is different way to handle progression on bat
 {{{
 
 mainBatcher.addEventListener( ProgressEvent.PROGRESS, onProgress );
+pictsBatcher.addEventListener( ProgressEvent.PROGRESS, onPictsProgress );
 
 function onProgress ( e : ProgressEvent ) : void {
-   
+   trace( "overall progression : "+( e.bytesLoaded/e.bytesTotal ) );
 }
 
+function onPictsProgress ( e : ProgressEvent ) : void {
+   trace( "picts progression : "+( e.bytesLoaded/e.bytesTotal ) );
+}
+
+
 }}}
+
+When any item dispatch a ProgressEvent.PROGRESS, the parent batcher compute is own progression an redispatch an event (and so on). Note that the leaf item must dispatch the first ProgressEvent to initiate the progress bubbling. BatchLoaderItem and BatchURLLoaderItem dispatch this event.
+
+=== weight property ===
+The progress value of a batcher is based on the sum of all added IBatchable's weigth.
+Built-in items (BatchLoaderItem , BatchURLLoaderItem) have a weight set to 1 by default.
+
+Note that _bytesLoaded_ property is an abstract value and do noy represent real bytes. _bytesTotal_ is always equal to 10000.
+
+== Handle status ==
+
+//todo
