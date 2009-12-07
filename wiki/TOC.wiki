@@ -17,5 +17,5 @@
         * [http://code.google.com/p/flowearth/wiki/BatchLoaderItem BatchLoaderItem]
         * [http://code.google.com/p/flowearth/wiki/BatchURLLoaderItem BatchURLLoaderItem]
       * [http://code.google.com/p/flowearth/wiki/IBatchableImplement Implement IBatchable]
-    * [http://code.google.com/p/flowearth/wiki/TreeUsage Tree]
+    * [http://code.google.com/p/flowearth/wiki/NodeUsage Node]
   * [http://code.google.com/p/flowearth/w/list all pages]
