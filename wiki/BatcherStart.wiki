@@ -14,10 +14,11 @@ buildBatcher();
 
 function buildBatcher() : void {
     batcher = new Batcher();
-    
-    loadPicture( baseUrl+"/pict_01.jpg" );
-    loadPicture( baseUrl+"/pict_02.jpg" );
-    loadPicture( baseUrl+"/pict_03.jpg" );
+    batcher.start();
+
+    loadPicture( "picts/pict_01.jpg" );
+    loadPicture( "picts/pict_02.jpg" );
+    loadPicture( "picts/pict_03.jpg" );
     
     batcher.addEventListener( BatchEvent.ITEM_COMPLETE , onItemComplete );
 }
@@ -34,7 +35,11 @@ private function onItemComplete(event : BatchEvent) : void {
     
     addChild( loader );
 }
+
 }}}
+
+In this example, we create a new instance of batcher, then add 3 BatchLoaderItem instance into it.
+You can call _start_ method on batcher before add any item. The first item added will start automatically. (Note that if call _start_ method on an emmpty batcher it will immediately dispatch a Event.COMPLETE event.)
 
 == Different way to handle completion==
 
