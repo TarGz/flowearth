@@ -4,3 +4,118 @@
 
 A batcher object is itself IBatchable. This mean that you can add a batcher to the queue of another parent batcher (and so on).
 
+= Structure Example =
+
+Here is a simple example about different way to handle completion of items in batchers structure.
+
+{{{
+
+var mainBatcher   : Batcher;
+var thumbsBatcher : Batcher;
+var pictsBatcher  : Batcher;
+
+buildStruct();
+
+addLoadings();
+
+
+function buildStruct() : void {
+
+   mainBatcher    = new Batcher();
+   thumbsBatcher  = new Batcher();
+   pictsBatcher   = new Batcher();
+
+   mainBatcher.addItem( thumbsBatcher );
+   mainBatcher.addItem( pictsBatcher );
+
+}
+
+function addLoadings() : void {
+
+   thumbsBatcher.addItem( 
+                          createItem( "picts/thumb_01.jpg" )
+                         );
+   thumbsBatcher.addItem( 
+                          createItem( "picts/thumb_02.jpg" )
+                         );
+   thumbsBatcher.addItem( 
+                          createItem( "picts/thumb_03.jpg" )
+                         );
+
+   pictsBatcher.addItem( 
+                          createItem( "picts/pict_01.jpg" )
+                         );
+   pictsBatcher.addItem( 
+                          createItem( "picts/pict_02.jpg" )
+                         );
+   pictsBatcher.addItem( 
+                          createItem( "picts/pict_03.jpg" )
+                         );
+
+}
+
+
+
+
+function createItem( url : String ) : BatchLoaderItem {        
+    var request : URLRequest = new URLRequest( url );
+    return new BatchLoaderItem( request );
+}
+
+}}}
+
+
+== Handle completion ==
+
+{{{
+
+mainBatcher.addEventListener( Event.COMPLETE, overallComplete );
+mainBatcher.addEventListener( BatchEvent.ITEM_COMPLETE, onItemComplete );
+
+thumbsBatcher.addEventListener( BatchEvent.ITEM_COMPLETE, onThumbComplete );
+pictsBatcher.addEventListener( BatchEvent.ITEM_COMPLETE, onPictComplete );
+
+mainBatcher.start();
+
+function overallComplete ( e : Event ) : void {
+   // 1
+   trace( "All medias are loaded" );
+}
+
+function onItemComplete ( e : BatchEvent ) : void {
+   // 2
+   trace( e.item );
+}
+
+function onThumbComplete ( e : BatchEvent ) : void {
+   // 3
+   var item : BatchLoaderItem = event.item as BatchLoaderItem;
+   addChild( item.loader );
+}
+
+function onPictComplete ( e : BatchEvent ) : void {
+   // 4
+   var item : BatchLoaderItem = event.item as BatchLoaderItem;
+   addChild( item.loader );
+}
+
+}}}
+
+1. Handle overall completion.
+   Listen Event.COMPLETE event on the root batcher let you handle the overall completion of all items.
+
+2. Handle all descendant items completion
+   Each time an item complete in a batchers structure, a BatchEvent.ITEM_COMPLETE bubbles in the parents batchers.
+   The _onItemComplete_ method will trace :
+    * [object BatchLoaderItem] //picts/thumb_01.jpg
+    * [object BatchLoaderItem] //picts/thumb_02.jpg
+    * [object BatchLoaderItem] //picts/thumb_03.jpg
+    * [object Batcher] //thumbBatcher    
+    * [object BatchLoaderItem] //picts/pict_01.jpg
+    * [object BatchLoaderItem] //picts/pict_02.jpg
+    * [object BatchLoaderItem] //picts/pict_03.jpg
+    * [object Batcher] //pictBatcher
+
+3. / 4. We add BatchEvent.ITEM_COMPLETE on each sub batcher to specificaly handle completion of thumbs and picts
+
+
