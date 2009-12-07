@@ -1,0 +1,14 @@
+#BatchLoaderItem documentation
+
+A BatchLoaderItem instance internally store a native Loader object to load medias.
+
+When loading is complete you can acces to this the loader object via BatchLoaderItem.loader property.
+
+You can listening for LoaderInfo events directly on BatchLoaderItem instance :
+
+* Event.INIT
+* Event.COMPLETE
+* ProgressEvent.PROGRESS
+* IOErrorEvent.IO_ERROR
+* SecurityErrorEvent.SECURITY_ERROR
+* Event.OPEN		
