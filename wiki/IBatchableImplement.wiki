@@ -63,9 +63,7 @@ public class BatchabelShaderJob extends EventDispatcher implements IBatchable {
 	}
 	
 	public function dispose() : void {
-		_pTimer.stop();
-		_pTimer.removeEventListener( TimerEvent.TIMER , onProgresstick );
-		_pTimer = null;
+		_stopTimer();
 		
 		_job.cancel();
 		_job = null;
@@ -76,9 +74,15 @@ public class BatchabelShaderJob extends EventDispatcher implements IBatchable {
 	}
 	
 	private function onShaderComplete(event : ShaderEvent) : void {
+		_stopTimer();
 		dispatchEvent( new Event( Event.COMPLETE ) );
 	}
 	
+	private function _stopTimer() : void {
+		_pTimer.stop();
+		_pTimer.removeEventListener( TimerEvent.TIMER , onProgresstick );
+		_pTimer = null;
+	}
 	
 	private function onProgresstick(event : TimerEvent) : void {
 		if( _job.progress != undefined )
@@ -89,5 +93,4 @@ public class BatchabelShaderJob extends EventDispatcher implements IBatchable {
 	
 	private var _pTimer : Timer;
 }
-
 }}}
