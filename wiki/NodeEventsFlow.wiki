@@ -1,4 +1,4 @@
-#How to handle changes in a nodes structure 
+#summary How to handle changes in a nodes structure
 
 = Introduction =
 This chapter explain different events dispatch by a nodes structure
