@@ -73,6 +73,7 @@ package fr.digitas.flowearth.csseditor.view.preview {
 			var tf : TextField = _css.fontsDatas.getSandboxedTf( );
 			if( !tf ) { 
 				tf = new TextField();
+				tf.text = "not ready";
 			}
 			trace( "fr.digitas.flowearth.csseditor.view.preview.Preview - onCssChange -- ",tf );
 			renderside.tf = tf;

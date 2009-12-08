@@ -27,6 +27,7 @@
 		public function addContent( content : DisplayObject, percented : Boolean = false ) : void {
 			_contentLayout.addChild( content as DisplayObject );
 			if( percented ) _percentedContent = content;
+			_contentLayout.update();
 		}
 
 

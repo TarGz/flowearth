@@ -15,6 +15,9 @@
 	<property name="FMK_HOME" location="${basedir}" />
 	<loadproperties srcfile="${basedir}/build.config" />
 	<loadproperties srcfile="${basedir}/.properties" />
+	
+	<taskdef resource="digitasAnt.tasks"
+		         classpath="${FLOWEARTH_HOME}/tools/ant/tasks/bin/digitasAntTasks.jar" />
 
 	<!-- ================================= 
           target: main              
@@ -23,6 +26,7 @@
 		<antcall target="clean" />
 		<antcall target="prepare" />
 		<antcall target="compile" />
+		<antcall target="compile_online" />
 		<antcall target="package" />
 	</target>
 
@@ -40,16 +44,55 @@
          - - - - - - - - - - - - - - - - - -->
 	<target name="prepare">
 		<exec executable="${digitas.amxmlc}">
-			<arg line="-debug=true" />
+			<arg line="-debug=${DEBUG}" />
+			<arg line='-define+=CONFIG::sandboxnum,"0"' />
+			<arg line="-use-network=false" />
 			<arg line="-sp ${projectDir}/src" />
 			<arg line="-l ${digitas.dir.fmk}/bin/fp9/flowearth.swc" />
-			<arg line="-external-library-path+=${projectDir}/swc/assets.swc" />
-			<arg line="-o ${projectDir}/deploy/fontSandbox.swf" />
+			<arg line="-o ${projectDir}/deploy/fontSandbox0.swf" />
+			<arg line="-link-report ${projectDir}/deploy/fontSandbox_report.xml" />
+			<arg line="-- ${projectDir}/src/fr/digitas/flowearth/csseditor/fonts/FontSandbox.as" />
+		</exec>
+		<exec executable="${digitas.amxmlc}">
+			<arg line="-debug=${DEBUG}" />
+			<arg line='-define+=CONFIG::sandboxnum,"1"' />
+			<arg line="-use-network=false" />
+			<arg line="-sp ${projectDir}/src" />
+			<arg line="-l ${digitas.dir.fmk}/bin/fp9/flowearth.swc" />
+			<arg line="-o ${projectDir}/deploy/fontSandbox1.swf" />
+			<arg line="-link-report ${projectDir}/deploy/fontSandbox_report.xml" />
+			<arg line="-- ${projectDir}/src/fr/digitas/flowearth/csseditor/fonts/FontSandbox.as" />
+		</exec>
+		<exec executable="${digitas.amxmlc}">
+			<arg line="-debug=${DEBUG}" />
+			<arg line='-define+=CONFIG::sandboxnum,"2"' />
+			<arg line="-use-network=false" />
+			<arg line="-sp ${projectDir}/src" />
+			<arg line="-l ${digitas.dir.fmk}/bin/fp9/flowearth.swc" />
+			<arg line="-o ${projectDir}/deploy/fontSandbox2.swf" />
+			<arg line="-link-report ${projectDir}/deploy/fontSandbox_report.xml" />
+			<arg line="-- ${projectDir}/src/fr/digitas/flowearth/csseditor/fonts/FontSandbox.as" />
+		</exec>
+		<exec executable="${digitas.amxmlc}">
+			<arg line="-debug=${DEBUG}" />
+			<arg line='-define+=CONFIG::sandboxnum,"3"' />
+			<arg line="-use-network=false" />
+			<arg line="-sp ${projectDir}/src" />
+			<arg line="-l ${digitas.dir.fmk}/bin/fp9/flowearth.swc" />
+			<arg line="-o ${projectDir}/deploy/fontSandbox3.swf" />
 			<arg line="-link-report ${projectDir}/deploy/fontSandbox_report.xml" />
 			<arg line="-- ${projectDir}/src/fr/digitas/flowearth/csseditor/fonts/FontSandbox.as" />
 		</exec>
 		
-		<copy file="${projectDir}/deploy/fontSandbox.swf" tofile="C:/Documents and Settings/pierre/Application Data/fr.digitas.flowearth.cssEditor/Local Store/fontSandbox.swf"></copy>
+		<copy file="${projectDir}/deploy/fontSandbox0.swf" tofile="${projectDir}/deploy/fontSandbox0.swf"></copy>
+		<copy file="${projectDir}/deploy/fontSandbox1.swf" tofile="${projectDir}/deploy/fontSandbox1.swf"></copy>
+		<copy file="${projectDir}/deploy/fontSandbox2.swf" tofile="${projectDir}/deploy/fontSandbox2.swf"></copy>
+		<copy file="${projectDir}/deploy/fontSandbox3.swf" tofile="${projectDir}/deploy/fontSandbox3.swf"></copy>
+		
+		<copy file="${projectDir}/deploy/fontSandbox0.swf" tofile="D:/Documents and Settings/lepersp/Application Data/fr.digitas.flowearth.cssEditor/Local Store/deploy/fontSandbox0.swf"></copy>
+		<copy file="${projectDir}/deploy/fontSandbox1.swf" tofile="D:/Documents and Settings/lepersp/Application Data/fr.digitas.flowearth.cssEditor/Local Store/deploy/fontSandbox1.swf"></copy>
+		<copy file="${projectDir}/deploy/fontSandbox2.swf" tofile="D:/Documents and Settings/lepersp/Application Data/fr.digitas.flowearth.cssEditor/Local Store/deploy/fontSandbox2.swf"></copy>
+		<copy file="${projectDir}/deploy/fontSandbox3.swf" tofile="D:/Documents and Settings/lepersp/Application Data/fr.digitas.flowearth.cssEditor/Local Store/deploy/fontSandbox3.swf"></copy>
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
@@ -57,7 +100,8 @@
          - - - - - - - - - - - - - - - - - -->
 	<target name="compile">
 		<exec executable="${digitas.amxmlc}">
-			<arg line="-debug=true" />
+			<arg line="-debug=${DEBUG}" />
+			<arg line="-use-network=false" />
 			<arg line="-sp ${projectDir}/offline" />
 			<arg line="-sp ${projectDir}/src" />
 			<arg line="-l ${digitas.dir.fmk}/bin/fp9/flowearth.swc" />
@@ -68,13 +112,29 @@
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
+          target: compile_online                    
+         - - - - - - - - - - - - - - - - - -->
+	<target name="compile_online" depends="init">
+		<exec executable="${digitas.mxmlc}">
+			<arg line="-debug=${DEBUG}" />
+			<arg line="-use-network=false" />
+			<arg line="-sp ${projectDir}/online" />
+			<arg line="-sp ${projectDir}/src" />
+			<arg line="-l ${digitas.dir.fmk}/bin/fp9/flowearth.swc" />
+			<arg line="-l ${projectDir}/swc/assets.swc" />
+			<arg line="-o ${projectDir}/deploy/cssEditor_online.swf" />
+			<arg line="-- ${projectDir}/src/fr/digitas/flowearth/csseditor/Main.as" />
+		</exec>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
           target: package                      
          - - - - - - - - - - - - - - - - - -->
 	<target name="package" depends="certificate">
 		<exec executable="${digitas.adt}" dir="${projectDir}">
 			
-			<arg line="-package -storetype pkcs12 -keystore build/certificate.p12 -storepass 39#wnetx3tl install/CssEditor.air build/descriptor.xml deploy/cssEditor.swf" />
-			<!--
+			<!--arg line="-package -storetype pkcs12 -keystore build/certificate.p12 -storepass 39#wnetx3tl install/CssEditor.air build/descriptor.xml deploy/cssEditor.swf" /-->
+			
 			<arg value="-package" />
 			
 			<arg value="-storetype" />
@@ -82,10 +142,15 @@
 			
 			<arg value="-keystore" />
 			<arg value="build/certificate.p12" />
+
+			<arg value="-storepass" />
+			<arg value="39#wnetx3tl" />
 			
-			<arg value="CssEditor.air" />
+			<arg value="install/CssEditor.air" />
 			<arg value="build/descriptor.xml" />
-			-->
+
+			<arg value="deploy" />
+			
 		</exec>
 	</target>
 
@@ -112,8 +177,53 @@
 		<exec executable="${digitas.adl}" dir="${projectDir}">
 			<arg line="build/descriptor.xml ${projectDir}/" />
 		</exec>
+		<patterns>
+							<p re="[\w\d-/]+/qashqai/[\w\d-/]+" value="QASHQAI" />
+							<p re="[\w\d-/]+/qashqai-plus-2/[\w\d-/]+" value="QASHQAI+2" />
+							<p re="[\w\d-/]+/pixo/[\w\d-/]+" value="pixo" />
+							<p re="[\w\d-/]+/murano/[\w\d-/]+" value="murano" />
+							<p re="[\w\d-/]+/navara/[\w\d-/]+" value="navara" />
+						</patterns>
 	</target>
 
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: fontTest                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="fonttest" depends="init">
+    	<createFont classname="cssEditorFontTest_1"
+		            swf="${projectDir}/test/fonts/fonts_1.swf"
+		            compiler="${mxmlc}"
+		            keepgenerated="true">
+
+			<font fontfamily="FontA"
+			      fontweight="normal"
+			      sourcefile="${projectDir}/test/fonts/GillSans-Light.otf"
+			      unicoderange="U+0020-U+00ff" />
+
+			
+
+
+			<arg line="-use-network=false" />
+
+		</createFont>
+
+    	<createFont classname="cssEditorFontTest_2"
+		            swf="${projectDir}/test/fonts/fonts_2.swf"
+		            compiler="${mxmlc}"
+		            keepgenerated="true">
+
+			<font fontfamily="FontB"
+			      fontweight="normal"
+			      sourcefile="${projectDir}/test/fonts/HelveticaNeueLTStd-XBlkCn.otf"
+			      unicoderange="U+0020-U+00FF" />
+
+			
+
+
+			<arg line="-use-network=false" />
+
+		</createFont>
+    </target>
 
 
 	<!-- - - - - - - - - - - - - - - - - - 
@@ -123,6 +233,7 @@
 		<loadproperties srcfile="${digitas.dir.antTasks}/build/build.properties" />
 		<property name="projectDir" value="${basedir}/tools/flash/cssEditor" />
 		<property name="APP_NAME" value="CssEditor"/> 
+		<property name="DEBUG" value="true"/> 
 
 	</target>
 

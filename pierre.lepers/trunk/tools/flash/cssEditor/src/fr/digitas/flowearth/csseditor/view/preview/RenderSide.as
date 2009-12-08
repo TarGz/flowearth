@@ -1,4 +1,8 @@
 package fr.digitas.flowearth.csseditor.view.preview {
+	import fr.digitas.flowearth.csseditor.view.console.Console;	
+	
+	import flash.text.Font;	
+	
 	import fr.digitas.flowearth.text.styles.styleManager;
 	
 	import flash.display.Shape;
@@ -43,10 +47,17 @@ package fr.digitas.flowearth.csseditor.view.preview {
 			
 			if( !_styleName ) return ;
 			
-			
 			styleManager.apply( _tf, _styleName , _text );
 			
 			_valid = true;
+			
+			var list:Array = Font.enumerateFonts();
+			var n:int = list.length;
+			Console.log( "PREVIEW APPLY" );
+			for (var i:Number = 0; i < n; i++) {
+				Console.log( "-----------> "+(list[i] as Font).fontName );
+			}
+			Console.log( "PREVIEW APPLY" );
 		}
 
 		

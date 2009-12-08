@@ -1,0 +1,1199 @@
+.pds_carbuilder_option_tab_item_price {
+	mouseWheelEnabled: false;
+	color: #0;
+	multiline: true;
+	font-size: 14;
+	embedFonts: true;
+	autoSize: right;
+	leading: 0;
+	font-weight: bold;
+	gridFitType: pixel;
+	text-align: right;
+	selectable: false;
+	antiAliasType: advanced;
+	font-family: arial;
+}
+
+.pds_carbuilder_colour_sel_title {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: false;
+	font-size: 8;
+	color: #1f1f1f;
+	embedFonts: true;
+	multiline: false;
+	selectable: false;
+	antiAliasType: advanced;
+	font-family: NissanAGExtdMedium;
+}
+
+.pds_carbuilder_stepnav_linkleft {
+	autoSize: left;
+	antiAliasType: advanced;
+	color: #666666;
+	embedFonts: true;
+	mouseWheelEnabled: false;
+	selectable: false;
+	font-size: 10;
+	font-family: NissanAGMedium;
+}
+
+.pds_carbuilder_steptitle {
+	mouseWheelEnabled: false;
+	wordWrap: false;
+	font-size: 13;
+	color: #0;
+	autoSize : left;
+	leading: -5;
+	selectable: false;
+	antiAliasType: advanced;
+	font-family: NissanAGExtdMedium;
+}
+
+.pds_carbuilder_rangeitem_price {
+	multiline: true;
+	font-size: 10;
+	antiAliasType: advanced;
+	wordWrap: true;
+	selectable: false;
+	gridFitType: subpixel;
+	width: 150;
+	autoSize: left;
+	mouseWheelEnabled: false;
+	font-family: arial;
+	color: #505050;
+	leading: 0;
+	embedFonts: true;
+}
+
+.pds_carbuilder_services_title {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: false;
+	font-size: 10;
+	color: #c70f21;
+	embedFonts: true;
+	multiline: false;
+	selectable: false;
+	gridFitType: subpixel;
+	font-family: NissanAGExtdMedium;
+	antiAliasType: advanced;
+}
+
+.pds_carbuilder_disclaimerstyle {
+	mouseWheelEnabled: false;
+	color: #5b5b5b;
+	thickness: -20;
+	wordWrap: true;
+	leading: 0;
+	gridFitType: pixel;
+	embedFonts: true;
+	autoSize: left;
+	multiline: true;
+	antiAliasType: advanced;
+	font-size: 7;
+	selectable: false;
+	sharpness: -100;
+	font-family: NissanAGBold;
+}
+
+.pds_carbuilder_hometitle {
+	autoSize: left;
+	multiline: true;
+	font-size: 18;
+	color: #0;
+	font-family: NissanAGExtdMedium;
+	mouseWheelEnabled: false;
+	selectable: false;
+	antiAliasType: normal;
+	width: 360;
+	wordWrap: true;
+}
+
+.pds_carbuilder_engines_item {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	leading: -1;
+	font-family: arial;
+	font-size: 10;
+	multiline: true;
+	selectable: false;
+	color: #8e8f91;
+	embedFonts: true;
+	scrollable: false;
+	wordWrap: true;
+	antiAliasType: advanced;
+}
+
+.pds_carbuilder_option_tab_item {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: true;
+	font-size: 11;
+	color: #202020;
+	embedFonts: true;
+	multiline: true;
+	selectable: false;
+	antiAliasType: advanced;
+	font-family: arial;
+}
+
+.pds_carbuilder_option_tab_typelabel {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: true;
+	font-size: 14;
+	color: #474747;
+	embedFonts: true;
+	multiline: true;
+	selectable: false;
+	antiAliasType: normal;
+	font-family: arial;
+}
+
+.pds_carbuilder_engines_mprice {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: true;
+	font-size: 8;
+	color: #8e8f91;
+	embedFonts: true;
+	multiline: true;
+	selectable: false;
+	gridFitType: subpixel;
+	font-family: arial;
+	antiAliasType: advanced;
+}
+
+.pds_carbuilder_colour_sel_desc {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: false;
+	font-size: 11;
+	color: #323232;
+	embedFonts: true;
+	multiline: false;
+	selectable: false;
+	antiAliasType: advanced;
+	font-family: arial;
+}
+
+.pds_carbuilder_rangeitem_desc {
+	multiline: true;
+	color: #505050;
+	wordWrap: true;
+	selectable: false;
+	font-family: arial;
+	width: 150;
+	autoSize: left;
+	mouseWheelEnabled: false;
+	antiAliasType: advanced;
+	font-size: 10;
+	leading: 2;
+	embedFonts: true;
+	gridFitType: pixel;
+}
+
+.pds_carbuilder_option_tab_sep {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: false;
+	font-size: 9;
+	color: #525252;
+	embedFonts: true;
+	multiline: false;
+	selectable: false;
+	gridFitType: subpixel;
+	font-family: NissanAGExtdMedium;
+	antiAliasType: advanced;
+}
+
+.pds_carbuilder_hsum_price {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: false;
+	font-size: 10;
+	color: #666666;
+	embedFonts: true;
+	multiline: false;
+	selectable: false;
+	gridFitType: subpixel;
+	font-family: arial;
+	antiAliasType: advanced;
+}
+
+.pds_carbuilder_hometopline {
+	autoSize: left;
+	multiline: true;
+	font-size: 24;
+	antiAliasType: normal;
+	mouseWheelEnabled: false;
+	selectable: false;
+	color: #433d36;
+	font-family: NissanAGBoldExt;
+	wordWrap: false;
+}
+
+.pds_carbuilder_enginesfilters_title {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: false;
+	font-size: 8;
+	color: #1f1f1f;
+	embedFonts: true;
+	multiline: false;
+	selectable: false;
+	antiAliasType: advanced;
+	font-family: NissanAGExtdMedium;
+}
+
+.pds_carbuilder_psum_price {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: false;
+	font-size: 11;
+	color: #333333;
+	embedFonts: true;
+	multiline: false;
+	selectable: false;
+	gridFitType: subpixel;
+	font-family: arial;
+	antiAliasType: advanced;
+}
+
+.pds_carbuilder_stepnav_linkright {
+	autoSize: left;
+	antiAliasType: advanced;
+	color: #666666;
+	embedFonts: true;
+	mouseWheelEnabled: false;
+	selectable: false;
+	font-size: 8;
+	font-family: NissanAGMedium;
+}
+
+.pds_carbuilder_services_mprice {
+	autoSize: right;
+	mouseWheelEnabled: false;
+	wordWrap: true;
+	font-family: arial;
+	font-size: 8;
+	antiAliasType: advanced;
+	multiline: true;
+	selectable: false;
+	color: #8e8f91;
+	embedFonts: true;
+	text-align: right;
+	gridFitType: subpixel;
+}
+
+.pds_carbuilder_enginesfilters_item {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: false;
+	font-size: 8;
+	color: #1f1f1f;
+	embedFonts: true;
+	multiline: false;
+	selectable: false;
+	antiAliasType: advanced;
+	font-family: NissanAGExtdMedium;
+}
+
+.pds_carbuilder_hsum_grade {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: false;
+	font-size: 10;
+	color: #cc0033;
+	embedFonts: true;
+	multiline: false;
+	selectable: false;
+	gridFitType: subpixel;
+	font-family: arial;
+	antiAliasType: advanced;
+}
+
+.pds_carbuilder_warn_label {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: true;
+	font-family: arial;
+	font-size: 11;
+	multiline: true;
+	selectable: false;
+	color: #333333;
+	width: 284;
+	embedFonts: true;
+	antiAliasType: advanced;
+}
+
+.pds_carbuilder_navitemlabel {
+	mouseWheelEnabled: false;
+	leading: -2;
+	font-size: 9;
+	antiAliasType: advanced;
+	text-align: center;
+	wordWrap: true;
+	multiline: true;
+	color: #c70f21;
+	font-family: NissanAGMedium;
+	selectable: false;
+}
+
+.pds_carbuilder_psum_list_price {
+	multiline: true;
+	color: #0;
+	antiAliasType: advanced;
+	wordWrap: true;
+	selectable: false;
+	font-size: 13;
+	embedFonts: true;
+	autoSize: right;
+	mouseWheelEnabled: false;
+	font-weight: bold;
+	gridFitType: pixel;
+	leading: 0;
+	text-align: right;
+	font-family: arial;
+}
+
+.pds_carbuilder_psum_list_title {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: true;
+	font-size: 8;
+	color: #1f1f1f;
+	embedFonts: true;
+	multiline: true;
+	selectable: false;
+	antiAliasType: advanced;
+	font-family: NissanAGExtdMedium;
+}
+
+.pds_carbuilder_option_tab {
+	autoSize: right;
+	mouseWheelEnabled: false;
+	wordWrap: true;
+	font-family: NissanAGExtdMedium;
+	font-size: 8;
+	multiline: true;
+	selectable: false;
+	color: #808080;
+	embedFonts: true;
+	text-align: right;
+	antiAliasType: advanced;
+}
+
+.pds_carbuilder_psum_side_text {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: true;
+	font-family: arial;
+	font-size: 11;
+	scrollable: false;
+	multiline: true;
+	selectable: false;
+	antiAliasType: advanced;
+	embedFonts: true;
+	text-align: justify;
+	color: #333333;
+}
+
+.pds_carbuilder_summary_side_links {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	embedFonts: true;
+	wordWrap: true;
+	color: #666666;
+	font-size: 8;
+	font-family: NissanAGExtdMedium;
+	multiline: true;
+	selectable: false;
+	antiAliasType: advanced;
+	width: 150;
+}
+
+.pds_carbuilder_homesubtitle {
+	autoSize: left;
+	multiline: true;
+	font-size: 12;
+	color: #7d7e80;
+	width: 280;
+	mouseWheelEnabled: false;
+	selectable: false;
+	antiAliasType: normal;
+	font-family: arial;
+	wordWrap: true;
+}
+
+.pds_carbuilder_summarybutton {
+	autoSize: left;
+	letter-spacing: 1.2;
+	selectable: false;
+	antiAliasType: normal;
+	color: #ffffff;
+	embedFonts: true;
+	mouseWheelEnabled: false;
+	multiline: true;
+	font-size: 9;
+	font-family: NissanAGExtdMedium;
+}
+
+.pds_carbuilder_engines_price {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	leading: 0;
+	color: #0;
+	antiAliasType: advanced;
+	embedFonts: true;
+	multiline: true;
+	selectable: false;
+	font-size: 14;
+	gridFitType: pixel;
+	font-family: arial;
+	font-weight: bold;
+}
+
+.pds_carbuilder_rangeitem_title {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	selectable: false;
+	width: 170;
+	font-size: 11;
+	wordWrap: true;
+	leading: -4;
+	antiAliasType: advanced;
+	embedFonts: true;
+	font-family: NissanAGExtdMedium;
+	multiline: true;
+	gridFitType: pixel;
+}
+
+.pds_carbuilder_option_tab_sep_priceinfo {
+	autoSize: right;
+	mouseWheelEnabled: false;
+	wordWrap: false;
+	font-family: NissanAGExtdMedium;
+	font-size: 8;
+	antiAliasType: advanced;
+	multiline: false;
+	selectable: false;
+	color: #525252;
+	embedFonts: true;
+	text-align: right;
+	gridFitType: pixel;
+}
+
+.pds_carbuilder_hsum_explabel {
+	autoSize: left;
+	multiline: false;
+	font-size: 9;
+	color: #333333;
+	wordWrap: false;
+	selectable: false;
+	font-family: _sans;
+	embedFonts: false;
+}
+
+.pds_carbuilder_hsum_engine {
+	multiline: true;
+	color: #666666;
+	wordWrap: true;
+	selectable: false;
+	font-size: 10;
+	embedFonts: true;
+	autoSize: left;
+	mouseWheelEnabled: false;
+	antiAliasType: advanced;
+	gridFitType: subpixel;
+	leading: -1;
+	width: 165;
+	font-family: arial;
+}
+
+.pds_carbuilder_stepsubtitle {
+	autoSize: left;
+	multiline: true;
+	font-size: 11;
+	antiAliasType: advanced;
+	mouseWheelEnabled: false;
+	selectable: false;
+	color: #7d7e80;
+	font-family: arial;
+	wordWrap: false;
+}
+
+.pds_carbuilder_psum_grade {
+	autoSize: left;
+	multiline: true;
+	font-size: 18;
+	antiAliasType: advanced;
+	mouseWheelEnabled: false;
+	wordWrap: true;
+	selectable: false;
+	color: #1a1a1a;
+	font-family: NissanAGExtdMedium;
+	leading: -5;
+}
+
+.pds_carbuilder_bigbutton {
+	autoSize: left;
+	letter-spacing: 1.2;
+	antiAliasType: normal;
+	color: #ffffff;
+	embedFonts: true;
+	mouseWheelEnabled: false;
+	selectable: false;
+	font-size: 13;
+	font-family: NissanAGExtdMedium;
+}
+
+.pds_carbuilder_service_itemlabel {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	wordWrap: true;
+	font-size: 11;
+	color: #474747;
+	embedFonts: true;
+	multiline: true;
+	selectable: false;
+	antiAliasType: advanced;
+	font-family: arial;
+}
+
+.pds_carbuilder_psum_list_label {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	leading: -1;
+	font-family: arial;
+	font-size: 11;
+	multiline: true;
+	selectable: false;
+	color: #8e8f91;
+	embedFonts: true;
+	scrollable: false;
+	wordWrap: true;
+	antiAliasType: advanced;
+}
+
+.pds_carbuilder_service_sidetext {
+	autoSize: left;
+	mouseWheelEnabled: false;
+	selectable: false;
+	font-size: 11;
+	color: #7d7e80;
+	embedFonts: true;
+	multiline: true;
+	leading: 0;
+	antiAliasType: advanced;
+	font-family: arial;
+	wordWrap: true;
+}
+
+.pds_carbuilder_stepnav_buttons {
+	autoSize: left;
+	antiAliasType: advanced;
+	color: #ffffff;
+	embedFonts: true;
+	mouseWheelEnabled: false;
+	selectable: false;
+	font-size: 9;
+	font-family: NissanAGMedium;
+}
+
+.pds_carbuilder_navitemfolio {
+	mouseWheelEnabled: false;
+	antiAliasType: normal;
+	color: #c70f21;
+	text-align: center;
+	selectable: false;
+	wordWrap: false;
+	font-size: 30;
+	font-family: NissanAGExtdMedium;
+}
+
+
+.defaultStyle 
+{
+	font-size: 12;
+	font-family: arial;
+	autoSize: left;
+	wordWrap: false;
+	selectable: false;
+	antiAliasType: advanced;
+}
+.switchLabel 
+{
+	font-size: 8;
+	font-family: NissanAGExtdMedium;
+	autoSize: left;
+	wordWrap: false;
+	selectable: false;
+	text-align: center;
+	multiline: true;
+	antiAliasType: advanced;
+}
+.moreVidsLabel 
+{
+	font-size: 7;
+	color: #FFFFFF;
+	leading: -2;
+	font-family: NissanAGExtdMedium;
+	autoSize: left;
+	wordWrap: false;
+	multiline: true;
+	selectable: false;
+	antiAliasType: advanced;
+}
+.goodiesLabel 
+{
+	font-size: 8;
+	font-family: NissanAGExtdMedium;
+	autoSize: left;
+	wordWrap: false;
+	multiline: true;
+	selectable: false;
+	antiAliasType: advanced;
+}
+.hotSpotLabel 
+{
+	font-size: 9;
+	color: #FFFFFF;
+	font-family: NissanAGExtdMedium;
+	autoSize: left;
+	wordWrap: false;
+	multiline: true;
+	selectable: false;
+	antiAliasType: advanced;
+}
+.headerPlayerLabelHighLight
+{
+	font-size: 12;
+	color: #e6e6e6;
+	font-family: NissanAGExtdMedium;
+	autoSize: left;
+	wordWrap: false;
+	multiline: false;
+	selectable: false;
+	antiAliasType: advanced;
+}
+.headerPlayerLabel 
+{
+	font-size: 12;
+	color: #5C5C5C;
+	font-family: NissanAGExtdMedium;
+	autoSize: left;
+	wordWrap: false;
+	multiline: false;
+	selectable: false;
+	antiAliasType: advanced;
+}
+
+.disclaimerStyle
+{
+	fontSize: 7;
+	fontFamily: NissanAGBold;
+	leading:0;
+	embedFonts: true;
+	width:600;
+	color: #ffffff;
+	antiAliasType: advanced;
+	thickness:-20;
+	sharpness:-100;
+	gridFitType: pixel;     
+	selectable: false;
+	multiline: true;
+	
+	autoSize: left;
+	wordWrap: false;
+}
+
+.defaultStyle {
+	fontSize: 9;
+	fontFamily: arial;
+	embedFonts: true;
+	autoSize: left;
+}
+
+.components_comboBoxTitle {
+	fontSize: 10;
+	fontFamily: arial;
+    color: #333333;
+    antiAliasType: advanced;
+}
+
+.components_comboBoxListCell {
+	fontSize: 10;
+	fontFamily: arial;
+    color: #6b6a6a;
+	autoSize: left;
+    antiAliasType: advanmlmtFindItSport_ced;
+}
+
+.components_checkBoxLabel {
+	fontSize: 10;
+	fontFamily: arial;
+    color: #303030;
+	autoSize: left;
+    antiAliasType: advanced;
+}
+
+.components_radioButtonLabel {
+	fontSize: 10;
+	fontFamily: arial;
+    color: #303030;
+	autoSize: left;
+    antiAliasType: advanced;
+}
+
+.components_buttonLabel {
+	fontSize: 10;
+	fontFamily: arial;
+    color: #FFFFFF;
+	autoSize: left;
+    antiAliasType: advanced;
+}
+
+.components_buttonLabelRed {
+	fontSize: 10;
+	fontFamily: arial;
+    color: #FFFFFF;
+	autoSize: left;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_selectcityLabel
+{
+    font-size: 12;
+	font-family: arial;
+    font-weight: bold;
+    color: #FFFFFF;
+    autoSize: left;
+	wordWrap: false;
+	selectable: false;
+	antiAliasType: advanced;
+}
+
+.mlmtFindItSport_selectcityValue
+{
+    font-size: 11;
+	font-family: arial;
+    color: #FFFFFF;
+    autoSize: left;
+	wordWrap: false;
+	selectable: false;
+	antiAliasType: advanced;
+}
+
+.mlmtFindItSport_selectcityLabelEdit
+{
+    font-size: 11;
+	font-family: arial;
+    color: #FFFFFF;
+    font-weight: bold;
+    autoSize: left;
+	wordWrap: false;
+	selectable: false;
+	antiAliasType: advanced;
+}
+
+.mlmtFindItSport_selectcityChange
+{
+    font-size: 8;
+	font-family: NissanAGExtdMedium;
+    color: #FFFFFF;
+    autoSize: left;
+	wordWrap: false;
+	selectable: false;
+	antiAliasType: advanced;
+}
+
+.mlmtFindItSport_formLabel 
+{
+	font-size: 9;
+	font-family: arial;
+    color: #313131;
+    autoSize: left;
+	wordWrap: false;
+	selectable: false;
+	antiAliasType: advanced;
+}
+
+.mlmtFindItSport_formField 
+{
+	font-size: 9;
+	font-family: arial;
+    color: #303030;
+	autoSize: left;
+	wordWrap: false;
+	selectable: true;
+	antiAliasType: advanced;
+}
+
+.mlmtFindItSport_formSubmit 
+{
+	font-size: 9;
+	font-family: NissanAGExtdMedium;
+    color: #FFFFFF;
+	autoSize: left;
+	wordWrap: false;
+	selectable: false;
+}
+
+.mlmtFindItSport_formConfirm
+{
+	font-size: 8;
+	font-family: NissanAGExtdMedium;
+    color: #000000;
+	wordWrap: false;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_errorInfoBulle 
+{
+	font-size: 9;
+	font-family: arial;
+    color: #c10000;
+	autoSize: left;
+	wordWrap: true;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_listStoresTitleNum
+{
+	font-size: 23;
+	font-family: NissanAGBoldExt;
+    color: #151414;
+	autoSize: left;
+	wordWrap: false;
+	selectable: false;
+}
+
+.mlmtFindItSport_listStoresInfo
+{
+	font-size: 9;
+	font-family: arial;
+    color: #151414;
+	autoSize: center;
+	wordWrap: true;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_listStoresTitle 
+{
+	font-size: 11;
+	font-family: NissanAGExtdMedium;
+    color: #151414;
+	autoSize: left;
+	wordWrap: true;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_listStoresTitleServices 
+{
+	font-size: 10;
+	font-family: NissanAGExtdMedium;
+    color: #151414;
+	autoSize: left;
+	wordWrap: false;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_headerTitle 
+{
+	font-size: 11;
+	font-family: NissanAGExtdMedium;
+    color: #433f37;
+	autoSize: left;
+	wordWrap: false;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_findItTitle 
+{
+	font-size: 24;
+	font-family: NissanAGBoldExt;
+    color: #433f37;
+	autoSize: left;
+	wordWrap: false;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_buttonPagin 
+{
+	font-size: 10;
+	font-family: arial;
+    font-weight: bold;
+    color: #FFFFFF;
+	autoSize: left;
+	wordWrap: false;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_itemStoreId
+{
+	font-size: 8;
+	font-family: arial;
+    font-weight: bold;
+    color: #FFFFFF;
+	autoSize: center;
+	wordWrap: false;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_markerStoreId
+{
+	font-size: 10;
+	font-family: arial;
+    color: #FFFFFF;
+	autoSize: center;
+	wordWrap: false;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_itemStoreName
+{
+	font-size: 11;
+	font-family: arial;
+    font-weight: bold;
+    color: #FFFFFF;
+	autoSize: left;
+	wordWrap: true;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_itemStoreDistance
+{
+	font-size: 9;
+	font-family: arial;
+    color: #FFFFFF;
+	autoSize: left;
+	wordWrap: false;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_itemStoreAddress
+{
+	font-size: 9;
+	font-family: arial;
+    color: #FFFFFF;
+	autoSize: left;
+	wordWrap: true;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_itemStoreContact
+{
+	font-size: 9;
+	font-family: arial;
+    color: #FFFFFF;
+	autoSize: left;
+	wordWrap: true;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_windowStoreName
+{
+	font-size: 12;
+	font-family: arial;
+    font-weight: bold;
+    color: #FFFFFF;
+	autoSize: left;
+	wordWrap: true;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_windowStoreAddress
+{
+	font-size: 10;
+	font-family: arial;
+    color: #FFFFFF;
+	autoSize: left;
+	leading: -1;
+	wordWrap: true;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_windowServiceItem
+{
+	font-size: 10;
+	font-family: arial;
+    color: #FFFFFF;
+    leading: -1;
+	autoSize: left;
+	wordWrap: true;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_windowStoreServicesTitle
+{
+	font-size: 9;
+	font-family: NissanAGExtdMedium;
+    color: #FFFFFF;
+	autoSize: left;
+	wordWrap: true;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_windowStoreFormSendTitle
+{
+	font-size: 9;
+	font-family: NissanAGExtdMedium;
+    color: #FFFFFF;
+	autoSize: left;
+	wordWrap: true;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_windowStoreViewSite
+{
+	font-size: 10;
+	font-family: arial;
+    color: #FFFFFF;
+	autoSize: left;
+	wordWrap: true;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_windowStoreButtonForm
+{
+    font-size: 10;
+	font-family: arial;
+    color: #FFFFFF;
+	autoSize: left;
+	wordWrap: false;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_homeTitle
+{
+	font-size: 15;
+	font-family: arial;
+    color: #FFFFFF;
+	autoSize: left;
+	wordWrap: true;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtFindItSport_homeDescription
+{
+	font-size: 10;
+	font-family: arial;
+    color: #FFFFFF;
+	autoSize: left;
+	wordWrap: true;
+	selectable: false;
+    antiAliasType: advanced;
+}
+
+.mlmtfinditsport_disclaimer
+{
+      fontSize: 8;
+      fontFamily: NissanAGMedium;
+      leading:0;
+      embedFonts: true;
+      width:600;
+      color: #CCCCCC;
+      antiAliasType: advanced;
+      thickness:-20;
+      sharpness:-100;
+      selectable: false;
+}
+
+.title {
+	fontSize: 24;
+	fontFamily: NissanAGBoldExt;
+	embedFonts: true;
+	antiAliasType: advanced;
+	color: #433f37;
+	letterSpacing: 0.1;
+}
+
+.bookTitle {
+	fontSize: 14;
+	fontFamily: NissanAGBoldExt;
+	embedFonts: true;
+	antiAliasType: advanced;
+	leading: -2;
+	color: #433f37;
+	autoSize: left;
+	wordWrap: true;
+	multiline: true;
+}
+
+.bookSubtitle {
+	fontSize: 11;
+	fontFamily: arial;
+	embedFonts: true;
+	antiAliasType: advanced;
+	color: #433f37;
+	autoSize: left;
+	wordWrap: true;
+	multiline: true;
+}
+
+.testButton {
+	fontSize: 8;
+	fontFamily: NissanAGExtdMedium;
+	embedFonts: true;
+	antiAliasType: advanced;
+	autoSize: left;
+	color: #FFFFFF;
+	letterSpacing: 1.2;
+}
+
+.videoTitle {
+	fontSize: 14;
+	fontFamily: NissanAGBoldExt;
+	embedFonts: true;
+	antiAliasType: advanced;
+	color: #433f37;
+}
+
+.videoSubtitle {
+	fontSize: 11;
+	fontFamily: arial;
+	embedFonts: true;
+	antiAliasType: advanced;
+	color: #433f37;
+}
+
+.videoDescTitle {
+	fontSize: 11;
+	fontFamily: arial;
+	fontWeight: bold;	
+	embedFonts: true;
+	antiAliasType: advanced;
+	color: #433f37;
+}
+
+.videoDescText {
+	fontSize: 11;
+	fontFamily: arial;
+	embedFonts: true;
+	antiAliasType: advanced;
+	color: #433f37;
+}
