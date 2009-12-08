@@ -14,4 +14,56 @@ See [http://code.google.com/p/flowearth/wiki/INodeDescriptor INodeDescriptor det
 
 =add node to NodeSystem=
 
- 
+In order to be able to cibling nodes with absolute path. You should add the root node of a tree in a INodeSystem.
+
+
+{{{
+main
+  |- products
+    |- men
+    |- women
+  |- services
+    |- aftersale
+    |- warranties
+  |- contact
+    |- jobs
+    |- mailinglist
+}}}
+
+{{{
+var siteTreeDatas : XML = 
+<node id="main">
+	<node id="products">
+		<node id="men"/>
+		<node id="women"/>
+	</node>
+	<node id="services">
+		<node id="aftersale"/>
+		<node id="warranties"/>
+	</node>
+	<node id="contact">
+		<node id="jobs"/>
+		<node id="mailinglist"/>
+	</node>
+</node>;
+
+// 1					
+var descriptor : BaseDescriptor = new BaseDescriptor( siteTreeDatas );
+
+// 2
+var mainDevice : Node = new Node( descriptor );
+
+// 3
+nodeSystem.addDevice( mainDevice );
+
+
+var p : Path = new Path( "main:/services/aftersale" );
+
+trace( p.toNode() );
+
+}}}
+
+1. creation of a descriptor
+2. build the structure based on descriptor
+3. add root node of the structrue to the nodeSystem 
+4. using absolute path to target a node in the structure
