@@ -1,5 +1,28 @@
 #How to handle changes in a nodes structure 
 
 = Introduction =
+This chapter explain different events dispatch by a nodes structure
 
+===important===
+Node override EventDispatcher.addEventListener method to listening event in capture phase by default. 
 
+=structure changing=
+
+==NodeEvent.ADDED==
+Dispatched by a INode when it is added to a parent node. This event doesn't bubbles in the structure.
+
+==NodeEvent.CHILD_ADDED==
+Dispatched when a child is added to a INode. this event bubbles in node structure. the target is the node in which the child is added. all the parents dispatch this event too.
+
+=activation changing=
+
+Each node in a structure store a "activation" boolean value, automaticaly set depending on the active branch of this structure. When this activation state change, the node notify it using different events :
+
+==NodeEvent.CHANGE==
+Simply dispatched when activation state of this node change. true to false, false to true.
+this event don't bubbles.
+
+==NodeEvent.CHILD_CHANGE==
+Dispatch by a node when one of his child's activation state change.
+
+==NodeEvent.PATH_CHANGE==
