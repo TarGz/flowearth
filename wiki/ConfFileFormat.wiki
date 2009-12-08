@@ -72,9 +72,11 @@ When a complexe property is redefined (eg. using _Conf.setProperty()_ or multipl
 }}}
 
 {{{
+====Simple content behavior====
 trace( Conf.filesize );
 // ten
 
+====Complex content behavior====
 trace( Conf.filelist );
 // <filelist>
 //   <file>file1.txt</file>
