@@ -1,4 +1,4 @@
-Configuration file format
+#summary Configuration file format
 
 = Conf file format =
 
