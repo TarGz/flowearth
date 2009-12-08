@@ -1,4 +1,4 @@
-#BatchURLLoaderItem documentation
+#summary BatchURLLoaderItem documentation
 
 A BatchURLLoaderItem instance internally store a native URLLoader object to load text and raw files.
 
