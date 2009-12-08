@@ -22,11 +22,12 @@ main
 }}}
 ----
 {{{
-... build descriptor (see 
+... build descriptor (see "the Node object" chapter )
 //
 // 1
 //
 var mainDevice : Node = new Node( descriptor );
+trace( mainDevice.getId()  ); // --> "main"
 
 //
 // 2
@@ -36,12 +37,17 @@ nodeSystem.addDevice( mainDevice );
 //
 // 3
 //
-var p : Path = new Path( "main:/services/aftersale" );
-trace( p.toNode() );
- // --> [object Node id:aftersale]
+var swfAddressConnector : SWFAddressConnector = new SWFAddressConnector();			
+swfAddressConnector.connectNode( mainNode );			
+swfAddressConnector.connectAddress();
+
 
 }}}
 
- # creation of a descriptor
+ 
  # build the structure based on descriptor
- # add root node of the structrue to the nodeSystem 
+ # add root node of the structrue to the nodeSystem. Note that nodes register in a SWFAddressConnector must be device of nodeSystem
+ # SWFAddress sync :
+    * create a SWFAddressConnector
+    * add a device node ( node register as root node in nodeSystem )
+    * start sync with js/swfAddress
