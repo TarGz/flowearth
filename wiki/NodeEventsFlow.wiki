@@ -69,14 +69,15 @@ new Path( "main:/services/warranties/1year" ).toNode.activate();
 
 here is the chronology of CHILD_CHANGE event dispatch :
 
- #  NodeEvent type=_child_nodeChange target=main:/products capture=true
- #  NodeEvent type=_child_nodeChange target=main:/products/men capture=true
- #  NodeEvent type=_child_nodeChange target=main:/products capture=false
- #  NodeEvent type=_child_nodeChange target=main:/ capture=true
- #  NodeEvent type=_child_nodeChange target=main:/services capture=true
- #  NodeEvent type=_child_nodeChange target=main:/services/warranties capture=true
- #  NodeEvent type=_child_nodeChange target=main:/services capture=false
- #  NodeEvent type=_child_nodeChange target=main:/ capture=false
+|| *target node* || *capture* ||
+||main:/products ||true||
+||main:/products/men ||true||
+||main:/products ||false||
+||main:/ ||true||
+||main:/services ||true||
+||main:/services/warranties ||true||
+||main:/services ||false||
+||main:/ ||false||
 
 
 ===NodeEvent.PATH_CHANGE===
