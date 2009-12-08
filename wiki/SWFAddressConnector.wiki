@@ -7,3 +7,41 @@ Flowearth provide a simple way to synchronize a Nodes structure to the segment o
 = SWFAddressConnector =
 
 We start by building a node structure.
+
+{{{
+main
+  |- products
+    |- men
+    |- women
+  |- services
+    |- aftersale
+    |- warranties
+  |- contact
+    |- jobs
+    |- mailinglist
+}}}
+----
+{{{
+... build descriptor (see 
+//
+// 1
+//
+var mainDevice : Node = new Node( descriptor );
+
+//
+// 2
+//
+nodeSystem.addDevice( mainDevice );
+
+//
+// 3
+//
+var p : Path = new Path( "main:/services/aftersale" );
+trace( p.toNode() );
+ // --> [object Node id:aftersale]
+
+}}}
+
+ # creation of a descriptor
+ # build the structure based on descriptor
+ # add root node of the structrue to the nodeSystem 
