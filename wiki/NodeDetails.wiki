@@ -16,7 +16,7 @@ See [http://code.google.com/p/flowearth/wiki/INodeDescriptor INodeDescriptor det
 
 In order to be able to cibling nodes with absolute path. You should add the root node of a tree in a INodeSystem.
 
-
+----
 {{{
 main
   |- products
@@ -29,7 +29,7 @@ main
     |- jobs
     |- mailinglist
 }}}
-
+----
 {{{
 var siteTreeDatas : XML = 
 <node id="main">
