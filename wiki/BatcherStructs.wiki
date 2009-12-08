@@ -1,4 +1,4 @@
-#How to work with Batchers structures
+#summary How to work with Batchers structures
 
 = Introduction =
 
