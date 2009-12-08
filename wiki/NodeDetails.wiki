@@ -63,7 +63,7 @@ trace( p.toNode() );
 
 }}}
 
-1. creation of a descriptor
-2. build the structure based on descriptor
-3. add root node of the structrue to the nodeSystem 
-4. using absolute path to target a node in the structure
+ # creation of a descriptor
+ # build the structure based on descriptor
+ # add root node of the structrue to the nodeSystem 
+ # using absolute path to target a node in the structure
