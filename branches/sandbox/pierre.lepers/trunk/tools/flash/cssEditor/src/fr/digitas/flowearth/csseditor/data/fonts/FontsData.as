@@ -12,7 +12,6 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 	import flash.net.URLRequest;
 	import flash.system.ApplicationDomain;
 	import flash.system.LoaderContext;
-	import flash.text.Font;
 	import flash.text.TextField;		
 
 	/**
@@ -59,13 +58,6 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 //			Preview.showPreview( _fontSandbox.getTf(), "FontA", "Salut Toto");
 			dispatchEvent( new FontEvent( FontEvent.SANDBOX_READY ) );
 			
-			var list:Array = Font.enumerateFonts();
-			var n:int = list.length;
-			Console.log( "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" );
-			for (var i:Number = 0; i < n; i++) {
-				Console.log( "-----------> "+(list[i] as Font).fontName );
-			}
-			Console.log( "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" );
 		}
 
 		public function get fontDomain() : ApplicationDomain {

@@ -111,13 +111,14 @@ package fr.digitas.flowearth.ui.tabs {
 			for (var i : int = 0; i < _layout.numChildren ; i++) 
 				ts += _layout.getChildAt( i ).width;
 			
+			var margin : Rectangle;
 			if( ts > bg.width - _ctrls.width - 20 ) {
 				var rest : Number = ( ts - bg.width + 100 ) / ( _layout.numChildren - 1 );
-				_layout.margin = new Rectangle( 0, 0, -rest );
+				margin = new Rectangle( 0, 0, -rest );
 			} else {
-				_layout.margin = new Rectangle( );
+				margin = new Rectangle( );
 			}
-			
+			_layout.margin = margin;
 		}
 
 		
