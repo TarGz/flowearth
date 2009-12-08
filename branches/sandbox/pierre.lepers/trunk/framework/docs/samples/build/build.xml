@@ -44,6 +44,24 @@
 			<library-path  file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
 			<source-path path-element="${sampleDir}/sampleslib" />
 		</mxmlc>
+		
+		<mxmlc file="${sampleDir}/fr/digitas/flowearth/mvc/address/structs/NodeSystemSample.as"
+		       output="${sampleDir}/fr/digitas/flowearth/mvc/address/structs/NodeSystemSample.swf"
+		       debug="true">
+			<default-size width="400" height="400" />
+			<default-background-color>0xF8F8F8</default-background-color>
+			<library-path  file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
+			<source-path path-element="${sampleDir}/sampleslib" />
+		</mxmlc>
+
+		<mxmlc file="${sampleDir}/fr/digitas/flowearth/mvc/address/structs/SWFAddressSample.as"
+		       output="${sampleDir}/fr/digitas/flowearth/mvc/address/structs/SWFAddressSample.swf"
+		       debug="true">
+			<default-size width="400" height="400" />
+			<default-background-color>0xF8F8F8</default-background-color>
+			<library-path  file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
+			<source-path path-element="${sampleDir}/sampleslib" />
+		</mxmlc>
 
 	</target>
 
