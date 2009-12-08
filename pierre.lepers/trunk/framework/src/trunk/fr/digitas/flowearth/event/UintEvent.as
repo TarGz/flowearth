@@ -18,19 +18,28 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-package fr.digitas.flowearth {
+package fr.digitas.flowearth.event {
+	import flash.events.Event;					
+
 	/**
-	 * Classe autogénéré par la tacheAnt du framework
-	 * 
-	 * @author AntTask
+	 * Event containing uint value;
+	 * @author Pierre Lepers
 	 */
-	final public class Version {
+	final public class UintEvent extends Event {
+		
+		public function get value() : uint {
+			return _value;	
+		}
+		
+		public function UintEvent(type : String, value : uint, bubble : Boolean = false, cancelable : Boolean = false) {
+			super( type, bubble, cancelable );
+			_value = value;
+		}
 
-		static public const major : uint = 2;
-		static public const minor : uint = 5;
-		static public const build : uint = 78;
+		override public function clone() : Event {
+			return new UintEvent( type, _value, bubbles, cancelable );
+		}
 
-		static public const player : String = "10";
-
+		private var _value : uint;
 	}
 }

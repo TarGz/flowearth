@@ -63,6 +63,10 @@ package fr.digitas.flowearth.event {
 			var c : NodeEvent = new NodeEvent( _nativeType, _ntarget, _capureFlow );
 			return c;
 		}
+		
+		override public function toString() : String {
+			return "[NodeEvent type=" + _nativeType + " target=" + _ntarget.getDefaultPath()+ " capture=" + _capureFlow + "]";
+		}
 
 		private var _ntarget : INode;
 		

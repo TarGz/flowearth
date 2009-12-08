@@ -88,6 +88,7 @@ package fr.digitas.flowearth.ui.layout {
 		 * marges globales du layout
 		 */
 		public function set padding( p : Rectangle ) : void {
+			if ( _padding.equals( p ) ) return;
 			_padding = p;
 			invalidate();
 		}
@@ -100,6 +101,7 @@ package fr.digitas.flowearth.ui.layout {
 		 * marges autour de chaque enfants
 		 */
 		public function set margin( m : Rectangle ) : void {
+			if (_margin.equals( m ) ) return;
 			_margin = m;
 			invalidate();
 		}
@@ -165,7 +167,10 @@ package fr.digitas.flowearth.ui.layout {
 			renderer = RendererFactory.getRenderer( LayoutAlign.TOP );
 			width = super.width;
 			height = super.height;
+			
+			addEventListener( Event.REMOVED_FROM_STAGE, onRemoved );
 		}
+
 		
 		public override function get numChildren() : int {
 			return _container.numChildren;
@@ -243,7 +248,8 @@ package fr.digitas.flowearth.ui.layout {
 					_renderer.render( _container.getChildAt( i ) );
 				
 			_renderer.complete();
-			removeEventListener( Event.RENDER, update );
+			if( stage )
+				stage.removeEventListener( Event.RENDER, update );
 			_valid = true;
 			dispatchEvent( new Event( Event.CHANGE ) );
 		}
@@ -269,9 +275,19 @@ package fr.digitas.flowearth.ui.layout {
 			dispatchEvent( new Event( Event.CHANGE  ) );
 		}
 		
+		private function onRemoved( e : Event ) : void {
+			stage.removeEventListener( Event.RENDER, update );
+			removeEventListener( Event.ADDED_TO_STAGE , update );
+		}
+		
 		protected function invalidate() : void {
-			if( _valid ) addEventListener( Event.RENDER, update );
-			if( stage ) stage.invalidate();
+			if( ! _valid ) return;
+			if( stage ) {
+				stage.addEventListener( Event.RENDER, update );
+				stage.invalidate();
+			} else 
+				addEventListener( Event.ADDED_TO_STAGE , update );
+			
 			_valid = false;
 		}
 
