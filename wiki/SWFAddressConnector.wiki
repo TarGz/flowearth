@@ -1,4 +1,4 @@
-#How to connect a nodes structure to SWFAddress
+#summary How to connect a nodes structure to SWFAddress
 
 = Introduction =
 Flowearth provide a simple way to synchronize a Nodes structure to the segment of the browser URL.
