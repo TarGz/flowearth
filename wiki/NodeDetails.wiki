@@ -47,19 +47,27 @@ var siteTreeDatas : XML =
 	</node>
 </node>;
 
-// 1					
+//
+// 1
+//					
 var descriptor : BaseDescriptor = new BaseDescriptor( siteTreeDatas );
 
+//
 // 2
+//
 var mainDevice : Node = new Node( descriptor );
 
+//
 // 3
+//
 nodeSystem.addDevice( mainDevice );
 
-
+//
+//4
+//
 var p : Path = new Path( "main:/services/aftersale" );
-
 trace( p.toNode() );
+ // --> [object Node id:aftersale]
 
 }}}
 
