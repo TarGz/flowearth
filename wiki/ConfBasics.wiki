@@ -1,4 +1,4 @@
-How to acces Configuration properties
+#summary How to acces Configuration properties
 
 = Retreive a property =
 
