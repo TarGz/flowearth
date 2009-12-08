@@ -6,21 +6,8 @@ Flowearth provide a simple way to synchronize a Nodes structure to the segment o
 
 = SWFAddressConnector =
 
-We start by building a node structure.
+Here's a simple example of connection of a Nodes structure to swfAddress.
 
-{{{
-main
-  |- products
-    |- men
-    |- women
-  |- services
-    |- aftersale
-    |- warranties
-  |- contact
-    |- jobs
-    |- mailinglist
-}}}
-----
 {{{
 ... build descriptor (see "the Node object" chapter )
 //
