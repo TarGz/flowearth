@@ -25,6 +25,19 @@ this event don't bubbles.
 ===NodeEvent.CHILD_CHANGE===
 Dispatch by a node when one of his child's activation state change. This event does not bubble strictly speaking.
 
+here is an example of CHILD_CHANGE event flow for the follow activation change.
 
+{{{
+main
+  |- products
+    |- men
+    |- women
+  |- services
+    |- aftersale
+    |- warranties
+  |- contact
+    |- jobs
+    |- mailinglist
+}}}
 
 ===NodeEvent.PATH_CHANGE===
