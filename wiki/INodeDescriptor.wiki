@@ -1,4 +1,4 @@
-#INodeDescriptor details
+#summary INodeDescriptor details
 
 = Introduction =
 
