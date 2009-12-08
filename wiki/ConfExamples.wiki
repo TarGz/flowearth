@@ -1,4 +1,4 @@
-Examples
+#summary Examples of conf usage
 
 
 = Simple start =
