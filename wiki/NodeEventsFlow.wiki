@@ -27,17 +27,17 @@ Dispatch by a node when one of his child's activation state change. This event d
 
 here is an example of CHILD_CHANGE event flow for the follow activation change.
 
-{{{
-main
-  |- products
-    |- men
-    |- women
-  |- services
-    |- aftersale
-    |- warranties
-  |- contact
-    |- jobs
-    |- mailinglist
-}}}
+<blockquote>
+<b>main</b><br/>
+    |- <b>products</b><br/>
+        |- <b>men</b><br/>
+        |- women<br/>
+    |- services<br/>
+        |- aftersale<br/>
+        |- warranties<br/>
+    |- contact<br/>
+        |- jobs<br/>
+        |- mailinglist<br/>
+</blockquote>
 
 ===NodeEvent.PATH_CHANGE===
