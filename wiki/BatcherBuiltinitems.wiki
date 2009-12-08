@@ -1,4 +1,4 @@
-#List of implementation of IBatchable
+#summary List of implementation of IBatchable
 
 Here is the list of IBatchable's implementations you can find in Flowearth
   * [http://code.google.com/p/flowearth/wiki/BatcherUsage Batcher]
