@@ -1,4 +1,4 @@
-#introduction to node's structures
+#summary Introduction to node's structures
 
 = Concept =
 
