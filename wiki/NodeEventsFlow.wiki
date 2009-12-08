@@ -27,17 +27,49 @@ Dispatch by a node when one of his child's activation state change. This event d
 
 here is an example of CHILD_CHANGE event flow for the follow activation change.
 
-<blockquote>
-<b>main</b><br/>
-    |- <b>products</b><br/>
-        |- <b>men</b><br/>
-        |- women<br/>
-    |- services<br/>
-        |- aftersale<br/>
-        |- warranties<br/>
-    |- contact<br/>
-        |- jobs<br/>
-        |- mailinglist<br/>
-</blockquote>
+
+ * <b>main</b>
+   * <b>products</b>
+     * <b>men</b>
+       * product1
+       * <b>product2</b>
+     * women
+       * product1
+       * product2
+   * services
+     * aftersale
+     * warranties
+       * 1year
+       * 2year
+   * contact
+     * jobs
+     * mailinglist
+
+{{{
+new Path( "main:/services/warranties/1year" ).toNode.activate();
+}}}
+
+ * <b>main</b>
+   * products
+     * men
+       * product1
+       * product2
+     * women
+       * product1
+       * product2
+   * <b>services</b>
+     * aftersale
+     * <b>warranties</b>
+       * <b>1year</b>
+       * 2year
+   * contact
+     * jobs
+     * mailinglist
+
+
+here is the chronology of CHILD_CHANGE event dispatch :
+
+ # 
+
 
 ===NodeEvent.PATH_CHANGE===
