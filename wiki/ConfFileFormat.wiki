@@ -51,7 +51,7 @@ When you redefine a property having a simple content, the old value is erased an
 If the child node has a complex content (_child.hasComplexeContent()_ equals _true_), the value is set using _child.children().toXMLString()_.
 When a complexe property is redefined (eg. using _Conf.setProperty()_ or multiple child nodes with the same name.) contents of children are concatenated.
 
-===Exemple===
+===exemple===
 {{{
 
 <conf>
