@@ -38,7 +38,7 @@ package fr.digitas.flowearth.text.styles {
 		 * modification of this property do not affect css already loaded
 		 * @default true
 		 */
-		public var autoEmbed : Boolean = true;
+		public var autoEmbed : Boolean = false;
 
 		/**
 		 * apply a style to a <code>TextField</code> with the given html string

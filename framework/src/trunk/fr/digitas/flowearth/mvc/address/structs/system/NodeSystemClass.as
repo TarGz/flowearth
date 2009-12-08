@@ -51,7 +51,6 @@ package fr.digitas.flowearth.mvc.address.structs.system {
 			return ( _devices[ device ] != undefined );
 		}
 
-		
 		public function setDefaultNode( n : INode ) : void {
 			_defaultPath = n.path( );
 		}
