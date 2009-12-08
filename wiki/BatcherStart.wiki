@@ -1,4 +1,4 @@
-#Batcher - how to start, simple examples
+#summary Batcher - how to start, simple examples
 
 = Introduction =
 
