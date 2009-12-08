@@ -6,7 +6,4 @@ Flowearth provide a simple way to synchronize a Nodes structure to the segment o
 
 = SWFAddressConnector =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+We start by building a node structure.
