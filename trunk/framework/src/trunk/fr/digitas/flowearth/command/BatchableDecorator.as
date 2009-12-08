@@ -33,7 +33,6 @@ package fr.digitas.flowearth.command {
 	public class BatchableDecorator extends EventDispatcher implements IBatchable {
 
 		
-		public var size : int = -1;
 		
 		public function BatchableDecorator( sub : IBatchable ) {
 			super( null );
@@ -52,8 +51,12 @@ package fr.digitas.flowearth.command {
 			return _sub;
 		}
 
+		public function set weight( val : Number ) : void {
+			_size = val;
+		}
+
 		public function get weight() : Number {
-			if( size >= 0 ) return uint( size );
+			if( _size >= 0 ) return _size;
 			return _sub.weight;
 		}
 		
@@ -91,6 +94,8 @@ package fr.digitas.flowearth.command {
 			trace( "ddd", e, e.type );
 			super.dispatchEvent( e );
 		}
+
+		protected var _size : Number = -1;
 
 		protected var _sub : IBatchable;
 		

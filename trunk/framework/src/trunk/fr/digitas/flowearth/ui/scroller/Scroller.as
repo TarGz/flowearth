@@ -38,6 +38,8 @@ package fr.digitas.flowearth.ui.scroller {
 	public class Scroller extends Sprite implements IDisposable
 	{
 		
+		public static const SCROLL_CHANGE : String = "scroll_change";
+
 		public static const DISPLAY_SCROLL : String = "dispayScroll";
 		
 		/**
@@ -281,11 +283,8 @@ package fr.digitas.flowearth.ui.scroller {
 			_valid = false;
 		}
 
-		//_____________________________________________________________________________
-		//																		 PRIVATES
 		
-		
-		protected function update( e : Event = null ) : void {
+		public function update( e : Event = null ) : void {
 			removeEventListener( Event.RENDER, update );
 
 			var realHeight : Number = ( lockedHeight > 0 ) ? lockedHeight : _subContent.height;
@@ -302,7 +301,12 @@ package fr.digitas.flowearth.ui.scroller {
 
 			scrollBar.update( _position, realHeight, zone.height );
 			_valid = true;
+			dispatchEvent( new Event( SCROLL_CHANGE ) );
 		}
+
+		//_____________________________________________________________________________
+		//																		 PRIVATES
+		
 		
 		protected function set needScroll( flag : Boolean ) : void {
 			if( _needScroll == flag ) return;

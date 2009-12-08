@@ -25,15 +25,17 @@ package fr.digitas.flowearth.mvc.address.structs.connector {
 	import fr.digitas.flowearth.mvc.address.structs.IPath;
 	import fr.digitas.flowearth.mvc.address.structs.Path;
 	import fr.digitas.flowearth.mvc.address.structs.connector.NodeConnector;
+	import fr.digitas.flowearth.mvc.address.structs.system.nodeSystem;
 	import fr.digitas.flowearth.utils.encryption.Base64;
 	
 	import flash.events.Event;
-	import flash.utils.Dictionary;	
+	import flash.utils.Dictionary;		
 
 	/**
 	 * @author Pierre Lepers
 	 */
 	public class SWFAddressConnector extends NodeConnector {
+		
 		
 		public var pathSeparator : String = ",";
 		
@@ -53,6 +55,8 @@ package fr.digitas.flowearth.mvc.address.structs.connector {
 		
 		override protected function nodeAdded(node : INode) : void {
 			super.nodeAdded( node );
+			if( ! nodeSystem.hasDevice( node.getId() ) )
+				throw new Error( "SWFAddressConnector - connectNode node argument must be register in a INodeSystem" );
 			_buffers[node] = new ActivationBuffer( node );
 			_nodeChange( );
 		}
