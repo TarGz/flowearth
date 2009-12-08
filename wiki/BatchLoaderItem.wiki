@@ -1,4 +1,4 @@
-#BatchLoaderItem documentation
+#summary BatchLoaderItem documentation
 
 A BatchLoaderItem instance internally store a native Loader object to load medias.
 
