@@ -1,4 +1,4 @@
-#How to implement IBatchable
+#summary How to implement IBatchable
 
 = Introduction =
 
