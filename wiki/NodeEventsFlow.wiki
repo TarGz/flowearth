@@ -23,7 +23,7 @@ Simply dispatched when activation state of this node change. true to false, fals
 this event don't bubbles.
 
 ===NodeEvent.CHILD_CHANGE===
-Dispatch by a node when one of his child's activation state change. This event does not bubble strictly speaking.
+Dispatch by a node when one of his child's activation state change. This event does not bubble strictly speaking. 
 
 here is an example of CHILD_CHANGE event flow for the follow activation change.
 
@@ -79,5 +79,8 @@ here is the chronology of CHILD_CHANGE event dispatch :
 ||main:/services ||false||
 ||main:/ ||false||
 
+[http://flowearth.googlecode.com/svn/trunk/framework/docs/samples/fr/digitas/flowearth/mvc/address/structs/flow_illustration.png]
 
 ===NodeEvent.PATH_CHANGE===
+
+this Event is fired each time the _activePath_ property of a node is modified. This property change each time one descendant's activation state change. 
