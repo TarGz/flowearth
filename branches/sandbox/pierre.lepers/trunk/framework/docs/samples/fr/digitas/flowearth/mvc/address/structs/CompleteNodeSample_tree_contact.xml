@@ -1,0 +1,22 @@
+<siteTree>
+	<tree>
+		<node id="contact">
+			<node id="jobs" />
+			<node id="mailinglist"/>
+		</node>
+
+	</tree>
+
+	<contents>
+
+		<text>Contact home page</text>
+
+		<content id="jobs">
+			<text>Jobs page</text>
+		</content>
+		<content id="mailinglist">
+			<text>Mailinglist page</text>
+		</content>
+
+	</contents>
+</siteTree>
