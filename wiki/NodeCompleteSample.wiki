@@ -9,6 +9,10 @@ This example show :
  * how to externalize part of site tree datas.
  * how to deeplink all the sitetree and all the view with SWFAddress
 
+= structure diagram =
+
+[http://flowearth.googlecode.com/svn/trunk/framework/docs/samples/fr/digitas/flowearth/mvc/address/structs/CompleteNodeSample_illus.png]
+
 = Complete code =
 
 {{{
