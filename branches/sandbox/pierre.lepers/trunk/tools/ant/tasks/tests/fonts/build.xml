@@ -31,11 +31,11 @@
 		<createFont classname="FontA"
 		            swf="${TEST_HOME}/output/fontA.swf"
 		            compiler="${digitas.mxmlc}" 
-		            keepgenerated="false" >
+		            keepgenerated="true" >
 			
 			<font fontfamily="arial" 
 			      fontweight="normal"
-			      sourcefile="C:/WINDOWS/Fonts/ARIAL.ttf"
+			      sourcefile="${TEST_HOME}/ttf/ARIAL.TTF"
 			      unicoderange="U+0000-U+0001" />
 			
 			<font fontfamily="arial_bold_italic"
@@ -60,7 +60,7 @@
 			
 			<font fontfamily="arial"
 			      fontweight="normal"
-			      sourcefile="C:/WINDOWS/Fonts/ARIAL.ttf"
+			      sourcefile="${TEST_HOME}/ttf/ARIAL.TTF"
 			      unicoderange="U+0000-U+0001" />
 			
 			<font fontfamily="arial_bold"
@@ -78,7 +78,7 @@
          - - - - - - - - - - - - - - - - - -->
 	<target name="init">
 		<property name="TEST_HOME"
-		          location="${FMK_HOME}/tools/ant/antTasks/tests/fonts" />
+		          location="${FMK_HOME}/tools/ant/tasks/tests/fonts" />
 
 	</target>
 
