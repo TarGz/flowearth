@@ -3,11 +3,11 @@
 = Introduction =
 
 This example show :
- - how to use Nodes as model
- - how to sync view to this model.
- - an overview of a system which doesn't care about the deepness of the site tree
- - how to externalize part of site tree datas.
- - how to deeplink all the sitetree and all the view with SWFAddress
+ * how to use Nodes as model
+ * how to sync view to this model.
+ * an overview of a system which doesn't care about the deepness of the site tree
+ * how to externalize part of site tree datas.
+ * how to deeplink all the sitetree and all the view with SWFAddress
 
 = Complete code =
 
