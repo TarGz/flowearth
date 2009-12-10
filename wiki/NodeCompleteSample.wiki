@@ -13,6 +13,129 @@ This example show :
 
 [http://flowearth.googlecode.com/svn/trunk/framework/docs/samples/fr/digitas/flowearth/mvc/address/structs/CompleteNodeSample_illus.png]
 
+= xml files =
+
+=== CompleteNodeSample_tree.xml ===
+{{{
+<siteTree>
+    <tree>
+        <node id="main">
+            <node id="products">
+                <node id="men">
+                    <node id="product1" />
+                    <node id="product2" />
+                </node>
+                <node id="women">
+                    <node id="product1" />
+                    <node id="product2" />
+                </node>
+            </node>
+            <node id="services" />
+            <node id="contact" />
+        </node>
+    </tree>
+
+    <contents>
+
+        <text>Main page</text>
+
+        <content id="products">
+
+            <text>Product page</text>
+            <content id="men">
+                <text>Men's product page</text>
+                <content id="product1">
+                    <text>Men's product 1 page</text>
+                </content>
+                <content id="product2">
+                    <text>Men's product 2 page</text>
+                </content>
+
+            </content>
+            <content id="women">
+                <text>Women's product page</text>
+                <content id="product1">
+                    <text>Women's product 1 page</text>
+                </content>
+                <content id="product2">
+                    <text>Women's product 2 page</text>
+                </content>
+
+            </content>
+        </content>
+        <content id="services">
+            <externalTree>CompleteNodeSample_tree_services.xml</externalTree>
+        </content>
+        <content id="contact">
+            <externalTree>CompleteNodeSample_tree_contact.xml</externalTree>
+        </content>
+    </contents>
+</siteTree>
+}}}
+
+=== CompleteNodeSample_tree_services.xml ===
+{{{
+<siteTree>
+	<tree>
+		<node id="services">
+			<node id="aftersale" />
+			<node id="warranties">
+				<node id="1year" />
+				<node id="2year" />
+			</node>
+		</node>
+
+	</tree>
+
+	<contents>
+
+		<text>Services home page</text>
+
+		<content id="aftersale">
+			<text>Aftersale page</text>
+		</content>
+		<content id="warranties">
+			<text>Warranties page</text>
+			<content id="1year">
+				<text>One year warranty page</text>
+			</content>
+			<content id="2year">
+				<text>Two year warranty page</text>
+			</content>
+
+		</content>
+
+	</contents>
+</siteTree>
+}}}
+
+=== CompleteNodeSample_tree_contact.xml ===
+{{{
+<siteTree>
+	<tree>
+		<node id="contact">
+			<node id="jobs" />
+			<node id="mailinglist"/>
+		</node>
+
+	</tree>
+
+	<contents>
+
+		<text>Contact home page</text>
+
+		<content id="jobs">
+			<text>Jobs page</text>
+		</content>
+		<content id="mailinglist">
+			<text>Mailinglist page</text>
+		</content>
+
+	</contents>
+</siteTree>
+}}}
+
+
 = Complete code =
 
 {{{
