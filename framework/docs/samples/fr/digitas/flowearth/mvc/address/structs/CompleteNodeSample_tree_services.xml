@@ -1,0 +1,32 @@
+<siteTree>
+	<tree>
+		<node id="services">
+			<node id="aftersale" />
+			<node id="warranties">
+				<node id="1year" />
+				<node id="2year" />
+			</node>
+		</node>
+
+	</tree>
+
+	<contents>
+
+		<text>Services home page</text>
+
+		<content id="aftersale">
+			<text>Aftersale page</text>
+		</content>
+		<content id="warranties">
+			<text>Warranties page</text>
+			<content id="1year">
+				<text>One year warranty page</text>
+			</content>
+			<content id="2year">
+				<text>Two year warranty page</text>
+			</content>
+
+		</content>
+
+	</contents>
+</siteTree>
