@@ -7,7 +7,7 @@
                    
      lepersp                                                                
      ====================================================================== -->
-<project name="Digitas Fmk - tutorials" default="main" basedir="../../../">
+<project name="Digitas Fmk - Doc Tutorials" default="main" basedir="../../../">
 	<description>
             Build docs samples swf
     </description>
@@ -112,7 +112,7 @@
 			<font fontfamily="arial" 
 			      fontweight="normal"
 			      sourcefile="${tutoDir}/${tuto_name}/fonts/ttf/ARIAL.ttf"
-			      unicoderange="U+0000-U+000F" />
+			      unicoderange="U+0000-U+0100" />
 			
 			<font fontfamily="arial"
 			      fontweight="bold"
@@ -131,7 +131,7 @@
 			<font fontfamily="arial" 
 			      fontweight="normal"
 			      sourcefile="${tutoDir}/${tuto_name}/fonts/ttf/ARIAL.ttf"
-			      unicoderange="U+0000-U+00100" />
+			      unicoderange="U+0401,U+0410-U+044f,U+0451,U+0030-U+0039" />
 			
 			<font fontfamily="arial"
 			      fontweight="bold"
@@ -145,6 +145,7 @@
 		<mxmlc file="${tutoDir}/${tuto_name}/src/fr/digitas/tutorial/text/Main.as"
 		       output="${tutoDir}/${tuto_name}/deploy/${tuto_name}.swf"
 		       debug="true"
+		       use-network="false"
 		       strict="true">
 			<default-size width="400" height="400" />
 			<default-background-color>0xF8F8F8</default-background-color>
