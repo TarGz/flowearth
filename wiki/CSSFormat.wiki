@@ -127,3 +127,6 @@ var desc_style : String = ".description";
 styleManager.apply( desc, desc_style, desc_text );	
 
 }}}
+
+result of this textfield :
+[http://flowearth.googlecode.com/svn/branches/sandbox/pierre.lepers/trunk/framework/docs/tutorials/fonts_and_styles/deploy/result_illus.png]
