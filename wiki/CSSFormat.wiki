@@ -85,3 +85,15 @@ var title_style : Qname = new Qname( globalStyles, ".titleh1" );
 styleManager.apply( title , title_style , title_text );	
 
 }}}
+
+=Display rich html text=
+
+When apply a specific style to a textField, the StyleSheet containing this style is also apply to textField, you can use html format to apply other styles of the css to the textField:
+
+{{{
+
+.description {
+    font-family: Arial;
+}
+
+}}}
