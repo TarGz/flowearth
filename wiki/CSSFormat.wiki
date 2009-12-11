@@ -78,7 +78,7 @@ namespace globalStyles = "http://domain.com/ns/css/global";
 //
 var title : TextField = new TextField();
 
-var title_text : String = "My Title" );
+var title_text : String = "My Title";
 
 var title_style : Qname = new Qname( globalStyles, ".titleh1" );
 
