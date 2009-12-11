@@ -1,0 +1,31 @@
+<conf>
+	
+	<local>FR</local>
+
+	<externalData>
+		<file id="css">css_${local}.css</file>
+	</externalData>
+
+	<fontFiles>	
+		<source>../fonts/swf/arial_${local}.swf</source>
+	</fontFiles>
+	
+
+	<!-- wording -->
+	<title>Titre de la section</title>
+	<subtitle>Sous-titre de la section</subtitle>
+	<desc>
+		<![CDATA[
+		Lorem ipsum dolor sit amet, <span class="link">consectetur adipiscing</span> elit.<br/>
+		Vestibulum sodales adipiscing risus, sed mattis justo feugiat in. <br/>
+		Integer metus purus, <b>imperdiet vel egestas</b> id, interdum eu felis. <br/>
+		Nullam ac leo tellus, eu rhoncus augue. Nullam sit amet turpis ipsum. <br/>
+		In faucibus congue cursus. Suspendisse eget augue nulla. <br/>
+		Sed sagittis viverra nisl at rutrum. <br/>
+		Aliquam porta posuere quam, vitae lobortis lorem dignissim nec.
+		]]>
+	</desc>
+
+	<labelA>Portez ce vieux whisky au juge blond qui fume</labelA>
+
+</conf>
