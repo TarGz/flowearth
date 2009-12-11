@@ -1,0 +1,35 @@
+#summary How to use fonts and styles in Flowearth
+
+= Introduction =
+
+==Extended css format==
+
+The "text" package provide and extended css parser, with some extra functionnalities :
+ * let you set all TextField properties in addition to TextFormat ones.
+ * using inheritance
+
+See Extended CSS format
+
+Basic css example :
+{{{
+.default {
+        font-family: customFont;
+	autoSize: left;
+	antiAliasType: advanced;
+	thickness: -40;
+	sharpness: 80;
+	embedFonts: true;
+	
+}
+
+.titleh1>.default {
+	font-size: 18;
+}
+
+.titleh2>.default {
+	font-size: 15;
+}
+
+}}}
+}}}
+ 
