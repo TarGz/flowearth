@@ -51,7 +51,7 @@ namespace globalStyles = "http://domain.com/ns/css/global";
 
 var cssString : String = "..." ;
 
-styleManager.addCss( cssString, cssString.uri );
+styleManager.addCss( cssString, globalStyles .uri );
 }}}
 
 See how to retreive a style register into specific namespace in the next chapter.
