@@ -1,11 +1,7 @@
-#summary One-sentence summary of this page.
+#summary How to use css format
 
-= Introduction =
+=Basic css example=
 
-Add your content here.
-
-
-Basic css example :
 {{{
 .default {
         font-family: customFont;
@@ -23,6 +19,69 @@ Basic css example :
 
 .titleh2>.default {
 	font-size: 15;
+        autoSize: none;
 }
+
+}}}
+
+You can use all available _StyleSheet_ properties and all TextField properties.
+
+".default" is use as abstract style intended to be extend by other style. Use '>' char to specify the parent style.
+
+You can override a property already defined in the super style.
+
+=register a CSS file=
+
+Use styleManager singleton to register one or more css files.
+All the css styles will be available to format a textfield.
+
+{{{
+
+// String result of a loaded CSS file
+var cssString : String = "..." ;
+
+styleManager.
+ 
+}}}
+
+To avoid naming conflict, when you register several css files, you can register under a specific namespace.
+
+{{{
+namespace globalStyles = "http://domain.com/ns/css/global";
+
+var cssString : String = "..." ;
+
+styleManager.addCss( cssString, cssString.uri );
+}}}
+
+See how to retreive a style register into specific namespace in the next chapter.
+
+=Apply style to a textField=
+
+{{{
+
+var title : TextField = new TextField();
+
+var title_text : String = "My Title";
+
+var title_style : String = ".titleh1";
+
+styleManager.apply( title , title_style , title_text );	
+
+}}}
+
+To lookup for specific namespace, when you apply the format :
+
+{{{
+
+namespace globalStyles = "http://domain.com/ns/css/global";
+//
+var title : TextField = new TextField();
+
+var title_text : String = "My Title" );
+
+var title_style : Qname = new Qname( globalStyles, ".titleh1" );
+
+styleManager.apply( title , title_style , title_text );	
 
 }}}
