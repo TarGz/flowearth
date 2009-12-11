@@ -120,7 +120,7 @@ When apply a specific style to a textField, the StyleSheet containing this style
 var desc : TextField = new TextField();
 
 var desc_text : String = 
- "This is a  <span class="link">rich html text </span> with multiple format appied to a <span class="bold_grey">Textfield</span>.";
+ "This is a  <span class='link'>rich html text </span> with multiple format appied to a <span class='bold_grey'>Textfield</span>.";
 
 var desc_style : String = ".description";
 
