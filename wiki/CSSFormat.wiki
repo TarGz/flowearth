@@ -40,7 +40,7 @@ All the css styles will be available to format a textfield.
 // String result of a loaded CSS file
 var cssString : String = "..." ;
 
-styleManager.
+styleManager.addCss( cssString );
  
 }}}
 
