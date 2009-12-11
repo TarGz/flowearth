@@ -1,0 +1,34 @@
+<conf>
+	
+	<local>RU</local>
+
+	<externalData>
+		<file id="css">css_${local}.css</file>
+	</externalData>
+
+	<fontFiles>	
+		<source>../fonts/swf/arial_${local}.swf</source>
+	</fontFiles>
+
+
+	<!-- wording -->
+	<title>Название раздела</title>
+	<subtitle>Подзаголовок раздела</subtitle>
+	<desc>
+		<![CDATA[
+		На или вашу прежде, на <span class="link">дурак успехов безусловно</span> оно. <br/>
+		Деле ничего обнаженного ты опа, году одно ну миф. <br/>
+		На мог одну вокруг, <b>вам улице полностью</b> использовать ну. <br/>
+		Эти от вопрос налево плохого, три хороший следующее заботиться за, <br/>
+		попали размере уровней те кто. Все принять команда умственного но, <br/>
+		про минуту двигает стратегии мы, даже внешних них но. <br/>
+		Чем на тест порулил поскольку, каким взяться различных до опа, <br/>
+		какие конечного мы всю.
+    	]]>
+	</desc>
+
+	<labelA>Portez ce vieux whisky au juge blond qui fume</labelA>
+
+</conf>
+
+

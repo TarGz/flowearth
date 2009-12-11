@@ -30,19 +30,21 @@
 
 
 <body>
-		French fonts
+		French styles
 		<div class="swf" id="contentA"></div>
-		Russian fonts
+		Russian styles
 		<div class="swf" id="contentB"></div>
 		
 		
 		<script type="text/javascript">
 		// <![CDATA[
-		   so = new SWFObject("fonts_and_styles.swf", "shell_id_1", "100%", "40%", "9.0.45" );
+		   so = new SWFObject("fonts_and_styles.swf", "shell_id_1", "100%", "45%", "9.0.45" );
+		   so.addVariable( "confFile", "conf_FR.xml" );
 		   so.addParam( "allowScriptAccess", "always" );
 		   so.write( "contentA" );
 
-		   so2 = new SWFObject("fonts_and_styles.swf", "shell_id_2", "100%", "40%", "9.0.45" );
+		   so2 = new SWFObject("fonts_and_styles.swf", "shell_id_2", "100%", "45%", "9.0.45" );
+		   so2.addVariable( "confFile", "conf_RU.xml" );
 		   so2.addParam( "allowScriptAccess", "always" );
 		   so2.write( "contentB" );
 		// ]]>
