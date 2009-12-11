@@ -1,0 +1,28 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Add your content here.
+
+
+Basic css example :
+{{{
+.default {
+        font-family: customFont;
+	autoSize: left;
+	antiAliasType: advanced;
+	thickness: -40;
+	sharpness: 80;
+	embedFonts: true;
+	
+}
+
+.titleh1>.default {
+	font-size: 18;
+}
+
+.titleh2>.default {
+	font-size: 15;
+}
+
+}}}
