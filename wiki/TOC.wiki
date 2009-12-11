@@ -23,4 +23,5 @@
       * [http://code.google.com/p/flowearth/wiki/INodeDescriptor INodeDescriptor details]
       * [http://code.google.com/p/flowearth/wiki/SWFAddressConnector connection to SWFAddress]
       * [http://code.google.com/p/flowearth/wiki/NodeCompleteSample a complete example]
+    * [http://code.google.com/p/flowearth/wiki/StyleUsage Fonts and Styles]
   * [http://code.google.com/p/flowearth/w/list all pages]
