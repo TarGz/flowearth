@@ -8,27 +8,8 @@ The "text" package provide and extended css parser, with some extra functionnali
  * let you set all TextField properties in addition to TextFormat ones.
  * using inheritance
 
-See Extended CSS format
+See [http://code.google.com/p/flowearth/wiki/CSSFormat Extended CSS format] for more information.
 
-Basic css example :
-{{{
-.default {
-        font-family: customFont;
-	autoSize: left;
-	antiAliasType: advanced;
-	thickness: -40;
-	sharpness: 80;
-	embedFonts: true;
-	
-}
+==Font tools==
 
-.titleh1>.default {
-	font-size: 18;
-}
-
-.titleh2>.default {
-	font-size: 15;
-}
-
-}}}
- 
+[http://code.google.com/p/flowearth/wiki/FontsUsage build and use fonts]
