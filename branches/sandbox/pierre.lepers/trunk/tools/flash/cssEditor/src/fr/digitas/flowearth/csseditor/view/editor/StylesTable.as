@@ -45,10 +45,12 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		
 		override public function set width(value : Number) : void {
 			_layout.width = value;
+			_layout.update();
 		}
 
 		override public function set height(value : Number) : void {
 			_layout.height = value;
+			_layout.update();
 		}
 		
 		private function _buildView() : void {

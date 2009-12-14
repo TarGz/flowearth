@@ -17,7 +17,7 @@
 	<loadproperties srcfile="${basedir}/.properties" />
 	
 	<taskdef resource="digitasAnt.tasks"
-		         classpath="${FLOWEARTH_HOME}/tools/ant/tasks/bin/digitasAntTasks.jar" />
+		         classpath="${FMK_HOME}/tools/ant/tasks/bin/digitasAntTasks.jar" />
 
 	<!-- ================================= 
           target: main              
@@ -89,10 +89,10 @@
 		<copy file="${projectDir}/deploy/fontSandbox2.swf" tofile="${projectDir}/deploy/fontSandbox2.swf"></copy>
 		<copy file="${projectDir}/deploy/fontSandbox3.swf" tofile="${projectDir}/deploy/fontSandbox3.swf"></copy>
 		
-		<copy file="${projectDir}/deploy/fontSandbox0.swf" tofile="D:/Documents and Settings/lepersp/Application Data/fr.digitas.flowearth.cssEditor/Local Store/deploy/fontSandbox0.swf"></copy>
+		<!--copy file="${projectDir}/deploy/fontSandbox0.swf" tofile="D:/Documents and Settings/lepersp/Application Data/fr.digitas.flowearth.cssEditor/Local Store/deploy/fontSandbox0.swf"></copy>
 		<copy file="${projectDir}/deploy/fontSandbox1.swf" tofile="D:/Documents and Settings/lepersp/Application Data/fr.digitas.flowearth.cssEditor/Local Store/deploy/fontSandbox1.swf"></copy>
 		<copy file="${projectDir}/deploy/fontSandbox2.swf" tofile="D:/Documents and Settings/lepersp/Application Data/fr.digitas.flowearth.cssEditor/Local Store/deploy/fontSandbox2.swf"></copy>
-		<copy file="${projectDir}/deploy/fontSandbox3.swf" tofile="D:/Documents and Settings/lepersp/Application Data/fr.digitas.flowearth.cssEditor/Local Store/deploy/fontSandbox3.swf"></copy>
+		<copy file="${projectDir}/deploy/fontSandbox3.swf" tofile="D:/Documents and Settings/lepersp/Application Data/fr.digitas.flowearth.cssEditor/Local Store/deploy/fontSandbox3.swf"></copy-->
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
@@ -177,13 +177,6 @@
 		<exec executable="${digitas.adl}" dir="${projectDir}">
 			<arg line="build/descriptor.xml ${projectDir}/" />
 		</exec>
-		<patterns>
-							<p re="[\w\d-/]+/qashqai/[\w\d-/]+" value="QASHQAI" />
-							<p re="[\w\d-/]+/qashqai-plus-2/[\w\d-/]+" value="QASHQAI+2" />
-							<p re="[\w\d-/]+/pixo/[\w\d-/]+" value="pixo" />
-							<p re="[\w\d-/]+/murano/[\w\d-/]+" value="murano" />
-							<p re="[\w\d-/]+/navara/[\w\d-/]+" value="navara" />
-						</patterns>
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
@@ -192,7 +185,7 @@
     <target name="fonttest" depends="init">
     	<createFont classname="cssEditorFontTest_1"
 		            swf="${projectDir}/test/fonts/fonts_1.swf"
-		            compiler="${mxmlc}"
+		            compiler="${digitas.mxmlc}"
 		            keepgenerated="true">
 
 			<font fontfamily="FontA"
@@ -209,13 +202,55 @@
 
     	<createFont classname="cssEditorFontTest_2"
 		            swf="${projectDir}/test/fonts/fonts_2.swf"
-		            compiler="${mxmlc}"
+		            compiler="${digitas.mxmlc}"
 		            keepgenerated="true">
 
-			<font fontfamily="FontB"
+			<font fontfamily="FontA"
 			      fontweight="normal"
 			      sourcefile="${projectDir}/test/fonts/HelveticaNeueLTStd-XBlkCn.otf"
-			      unicoderange="U+0020-U+00FF" />
+			      chars="ABCabc" />
+
+			
+
+
+			<arg line="-use-network=false" />
+
+		</createFont>
+
+    	<property name="fr_range" value="U+0020-U+00ff"/>
+    	<createFont classname="cssEditorFontTest_FranklinFr"
+		            swf="${projectDir}/test/fonts/franklin_Fr.swf"
+		            compiler="${digitas.mxmlc}"
+		            keepgenerated="true">
+    		
+    		<!-- 
+    		
+			      sourcefile="${projectDir}/test/fonts/Frabk.TTF"
+			      sourcefile="${projectDir}/test/fonts/Frabkit.TTF"
+			      sourcefile="${projectDir}/test/fonts/Frabk.TTF"
+			      sourcefile="${projectDir}/test/fonts/Frabkit.TTF"
+    		-->
+			<font fontfamily="FranklinBook"
+			      fontweight="normal"
+			      sourcename="Franklin Gothic Book"
+			      unicoderange="${fr_range}" />
+
+    		<font fontfamily="FranklinBook"
+			      fontweight="normal"
+			      fontstyle="italic"
+			      sourcename="Franklin Gothic Book"
+			      unicoderange="${fr_range}" />
+
+    		<font fontfamily="FranklinBook"
+			      fontweight="bold"
+			      sourcename="Franklin Gothic Book"
+			      unicoderange="${fr_range}" />
+
+    		<font fontfamily="FranklinBook"
+			      fontweight="bold"
+			      fontstyle="italic"
+			      sourcename="Franklin Gothic Book"
+			      unicoderange="${fr_range}" />
 
 			
 

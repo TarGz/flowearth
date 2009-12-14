@@ -128,7 +128,7 @@ public class Font {
 	public String getClassName() {
 		String fm = fontFamily.replaceAll( " ", "_" );
 		fm = fm.replaceAll( "-", "_" );
-		return "_embed__font_"+fm+"_"+fontWeight;
+		return "_embed__font_"+fm+"_"+fontWeight+fontStyle;
 	}
 	
 	//systemFont='Font'

@@ -1,4 +1,6 @@
 package fr.digitas.flowearth.csseditor.view.editor {
+	import fr.digitas.flowearth.csseditor.managers.TabManager;	
+	import fr.digitas.flowearth.ui.button.DeleteStyleButton_FC;	
 	import fr.digitas.flowearth.core.IIterator;
 	import fr.digitas.flowearth.csseditor.data.StyleProperty;
 	import fr.digitas.flowearth.csseditor.data.completion.CSSCompletion;
@@ -7,6 +9,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 	import fr.digitas.flowearth.csseditor.event.ValidityEvent;
 	import fr.digitas.flowearth.csseditor.view.editor.helper.AbstractHelper;
 	import fr.digitas.flowearth.csseditor.view.editor.helper.HelperFactory;
+	import fr.digitas.flowearth.ui.button.BaseButton;
 	import fr.digitas.flowearth.ui.form.CompletionInputField;
 	import fr.digitas.flowearth.ui.form.InputField;
 	import fr.digitas.flowearth.ui.layout.ILayoutItem;
@@ -17,7 +20,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 	import flash.events.MouseEvent;
 	import flash.events.TextEvent;
 	import flash.text.TextField;
-	import flash.text.TextFieldAutoSize;		
+	import flash.text.TextFieldAutoSize;	
 
 	/**
 	 * @author Pierre Lepers
@@ -28,6 +31,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		public var valueLabel : TextField;
 		public var bg : MovieClip;
 		
+		private var _deleteBtn : BaseButton;
 		private var _errorField : ErrorField;
 		
 		public function PropertyItemRenderer() {
@@ -49,14 +53,45 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			_errorField.x = _errorField.y = 3;
 			addChild( _errorField );
 			
+			_deleteBtn = new DeleteStyleButton_FC();
+			_deleteBtn.addEventListener( MouseEvent.CLICK , onDelete );
+			_deleteBtn.visible = false;
+			_deleteBtn.y = 2; 
+			addChild( _deleteBtn );
+			
 			bg.addEventListener( MouseEvent.MOUSE_DOWN , bgDown );
+			
+			addEventListener( MouseEvent.ROLL_OVER , over );
+			addEventListener( MouseEvent.ROLL_OUT , out );
 			focusRect = false;
+		}
+		
+		private function over(event : MouseEvent) : void {
+			_deleteBtn.visible = true;
+		}
+
+		private function out(event : MouseEvent) : void {
+			_deleteBtn.visible = false;
+		}
+
+		private function onDelete(event : MouseEvent) : void {
+			_prop.remove();
 		}
 
 		private function bgDown(event : MouseEvent) : void {
 			stage.focus = this;
 		}
+		
+		public function setTabIndex() : void {
+			nameLabel.tabEnabled =
+			valueLabel.tabEnabled = true;
+			nameLabel.tabIndex = TabManager.getIndex();
+			valueLabel.tabIndex = TabManager.getIndex();
+			if( _helper ) _helper.tabIndex = TabManager.getIndex();
+		}
 
+		
+		
 		public function init(prop : StyleProperty) : void {
 			if( _prop ) throw new Error( "fr.digitas.flowearth.csseditor.view.editor.PropertyItemRenderer - double init ! " );
 			_prop = prop;
@@ -71,7 +106,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			updateStrValue( );
 			checkValidity( );
 		}
-		
+
 		private function _buildhelper() : void {
 			_helper = HelperFactory.getHelper( _prop );
 			if( _helper ) {
@@ -94,6 +129,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 
 		override public function set width(value : Number) : void {
 			bg.width = value;
+			_deleteBtn.x = value - _deleteBtn.width - 3;
 		}
 		
 		private function updateName(event : TextEvent = null ) : void {

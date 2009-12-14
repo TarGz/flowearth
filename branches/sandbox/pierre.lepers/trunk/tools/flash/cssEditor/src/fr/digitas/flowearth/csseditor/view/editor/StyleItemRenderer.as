@@ -92,7 +92,8 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			_list = new PropertyList( );
 			addChild( _list );
 			_list.y = _header.height;
-
+			
+			
 			_header.visible = 
 			_list.visible = false;
 		}
@@ -108,7 +109,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 				return;
 			}
 			if( event.relatedObject && contains( event.relatedObject ) ) return;
-			_list.quickAddItem = false;
+//			_list.quickAddItem = false;
 		}
 
 		private function focusIn(event : FocusEvent) : void {
@@ -117,7 +118,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 				return;
 			}
 			_sData.focus();
-			_list.quickAddItem = true;
+			
 		}
 		
 		

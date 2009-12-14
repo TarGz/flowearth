@@ -46,7 +46,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		override public function set width(value : Number) : void {
 			bg.width = value;
 			_scroll.width = value;
-			if( _table ) _table.width = value;
+			if( _table ) _table.width = _scroll.width;
 		}
 
 		override public function set height(value : Number) : void {

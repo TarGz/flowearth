@@ -113,6 +113,8 @@ package fr.digitas.flowearth.ui.scroller {
 			_scrollRect = new Rectangle();
 			_content.scrollRect = _scrollRect;
 			
+			_width = zone.width;
+			
 			bi_internal::addChild( _content );
 			
 			addEventListener( Event.ADDED_TO_STAGE, onAdded );
@@ -174,7 +176,7 @@ package fr.digitas.flowearth.ui.scroller {
 		 */
 		override public function set width( val : Number ) : void {
 			visible = ( val > 0 );
-			zone.width = val;
+			_width = val;
 			update();
 			dispatchEvent( new Event( Event.RESIZE ) );
 		}
@@ -291,8 +293,8 @@ package fr.digitas.flowearth.ui.scroller {
 			needScroll = ( zone.height < realHeight );
 			
 			_scrollRect.y =  _position * ( realHeight - zone.height );
-			_scrollRect.width = zone.width - ( ( super.contains( scrollBar ) ) ? scrollBar.width : 0 ) ;
-			scrollBar.x = zone.width;
+			zone.width = _scrollRect.width = _width - ( ( super.contains( scrollBar ) ) ? scrollBar.width : 0 ) ;
+			scrollBar.x = _width;
 			_scrollRect.height = zone.height;
 			
 			
@@ -312,8 +314,11 @@ package fr.digitas.flowearth.ui.scroller {
 			if( _needScroll == flag ) return;
 			_needScroll = flag;
 			if( _scrollPolicy == ScrollPolicy.AUTO_HIDE ) {
-				if( flag ) 	bi_internal::addChild( scrollBar );
-				else 		bi_internal::removeChild( scrollBar );
+				if( flag ) 	
+					bi_internal::addChild( scrollBar );
+				else 
+					bi_internal::removeChild( scrollBar );
+				
 				dispatchEvent( new BoolEvent( DISPLAY_SCROLL, flag ) );
 			}
 			else if ( _scrollPolicy == ScrollPolicy.AUTO_ACTIVATE ) {
@@ -366,7 +371,7 @@ package fr.digitas.flowearth.ui.scroller {
 		protected var _position 	: Number = 0;
 		protected var _valid 		: Boolean = false;
 		protected var _watchResize 	: Boolean = false;
-		
+		protected var _width 		: Number;
 		protected var _needScroll 	: Boolean;
 		
 		private var _scrollPolicy : String = "autoHide";

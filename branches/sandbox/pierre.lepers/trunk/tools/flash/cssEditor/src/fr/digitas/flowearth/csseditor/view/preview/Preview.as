@@ -1,18 +1,14 @@
 package fr.digitas.flowearth.csseditor.view.preview {
-	import fr.digitas.flowearth.csseditor.data.StyleData;	
-	
-	import flash.text.TextFormat;	
-	
-	import fr.digitas.flowearth.csseditor.event.FontEvent;	
-	
-	import flash.text.TextField;	
-	
+	import fr.digitas.flowearth.csseditor.App;
 	import fr.digitas.flowearth.csseditor.data.CSS;
 	import fr.digitas.flowearth.csseditor.data.CSSProvider;
+	import fr.digitas.flowearth.csseditor.data.StyleData;
 	import fr.digitas.flowearth.csseditor.event.CSSEvent;
+	import fr.digitas.flowearth.csseditor.event.FontEvent;
 	
 	import flash.display.Sprite;
-	import flash.events.Event;	
+	import flash.events.Event;
+	import flash.text.TextField;		
 
 	/**
 	 * @author Pierre Lepers
@@ -46,9 +42,29 @@ package fr.digitas.flowearth.csseditor.view.preview {
 			addChild( inputside );
 			renderside = new RenderSide();
 			addChild( renderside );
-			
 			inputside.addEventListener( Event.CHANGE , onTextChange );
+			
+			_initFontSystem( );
 		}
+		
+		private function _initFontSystem( e : Event = null ) : void {
+			App.getFontSystem().addEventListener( FontEvent.FONT_LOADED , _updateField );
+			App.getFontSystem().removeEventListener( FontEvent.SANDBOX_READY, _updateField );
+			var tf : TextField = App.getFontSystem().getSandboxedTf( );
+			if( !tf ) { 
+				tf = new TextField();
+				tf.text = "not ready";
+				App.getFontSystem().addEventListener( FontEvent.SANDBOX_READY, _updateField );
+			}
+			renderside.tf = tf;
+		}
+		
+		private function _updateField( e : Event = null ) : void {
+			var tf : TextField = App.getFontSystem().getSandboxedTf( );
+			if( tf ) renderside.tf = tf;
+		}
+
+		
 		
 		
 		private function onAdded( e : Event ) : void {
@@ -57,38 +73,23 @@ package fr.digitas.flowearth.csseditor.view.preview {
 
 		private function onRemoved( e : Event ) : void {
 			CSSProvider.instance.removeEventListener( CSSEvent.CURRENT_CHANGE , onCssChange );
+			App.getFontSystem().removeEventListener( FontEvent.SANDBOX_READY, _initFontSystem );
 		}
 		
 		
 		private function onCssChange(event : CSSEvent) : void {
 			if( _css ) {
 				_css.datas.removeEventListener( CSSEvent.CURRENT_CHANGE , onFocusStyleChange );
-				_css.fontsDatas.removeEventListener( FontEvent.SANDBOX_READY, onSandboxReady );
 				_css = null;
 			}
 			
 			_css = CSSProvider.instance.currentCss;
 			if( !_css ) return;
 			
-			var tf : TextField = _css.fontsDatas.getSandboxedTf( );
-			if( !tf ) { 
-				tf = new TextField();
-				tf.text = "not ready";
-			}
-			trace( "fr.digitas.flowearth.csseditor.view.preview.Preview - onCssChange -- ",tf );
-			renderside.tf = tf;
-			
-			_css.fontsDatas.addEventListener( FontEvent.SANDBOX_READY, onSandboxReady );
 			_css.datas.addEventListener( CSSEvent.CURRENT_CHANGE , onFocusStyleChange );
 			onFocusStyleChange( null );
 		}
 		
-		private function onSandboxReady(event : FontEvent) : void {
-			var tf : TextField = _css.fontsDatas.getSandboxedTf( );
-			trace( "fr.digitas.flowearth.csseditor.view.preview.Preview - onSandboxReady -- ", tf );
-			renderside.tf = tf;
-		}
-
 		private function onFocusStyleChange(event : CSSEvent) : void {
 			if( _focusedStyle ) {
 				_focusedStyle.removeEventListener( Event.CHANGE , onStyleChange );
