@@ -38,12 +38,15 @@ package fr.digitas.flowearth.csseditor.data {
 			_dProps[ prop.name ] = prop;
 			prop.addEventListener( PropertyEvent.RENAME , onPropRename );
 			prop.addEventListener( Event.CHANGE , onPropChange );
+			prop.addEventListener( PropertyEvent.REMOVED , onPropRemoved );
 			dispatchEvent( new PropertyEvent( PropertyEvent.ADDED, prop ) );
 		}
 		
+
 		public function removeProperty( prop : StyleProperty ) : void {
 			_dProps[ prop.name ].removeEventListener( PropertyEvent.RENAME , onPropRename );
 			_dProps[ prop.name ].removeEventListener( Event.CHANGE , onPropChange );
+			_dProps[ prop.name ].removeEventListener( PropertyEvent.REMOVED , onPropRemoved );
 			delete _dProps[ prop.name ];
 			_aProps.splice( _aProps.indexOf( prop ) , 1 );
 			_length --;
@@ -64,6 +67,10 @@ package fr.digitas.flowearth.csseditor.data {
 		
 		private function onPropChange(event : Event) : void {
 			_change();
+		}
+		
+		private function onPropRemoved(event : PropertyEvent) : void {
+			removeProperty( event.prop );
 		}
 		
 

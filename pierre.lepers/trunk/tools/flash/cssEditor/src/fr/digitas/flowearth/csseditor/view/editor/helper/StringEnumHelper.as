@@ -1,12 +1,13 @@
 package fr.digitas.flowearth.csseditor.view.editor.helper {
 	import fl.controls.ComboBox;
+	import fl.managers.FocusManager;
 	
 	import fr.digitas.flowearth.core.IIterator;
 	import fr.digitas.flowearth.csseditor.data.builder.types.StringEnum;
 	import fr.digitas.flowearth.csseditor.event.PropertyEvent;
 	import fr.digitas.flowearth.ui.utils.FlUtils;
 	
-	import flash.events.Event;		
+	import flash.events.Event;	
 
 	/**
 	 * @author Pierre Lepers
@@ -32,6 +33,7 @@ package fr.digitas.flowearth.csseditor.view.editor.helper {
 
 		private function _buildCb() : void {
 			_cb = new ComboBox();
+			_cb.focusManager = FlUtils.nullFocusManager;
 			_cb.height = 19;
 			_cb.y = 1;
 			_cb.dropdown.setStyle( "contentPadding",  1 );

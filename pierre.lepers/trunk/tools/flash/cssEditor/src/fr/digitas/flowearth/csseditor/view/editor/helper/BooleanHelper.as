@@ -3,9 +3,9 @@ package fr.digitas.flowearth.csseditor.view.editor.helper {
 	
 	import fr.digitas.flowearth.csseditor.event.PropertyEvent;
 	import fr.digitas.flowearth.csseditor.view.editor.helper.AbstractHelper;
+	import fr.digitas.flowearth.ui.utils.FlUtils;
 	
-	import flash.events.Event;import flash.utils.setTimeout;
-	import flash.geom.Matrix;	
+	import flash.events.Event;		
 
 	/**
 	 * @author Pierre Lepers
@@ -32,6 +32,7 @@ package fr.digitas.flowearth.csseditor.view.editor.helper {
 		
 		private function _buildCb() : void {
 			_cb = new CheckBox();
+			_cb.focusManager = FlUtils.nullFocusManager;
 			addChild( _cb );
 			
 			_cb.addEventListener( Event.CHANGE , onCbChange );

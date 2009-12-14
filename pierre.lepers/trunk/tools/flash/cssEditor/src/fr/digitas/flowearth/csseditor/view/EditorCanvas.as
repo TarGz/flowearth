@@ -1,4 +1,6 @@
 package fr.digitas.flowearth.csseditor.view {
+	import fr.digitas.flowearth.csseditor.view.editor.EditorToolBar_FC;	
+	import fr.digitas.flowearth.csseditor.view.editor.EditorToolBar;	
 	import fr.digitas.flowearth.csseditor.data.CSSProvider;
 	import fr.digitas.flowearth.csseditor.event.CSSEvent;
 	import fr.digitas.flowearth.csseditor.view.editor.StyleEditor;
@@ -25,6 +27,7 @@ package fr.digitas.flowearth.csseditor.view {
 
 		private function onAdded( e : Event ) : void {
 			CSSProvider.instance.addEventListener( CSSEvent.CURRENT_CHANGE , onCurrentChange );
+			onCurrentChange( null );
 		}
 		
 
@@ -34,8 +37,8 @@ package fr.digitas.flowearth.csseditor.view {
 		}
 		
 		private function onCurrentChange(event : CSSEvent) : void {
-			if( event.css )
-				cssEditor.setCss( event.css );
+			if( CSSProvider.instance.currentCss )
+				cssEditor.setCss( CSSProvider.instance.currentCss );
 		}
 
 		private function _buildViews() : void {
@@ -43,12 +46,17 @@ package fr.digitas.flowearth.csseditor.view {
 			cssTabs = new StyleTabs( );
 			addContent( cssTabs );
 
+			// tools
+			cssTools = new EditorToolBar_FC( );
+			addContent( cssTools );
+
 			cssEditor = new StyleEditor( );
 			addContent( cssEditor, true );
 			
 		}
 		
 		private var cssTabs : StyleTabs;
+		private var cssTools : EditorToolBar;
 		private var cssEditor : StyleEditor;
 	}
 }

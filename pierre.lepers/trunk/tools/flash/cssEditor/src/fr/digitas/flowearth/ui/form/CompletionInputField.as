@@ -17,14 +17,16 @@ package fr.digitas.flowearth.ui.form {
 		
 		public function CompletionInputField(tf : TextField) {
 			super( tf );
-			addEventListener( Event.ADDED_TO_STAGE, onAdded );
-			addEventListener( Event.REMOVED_FROM_STAGE, onRemoved );
+			_tf.addEventListener( Event.ADDED_TO_STAGE, onAdded );
+			_tf.addEventListener( Event.REMOVED_FROM_STAGE, onRemoved );
 		}
 
-		private function onAdded( e : Event ) : void {
+		override protected function onAdded( e : Event ) : void {
+			super.onAdded(e);
 		}
 		
-		private function onRemoved( e : Event ) : void {
+		override protected function onRemoved( e : Event ) : void {
+			super.onRemoved( e );
 			if( _completionList ) _destroyList();
 		}
 
@@ -68,7 +70,8 @@ package fr.digitas.flowearth.ui.form {
 //		}
 
 		override protected function focusOut(event : FocusEvent) : void {
-			if( ! stage ) return;
+			super.focusOut( event );
+			if( ! _tf.stage ) return;
 
 			if( _completionList && event.relatedObject ) {
 				if( _completionList.contains( event.relatedObject ) )
@@ -76,16 +79,13 @@ package fr.digitas.flowearth.ui.form {
 			}
 
 			_destroyList();
-			_tf.type = TextFieldType.DYNAMIC;
-			_tf.selectable = 
-			_tf.border = 
-			_tf.background = false;
 		}
 
 		override protected function onEnterKey() : void {
 			if( _completionList ) {
 				tf.text = _completionList.getFocusedItem( )._cdata.completion;
 				dispatchEvent( new Event( Event.CHANGE ) );
+				_destroyList();
 			}
 			super.onEnterKey( );
 		}
@@ -108,10 +108,10 @@ package fr.digitas.flowearth.ui.form {
 				_completionList.populate( results );
 				return;
 			}
-			if( ! stage ) return;
+			if( ! _tf.stage ) return;
 			_completionList = new CompletionList_FC( );
-			stage.addChild( _completionList );
-			var pos : Point = localToGlobal( new Point( tf.x, tf.y + tf.height ) );
+			_tf.stage.addChild( _completionList );
+			var pos : Point = _tf.localToGlobal( new Point( 0, 0 + tf.height ) );
 			_completionList.x = pos.x;
 			_completionList.y = pos.y;
 			_completionList.width = 180;
@@ -121,7 +121,7 @@ package fr.digitas.flowearth.ui.form {
 
 		private function _destroyList() : void {
 			if( ! _completionList ) return;
-			stage.removeChild( _completionList );
+			_tf.stage.removeChild( _completionList );
 			_completionList = null;
 		}
 		

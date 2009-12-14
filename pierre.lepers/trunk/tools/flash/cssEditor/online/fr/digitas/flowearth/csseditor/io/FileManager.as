@@ -9,8 +9,10 @@ package fr.digitas.flowearth.csseditor.io {
 	public class FileManager implements IFileManager {
 		
 		public function saveFile( url : String, content : ByteArray ) : void {
-			
-			
+		}
+		
+		public function getMetadataFileName(url : String) : String {
+			return null;
 		}
 	}
 }

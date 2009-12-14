@@ -33,7 +33,11 @@ package fr.digitas.flowearth.csseditor.data {
 		private var _name : String;
 
 		private var _type : PropertyType;
-
+		
+		public function remove() : void {
+			dispatchEvent( new PropertyEvent( PropertyEvent.REMOVED , this ) );
+		}
+		
 		public function get strValue() : String {
 			return _strValue;
 		}

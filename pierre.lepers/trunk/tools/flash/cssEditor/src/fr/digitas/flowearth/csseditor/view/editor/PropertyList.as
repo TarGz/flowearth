@@ -3,6 +3,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 	import fr.digitas.flowearth.csseditor.data.StyleData;
 	import fr.digitas.flowearth.csseditor.data.StyleProperty;
 	import fr.digitas.flowearth.csseditor.event.PropertyEvent;
+	import fr.digitas.flowearth.csseditor.managers.TabManager;
 	import fr.digitas.flowearth.csseditor.view.console.Console;
 	import fr.digitas.flowearth.ui.layout.Layout;
 	import fr.digitas.flowearth.ui.layout.renderer.TopJustifyRenderer;
@@ -10,6 +11,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.FocusEvent;
 	import flash.utils.Dictionary;		
 
 	/**
@@ -19,9 +21,19 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		
 		public function PropertyList() {
 			_buildLayout( );
-			
+			addEventListener( FocusEvent.FOCUS_IN , focusIn );
+			addEventListener( FocusEvent.FOCUS_OUT , focusOut );
+			focusOut(null);
 		}
 		
+		private function focusOut(event : FocusEvent) : void {
+			tabChildren = false;
+		}
+
+		private function focusIn(event : FocusEvent) : void {
+			tabChildren = true;
+		}
+
 		
 		
 		public function init(sData : StyleData) : void {
@@ -84,12 +96,16 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			var prop : StyleProperty;
 			var iter : IIterator = _sdata.getProps();
 			var renderer : PropertyItemRenderer;
+			
+			
 			while( prop = iter.next() as StyleProperty ) {
 				renderer = _rendererMap[ prop ] = new PropertyItemRenderer_FC( );
 				renderer.init( prop );
 				_layout.addChild( renderer );
 			}
-			_layout.update();
+			quickAddItem = true;
+			
+			updateLayout();
 			_builded = true;
 		}
 
@@ -132,15 +148,21 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		
 		
 		private function updateHeight( ) : void {
-			if( bg.height == _sdata.length * 22 ) return;
-			bg.height = _sdata.length * 22;
+			if( bg.height == (_sdata.length+1) * 22 ) return;
+			bg.height = (_sdata.length + 1 )* 22;
 			dispatchEvent( new Event( Event.RESIZE , true ) );
 		}
 		
 		private function updateLayout() : void {
-			_layout.update();
 			if (_quickAdd )
 				_layout.setChildIndex( _quickAdd , _layout.numChildren - 1 );
+			
+			TabManager.reset();
+			for (var i : int = 0; i < _layout.numChildren; i++) {
+				( _layout.getChildAt( i ) as PropertyItemRenderer ).setTabIndex();
+			}
+			
+			_layout.update();
 			dispatchEvent( new Event( Event.RESIZE , true ) );
 		}
 

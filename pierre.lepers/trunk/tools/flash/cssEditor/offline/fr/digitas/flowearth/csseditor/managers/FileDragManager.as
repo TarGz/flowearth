@@ -11,7 +11,7 @@ package fr.digitas.flowearth.csseditor.managers {
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
-	import flash.utils.ByteArray;		
+	import flash.utils.ByteArray;	
 
 	/**
 	 * @author Pierre Lepers
@@ -62,7 +62,7 @@ package fr.digitas.flowearth.csseditor.managers {
 				return;
 			}
 			Console.log( "fr.digitas.flowearth.csseditor.managers.FileDragManager - handleSwfFile -- "+file.nativePath  );
-			css.fontsDatas.loadFonts( file.nativePath );
+			css.fontProfile.addFont( file );
 				
 		}
 

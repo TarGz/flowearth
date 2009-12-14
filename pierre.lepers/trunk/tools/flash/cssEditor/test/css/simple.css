@@ -1,18 +1,25 @@
-.styleb {
-	textColor: 0x0;
+.stylea {
+	textColor: 0xffffff;
+	condenseWhite: false;
+	multiline: true;
+	font-family: FranklinBook;
+	embedFonts: true;
 	autoSize: left;
 	font-size: 25;
-	multiline: true;
+}
+
+.styleb {
+	textColor: 0x333333;
+	autoSize: left;
+	font-size: 25;
 	condenseWhite: false;
+	multiline: true;
 	embedFonts: true;
 	font-family: FontA;
 }
 
-.stylea {
-	textColor: 0xff0000;
-	condenseWhite: false;
-	multiline: true;
-	font-family: FontB;
+.truc {
 	autoSize: left;
-	embedFonts: true;
+	font-family: FontB;
 }
+

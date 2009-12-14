@@ -2,7 +2,7 @@ package fr.digitas.flowearth.csseditor.data {
 	import fr.digitas.flowearth.csseditor.App;
 	import fr.digitas.flowearth.csseditor.data.builder.CSSBuilder;
 	import fr.digitas.flowearth.csseditor.data.builder.CSSParser;
-	import fr.digitas.flowearth.csseditor.data.fonts.FontsData;
+	import fr.digitas.flowearth.csseditor.data.fonts.FontProfile;
 	import fr.digitas.flowearth.csseditor.event.CSSEvent;
 	import fr.digitas.flowearth.csseditor.io.IFileManager;
 	import fr.digitas.flowearth.csseditor.view.console.Console;
@@ -10,7 +10,10 @@ package fr.digitas.flowearth.csseditor.data {
 	
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
-	import flash.utils.ByteArray;		
+	import flash.filesystem.File;
+	import flash.filesystem.FileMode;
+	import flash.filesystem.FileStream;
+	import flash.utils.ByteArray;	
 
 	/**
 	 * @author Pierre Lepers
@@ -29,10 +32,12 @@ package fr.digitas.flowearth.csseditor.data {
 			_datas = new CSSData( );
 			_datas.addEventListener( Event.CHANGE , onDatasChange );
 
-			_fonts = new FontsData( );
+			_fontProfile = new FontProfile( this );
+			
+			_loadMetadatas();
 //			_file = file;
 		}
-		
+
 		
 		public function get fileSystemSync() : Boolean {
 			return _fileSystemSync;
@@ -80,8 +85,8 @@ package fr.digitas.flowearth.csseditor.data {
 			return _datas;
 		}
 
-		public function get fontsDatas() : FontsData {
-			return _fonts;
+		public function get fontProfile() : FontProfile {
+			return _fontProfile;
 		}
 		
 		public function save() : void {
@@ -89,6 +94,17 @@ package fr.digitas.flowearth.csseditor.data {
 			var cssBa : ByteArray = new ByteArray( );
 			cssBa.writeUTFBytes( getPlainValue() );
 			fm.saveFile( filepath , cssBa );
+			
+			saveMetaData();
+			
+			fileSystemSync = true;
+		}
+
+		public function saveMetaData() : void {
+			var fm : IFileManager = App.getFileManager();
+			var cssBa : ByteArray = new ByteArray( );
+			cssBa.writeUTFBytes( getMetadata().toXMLString() );
+			fm.saveFile( App.getFileManager().getMetadataFileName( filepath ) , cssBa );
 			fileSystemSync = true;
 		}
 		
@@ -100,6 +116,20 @@ package fr.digitas.flowearth.csseditor.data {
 			}
 			CSSProvider.instance.removeCss( this );
 			dispatchEvent( new Event( Event.CLOSE ) );
+		}
+		
+		
+		private function _loadMetadatas() : void {
+			var metaFile : File = new File( App.getFileManager().getMetadataFileName( filepath ) );
+			if( ! metaFile.exists ) return;
+			var fileStream:FileStream = new FileStream();
+			fileStream.open(metaFile, FileMode.READ);
+			var fileBytes : ByteArray = new ByteArray();
+			fileStream.readBytes( fileBytes, 0, fileStream.bytesAvailable);
+			fileStream.close();
+			fileBytes.position = 0;
+			var metas : XML = new XML( fileBytes.readUTFBytes( fileBytes.bytesAvailable ) );
+			_fontProfile.parse( metas.fontProfile[0] );
 		}
 
 		private function onDatasChange(event : Event) : void {
@@ -120,6 +150,12 @@ package fr.digitas.flowearth.csseditor.data {
 		private function unregister() : void {
 			styleManager.deleteCss( _filepath );
 		}
+		
+		private function getMetadata() : XML {
+			var metas : XML = <metadatas/>;
+			metas.appendChild( _fontProfile.export() );
+			return metas;
+		}
 
 		private var _plainValue : String;
 
@@ -127,7 +163,7 @@ package fr.digitas.flowearth.csseditor.data {
 		
 		private var _datas : CSSData;
 
-		private var _fonts : FontsData;
+		private var _fontProfile : FontProfile;
 
 		private var _fileSystemSync : Boolean = false;
 

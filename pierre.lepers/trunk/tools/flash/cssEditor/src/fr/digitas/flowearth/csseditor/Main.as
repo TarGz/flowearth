@@ -15,7 +15,6 @@ package fr.digitas.flowearth.csseditor {
 			
 			stage.align = StageAlign.TOP_LEFT;
 			stage.scaleMode = StageScaleMode.NO_SCALE;
-			
 			App.run( this );
 			
 			addChild( new MainLayout( ) );

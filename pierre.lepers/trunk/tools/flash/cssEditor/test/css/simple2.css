@@ -1,11 +1,10 @@
 .styleb {
-	textColor: 0x0;
+	textColor: 0x191919;
 	autoSize: left;
 	font-size: 25;
-	multiline: true;
 	condenseWhite: false;
+	multiline: true;
 	embedFonts: true;
 	font-family: FontA;
 }
-
 

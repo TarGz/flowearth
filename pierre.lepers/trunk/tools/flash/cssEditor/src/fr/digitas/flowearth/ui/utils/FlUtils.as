@@ -1,4 +1,7 @@
 package fr.digitas.flowearth.ui.utils {
+	import flash.display.Sprite;	
+	
+	import fl.managers.FocusManager;	
 	import fl.controls.ComboBox;		
 
 	/**
@@ -23,5 +26,7 @@ package fr.digitas.flowearth.ui.utils {
 			cb.width = cb.dropdownWidth = maxLength + 30;
 			return maxLength + 30;
 		}
+		
+		public static const nullFocusManager : FocusManager = new FocusManager( null );
 	}
 }

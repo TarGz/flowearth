@@ -86,8 +86,8 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		
 		private function updateName(event : TextEvent = null ) : void {
 			nameInput.text = _sData.getName( );
-			extendsLabel.x = nameInput.x + nameInput.width + 10;
-			superInput.x = extendsLabel.x + extendsLabel.width + 10;
+			extendsLabel.x = nameLabel.x + nameLabel.width + 10;
+			superLabel.x = extendsLabel.x + extendsLabel.width + 10;
 		}
 		
 		private function updateSuper(event : StyleEvent = null ) : void {
