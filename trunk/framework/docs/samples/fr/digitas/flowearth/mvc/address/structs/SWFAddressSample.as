@@ -1,15 +1,11 @@
 package {
-	import fr.digitas.flowearth.core.IIterator;	
-	import fr.digitas.flowearth.ui.layout.renderer.TopWeakRenderer;	
-	import fr.digitas.flowearth.ui.layout.Layout;	
+	import fr.digitas.flowearth.core.IIterator;
 	import fr.digitas.flowearth.mvc.address.structs.Node;
-	import fr.digitas.flowearth.mvc.address.structs.Path;
 	import fr.digitas.flowearth.mvc.address.structs.connector.SWFAddressConnector;
 	import fr.digitas.flowearth.mvc.address.structs.descriptor.BaseDescriptor;
 	import fr.digitas.flowearth.mvc.address.structs.system.nodeSystem;
-	
-	import flash.events.MouseEvent;
-	import flash.text.TextField;	
+	import fr.digitas.flowearth.ui.layout.Layout;
+	import fr.digitas.flowearth.ui.layout.renderer.TopWeakRenderer;		
 
 	/**
 	 * @author Pierre Lepers
@@ -94,14 +90,13 @@ package {
 	}
 }
 
+import fr.digitas.flowearth.event.NodeEvent;
 import fr.digitas.flowearth.mvc.address.structs.Node;
 
 import flash.display.Sprite;
 import flash.events.MouseEvent;
 import flash.text.TextField;
 import flash.text.TextFormat;
-
-import fr.digitas.flowearth.event.NodeEvent;
 
 class NodeBtn extends Sprite {
 		
