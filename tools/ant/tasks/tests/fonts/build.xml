@@ -78,7 +78,7 @@
          - - - - - - - - - - - - - - - - - -->
 	<target name="init">
 		<property name="TEST_HOME"
-		          location="${FMK_HOME}/tools/ant/antTasks/tests/fonts" />
+		          location="${FMK_HOME}/tools/ant/tasks/tests/fonts" />
 
 	</target>
 

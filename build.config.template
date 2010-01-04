@@ -14,15 +14,27 @@ digitas.flex = path/to/rootdir/of/flexSDK
 digitas.java = path/to/rootdir/of/javaJDK
 
 
-# ---------------------------------------
+# ========================================================
 # following configs are not mandatory, you can use '#'
 # disable these property will skip some build functionalities
+# ========================================================
 
+# ------------------------------------------------
 # enable fla publishing with ant macros ant macros
 ## builds tested with CS3
+
 FLASH_EXE = path/to/Flash.exe
 
+# ------------------------------------------------
 # enable pdm running for framework diagnostic
 ## builds tested with pmd 1_0_RC4
+
 digitas.flex.pmd = D:/work/tools/flexPMD/1_0_RC4
 digitas.flex.pmd.version = 1.0.RC4
+
+# ------------------------------------------------
+# credentials
+
+# googlecode upload
+#digitas.gcode.username = 
+#digitas.gcode.pwd = 

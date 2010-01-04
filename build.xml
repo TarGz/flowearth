@@ -8,65 +8,100 @@
      Pierre Lepers                                                                
      ====================================================================== -->
 <project name="Digitas Fmk" default="main" basedir=".">
-    <description>
+	<description>
             Complete build
     </description>
-	
 
-	<property name="FMK_HOME" location="${basedir}"/>
-	<loadproperties srcfile="${FMK_HOME}/build.config"/>
-	<loadproperties srcfile="${FMK_HOME}/.properties"/>
 
-    <!-- ================================= 
+	<property name="FMK_HOME" location="${basedir}" />
+	<loadproperties srcfile="${FMK_HOME}/build.config" />
+	<loadproperties srcfile="${FMK_HOME}/.properties" />
+
+	<taskdef classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask"
+	         classpath="${digitas.dir.antLibs}/ant-googlecode-0.0.2.jar"
+	         name="gcupload" />
+
+	<!-- ================================= 
           target: default              
          ================================= -->
-    <target name="main" description="Complete build">
-        <ant antfile="${digitas.dir.antTasks}/build/build.xml"/>
-        <ant antfile="${digitas.dir.fmk}/build/build.xml"/>
-        <ant antfile="${digitas.dir.fmk}/docs/tutorials/build.xml"/>
-        <ant antfile="${digitas.dir.units}/build/build.xml"/>
-    </target>
-	
-	<!-- ================================= 
-          target: liscence change              
-         ================================= 
-    <target name="liscence change">
-    	
-    	
-    		<replace dir="D:/work/workspaces/as3/Flowearth_Internal/" includes="**/*">
-    			
-    			<replacetoken>////////////////////////////////////////////////////////////////////////////////
-//
-//  DIGITAS FRANCE / VIVAKI COMMUNICATIONS
-//  Copyright 2008-2009 Digitas France
-//  All Rights Reserved.
-//
-//  NOTICE: Digitas permits you to use, modify, and distribute this file
-//  in accordance with the terms of the license agreement accompanying it.
-//
-////////////////////////////////////////////////////////////////////////////////</replacetoken>
-    			<replacevalue>/* ***** BEGIN LICENSE BLOCK *****
- * Copyright (C) 2007-2009 Digitas France
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * The Initial Developer of the Original Code is
- * Digitas France Flash Team
- *
- * Contributor(s):
- *   Digitas France Flash Team
- *
- * ***** END LICENSE BLOCK ***** */</replacevalue>
-    		</replace>
+	<target name="main" description="Complete build">
+		<ant antfile="${digitas.dir.antTasks}/build/build.xml" />
+		<ant antfile="${digitas.dir.fmk}/build/build.xml" />
+		<ant antfile="${digitas.dir.fmk}/docs/tutorials/build.xml" />
+		<ant antfile="${digitas.dir.units}/build/build.xml" />
+	</target>
 
-        
-    </target>-->
+	<!-- ================================= 
+          target: create realease      
+         ================================= -->
+	<target name="create realease">
+		<loadproperties srcfile="${FMK_HOME}/framework/build/buildnumber.txt" />
+		<property name="zipSrcname"
+		          value="${FMK_HOME}/releases/${digitas.version.major}_${digitas.version.minor}_${build.number}/flowearth_${digitas.version.major}_${digitas.version.minor}_${build.number}_sources.zip" />
+		<property name="zipBinname"
+		          value="${FMK_HOME}/releases/${digitas.version.major}_${digitas.version.minor}_${build.number}/flowearth_${digitas.version.major}_${digitas.version.minor}_${build.number}.zip" />
+		<mkdir dir="${FMK_HOME}/releases/${digitas.version.major}_${digitas.version.minor}_${build.number}" />
+
+		<zip destfile="${zipSrcname}">
+			<fileset dir="${FMK_HOME}">
+				<include name="**" />
+
+				<exclude name="build.config" />
+				<exclude name="releases/**" />
+				<exclude name=".settings/**" />
+				<exclude name="framework/docs/templates/**" />
+				<exclude name=".as3_classpath" />
+				<exclude name=".project" />
+				<exclude name="**/*.cache" />
+			</fileset>
+		</zip>
+
+		<zip destfile="${zipBinname}">
+			<fileset dir="${FMK_HOME}">
+				<include name="framework/assets/**" />
+				<include name="framework/bin/**" />
+				<include name="framework/docs/**" />
+				<include name="tools/ant/tasks/bin/**" />
+
+				<exclude name="**/src/**" />
+				<exclude name="framework/docs/templates/**" />
+				<exclude name="build.config" />
+				<exclude name="releases/**" />
+				<exclude name=".settings/**" />
+				<exclude name=".as3_classpath" />
+				<exclude name=".project" />
+				<exclude name="**/*.cache" />
+			</fileset>
+		</zip>
+
+		<antcall target="googlecode_upload" inheritall="true"/>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: googlecode_upload                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="googlecode_upload" if="digitas.gcode.username">
+		<gcupload
+			username="${digitas.gcode.username}" 
+	        password="${digitas.gcode.pwd}" 
+	        projectname="flowearth" 
+	        filename="${zipBinname}" 
+	        targetfilename="flowearth_${digitas.version.major}_${digitas.version.minor}_${build.number}.zip"
+	        summary="Version ${digitas.version.major}.${digitas.version.minor}.${build.number} binaries"
+	        labels="Type-Archive, Type-Docs, OpSys-All, Featured" 
+		/>
+
+		<gcupload
+			username="${digitas.gcode.username}" 
+	        password="${digitas.gcode.pwd}" 
+	        projectname="flowearth" 
+	        filename="${zipSrcname}" 
+	        targetfilename="flowearth_${digitas.version.major}_${digitas.version.minor}_${build.number}_sources.zip"
+	        summary="Version ${digitas.version.major}.${digitas.version.minor}.${build.number} with sources"
+	        labels="Type-Archive, Type-Source, Type-Docs, OpSys-All" 
+		/>
+	</target>
+
 
 
 
