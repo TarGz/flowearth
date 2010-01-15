@@ -1,4 +1,5 @@
 package fr.digitas.flowearth.csseditor.managers {
+	import fr.digitas.flowearth.csseditor.data.fonts.FontSource;	
 	import fr.digitas.flowearth.csseditor.data.CSS;
 	import fr.digitas.flowearth.csseditor.data.CSSProvider;
 	import fr.digitas.flowearth.csseditor.view.console.Console;
@@ -49,10 +50,28 @@ package fr.digitas.flowearth.csseditor.managers {
 				case "swf" :
 					handleSwfFile( file );
 					break;
+				case "ttf" :
+					handleTrueTypeFile( file );
+					break;
+				case "otf" :
+					handleTrueTypeFile( file );
+					break;
 				default :
 					unhandledFileFormat();
 					break;
 			}
+		}
+		
+		private function handleTrueTypeFile(file : File) : void {
+			var css : CSS = CSSProvider.instance.currentCss;
+			if( ! css ) {
+				// TODO handle no css open ,with message
+				return;
+			}
+			
+			css.fontProfile.addTrueType( file );
+			
+			
 		}
 
 		private function handleSwfFile(file : File) : void {

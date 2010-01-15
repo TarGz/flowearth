@@ -67,7 +67,7 @@ package fr.digitas.flowearth.csseditor.fonts {
 			var iter : IIterator = _currentProfile.sources;
 			var source : FontSource;
 			while( source	= iter.next() as FontSource ) {
-				if( !source.loaded ) loadFonts( source );
+				if( !source.loaded && source.builded() ) loadFonts( source );
 			}
 		}
 

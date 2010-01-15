@@ -8,5 +8,30 @@
       <name/>
       <path>../../fonts/franklin_Fr.swf</path>
     </source>
+    <source>
+      <name/>
+      <path>../../fonts/RussianNissan.swf</path>
+      <config>
+        <cname>com.test.RussianNissan</cname>
+        <output>D:\work\workspaces\as3\Flowearth_sandbox\tools\flash\cssEditor\test\fonts\RussianNissan.swf</output>
+        <fonts>
+          <font normal="true" bold="false" italic="false" bolditalic="false">
+            <range>!"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ˆ˜–—‘’‚“”„†‡•…‰‹›€™</range>
+            <systemFont>NissanAGBold</systemFont>
+            <fontfamily>NissanAGBold</fontfamily>
+          </font>
+          <font normal="true" bold="false" italic="false" bolditalic="false">
+            <range>!"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ˆ˜–—‘’‚“”„†‡•…‰‹›€™</range>
+            <systemFont>Nissan AG Medium</systemFont>
+            <fontfamily>NissanAGMedium</fontfamily>
+          </font>
+          <font normal="true" bold="false" italic="false" bolditalic="false">
+            <range>ABCDEFGHIJKLMNOPQRSTUVWXYZ</range>
+            <source>D:\Documents and Settings\lepersp\Bureau\pixeldu.ttf</source>
+            <fontfamily>Pixel</fontfamily>
+          </font>
+        </fonts>
+      </config>
+    </source>
   </fontProfile>
 </metadatas>

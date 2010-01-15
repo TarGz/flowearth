@@ -1,4 +1,7 @@
 package fr.digitas.flowearth.csseditor.view {
+	import fr.digitas.flowearth.csseditor.view.fontprofile.FontProfileTool_FC;	
+	import fr.digitas.flowearth.csseditor.view.misc.CanvasHeader_FC;	
+	import fr.digitas.flowearth.csseditor.view.misc.CanvasHeader;	
 	import fr.digitas.flowearth.csseditor.data.CSSProvider;
 	import fr.digitas.flowearth.csseditor.event.CSSEvent;
 	import fr.digitas.flowearth.csseditor.view.fontprofile.FontProfileTool;
@@ -35,13 +38,20 @@ package fr.digitas.flowearth.csseditor.view {
 		}
 		
 		private function onCurrentChange(event : CSSEvent) : void {
-			if( CSSProvider.instance.currentCss )
+			if( CSSProvider.instance.currentCss ) {
 				fontProfileView.setCss( CSSProvider.instance.currentCss );
+				fontProfileTools.setCss( CSSProvider.instance.currentCss );
+			}
 		}
 
 		private function _buildViews() : void {
-			// tabs
-			fontProfileTools = new FontProfileTool( );
+			
+			_header = new CanvasHeader_FC( );
+			_header.setLabel( "Fonts Profile" );
+			addContent( _header );
+			
+						
+			fontProfileTools = new FontProfileTool_FC( );
 			addContent( fontProfileTools );
 
 			fontProfileView = new FontProfileView( );
@@ -49,6 +59,7 @@ package fr.digitas.flowearth.csseditor.view {
 			
 		}
 		
+		private var _header : CanvasHeader;
 		private var fontProfileTools : FontProfileTool;
 		private var fontProfileView : FontProfileView;
 	}

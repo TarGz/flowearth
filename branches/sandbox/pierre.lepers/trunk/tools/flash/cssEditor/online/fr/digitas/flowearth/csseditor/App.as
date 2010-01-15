@@ -9,7 +9,7 @@ package fr.digitas.flowearth.csseditor {
 	 */
 	public class App {
 
-		public static function run( main : Main ) : void {
+		public static function run( ) : void {
 			
 			CSSProvider.start();
 			

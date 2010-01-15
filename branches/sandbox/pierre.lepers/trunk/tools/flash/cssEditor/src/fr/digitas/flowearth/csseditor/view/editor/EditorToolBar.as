@@ -1,4 +1,5 @@
 package fr.digitas.flowearth.csseditor.view.editor {
+	import fr.digitas.flowearth.csseditor.data.CSSProvider;
 	import fr.digitas.flowearth.csseditor.view.picts.Picts;
 	import fr.digitas.flowearth.ui.toobar.ToolBar;
 	
@@ -46,7 +47,16 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		}
 		
 		private function onItemSelect(event : TextEvent) : void {
+			dispatchEvent( event );
 			
+			switch ( event.text ) {
+				
+				case "addStyle" : 
+					if( CSSProvider.instance.currentCss == null ) break;
+					
+					CSSProvider.instance.currentCss.datas.addNewStyle( );
+					break;
+			}
 		}
 
 		

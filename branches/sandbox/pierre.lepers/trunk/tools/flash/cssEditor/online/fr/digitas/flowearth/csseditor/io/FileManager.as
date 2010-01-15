@@ -14,5 +14,9 @@ package fr.digitas.flowearth.csseditor.io {
 		public function getMetadataFileName(url : String) : String {
 			return null;
 		}
+		
+		public function loadTextFile(url : String) : String {
+			return null;
+		}
 	}
 }

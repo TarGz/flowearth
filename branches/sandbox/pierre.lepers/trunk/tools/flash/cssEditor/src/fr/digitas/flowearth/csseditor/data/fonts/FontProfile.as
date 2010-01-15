@@ -5,8 +5,7 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 	import fr.digitas.flowearth.csseditor.event.FontEvent;
 	
 	import flash.events.EventDispatcher;
-	import flash.filesystem.File;
-	import flash.utils.Dictionary;		
+	import flash.filesystem.File;	
 
 	/**
 	 * @author Pierre Lepers
@@ -19,20 +18,29 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 			_css = css;
 			_aFonts = [];
 		}
-		
+
 		public function unload() : void {
 			for each (var fs : FontSource in _aFonts) 
-				fs.unload();
+				fs.unload( );
+		}
+
+		public function addConfig(  ) : void {
 		}
 
 		
 		
-		public function addFont( file : File ) : void {
+		public function addFont( file : File ) : FontSource {
 			var fontSource : FontSource = new FontSource( file );
+			addFontSource( fontSource );
+			return fontSource;
+		}
+
+		private function addFontSource( fontSource : FontSource ) : void {
+			fontSource.setProfile( this );
 			_aFonts.push( fontSource );
 			dispatchEvent( new FontEvent( FontEvent.FONT_ADDED ) );
 		}
-		
+
 		public function export() : XML {
 			var exp : XML = <fontProfile/>;
 			
@@ -47,34 +55,78 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 				fsItemName = <name/>;
 				fsItem.appendChild( fsItemName );
 				fsItem.appendChild( fsItemPath );
+				if( fs.configurable( ) )
+					fsItem.appendChild( fs.getConfig( ).export( ) );
 				exp.appendChild( fsItem );
 				fsItemPath.appendChild( getRelativePath( fs ) );
 			}
 			
 			return exp;
 		}
-		
+
 		private function getRelativePath( fSource : FontSource ) : String {
-			return new File( _css.filepath ).getRelativePath(fSource.file , true );
+			return new File( _css.filepath ).getRelativePath( fSource.file , true );
 		}
 
 		private var _aFonts : Array;
 
 		private var _css : CSS;
-		
+
 		public function get sources() : IIterator {
 			return new Iterator( _aFonts );
 		}
-		
+
 		public function parse( datas : XML ) : void {
 			var fontFile : File;
 			var _cssFile : File = new File( _css.filepath );
+			var fs : FontSource;
 			for each (var sdata : XML in datas.source ) {
 				fontFile = _cssFile.resolvePath( sdata.path );
-				if( ! fontFile.exists )
-					throw new Error( "Une font du profile est introuvable : "+ sdata.path );
-				addFont( fontFile );
+				fs = new FontSource( fontFile );
+				fs._import( sdata );
+				addFontSource( fs );
 			}
 		}
+
+		public function hasFontFile(f : File) : Boolean {
+			for each (var fs : FontSource in _aFonts) {
+				if( fs.file.nativePath == f.nativePath ) return true;
+			}
+			return false;
+		}
+
+		public function addNewFont() : FontSource {
+			var fdir : File = new File( _css.filepath ).parent;
+			var f : File;
+			var c : int = 0;
+			while( true ) {
+				f = fdir.resolvePath( "untitled" + c + ".swf" );
+				if( ! f.exists && ! hasFontFile( f ) ) break;
+				c ++;
+			}
+			
+			var fs : FontSource = addFont( f );
+			fs.getConfig().className = "com.digitas.csseditor.default.UntitledFont"+c;
+			return fs;
+		}
+		
+		public function addTrueType( ttf : File ) : void {
+			var fs : FontSource = addNewFont();
+			fs.addTrueType( ttf );
+		}
+		
+		
+		
+		public function set selectedSource ( source : FontSource ) : void {
+			if( _selectedSource == source) return;
+			_selectedSource = source;
+			dispatchEvent( new FontEvent( FontEvent.SELECTION_CHANGE ) );
+		}
+		public function get selectedSource ( ) :  FontSource {
+			return _selectedSource;
+		}
+				
+		private var _selectedSource :  FontSource;
+				
 	}
 }
