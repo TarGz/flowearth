@@ -30,6 +30,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			CSSProvider.instance.addEventListener( CSSEvent.CURRENT_CHANGE , onCurrentChange );
 			
 			tabs.addEventListener( Event.CHANGE, onTabChange );
+			onCurrentChange( null );
 		}
 		
 		override public function set width(value : Number) : void {
@@ -63,8 +64,8 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		}
 		
 		private function onCurrentChange(event : CSSEvent) : void {
-			if( event.css )
-				tabs.currentItem = getTabData( event.css );
+			if( CSSProvider.instance.currentCss )
+				tabs.currentItem = getTabData( CSSProvider.instance.currentCss );
 		}
 		
 		private function onTabChange( event : Event ) : void {

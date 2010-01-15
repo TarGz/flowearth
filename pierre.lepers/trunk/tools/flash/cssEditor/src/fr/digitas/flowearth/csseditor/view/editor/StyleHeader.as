@@ -10,6 +10,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.events.TextEvent;
+	import flash.geom.ColorTransform;
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;		
 
@@ -75,6 +76,10 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		public function collapse(_collapse : Boolean) : void {
 			cArrow.rotation = _collapse ? 0 : 90;
 		}
+		
+		public function highlight(flag : Boolean) : void {
+			bg.transform.colorTransform = flag ? HIGH_CT : NULL_CT;
+		}
 
 		override public function set width(value : Number) : void {
 			bg.width = value;
@@ -117,6 +122,8 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			if( superInput.text == _sData.superName ) return;
 			_sData.superName = superInput.text;
 		}
-	
+		
+		private static const HIGH_CT : ColorTransform = new ColorTransform( .47, .63, .65, 1, 81, 89, 107 );
+		private static const NULL_CT : ColorTransform = new ColorTransform(  );
 	}
 }

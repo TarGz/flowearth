@@ -24,8 +24,10 @@ package fr.digitas.flowearth.csseditor.data {
 		
 		
 		public function CSS( filepath : String = null ) {
-			if( ! filepath )
-				_filepath = getTempFilePath();
+			if( ! filepath ) {
+				_buildTempFile();
+				_tempFile = true;
+			}
 			else
 				_filepath = filepath;
 			
@@ -34,10 +36,24 @@ package fr.digitas.flowearth.csseditor.data {
 
 			_fontProfile = new FontProfile( this );
 			
-			_loadMetadatas();
-//			_file = file;
+			if( fileExist() )
+				_loadMetadatas();
+		}
+		
+		private function _buildTempFile() : void {
+			var temp : File = File.createTempDirectory().resolvePath( getTempFilePath() );
+			_filepath = temp.nativePath;
 		}
 
+		public function fileExist() : Boolean {
+			try {
+				var f : File = new File( _filepath );
+				return f.exists;
+			} catch( e : Error ){
+				return false;
+			}
+			return true;
+		}
 		
 		public function get fileSystemSync() : Boolean {
 			return _fileSystemSync;
@@ -138,7 +154,7 @@ package fr.digitas.flowearth.csseditor.data {
 		}
 		
 		private function getTempFilePath() : String {
-			return "Untitled-"+getUnique();
+			return "Untitled-"+getUnique()+".css";
 		}
 
 		
@@ -166,7 +182,8 @@ package fr.digitas.flowearth.csseditor.data {
 		private var _fontProfile : FontProfile;
 
 		private var _fileSystemSync : Boolean = false;
-
+		
+		private var _tempFile : Boolean = false;
 		
 		
 		//_____________________________________________________________________________

@@ -49,7 +49,7 @@ package fr.digitas.flowearth.csseditor.view.fontprofile {
 				
 				if( _itemMap[ item ] != undefined ) continue;
 				
-				renderer = new FontSourceItem_FC( );
+				renderer = new FontSourceItem( );
 				renderer.init( item );
 				_itemMap[ item ] = renderer;
 				_layout.addChild( renderer );

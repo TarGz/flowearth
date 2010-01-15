@@ -31,5 +31,18 @@ package fr.digitas.flowearth.csseditor.io {
 			var f : File = new File( url );
 			return f.parent.resolvePath( f.name+"_"+f.extension +".meta" ).nativePath;
 		}
+		
+		public function loadTextFile(url : String) : String {
+			var f : File = new File( url );
+			
+			var fs : FileStream = new FileStream();
+			fs.open( f , FileMode.READ );
+			
+			var res : String = fs.readUTFBytes( fs.bytesAvailable );
+			
+			fs.close();
+			
+			return res;
+		}
 	}
 }

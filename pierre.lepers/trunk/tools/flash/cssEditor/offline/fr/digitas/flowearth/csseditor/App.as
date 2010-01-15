@@ -1,4 +1,6 @@
 package fr.digitas.flowearth.csseditor {
+	import fr.digitas.flowearth.csseditor.view.menu.AppMenu;	
+	import fr.digitas.flowearth.csseditor.view.fontprofile.FontDetailsManager;	
 	import fr.digitas.flowearth.csseditor.view.console.Console;	
 	import fr.digitas.flowearth.csseditor.fonts.FontsSystem;
 	import fr.digitas.flowearth.csseditor.data.CSSProvider;
@@ -17,10 +19,13 @@ package fr.digitas.flowearth.csseditor {
 			
 			new Console( );
 			new FileDragManager().init( main );
+			FontDetailsManager.start();
+			
+			main.stage.nativeWindow.menu = new AppMenu();
 			
 		}
-		
 
+		
 		public static function getFileManager() : IFileManager {
 			if( ! _fileManager )
 				_fileManager = new FileManager();

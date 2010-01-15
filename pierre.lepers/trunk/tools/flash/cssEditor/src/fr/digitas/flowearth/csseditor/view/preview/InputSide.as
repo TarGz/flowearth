@@ -35,7 +35,7 @@ package fr.digitas.flowearth.csseditor.view.preview {
 			_tf.wordWrap = true;
 			_tf.background = true;
 			_tf.type = TextFieldType.INPUT;
-			
+			_tf.text = DEFAULT_TEXT;
 			_tf.addEventListener( Event.CHANGE , onTftChange );
 			
 			addChild( _tf );
@@ -46,7 +46,7 @@ package fr.digitas.flowearth.csseditor.view.preview {
 			dispatchEvent( event );
 		}
 		
-		
+		private static const DEFAULT_TEXT : String = "Lorem ipsum";
 		
 		
 		private var _tf : TextField;

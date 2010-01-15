@@ -43,8 +43,8 @@ package fr.digitas.flowearth.csseditor.view.preview {
 			renderside = new RenderSide();
 			addChild( renderside );
 			inputside.addEventListener( Event.CHANGE , onTextChange );
-			
 			_initFontSystem( );
+			onTextChange( null );
 		}
 		
 		private function _initFontSystem( e : Event = null ) : void {
@@ -69,6 +69,7 @@ package fr.digitas.flowearth.csseditor.view.preview {
 		
 		private function onAdded( e : Event ) : void {
 			CSSProvider.instance.addEventListener( CSSEvent.CURRENT_CHANGE , onCssChange );
+			onCssChange(null);
 		}
 
 		private function onRemoved( e : Event ) : void {
@@ -118,10 +119,6 @@ package fr.digitas.flowearth.csseditor.view.preview {
 
 		private var _css : CSS;
 		private var _focusedStyle : StyleData;
-
-		
-		
-		private static var instance : Preview;
 		
 	}
 }

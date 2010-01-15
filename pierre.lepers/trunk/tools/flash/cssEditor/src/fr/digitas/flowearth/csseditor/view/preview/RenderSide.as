@@ -1,12 +1,9 @@
 package fr.digitas.flowearth.csseditor.view.preview {
-	import fr.digitas.flowearth.csseditor.view.console.Console;	
-	
-	import flash.text.Font;	
-	
 	import fr.digitas.flowearth.text.styles.styleManager;
 	
 	import flash.display.Shape;
 	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.text.TextField;		
 
 	/**
@@ -16,10 +13,12 @@ package fr.digitas.flowearth.csseditor.view.preview {
 		
 		public function RenderSide() {
 			addChild( bg = new Shape() );
-			bg.graphics.beginFill( 0x808080 );
+			addChild( grid = new GridLines( ) );
+			bg.graphics.beginFill( 0xffffff );
 			bg.graphics.drawRect(0, 0, 100, 100);
+			addEventListener( Event.REMOVED_FROM_STAGE , onRemoved );
 		}
-
+		
 		public function get tf() : TextField {
 			return _tf;
 		}
@@ -42,38 +41,51 @@ package fr.digitas.flowearth.csseditor.view.preview {
 			_invalidate( );
 		}
 		
-		public function update() : void {
+		public function update( e : Event = null ) : void {
 			if( _valid ) return;
+			_valid = true;
+			onRemoved( null );
 			
 			if( !_styleName ) return ;
 			
 			styleManager.apply( _tf, _styleName , _text );
 			
-			_valid = true;
+			_resize();
+		}
+		
+		private function _resize() : void {
+			_tf.x = ( bg.width - _tf.width ) >> 1;
+			_tf.y = ( bg.height - _tf.height ) >> 1;
 			
-			var list:Array = Font.enumerateFonts();
-			var n:int = list.length;
-			Console.log( "PREVIEW APPLY" );
-			for (var i:Number = 0; i < n; i++) {
-				Console.log( "-----------> "+(list[i] as Font).fontName );
-			}
-			Console.log( "PREVIEW APPLY" );
+			grid.fit( _tf , bg.getBounds( this ) );
 		}
 
 		
 		override public function set width(value : Number) : void {
 			bg.width = value;
+			_resize();
 		}
 
 		override public function set height(value : Number) : void {
 			bg.height = value;
+			_resize();
 		}
 
 		
 		private function _invalidate() : void {
+			if( ! _valid ) return;
+			if( stage ) {
+				stage.addEventListener( Event.RENDER , update );
+				stage.invalidate();
+			} else 
+				addEventListener( Event.ADDED_TO_STAGE , update );
+			
 			_valid = false;
-			// TODO debug line (update after)
-			update();
+		}
+		
+		
+		private function onRemoved(event : Event) : void {
+			stage.removeEventListener( Event.RENDER , update );
 		}
 		
 		
@@ -84,10 +96,10 @@ package fr.digitas.flowearth.csseditor.view.preview {
 
 		private var _styleName : QName;
 
-
-		private var _valid : Boolean = false;
+		private var _valid : Boolean = true;
 		
 		private var bg : Shape;
 		
+		private var grid : GridLines;
 	}
 }

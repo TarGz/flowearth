@@ -1,25 +1,29 @@
 .stylea {
-	textColor: 0xffffff;
-	condenseWhite: false;
-	multiline: true;
+	embedFonts: true;
+	type: input;
+	autoSize: left;
+	wordWrap: true;
 	font-family: FranklinBook;
-	embedFonts: true;
-	autoSize: left;
-	font-size: 25;
-}
-
-.styleb {
-	textColor: 0x333333;
-	autoSize: left;
-	font-size: 25;
+	multiline: false;
+	antiAliasType: advanced;
 	condenseWhite: false;
-	multiline: true;
-	embedFonts: true;
-	font-family: FontA;
+	thickness: 90;
+	textColor: 0x191919;
+	font-size: 11;
 }
 
 .truc {
+	font-family: NissanAGBold;
+	autoSize: right;
+}
+
+.styleb {
+	embedFonts: true;
 	autoSize: left;
-	font-family: FontB;
+	font-family: FontA;
+	multiline: true;
+	condenseWhite: false;
+	textColor: 0x333333;
+	font-size: 25;
 }
 

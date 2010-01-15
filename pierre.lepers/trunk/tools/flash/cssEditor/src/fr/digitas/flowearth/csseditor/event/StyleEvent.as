@@ -8,6 +8,10 @@ package fr.digitas.flowearth.csseditor.event {
 	 */
 	public class StyleEvent extends Event {
 
+		public static const ADDED : String = "STYLEDATAADDED";
+		
+		public static const REMOVED : String = "STYLEDATAREMOVED";
+
 		public static const RENAME : String = "RENAME";
 
 		public static const SUPER_CHANGE : String = "superChange";

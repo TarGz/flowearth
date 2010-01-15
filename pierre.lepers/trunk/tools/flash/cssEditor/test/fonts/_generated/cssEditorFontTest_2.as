@@ -8,7 +8,7 @@ package
 	
 	public class cssEditorFontTest_2 extends Sprite implements IFontsProvider {
 		
-		[Embed(fontStyle='normal', fontWeight='normal', unicodeRange='U+0041,U+0042,U+0043,U+0061,U+0062,U+0063', fontName='FontA', source='C:/work/workspaces/as3/Flowearth/tools/flash/cssEditor/test/fonts/HelveticaNeueLTStd-XBlkCn.otf', _pathsep='true', mimeType='application/x-font')]
+		[Embed(fontStyle='normal', fontWeight='normal', unicodeRange='U+0041,U+0042,U+0043,U+0061,U+0062,U+0063', fontName='FontA', source='D:/work/workspaces/as3/Flowearth_sandbox/tools/flash/cssEditor/test/fonts/HelveticaNeueLTStd-XBlkCn.otf', _pathsep='true', mimeType='application/x-font')]
 private static var _embed__font_FontA_normalnormal:Class;
 
 

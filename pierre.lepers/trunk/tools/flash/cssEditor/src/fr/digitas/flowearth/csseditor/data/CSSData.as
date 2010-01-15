@@ -7,7 +7,7 @@ package fr.digitas.flowearth.csseditor.data {
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.TextEvent;
-	import flash.utils.Dictionary;		
+	import flash.utils.Dictionary;	
 
 	/**
 	 * @author Pierre Lepers
@@ -31,8 +31,24 @@ package fr.digitas.flowearth.csseditor.data {
 				
 				s.addEventListener( Event.CHANGE , onStyleChange );
 				s.addEventListener( StyleEvent.RENAME , onStyleNameChange );
+				
+				dispatchEvent( new StyleEvent( StyleEvent.ADDED , s ) );
 			}
 			return _dStyles[ name ];
+		}
+		
+		
+		public function addNewStyle() : void {
+			var c : int = 0;
+			var name : String;
+			while( true ) {
+				name = "Untitled"+c;
+				if( _dStyles[ name ] == undefined ) {
+					addStyle(name);
+					return;
+				}
+				c++;
+			}
 		}
 
 		public function removeStyle( name : String ) : void {
@@ -40,9 +56,11 @@ package fr.digitas.flowearth.csseditor.data {
 			sd._cssData = null;
 			var index : int = _aStyles.indexOf( sd );
 			if( index > - 1 ) _aStyles.splice( index , 1 );
+			
 			_dStyles[ name ].removeEventListener( Event.CHANGE , onStyleChange );
 			_dStyles[ name ].removeEventListener( StyleEvent.RENAME , onStyleNameChange );
 			delete _dStyles[ name ];
+			dispatchEvent( new StyleEvent( StyleEvent.REMOVED , sd ) );
 		}
 
 		public function getStyle( name : String ) : StyleData {
@@ -88,5 +106,6 @@ package fr.digitas.flowearth.csseditor.data {
 
 		private var _dStyles : Dictionary;
 		private var _invdStyles : Dictionary;
+		
 	}
 }

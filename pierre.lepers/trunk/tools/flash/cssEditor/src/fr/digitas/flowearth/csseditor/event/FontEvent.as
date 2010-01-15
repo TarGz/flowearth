@@ -11,6 +11,8 @@ package fr.digitas.flowearth.csseditor.event {
 
 		public static const FONT_ADDED : String = "FONT_ADDED";
 		
+		public static const SELECTION_CHANGE : String = "fontprofile_selectionchange";
+
 		public static const SANDBOX_READY : String = "SANDBOX_READY";
 		
 		public function FontEvent( type : String ) {

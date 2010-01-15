@@ -1,6 +1,6 @@
 package fr.digitas.flowearth.csseditor.view.editor {
 	import fr.digitas.flowearth.csseditor.data.StyleData;
-	import fr.digitas.flowearth.csseditor.view.console.Console;
+	import fr.digitas.flowearth.csseditor.event.CSSEvent;
 	import fr.digitas.flowearth.ui.layout.ILayoutItem;
 	
 	import flash.display.Sprite;
@@ -26,9 +26,12 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		
 		internal function init( sData : StyleData ) : void {
 			_sData = sData;
+			_sData.cssData.addEventListener( CSSEvent.CURRENT_CHANGE , onCurrentStyleChange );
 			_header.init( sData );
 			_list.init( sData );
+			onCurrentStyleChange();
 		}
+		
 
 		override public function set width(value : Number) : void {
 			_header.width = value;
@@ -54,6 +57,7 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		}
 		
 		public function dispose() : void {
+			_sData.cssData.removeEventListener( CSSEvent.CURRENT_CHANGE , onCurrentStyleChange );
 			removeEventListener( FocusEvent.FOCUS_IN , focusIn );
 			removeEventListener( FocusEvent.FOCUS_OUT , focusOut );
 			removeEventListener( FocusEvent.MOUSE_FOCUS_CHANGE , mfocusChange );
@@ -81,6 +85,11 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			dispatchEvent( new Event( Event.RESIZE, true ) );
 		}
 		
+		
+		private function onCurrentStyleChange(event : CSSEvent = null) : void {
+			_header.highlight( _sData.cssData.currentStyle == _sData );
+		}
+
 		private var _collapse : Boolean = false;
 
 		private function _buildView() : void {

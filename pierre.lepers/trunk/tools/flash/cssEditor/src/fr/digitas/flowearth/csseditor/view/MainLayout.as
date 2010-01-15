@@ -62,7 +62,7 @@ package fr.digitas.flowearth.csseditor.view {
 			
 			
 			// CONSOLE
-			_bottomCanvas.addContent(  new Preview( ), true );
+			_bottomCanvas.addContent( new PreviewCanvas( ) , true );
 
 			// EDITOR CANVAS
 			_editorCanvas.addContent( new EditorCanvas(), true );
