@@ -1,0 +1,49 @@
+#summary Link a Conf File to external datas
+
+= Introduction =
+
+You can use two reserved kewords in a conf file :
+ - "externalConf"
+ - "externalData"
+
+The first one lets you externalize a part of your configuration properties into one or more external files.
+
+The second one lets you load the content of any text file into a Conf property
+
+
+= Usage =
+
+==externalConf==
+
+mainConf.xml
+{{{
+<conf>
+
+   <prop_one>depend external prop 2 : ${prop_two}</prop_one>
+
+   <externalConf>
+      <file>myExternalConf.xml</file>
+   <externalConf>
+
+</conf>
+
+}}}
+
+myExternalConf.xml
+{{{
+<conf>
+
+   <prop_two>my external prop 2</prop_two>
+
+</conf>
+
+}}}
+
+while parsing the main conf file, the Conf class will automatically load externals files and solving properties.
+
+
+==externalData==
+
+
+// To Complete...
+It's quite the same format, except you put and id  :
