@@ -175,7 +175,7 @@ package fr.digitas.flowearth.conf {
 				propNode.addNamespace( name );
 				propNode.setName( name );
 				
-				propNode.appendChild( value );
+				propNode.appendChild( XML( value ) );
 				 _pProvider.setProperty( name , prop = new ConfProperty( propNode ) );
 			}
 			else {
@@ -469,6 +469,7 @@ package fr.digitas.flowearth.conf {
 }
 
 
+import flash.xml.XMLNodeType;
 import flash.utils.Dictionary;
 
 //_____________________________________________________________________________
@@ -551,13 +552,16 @@ final internal class ConfProperty {
 		var ns : Namespace = d.namespace();
 		uri  = ns.uri;
 		
-		if( hasSimpleContent = d.hasSimpleContent( ) ) {
+		
+		
+		if( hasSimpleContent = d.hasSimpleContent() ) {
 			source = d.text( );
 		} else // TODO Conf optimization - check existance of namespace before clean
 			source = cleanNs( d.children( ).toXMLString( ) );
 			
 		_locked = ( d.@lock == "true" || d.@lock == "1" );
 	}
+
 	
 	private function cleanNs( input : String ) : String {
 		//var r : RegExp = /xmlns(:\w)?="[^"]*"/ig;

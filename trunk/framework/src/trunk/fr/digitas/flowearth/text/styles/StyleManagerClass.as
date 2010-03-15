@@ -19,7 +19,7 @@
 
 package fr.digitas.flowearth.text.styles {
 	import flash.text.TextField;
-	import flash.utils.Dictionary;	
+	import flash.utils.Dictionary;
 
 	/**
 	 * @author Pierre Lepers
@@ -150,6 +150,11 @@ package fr.digitas.flowearth.text.styles {
 	}
 }
 
+import fr.digitas.flowearth.text.styles.AdvancedFormat;
+import fr.digitas.flowearth.text.styles.AdvancedStyleSheet;
+
+import flash.utils.Dictionary;
+
 //_____________________________________________________________________________
 //																    STYLE SPACE
 //
@@ -159,10 +164,7 @@ package fr.digitas.flowearth.text.styles {
 //		    SS   TT     YY    LL      EE                  SS PP      AAAAAAA CC   CC EE      
 //		SSSSS    TT     YY    LLLLLLL EEEEEEE         SSSSS  PP      AA   AA  CCCCC  EEEEEEE
 
-import fr.digitas.flowearth.text.styles.AdvancedFormat;
-import fr.digitas.flowearth.text.styles.AdvancedStyleSheet;
 
-import flash.utils.Dictionary;
 
 final class StyleSpace {
 

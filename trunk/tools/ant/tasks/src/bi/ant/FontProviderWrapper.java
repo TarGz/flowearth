@@ -60,6 +60,10 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 	}
 
 	public void execute() throws BuildException {
+		
+		int flexVersion = getCompilerVersion();
+		
+		log( flexVersion+"" );
 		// Check for requirements.
 		if (swf == null) {
 			throw new BuildException(
@@ -113,7 +117,7 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 				String line;
 
 				while ((line = bufferedReader.readLine()) != null) {
-					printWriter.println(substitute(line));
+					printWriter.println(substitute(line, flexVersion ));
 				}
 				
 				
@@ -239,6 +243,25 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 		getCompileTask().execute();
 		
 	}
+	private int getCompilerVersion() {
+		ExecTask vtask = (ExecTask) getProject().createTask( "exec" );
+		vtask.setExecutable( compilerPath );
+		vtask.setOutputproperty( "fpw_mxmlc_version" );
+		
+		Argument arg;
+		arg = vtask.createArg();
+		arg.setLine( "-version" );
+		
+		vtask.execute();
+		
+		log( getProject().getProperty("fpw_mxmlc_version" ) );
+		
+		String v = getProject().getProperty("fpw_mxmlc_version" );
+		
+		v = v.replaceAll( "Version ", "" );
+		
+		return Integer.parseInt( v.split( "\\." )[0] );
+	}
 
 	private InputStream getInputStream() {
 		InputStream inputStream = null;
@@ -321,22 +344,22 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 
 
 
-	private String substitute(String input) {
+	private String substitute(String input, int fv) {
 		String result = input.replaceAll("\\$\\{fptpl_package\\}", getPackage() );
 		result = result.replaceAll("\\$\\{fptpl_classname\\}", getClassName() );
-		result = result.replaceAll("\\$\\{fptpl_fontsDecl\\}", getFontsDecl() );
+		result = result.replaceAll("\\$\\{fptpl_fontsDecl\\}", getFontsDecl( fv ) );
 		result = result.replaceAll("\\$\\{fptpl_fontsList\\}", getFontsList() );
 		
 		return result;
 	}
 	
-	private String getFontsDecl() {
+	private String getFontsDecl( int fv ) {
 		Iterator<Font> iter = fonts.iterator();
 		Font font;
 		String res = "";
 		while( iter.hasNext() ) {
 			font = iter.next();
-			res += font.getOutput();
+			res += font.getOutput( fv );
 		}
 		// TODO Auto-generated method stub
 		return res;

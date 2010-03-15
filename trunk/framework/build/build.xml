@@ -29,7 +29,7 @@
 
 		<buildnumber file="${digitas.dir.fmk}/build/buildnumber.txt" />
 		<loadproperties srcfile="${digitas.dir.fmk}/build/buildnumber.txt" />
-		
+
 		<antcall target="FP9 Build" />
 		<antcall target="FP10 Build" />
 		<antcall target="buildDocs" />
@@ -113,7 +113,8 @@
 		       optimize="false"
 		       compute-digest="false"
 		       target-player="${target-player}"
-		       link-report="${digitas.dir.fmk}/bin/fp${target-player}/report.xml">
+		       link-report="${digitas.dir.fmk}/bin/fp${target-player}/report.xml"
+		       static-rsls="true">
 			<include-file name="fp${target-player}_v${digitas.version.major}.${digitas.version.minor}.${build.number}.txt"
 			              path="${digitas.dir.fmk}/build/buildnumber.txt" />
 			<include-sources dir="${temp_src}" includes="**/*" />

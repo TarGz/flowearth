@@ -17,7 +17,6 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-
 package fr.digitas.flowearth.text.fonts {
 
 	/**

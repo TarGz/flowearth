@@ -21,5 +21,5 @@ package fr.digitas.flowearth.text.styles {
 /**
  * @author Pierre Lepers
  */
-public var styleManager : StyleManagerClass = StyleManagerClass._start();
+public const styleManager : StyleManagerClass = StyleManagerClass._start();
 }
