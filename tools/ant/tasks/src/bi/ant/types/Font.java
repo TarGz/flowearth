@@ -18,14 +18,20 @@ public class Font {
 		
 	}
 	
-	public String getOutput() {
+	public String getOutput( int flexVersion) {
 		
-		String res = embedTemplate + StringUtils.LINE_SEP + classTemplate+ StringUtils.LINE_SEP+ StringUtils.LINE_SEP;
+		String res;
+		if( flexVersion < 4 ) 
+			res = embedTemplate3 + StringUtils.LINE_SEP + classTemplate+ StringUtils.LINE_SEP+ StringUtils.LINE_SEP;
+		else
+			res = embedTemplate4 + StringUtils.LINE_SEP + classTemplate+ StringUtils.LINE_SEP+ StringUtils.LINE_SEP;
+			
 		res = res.replaceAll("\\$\\{fontStyle\\}", fontStyle );
 		res = res.replaceAll("\\$\\{fontWeight\\}", fontWeight );
 		res = res.replaceAll("\\$\\{unicodeRange\\}", getUnicodeRange() );
 		res = res.replaceAll("\\$\\{fontName\\}", fontFamily );
 		res = res.replaceAll("\\$\\{source\\}", getSource() );
+		res = res.replaceAll("\\$\\{cff\\}", getCff() );
 		
 		res = res.replaceAll("\\$\\{className\\}", getClassName() );
 		
@@ -35,6 +41,10 @@ public class Font {
 
 	public void setFontFamily(String fontFamily) throws BuildException {
 		this.fontFamily = fontFamily;
+	}
+
+	public void setCff(boolean _cff) throws BuildException {
+		this.cff = _cff;
 	}
 
 	public void setUnicodeRange(String unicodeRange) throws BuildException {
@@ -110,6 +120,15 @@ public class Font {
 		
 		return res;
 	}
+	
+	private String getCff() {
+		
+		if( cff ) return "true";
+		return "false";
+	}
+	
+	
+	public boolean cff = false;
 
 	public String fontFamily;
 
@@ -128,12 +147,16 @@ public class Font {
 	public String getClassName() {
 		String fm = fontFamily.replaceAll( " ", "_" );
 		fm = fm.replaceAll( "-", "_" );
-		return "_embed__font_"+fm+"_"+fontWeight;
+		return "_embed__font_"+fm+"_"+fontWeight+"_"+fontStyle;
 	}
 	
 	//systemFont='Font'
 	//source='c:/Font'
-	private String embedTemplate = "[Embed(fontStyle='${fontStyle}', fontWeight='${fontWeight}', unicodeRange='${unicodeRange}', fontName='${fontName}', ${source}, _pathsep='true', mimeType='application/x-font')]";
+	
+	private String embedTemplate3 = "[Embed(fontStyle='${fontStyle}', fontWeight='${fontWeight}', unicodeRange='${unicodeRange}', fontName='${fontName}', ${source}, _pathsep='true', mimeType='application/x-font')]";
+
+	private String embedTemplate4 = "[Embed(fontStyle='${fontStyle}', fontWeight='${fontWeight}', unicodeRange='${unicodeRange}', embedAsCFF='${cff}', fontName='${fontName}', ${source}, _pathsep='true', mimeType='application/x-font')]";
+
 	private String classTemplate = "private static var ${className}:Class;";
 
 	public void setProject ( Project project ) {

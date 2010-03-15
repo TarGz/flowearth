@@ -13,3 +13,9 @@ v2.5.78
 	add weight setter on BatchableDecorator, remove 'size'.
 	add UintEvent
 	fix Layout invalidation crash on air1.5
+	
+v2.5.114
+	add StyledLabel class (manage styled TextField)
+	fix conf error parsing on Mac player 10+ (complexe contents handle as text)
+	handle CFF fonts in Ant font tools (handle flex 4 feature)
+	mac compliant ant build (add javac path to build.properties)

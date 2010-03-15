@@ -12,7 +12,10 @@ digitas.flex = path/to/rootdir/of/flexSDK
 
 ## builds tested with jdk1.6.0_11
 digitas.java = path/to/rootdir/of/javaJDK
-
+# path to compiler (mac)
+digitas.javac = ${digitas.java}/commands/javac
+# path to compiler (win)
+#digitas.javac = ${digitas.java}/bins/javac.exe
 
 # ========================================================
 # following configs are not mandatory, you can use '#'
