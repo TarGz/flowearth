@@ -31,9 +31,12 @@ FLASH_EXE = path/to/Flash.exe
 # ------------------------------------------------
 # enable pdm running for framework diagnostic
 ## builds tested with pmd 1_0_RC4
+# set version dependind of your pmd release :
+# path is solve using the pattern 
+#   ${digitas.flex.pmd}/flex-pmd-ant-task-${digitas.flex.pmd.version}.jar
 
-digitas.flex.pmd = D:/work/tools/flexPMD/1_0_RC4
-digitas.flex.pmd.version = 1.0.RC4
+#digitas.flex.pmd = D:/work/tools/flexPMD/1_0_RC4
+#digitas.flex.pmd.version = 1.0.RC4
 
 # ------------------------------------------------
 # credentials

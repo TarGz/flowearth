@@ -90,16 +90,17 @@
 				<pathelement location="${digitas.flex.pmd}/flex-pmd-core-${digitas.flex.pmd.version}.jar" />
 				<pathelement location="${digitas.flex.pmd}/as3-plugin-utils-${digitas.flex.pmd.version}.jar" />
 				<pathelement location="${digitas.flex.pmd}/as3-parser-${digitas.flex.pmd.version}.jar" />
-				<pathelement location="${digitas.flex.pmd}/pmd-4.2.2.jar" />
+				<pathelement location="${digitas.flex.pmd}/pmd-4.2.5.jar" />
 				<pathelement location="${digitas.flex.pmd}/commons-lang-2.4.jar" />
 				<pathelement location="${digitas.flex.pmd}/flex-pmd-files-${digitas.flex.pmd.version}.jar" />
 				<pathelement location="${digitas.flex.pmd}/as3-parser-api-${digitas.flex.pmd.version}.jar" />
 				<pathelement location="${digitas.flex.pmd}/plexus-utils-1.0.2.jar" />
 			</classpath>
 		</taskdef>
-		<flexPmd ruleset="${digitas.dir.fmk}/build/pmd_ruleset.xml"
+		<!--ruleset="${digitas.dir.fmk}/build/pmd_ruleset.xml"-->
+		<flexPmd 
 		         sourceDirectory="${temp_src}"
-		         outputDirectory="${digitas.dir.fmk}/bin/fp${target-player}/pmd_report" />
+		         outputDirectory="${digitas.dir.fmk}/bin/fp${target-player}/pmd_report" failonerror="false"/>
 	</target>
 
 
@@ -120,7 +121,7 @@
 			<include-sources dir="${temp_src}" includes="**/*" />
 			<include-libraries file="${digitas.dir.fmk}/assets/CS3Component.swc"
 			                   append="true" />
-			<jvmarg line="${digitas.jvm.args}" />
+			<jvmarg line="${digitas.compiler.jvmargs}" />
 		</compc>
 	</target>
 

@@ -65,23 +65,29 @@
 		<mxmlc file="${UNIT_HOME}/src/fr/digitas/flowearth/site/Main.as"
 		       output="${UNIT_HOME}/deploy/assets/swf/site.swf"
 		       debug="true"
+		       static-rsls="true"
 		       use-network="false">
 			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
 			<source-path path-element="${UNIT_HOME}/src" />
+			<jvmarg value="${digitas.compiler.jvmargs}"/>
 		</mxmlc>
 		<mxmlc file="${UNIT_HOME}/src/fr/digitas/flowearth/site/Preload.as"
 		       output="${UNIT_HOME}/deploy/assets/swf/preload.swf"
 		       debug="true"
+		       static-rsls="true"
 		       use-network="false">
 			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
 			<source-path path-element="${UNIT_HOME}/src" />
+			<jvmarg value="${digitas.compiler.jvmargs}"/>
 		</mxmlc>
 		<mxmlc file="${UNIT_HOME}/src/fr/digitas/flowearth/site/Rsl.as"
 		       output="${UNIT_HOME}/deploy/assets/swf/rsl.swf"
 		       debug="true"
+		       static-rsls="true"
 		       use-network="false">
 			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
 			<source-path path-element="${UNIT_HOME}/src" />
+			<jvmarg value="${digitas.compiler.jvmargs}"/>
 		</mxmlc>
 
 
@@ -143,6 +149,7 @@
 		<mxmlc file="${UNIT_HOME}/src/fr/digitas/flowearth/Runner.as"
 		       output="${UNIT_HOME}/deploy/unitTest_fp${target-player}.swf"
 		       debug="true"
+		       static-rsls="true"
 		       use-network="false">
 			<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml" />
 			<load-config filename="${constsConfFile}" />
@@ -150,6 +157,7 @@
 			<default-background-color>0xFFFFFF</default-background-color>
 			<library-path file="${FMK_HOME}/framework/bin/fp${target-player}/flowearth.swc" />
 			<source-path path-element="${UNIT_HOME}/src" />
+			<jvmarg value="${digitas.compiler.jvmargs}"/>
 		</mxmlc>
 	</target>
 
