@@ -85,22 +85,13 @@
 		         classname="com.adobe.ac.pmd.ant.FlexPmdAntTask"
 		         classpath="${digitas.flex.pmd}/flex-pmd-ant-task-${digitas.flex.pmd.version}.jar">
 			<classpath>
-				<pathelement location="${digitas.flex.pmd}/flex-pmd-ruleset-api-${digitas.flex.pmd.version}.jar" />
-				<pathelement location="${digitas.flex.pmd}/flex-pmd-ruleset-${digitas.flex.pmd.version}.jar" />
-				<pathelement location="${digitas.flex.pmd}/flex-pmd-core-${digitas.flex.pmd.version}.jar" />
-				<pathelement location="${digitas.flex.pmd}/as3-plugin-utils-${digitas.flex.pmd.version}.jar" />
-				<pathelement location="${digitas.flex.pmd}/as3-parser-${digitas.flex.pmd.version}.jar" />
-				<pathelement location="${digitas.flex.pmd}/pmd-4.2.5.jar" />
-				<pathelement location="${digitas.flex.pmd}/commons-lang-2.4.jar" />
-				<pathelement location="${digitas.flex.pmd}/flex-pmd-files-${digitas.flex.pmd.version}.jar" />
-				<pathelement location="${digitas.flex.pmd}/as3-parser-api-${digitas.flex.pmd.version}.jar" />
-				<pathelement location="${digitas.flex.pmd}/plexus-utils-1.0.2.jar" />
+				<fileset dir="${digitas.flex.pmd}" includes="*.jar"/>
 			</classpath>
 		</taskdef>
 		<!--ruleset="${digitas.dir.fmk}/build/pmd_ruleset.xml"-->
-		<flexPmd 
-		         sourceDirectory="${temp_src}"
-		         outputDirectory="${digitas.dir.fmk}/bin/fp${target-player}/pmd_report" failonerror="false"/>
+		<flexPmd sourceDirectory="${temp_src}"
+		         outputDirectory="${digitas.dir.fmk}/bin/fp${target-player}/pmd_report"
+		         failonerror="false" />
 	</target>
 
 
