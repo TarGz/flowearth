@@ -23,3 +23,10 @@ v2.5.114
 v2.5.138
 	SWFAddressConnector remove default part of the actives node's paths
 	add fr.digitas.flowearth.mvc.address.structs.utils::PathTools
+
+v2.5.148
+	add pretty cool debug/dev classes
+		- Recorder
+		- Reload
+		- FPS
+	add VIterator (FP10 only)
