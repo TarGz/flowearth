@@ -16,6 +16,10 @@
 	<property name="FMK_HOME" location="${basedir}" />
 	<loadproperties srcfile="${basedir}/build.config" />
 	<loadproperties srcfile="${basedir}/.properties" />
+	
+	<taskdef resource="flexTasks.tasks"
+			         classpath="${digitas.flex}/ant/lib/flexTasks.jar" />
+
 
 	<!-- ================================= 
           target: main              
@@ -39,9 +43,9 @@
 			<arg line="-in ${CONFITUR_HOME}/src/flash_net.as" />
 			<arg line="-in ${CONFITUR_HOME}/src/flash_utils.as" />
 			<arg line="-in ${digitas.dir.fmk}/src/trunk/fr/digitas/flowearth/conf/AbstractConfiguration.as" />
-			<arg line="-in ${digitas.dir.fmk}/src/trunk/fr/digitas/flowearth/conf/externals/ExternalFile.as" />
-			<arg line="-in ${digitas.dir.fmk}/src/trunk/fr/digitas/flowearth/toolbox/VariablesTools.as" />
-			<arg line="-in ${digitas.dir.fmk}/src/trunk/fr/digitas/flowearth/toolbox/URLRequestHelper.as" />
+			<arg line="-in ${digitas.dir.fmk}/src/trunk/fr/digitas/flowearth/conf/ExternalFile.as" />
+			<arg line="-in ${digitas.dir.fmk}/src/trunk/fr/digitas/flowearth/utils/VariablesTools.as" />
+			<arg line="-in ${digitas.dir.fmk}/src/trunk/fr/digitas/flowearth/utils/URLRequestHelper.as" />
 			<arg line="-in ${CONFITUR_HOME}/src/Configuration.as" />
 			<arg line="-d" />
 			<arg line="-strict" />
@@ -59,15 +63,24 @@
           target: execute              
          ================================= -->
 	<target name="test" depends="init" description="description">
+	
+		<condition property="cexecutable" value="${digitas.tamarin.avmplus_mac}">
+			<os family="mac"/>
+		</condition>
+		<condition property="cexecutable" value="${CONFITUR_HOME}/bin/confitur.exe">
+			<os family="windows"/>
+		</condition>
 
-		<exec executable="${CONFITUR_HOME}/bin/confitur.exe">
+
+		
+		<exec executable="${cexecutable}">
 
 			<arg line="-dir ${CONFITUR_HOME}/test" />
 			<arg line="-in assets/xmls/verysimple.xml" />
 			<arg line="-report output/completeConf.txt" />
 		</exec>
 
-		<exec executable="${CONFITUR_HOME}/bin/confitur.exe">
+		<exec executable="${cexecutable}">
 
 			<arg line="-dir ${CONFITUR_HOME}/test" />
 			<arg line="-in assets/xmls/completeConf.xml" />
@@ -77,13 +90,16 @@
 			<arg line="-qn" />
 		</exec>
 		
-		<exec executable="${digitas.mxmlc}">
-			<arg line="-l ${digitas.dir.fmk}/bin/fp9/flowearth.swc"/>
-			<arg line="-sp ${CONFITUR_HOME}/test/output/src"/>
-			<arg line="-debug"/>
-			<arg line="-output ${CONFITUR_HOME}/test/mainTest.swf"/>
-			<arg line="-- ${CONFITUR_HOME}/test/output/src/MainTest.as"/>
-		</exec>
+		<mxmlc file="${CONFITUR_HOME}/test/output/src/MainTest.as"
+		       output="${CONFITUR_HOME}/test/mainTest.swf"
+		       debug="true"
+		       static-rsls="true"
+		       use-network="false">
+			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
+			<source-path path-element="${CONFITUR_HOME}/test/output/src" />
+			<jvmarg value="${digitas.compiler.jvmargs}"/>
+		</mxmlc>
+		
 
 	</target>
 

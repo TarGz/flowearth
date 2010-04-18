@@ -20,7 +20,7 @@
 
 package fr.digitas.flowearth.conf {
 	import fr.digitas.flowearth.conf.AbstractConfiguration;
-	import fr.digitas.flowearth.toolbox.URLRequestHelper;
+	import fr.digitas.flowearth.utils.URLRequestHelper;
 	
 	import flash.net.URLRequest;
 	import flash.utils.Dictionary;	
