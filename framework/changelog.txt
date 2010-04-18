@@ -33,3 +33,7 @@ v2.5.148
 
 v2.5.150
 	AbstractNode (INode) remove events in capture phase by default
+
+v2.5.151
+	add URLRequestHelper
+	try mac build for avm projects

@@ -469,7 +469,6 @@ package fr.digitas.flowearth.conf {
 }
 
 
-import flash.xml.XMLNodeType;
 import flash.utils.Dictionary;
 
 //_____________________________________________________________________________
