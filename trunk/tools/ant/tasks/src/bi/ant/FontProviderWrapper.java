@@ -25,6 +25,7 @@ import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.DynamicAttribute;
 import org.apache.tools.ant.Task;
 import org.apache.tools.ant.taskdefs.ExecTask;
+import org.apache.tools.ant.types.Commandline;
 import org.apache.tools.ant.types.Commandline.Argument;
 
 import bi.ant.types.Font;
@@ -41,12 +42,17 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 
     private static final String PROVIDER_INTERFACE = "fr/digitas/flowearth/text/fonts/IFontsProvider.as";
     
-    private ExecTask _compilTask;
+    private ExecTask _compcTask;
+    private ExecTask _mxmlcTask;
+    
+    private Commandline cmdl = new Commandline();
     
     private String swf;
+    private String swc;
 
 	private String className;
 	private String compilerPath;
+	private String compcPath;
 	private Boolean keepGenerated = false;
 
 	private Vector<Font> fonts = new Vector<Font>();
@@ -65,9 +71,9 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 		
 		log( flexVersion+"" );
 		// Check for requirements.
-		if (swf == null) {
+		if (swf == null && swc==null ) {
 			throw new BuildException(
-					"The <html-wrapper> task requires the 'swf' attribute.",
+					"The <html-wrapper> task requires the 'swf' or/and 'swc' attribute.",
 					getLocation());
 		}
 		
@@ -82,6 +88,7 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 		if (inputStream != null) {
 			BufferedReader bufferedReader = null;
 			PrintWriter printWriter = null;
+			FileWriter fileWriter = null;
 			String path = null;
 
 			try {
@@ -112,7 +119,8 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 				asFile = new File( path );
 				asFile.getParentFile().mkdirs();
 				
-				printWriter = new PrintWriter( new FileWriter( asFile ) );
+				fileWriter = new FileWriter( asFile );
+				printWriter = new PrintWriter( fileWriter );
 
 				String line;
 
@@ -128,12 +136,17 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 				try {
 					bufferedReader.close();
 					printWriter.close();
+					fileWriter.close();
 				} catch (Exception exception) {
+					throw new BuildException( "close .as file error" );
 				}
 			}
+
+			if( swf != null )
+				compileMxmlc( asFile , outputDir);
+			if( swc != null )
+				compileCompc( asFile , outputDir);
 			
-			
-			compile( asFile , outputDir);
 		} else {
 			throw new BuildException("Missing resources", getLocation());
 		}
@@ -223,26 +236,59 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
         }
     }
 
-	private void compile(File asFile, File sourcePath) {
-		// TODO Auto-generated method stub
+	private void compileMxmlc(File asFile, File sourcePath) {
+		getMxmlcTask().setExecutable( compilerPath );
 		
-		
-		getCompileTask().setExecutable( compilerPath );
-		
-		
-		Argument arg;
-		arg = getCompileTask().createArg();
-		arg.setLine( "-sp '"+sourcePath.getAbsolutePath().replace( '\\', '/')+"'" );
-		arg = getCompileTask().createArg();
-		arg.setLine( "-o '"+swf+"'" );
-		arg = getCompileTask().createArg();
-		arg.setLine( "-- '"+asFile.getAbsolutePath().replace( '\\', '/')+"'" );
-		
-		
-		
-		getCompileTask().execute();
+		addNestedArgs( getMxmlcTask() );
+
+		createMxmlcArgs(asFile, sourcePath);
+
+		getMxmlcTask().execute();
 		
 	}
+
+	private void compileCompc(File asFile, File sourcePath) {
+		getCompcTask().setExecutable( compcPath );
+
+		addNestedArgs( getCompcTask() );
+		
+		createCompcArgs( asFile, sourcePath);
+		
+		getCompcTask().execute();
+		
+	}
+	
+	private void addNestedArgs ( ExecTask etask ) {
+
+		for (int i = 0; i < cmdl.getArguments().length; i++) {
+			etask.createArg().setLine( cmdl.getArguments()[ i ] );
+		}
+		
+	}
+
+	private void createMxmlcArgs ( File asFile, File sourcePath ) {
+		
+		Argument arg;
+		arg = getMxmlcTask().createArg();
+		arg.setLine( "-sp '"+sourcePath.getAbsolutePath().replace( '\\', '/')+"'" );
+		arg = getMxmlcTask().createArg();
+		arg.setLine( "-o '"+swf+"'" );
+		arg = getMxmlcTask().createArg();
+		arg.setLine( "-- '"+asFile.getAbsolutePath().replace( '\\', '/')+"'" );
+		
+	}
+
+	private void createCompcArgs ( File asFile, File sourcePath ) {
+		Argument arg;
+		arg = getCompcTask().createArg();
+		arg.setLine( "-include-sources+='"+asFile.getAbsolutePath().replace( '\\', '/')+"'" );
+		arg = getCompcTask().createArg();
+		arg.setLine( "-sp '"+sourcePath.getAbsolutePath().replace( '\\', '/')+"'" );
+		arg = getCompcTask().createArg();
+		arg.setLine( "-o '"+swc+"'" );
+		
+	}
+
 	private int getCompilerVersion() {
 		ExecTask vtask = (ExecTask) getProject().createTask( "exec" );
 		vtask.setExecutable( compilerPath );
@@ -297,6 +343,14 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 		this.compilerPath = compilerPath;
 	}
 
+	public void setMxmlc(String compilerPath) {
+		this.compilerPath = compilerPath;
+	}
+	
+	public void setCompc(String compilerPath) {
+		this.compcPath = compilerPath;
+	}
+
 	public void addConfiguredFont( Font font ) {
 		font.setProject( getProject() );
 		fonts.add( font );
@@ -310,7 +364,7 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 	}
 
 	public Argument createArg() {
-        return getCompileTask().createArg();
+        return cmdl.createArgument();
     }
 	
 	public void setClassName(String className) {
@@ -324,6 +378,15 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 		File swfFile = new File( swf );
 		if( ! swfFile.isAbsolute() )
 			this.swf = getProject().getBaseDir().getAbsolutePath()+File.separatorChar+this.swf;
+		
+	}
+
+	public void setSwc(String swc) {
+		// Doctor up backslashes to fix bug 193739.
+		this.swc = swc.replace('\\', '/');
+		File swcFile = new File( swc );
+		if( ! swcFile.isAbsolute() )
+			this.swc = getProject().getBaseDir().getAbsolutePath()+File.separatorChar+this.swc;
 		
 	}
 
@@ -421,12 +484,20 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 	    return( path.delete() );
 	  }
 	
-	private ExecTask getCompileTask() {
-		if( _compilTask == null )
-			_compilTask = (ExecTask) getProject().createTask( "exec" );
+	private ExecTask getCompcTask() {
+		if( _compcTask == null )
+			_compcTask = (ExecTask) getProject().createTask( "exec" );
 		
-		return _compilTask;
+		return _compcTask;
 	
+	}
+
+	private ExecTask getMxmlcTask() {
+		if( _mxmlcTask == null )
+			_mxmlcTask = (ExecTask) getProject().createTask( "exec" );
+		
+		return _mxmlcTask;
+		
 	}
 
 }
