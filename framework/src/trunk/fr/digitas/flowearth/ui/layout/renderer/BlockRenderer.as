@@ -23,6 +23,12 @@ package fr.digitas.flowearth.ui.layout.renderer {
 	import flash.geom.Rectangle;	
 
 	/**
+	 * Base class of "block" renderer. A BlockRenderer render place item in columns or rows until an item reach the width or height value of his Layout. 
+	 * Then items is placed on a new line and so on.
+	 * 
+	 * 
+	 * @see VBlockRenderer
+	 * @see HBlockRenderer
 	 * @author Pierre Lepers
 	 */
 	public class BlockRenderer extends ChildRenderer {
@@ -31,6 +37,14 @@ package fr.digitas.flowearth.ui.layout.renderer {
 		public function BlockRenderer () {
 			
 		}
+		
+		/**
+		 * return an array of x/y values of columns /rows linebreaks. Can be usefull to place separators in a "block" list.
+		 * @return an array of x/y values of columns /rows linebreaks.
+		 */
+		public function get lineBreaks() : Array {
+			return _lineBreaks;
+		}
 
 		override public function init (padding : Rectangle, margin : Rectangle, w : Number, h : Number) : void {
 			super.init( padding, margin, w, h );
@@ -38,10 +52,11 @@ package fr.digitas.flowearth.ui.layout.renderer {
 			_mawHeight 	= h;
 			_baseOffset = 0;
 		}
-
+		
 		protected var _baseLine : Number;
 		protected var _baseOffset : Number;
 		protected var _mawWidth : Number;
 		protected var _mawHeight : Number;
+		protected var _lineBreaks : Array;
 	}
 }

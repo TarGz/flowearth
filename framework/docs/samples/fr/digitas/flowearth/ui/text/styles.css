@@ -1,0 +1,14 @@
+
+.my_style
+{
+	font-size: 12;
+	font-family: Arial;
+	autoSize: left;
+	wordWrap: false;
+	selectable: false;
+	multiline: true;
+	wordWrap: false;
+	x: 10;
+	y: 10;
+}
+
