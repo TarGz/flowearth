@@ -42,3 +42,6 @@ v2.5.159
 	add swc export to font ant tasks
 	add acces to lineBreak in (layout) BlockRenderer
 	add StyledLabel sample and doc
+	
+v2.5.164
+	add Link in utils
