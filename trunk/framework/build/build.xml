@@ -53,10 +53,32 @@
 	</target>
 
 
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: _Build                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="_Build">
+		
+		<uptodate property="swc.uptodate"
+		          value="true"
+		          targetfile="${digitas.dir.fmk}/bin/fp${target-player}/flowearth.swc">
+			<srcfiles dir="${digitas.dir.fmk}/src/trunk" includes="**/*" />
+			<srcfiles dir="${digitas.dir.fmk}/src/fp${target-player}"
+			          includes="**/*" />
+		</uptodate>
+
+
+		<antcall target="_pre_Build" inheritall="true" />
+		<antcall target="_run_pmd" />
+		<antcall target="_build_swc" />
+		<antcall target="_post_Build" inheritall="true" />
+	</target>
+
+
 	<!-- - - - - - - - - - - - - - - - - - 
           target: _pre_Build                      
          - - - - - - - - - - - - - - - - - -->
-	<target name="_pre_Build">
+	<target name="_pre_Build"  unless="swc.uptodate">
 		<antcall target="_version_class" />
 		<copy todir="${temp_src}">
 			<fileset dir="${digitas.dir.fmk}/src/trunk" includes="**/*" />
@@ -68,24 +90,14 @@
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
-          target: _Build                      
-         - - - - - - - - - - - - - - - - - -->
-	<target name="_Build">
-		<antcall target="_pre_Build" inheritall="true" />
-		<antcall target="_run_pmd" />
-		<antcall target="_build_swc" />
-		<antcall target="_post_Build" inheritall="true" />
-	</target>
-
-	<!-- - - - - - - - - - - - - - - - - - 
           target: _run_pmd                      
          - - - - - - - - - - - - - - - - - -->
-	<target name="_run_pmd" if="digitas.flex.pmd">
+	<target name="_run_pmd" if="digitas.flex.pmd" unless="swc.uptodate">
 		<taskdef name="flexPmd"
 		         classname="com.adobe.ac.pmd.ant.FlexPmdAntTask"
 		         classpath="${digitas.flex.pmd}/flex-pmd-ant-task-${digitas.flex.pmd.version}.jar">
 			<classpath>
-				<fileset dir="${digitas.flex.pmd}" includes="*.jar"/>
+				<fileset dir="${digitas.flex.pmd}" includes="*.jar" />
 			</classpath>
 		</taskdef>
 		<!--ruleset="${digitas.dir.fmk}/build/pmd_ruleset.xml"-->
@@ -98,7 +110,7 @@
 	<!-- - - - - - - - - - - - - - - - - - 
           target: _Build_swc                      
          - - - - - - - - - - - - - - - - - -->
-	<target name="_build_swc">
+	<target name="_build_swc"  unless="swc.uptodate">
 
 		<compc output="${digitas.dir.fmk}/bin/fp${target-player}/flowearth.swc"
 		       strict="true"
@@ -114,12 +126,13 @@
 			                   append="true" />
 			<jvmarg line="${digitas.compiler.jvmargs}" />
 		</compc>
+
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
           target: _post_Build                      
          - - - - - - - - - - - - - - - - - -->
-	<target name="_post_Build">
+	<target name="_post_Build" unless="swc.uptodate">
 		<delete dir="${temp_src}" />
 	</target>
 

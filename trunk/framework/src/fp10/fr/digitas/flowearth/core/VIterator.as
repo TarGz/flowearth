@@ -15,7 +15,7 @@ package fr.digitas.flowearth.core {
 		}
 
 		public function hasNext() : Boolean {
-			return _v.length > _c;
+			return _v.length > _c; 
 		}
 
 		private var _v : Vector.<Object>;

@@ -5,7 +5,14 @@ package fr.digitas.flowearth.ui.text {
 	import flash.text.TextField;
 
 	/**
+	 * Container for a Textfield styled with Flowearth styles management.
+	 * 
 	 * @author Pierre Lepers
+	 * 
+	 * @example The following example show a simple implementation of batcher
+	 * buildBatcher() create a batcher, add 4 <code>BatchLoaderItem</code> and listen some events on it. 
+	 * @includeExample StyledLabelSample.as
+	 * 
 	 */
 	public class StyledLabel extends Sprite {
 

@@ -64,7 +64,8 @@ package fr.digitas.flowearth.ui.layout.renderer {
 		}
 		
 		private function lineBreak() : void {
-			_baseLine += _baseOffset + _margin.top;
+			_baseLine += _baseOffset + _margin.height + _margin.top;
+			_lineBreaks.push( _baseLine - _margin.top );
 			_baseOffset = 0;
 			_offset = _padding.left;
 		}

@@ -26,47 +26,50 @@
           target: main              
          ================================= -->
 	<target name="main" depends="init" description="Build docs samples swf">
-		<antcall target="BatcherSampleA"/>
-		<antcall target="CompleteNodeSample"/>
-		<antcall target="ConfSampleA"/>
-		<antcall target="NodeSystemSample"/>
-		<antcall target="SWFAddressSample"/>
+		<antcall target="BatcherSampleA" />
+		<antcall target="CompleteNodeSample" />
+		<antcall target="ConfSampleA" />
+		<antcall target="NodeSystemSample" />
+		<antcall target="SWFAddressSample" />
+		<antcall target="StyledLabelSample" />
 	</target>
 
 	<!-- ================================= 
           target: BatcherSampleA              
          ================================= -->
 	<target name="BatcherSampleA" depends="init" description="BatcherSampleA">
-		
+
 		<mxmlc file="${sampleDir}/fr/digitas/flowearth/command/BatcherSampleA.as"
 		       output="${sampleDir}/fr/digitas/flowearth/command/BatcherSampleA.swf"
+		       incremental="true"
 		       static-rsls="true"
 		       debug="true">
 			<default-size width="400" height="400" />
 			<default-background-color>0xF8F8F8</default-background-color>
 			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
 			<source-path path-element="${sampleDir}/sampleslib" />
-			<jvmarg value="${digitas.compiler.jvmargs}"/>
+			<jvmarg value="${digitas.compiler.jvmargs}" />
 		</mxmlc>
-		
+
 	</target>
 
 	<!-- ================================= 
           target:  ConfSampleA             
          ================================= -->
 	<target name="ConfSampleA" depends="init" description="ConfSampleA">
-		
+
 		<mxmlc file="${sampleDir}/fr/digitas/flowearth/conf/ConfSampleA.as"
 		       output="${sampleDir}/fr/digitas/flowearth/conf/ConfSampleA.swf"
+		       incremental="true"
 		       static-rsls="true"
 		       debug="true">
 			<default-size width="400" height="400" />
 			<default-background-color>0xF8F8F8</default-background-color>
 			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
 			<source-path path-element="${sampleDir}/sampleslib" />
-			<jvmarg value="${digitas.compiler.jvmargs}"/>
+			<jvmarg value="${digitas.compiler.jvmargs}" />
 		</mxmlc>
-		
+
 	</target>
 
 	<!-- ================================= 
@@ -75,18 +78,19 @@
 	<target name="NodeSystemSample"
 	        depends="init"
 	        description="NodeSystemSample">
-		
+
 		<mxmlc file="${sampleDir}/fr/digitas/flowearth/mvc/address/structs/NodeSystemSample.as"
 		       output="${sampleDir}/fr/digitas/flowearth/mvc/address/structs/NodeSystemSample.swf"
+		       incremental="true"
 		       static-rsls="true"
 		       debug="true">
 			<default-size width="400" height="400" />
 			<default-background-color>0xF8F8F8</default-background-color>
 			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
 			<source-path path-element="${sampleDir}/sampleslib" />
-			<jvmarg value="${digitas.compiler.jvmargs}"/>
+			<jvmarg value="${digitas.compiler.jvmargs}" />
 		</mxmlc>
-		
+
 	</target>
 
 
@@ -99,15 +103,16 @@
 
 		<mxmlc file="${sampleDir}/fr/digitas/flowearth/mvc/address/structs/SWFAddressSample.as"
 		       output="${sampleDir}/fr/digitas/flowearth/mvc/address/structs/SWFAddressSample.swf"
+		       incremental="true"
 		       static-rsls="true"
 		       debug="true">
 			<default-size width="400" height="400" />
 			<default-background-color>0xF8F8F8</default-background-color>
 			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
 			<source-path path-element="${sampleDir}/sampleslib" />
-			<jvmarg value="${digitas.compiler.jvmargs}"/>
+			<jvmarg value="${digitas.compiler.jvmargs}" />
 		</mxmlc>
-		
+
 	</target>
 
 
@@ -117,9 +122,10 @@
 	<target name="CompleteNodeSample"
 	        depends="init"
 	        description="CompleteNodeSample">
-		
+
 		<mxmlc file="${sampleDir}/fr/digitas/flowearth/mvc/address/structs/CompleteNodeSample.as"
 		       output="${sampleDir}/fr/digitas/flowearth/mvc/address/structs/CompleteNodeSample.swf"
+		       incremental="true"
 		       static-rsls="true"
 		       debug="true"
 		       use-network="false">
@@ -127,9 +133,32 @@
 			<default-background-color>0xF8F8F8</default-background-color>
 			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
 			<source-path path-element="${sampleDir}/sampleslib" />
-			<jvmarg value="${digitas.compiler.jvmargs}"/>
+			<jvmarg value="${digitas.compiler.jvmargs}" />
 		</mxmlc>
-		
+
+	</target>
+
+
+	<!-- ================================= 
+          target: StyledLabelSample      
+         ================================= -->
+	<target name="StyledLabelSample"
+	        depends="init"
+	        description="StyledLabelSample">
+
+		<mxmlc file="${sampleDir}/fr/digitas/flowearth/ui/text/StyledLabelSample.as"
+		       output="${sampleDir}/fr/digitas/flowearth/ui/text/StyledLabelSample.swf"
+		       incremental="true"
+		       static-rsls="true"
+		       debug="true"
+		       use-network="false">
+			<default-size width="400" height="400" />
+			<default-background-color>0xF8F8F8</default-background-color>
+			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
+			<source-path path-element="${sampleDir}/sampleslib" />
+			<jvmarg value="${digitas.compiler.jvmargs}" />
+		</mxmlc>
+
 	</target>
 
 
@@ -142,4 +171,5 @@
 	</target>
 
 </project>
+
 
