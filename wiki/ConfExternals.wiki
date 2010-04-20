@@ -45,5 +45,73 @@ while parsing the main conf file, the Conf class will automatically load externa
 ==externalData==
 
 
-// To Complete...
-It's quite the same format, except you put and id  :
+It's quite the same format as externalConf, except you put and id to file node, this id can be used to retreive the content of the file as a String property of the conf. 
+
+
+===exemple===
+
+external_data.css
+{{{
+
+.header_style 
+{
+	font-size: 12;
+	font-family: arial;
+	antiAliasType: advanced;
+}
+
+.footer_style {
+	font-family: NissanAGMedium;
+	font-size: 12;
+	wordWrap: false;
+	selectable: false;
+}
+
+}}}
+
+some_conf_file.xml
+{{{
+<conf>
+
+   <externalData>
+      <file id="myStyle">external_data.css</file>
+   <externalData>
+
+</conf>
+
+}}}
+
+Internally, the content of the file is inserted into a node with the same name as id attribute.
+
+The previous example is the same than write :
+
+some_conf_file.xml
+{{{
+<conf>
+
+   <myStyle>
+
+.header_style 
+{
+	font-size: 12;
+	font-family: arial;
+	antiAliasType: advanced;
+}
+
+.footer_style {
+	font-family: NissanAGMedium;
+	font-size: 12;
+	wordWrap: false;
+	selectable: false;
+}
+
+   </myStyle>
+
+</conf>
+
+}}}
+
+Note that the external data's file will be interpretted as XML (to be insert in a Conf prop). So xml char should be escaped.
+
+
+
