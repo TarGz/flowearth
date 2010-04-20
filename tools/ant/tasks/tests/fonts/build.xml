@@ -30,7 +30,9 @@
 
 		<createFont classname="FontA"
 		            swf="${TEST_HOME}/output/fontA.swf"
-		            compiler="${digitas.mxmlc}" 
+		            swc="${TEST_HOME}/output/fontA.swc"
+		            mxmlc="${digitas.mxmlc}" 
+		            compc="${digitas.compc}" 
 		            keepgenerated="false" >
 			
 			<font fontfamily="arial" 
@@ -45,6 +47,7 @@
 			      unicoderange="U+0000-U+0001" />
 		
 			<arg line="-debug=true"/>
+			<arg line="-static-rsls=true"/>
 		
 		</createFont>
 
@@ -67,6 +70,8 @@
 			      fontweight="bold"
 			      sourcename="Arial"
 			      unicoderange="U+0000-U+0001" />
+
+			<arg line="-static-rsls=true"/>
 		</createFont>
 
 

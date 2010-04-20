@@ -36,7 +36,10 @@
 							Give a unique class name for avoid definition's conflict when this font lib will be loaded in your application.
 							(not mandatory : if missing, a class name is created, based on the font name of the first font listed , take care of definition conflict ))
 			swf			:	path of the output swf
+			swc			:	path of the output swc
 			compiler	:	path of the mxmlc compiler (.exe)
+			mxmlc		:	path of the mxmlc compiler (.exe)
+			compc		:	path of the compc compiler (.exe)
 			keepgenerated : If true, keep the generated .as files.
 
 			
