@@ -33,15 +33,24 @@ package fr.digitas.flowearth.ui.layout.renderer {
 		public override function init( padding : Rectangle, margin : Rectangle, w : Number, h : Number ) : void {
 			super.init( padding, margin, w, h );
 			_offset = padding.top;
+			_rwidth = 0;
 		}
 	
-		public override function render( child : DisplayObject ) : void {
-			var h : Number = ( child is ILayoutItem ) ? ( child as ILayoutItem).getHeight() : child.height;
+		public override function render( child : ILayoutItem ) : void {
+			var _do : DisplayObject = child.getDisplay();
 			_offset += _margin.top;
-			child.x = _margin.left + _padding.left;
-			child.y = _offset;
-			_offset += _margin.height + h;
+			_do.x = _margin.left + _padding.left;
+			_do.y = _offset;
+			_offset += _margin.height + child.getHeight();
+			_rwidth = ( _rwidth > child.getWidth( ) ) ? _rwidth : child.getWidth( );
 		}
+		
+		override public function complete() : void {
+			super.complete( );
+			_rheight = _offset + _padding.height;
+			_rwidth += _padding.right + _margin.right;
+		}
+		
 	}
 }
 

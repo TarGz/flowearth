@@ -31,14 +31,22 @@ package fr.digitas.flowearth.ui.layout.renderer {
 		public override function init( padding : Rectangle, margin : Rectangle, w : Number, h : Number ) : void {
 			super.init(padding, margin, w, h );
 			_offset = padding.left;
+			_rheight = 0;
 		}
-	
-		public override function render( child : DisplayObject ) : void {
-			var w : Number = ( child is ILayoutItem ) ? ( child as ILayoutItem).getWidth() : child.width;
+
+		public override function render( child : ILayoutItem ) : void {
+			var _do : DisplayObject = child.getDisplay();
 			_offset += _margin.left;
-			child.x = _offset;
-			child.y = _margin.top + _padding.top;
-			_offset += _margin.width + w;
+			_do.x = _offset;
+			_do.y = _margin.top + _padding.top;
+			_offset += _margin.width + child.getWidth( );
+			_rheight = ( _rheight > child.getHeight( ) ) ? _rheight : child.getHeight( );
+		}
+
+		override public function complete() : void {
+			super.complete( );
+			_rwidth = _offset + _padding.width;
+			_rheight += _padding.bottom + _margin.bottom;
 		}
 	}
 }

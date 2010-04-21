@@ -29,9 +29,7 @@
 		
 
 		<createFont classname="FontA"
-		            swf="${TEST_HOME}/output/fontA.swf"
 		            swc="${TEST_HOME}/output/fontA.swc"
-		            mxmlc="${digitas.mxmlc}" 
 		            compc="${digitas.compc}" 
 		            keepgenerated="false" >
 			

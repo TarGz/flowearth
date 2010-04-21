@@ -19,14 +19,14 @@
 
 package fr.digitas.flowearth.ui.layout.renderer {
 	import fr.digitas.flowearth.core.IIterator;
+	import fr.digitas.flowearth.ui.layout.ILayoutItem;
 	import fr.digitas.flowearth.ui.layout.renderer.ChildRenderer;
 	import fr.digitas.flowearth.ui.layout.utils.AnimationHelper;
 	import fr.digitas.flowearth.ui.layout.utils.IInterpolable;
 	import fr.digitas.flowearth.utils.motion.psplitter.ProgressionSplitter;
 	
-	import flash.display.DisplayObject;
 	import flash.events.Event;
-	import flash.geom.Rectangle;	
+	import flash.geom.Rectangle;		
 
 	/**
 	 * Kit de Renderer animé à monter soi même.
@@ -73,7 +73,7 @@ package fr.digitas.flowearth.ui.layout.renderer {
 			_pSplitter = new ProgressionSplitter( );
 		}
 
-		public override function render ( child : DisplayObject ) : void {
+		public override function render ( child : ILayoutItem ) : void {
 			var ah : AnimationHelper = new AnimationHelper( child );
 			_pSplitter.push( ah );
 			_baseRenderer.render( ah );
@@ -92,8 +92,8 @@ package fr.digitas.flowearth.ui.layout.renderer {
 		}
 		
 		protected function renderChildProgress( proxy : AnimationHelper ) : void {
-			if( proxy.original is IInterpolable )
-				( proxy.original as IInterpolable ).setProgress( proxy );
+			if( proxy.getDisplay() is IInterpolable )
+				( proxy.getDisplay() as IInterpolable ).setProgress( proxy );
 		}
 
 

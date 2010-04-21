@@ -3,7 +3,7 @@ package fr.digitas.flowearth.ui.layout.renderer {
 	
 	import flash.display.DisplayObject;
 	import flash.geom.Rectangle;	
-	
+
 	/**
 	 * @author Pierre Lepers
 	 */
@@ -14,13 +14,13 @@ package fr.digitas.flowearth.ui.layout.renderer {
 			_offset = padding.top;
 		}
 	
-		public override function render( child : DisplayObject ) : void {
-			var h : Number = ( child is ILayoutItem ) ? ( child as ILayoutItem).getHeight() : child.height;
+		public override function render( child : ILayoutItem ) : void {
+			var _do : DisplayObject = child.getDisplay();
 			_offset += _margin.top;
-			child.x = _margin.left + _padding.left;
-			child.y = _offset;
-			_offset += _margin.height + h;
-			child.width = _width;
+			_do.x = _margin.left + _padding.left;
+			_do.y = _offset;
+			_offset += _margin.height + child.getHeight();;
+			_do.width = _width;
 		}
 	}
 }

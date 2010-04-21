@@ -19,7 +19,6 @@
 
 
 package fr.digitas.flowearth.ui.layout {
-	import flash.display.DisplayObject;
 	import flash.events.IEventDispatcher;
 	import flash.geom.Rectangle;	
 
@@ -35,10 +34,15 @@ package fr.digitas.flowearth.ui.layout {
 		
 		function init( padding : Rectangle, margin : Rectangle, w : Number, h : Number ) : void;
 
-		function render( child : DisplayObject ) : void;
+		function render( child : ILayoutItem ) : void;
 
 		function getType( ) : String;
 		
 		function complete () : void;
+		
+		function get renderWidth() : Number;
+		
+		function get renderHeight() : Number;
+		
 	}
 }

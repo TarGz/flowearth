@@ -19,8 +19,8 @@
 
 package fr.digitas.flowearth.ui.layout.renderer {
 	import fr.digitas.flowearth.ui.layout.IChildRenderer;
+	import fr.digitas.flowearth.ui.layout.ILayoutItem;
 	
-	import flash.display.DisplayObject;
 	import flash.events.EventDispatcher;
 	import flash.geom.Rectangle;	
 
@@ -28,14 +28,16 @@ package fr.digitas.flowearth.ui.layout.renderer {
 	 * Classe Abstraite
 	 * @author Pierre Lepers
 	 */
-	public class ChildRenderer extends EventDispatcher implements IChildRenderer {
 
+	public class ChildRenderer extends EventDispatcher implements IChildRenderer {
 		internal var _offset : Number;
 		internal var _margin : Rectangle;
 		internal var _padding : Rectangle;
 		internal var _type : String;
 		internal var _width : Number;
 		internal var _height: Number;
+		internal var _rwidth : Number = 0;
+		internal var _rheight: Number = 0;
 	
 		
 		public function init( padding : Rectangle, margin : Rectangle, w : Number, h : Number ) : void {
@@ -49,12 +51,19 @@ package fr.digitas.flowearth.ui.layout.renderer {
 			return _type;
 		}
 		
-		public function render( child : DisplayObject ) : void {
+		public function render( child : ILayoutItem ) : void {
 			
 		}
 		
 		public function complete () : void {
-			
+		}
+		
+		public function get renderWidth() : Number {
+			return _rwidth;
+		}
+		
+		public function get renderHeight() : Number {
+			return _rheight;
 		}
 	}
 }

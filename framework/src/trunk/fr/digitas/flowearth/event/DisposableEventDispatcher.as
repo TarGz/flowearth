@@ -62,7 +62,7 @@ package fr.digitas.flowearth.event {
 			super.addEventListener(type, listener, useCapture, priority, false );
 		}
 
-		private var _ls : Array;
+		protected var _ls : Array;
 	}
 }
 
