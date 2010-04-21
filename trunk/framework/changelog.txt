@@ -45,3 +45,8 @@ v2.5.159
 	
 v2.5.164
 	add Link in utils
+
+v2.5.191
+	refactoring Layout render
+	start Layout tutorial
+	fix fonts ant task bug (error when compile only swc) 

@@ -291,7 +291,11 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 
 	private int getCompilerVersion() {
 		ExecTask vtask = (ExecTask) getProject().createTask( "exec" );
-		vtask.setExecutable( compilerPath );
+		if( compilerPath != null )
+			vtask.setExecutable( compilerPath );
+		else
+			vtask.setExecutable( compcPath );
+			
 		vtask.setOutputproperty( "fpw_mxmlc_version" );
 		
 		Argument arg;
@@ -442,7 +446,11 @@ public final class FontProviderWrapper extends Task implements DynamicAttribute 
 	}
 
 	private String getOutput() {
-		File swfFile = new File( swf );
+		File swfFile;
+		if( swf != null )
+			swfFile = new File( swf );
+		else
+			swfFile = new File( swc );
 		return swfFile.getParent()+File.separatorChar+"_generated";
 	}
 	

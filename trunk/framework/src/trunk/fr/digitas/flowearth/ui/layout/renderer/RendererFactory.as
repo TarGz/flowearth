@@ -19,7 +19,7 @@
 
 
 package fr.digitas.flowearth.ui.layout.renderer {
-	import fr.digitas.flowearth.ui.layout.IChildRenderer;							
+	import fr.digitas.flowearth.ui.layout.IChildRenderer;								
 
 	/**
 	 * @author Pierre Lepers

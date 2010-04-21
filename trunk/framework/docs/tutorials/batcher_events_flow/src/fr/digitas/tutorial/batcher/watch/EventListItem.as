@@ -4,7 +4,8 @@ package fr.digitas.tutorial.batcher.watch {
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import flash.text.TextField;	
+	import flash.text.TextField;
+	import flash.display.DisplayObject;	
 
 	/**
 	 * @author Pierre Lepers
@@ -56,9 +57,12 @@ package fr.digitas.tutorial.batcher.watch {
 		public function getHeight() : Number {
 			return 14;
 		}
+		
+		public function getDisplay() : DisplayObject {
+			return this;
+		}
 
 		private var _ewi : EventWatcherItem;
-		
 	}
 
 }

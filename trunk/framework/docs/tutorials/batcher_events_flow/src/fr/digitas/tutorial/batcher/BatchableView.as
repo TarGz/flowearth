@@ -306,6 +306,10 @@ package fr.digitas.tutorial.batcher {
 		public function getHeight() : Number {
 			return childContainer.height + childContainer.x;
 		}
+		
+		public function getDisplay() : DisplayObject {
+			return this;
+		}
 
 		public function setId(id : int) : void {
 			if( ! isBatcher( ) )	label.text = "I" + id;
@@ -320,16 +324,10 @@ import fr.digitas.flowearth.ui.layout.ILayoutItem;
 import fr.digitas.flowearth.ui.layout.Layout;
 import fr.digitas.tutorial.batcher.BatchableView;
 
+import flash.display.DisplayObject;
+
 class ChildContainer extends Layout implements ILayoutItem {
 
-	public function getWidth() : Number {
-		return 0;
-	}
 	
-	public function getHeight() : Number {
-		if( numChildren == 0 ) return 0;
-		var last : BatchableView = getChildAt( numChildren- 1 ) as BatchableView;
-		return ( last.y + last.getHeight() );
-	}
+	
 }
-

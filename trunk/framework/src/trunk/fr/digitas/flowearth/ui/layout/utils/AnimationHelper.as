@@ -33,23 +33,26 @@ package fr.digitas.flowearth.ui.layout.utils {
 		
 		public var timeStretch : Number = 1;
 		
-		public function AnimationHelper ( original : DisplayObject ) {
+		public function AnimationHelper ( original : ILayoutItem ) {
 			super( );
 			_original = original;
 			if ( _original is IInterpolable ) timeStretch = ( _original as IInterpolable ).timeStretch;
 		}
 		
+		public function getDisplay() : DisplayObject {
+			return _original.getDisplay();
+		}
 
 		public function getWidth () : Number {
-			return ( _original is ILayoutItem ) ? ( _original as ILayoutItem).getWidth( ) : _original.width;
+			return _original.getWidth( );
 		}
 
 		public function getHeight () : Number {
-			return ( _original is ILayoutItem ) ? ( _original as ILayoutItem).getHeight( ) : _original.height;
+			return _original.getHeight( );
 		}
 
 		
-		public function get original () : DisplayObject {
+		public function get original () : ILayoutItem {
 			return _original;
 		}
 		
@@ -65,9 +68,9 @@ package fr.digitas.flowearth.ui.layout.utils {
 			return timeStretch;
 		}
 
-		protected var _original : DisplayObject;
+		protected var _original : ILayoutItem;
 
 		private var _progress : Number;
-
+		
 	}
 }

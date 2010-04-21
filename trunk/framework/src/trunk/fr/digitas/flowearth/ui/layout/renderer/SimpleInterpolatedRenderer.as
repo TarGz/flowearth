@@ -21,7 +21,9 @@
 package fr.digitas.flowearth.ui.layout.renderer {
 	import fr.digitas.flowearth.ui.layout.renderer.InterpolatedRenderer;
 	import fr.digitas.flowearth.ui.layout.utils.AnimationHelper;
-	import fr.digitas.flowearth.ui.layout.utils.IInterpolable;	
+	import fr.digitas.flowearth.ui.layout.utils.IInterpolable;
+	
+	import flash.display.DisplayObject;	
 
 	/**
 	 * class d'Exemple
@@ -39,13 +41,13 @@ package fr.digitas.flowearth.ui.layout.renderer {
 
 		override protected function renderChildProgress ( proxy : AnimationHelper ) : void {
 			var ownProgress : Number = proxy.getProgress();
+			var _do : DisplayObject = proxy.getDisplay();
+			if( _do is IInterpolable ) 
+				if( ! ( _do as IInterpolable ).setProgress( proxy ) ) return;
 			
-			if( proxy.original is IInterpolable ) 
-				if( ! ( proxy.original as IInterpolable ).setProgress( proxy ) ) return;
-			
-			proxy.original.y = ( yDecay == 0 ) ? proxy.y : easeOutQuad( ownProgress, proxy.y + yDecay, -yDecay, 1);
-			proxy.original.x = ( xDecay == 0 ) ? proxy.x : easeOutQuad( ownProgress, proxy.x + xDecay, -xDecay, 1);
-			proxy.original.alpha = ownProgress;
+			_do.y = ( yDecay == 0 ) ? proxy.y : easeOutQuad( ownProgress, proxy.y + yDecay, -yDecay, 1);
+			_do.x = ( xDecay == 0 ) ? proxy.x : easeOutQuad( ownProgress, proxy.x + xDecay, -xDecay, 1);
+			_do.alpha = ownProgress;
 			
 		}
 		

@@ -30,15 +30,22 @@ package fr.digitas.flowearth.ui.layout.renderer {
 	public class TopWeakRenderer extends ChildRenderer {
 	
 		public override function init( padding : Rectangle, margin : Rectangle, w : Number, h : Number ) : void {
-			super.init(padding, margin, w, h );
-			_offset = padding.left;
+			super.init( padding, margin, w, h );
+			_offset = padding.top;
+			_rwidth = 0;
 		}
 	
-		public override function render( child : DisplayObject ) : void {
-			var h : Number = ( child is ILayoutItem ) ? ( child as ILayoutItem).getHeight() : child.height;
+		public override function render( child : ILayoutItem ) : void {
 			_offset += _margin.top;
-			child.y = _offset;
-			_offset += _margin.height + h;
+			child.getDisplay().y = _offset;
+			_offset += _margin.height + child.getHeight();
+			_rwidth = ( _rwidth > child.getWidth( ) ) ? _rwidth : child.getWidth( );
+		}
+		
+		override public function complete() : void {
+			super.complete( );
+			_rheight = _offset + _padding.height;
+			_rwidth += _padding.right + _margin.right;
 		}
 	}
 }
