@@ -91,7 +91,6 @@ package fr.digitas.flowearth.command {
 		}
 
 		private function proxyListener( e : Event ) : void {
-			trace( "ddd", e, e.type );
 			super.dispatchEvent( e );
 		}
 

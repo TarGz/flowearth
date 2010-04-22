@@ -32,8 +32,6 @@ package fr.digitas.flowearth.ui.layout.renderer {
 		
 		
 		public function HBlockRenderer () {
-			
-			
 		}
 
 		override public function init (padding : Rectangle, margin : Rectangle, w : Number, h : Number) : void {
@@ -42,29 +40,23 @@ package fr.digitas.flowearth.ui.layout.renderer {
 			_offset = padding.left;
 		}
 
-		override public function render (child : DisplayObject) : void {
-			var w : Number;
-			var h : Number;
-			
-			if( child is ILayoutItem ) {
-				w = ( child as ILayoutItem).getWidth();
-				h = ( child as ILayoutItem).getHeight();
-			} else {
-				w = child.width;
-				h = child.height;
-			}
+		override public function render (child : ILayoutItem) : void {
+			var w : Number = child.getWidth();
+			var h : Number = child.getHeight();
+			var _do : DisplayObject = child.getDisplay();
 			
 			if( _offset + w + _margin.right > _mawWidth ) lineBreak();
 			_baseOffset = Math.max( _baseOffset , h );
 			
 			_offset += _margin.left;
-			child.x = _offset;
-			child.y = _baseLine;
+			_do.x = _offset;
+			_do.y = _baseLine;
 			_offset += _margin.width + w;
 		}
 		
 		private function lineBreak() : void {
-			_baseLine += _baseOffset + _margin.top;
+			_baseLine += _baseOffset + _margin.height + _margin.top;
+			_lineBreaks.push( _baseLine - _margin.top );
 			_baseOffset = 0;
 			_offset = _padding.left;
 		}

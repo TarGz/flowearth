@@ -19,12 +19,12 @@
 
 package fr.digitas.flowearth.text.styles {
 	import flash.text.TextField;
-	import flash.utils.Dictionary;	
+	import flash.utils.Dictionary;
 
 	/**
 	 * @author Pierre Lepers
 	 */
-	internal final class StyleManagerClass {
+	public class StyleManagerClass {
 
 		
 		public function StyleManagerClass( ) {
@@ -48,14 +48,15 @@ package fr.digitas.flowearth.text.styles {
 		 */
 		public function apply( tf : TextField, styleName : Object, htmlText : String = null ) : void {
 			var qn : QName = new QName( styleName );
-			var advCss : AdvancedStyleSheet = getSpace( qn ).findCss( qn.localName );
-			advCss.getStyle( qn.localName ).getFormatter( ).format( tf );
+			var lname : String = qn.localName.toLowerCase();
+			var advCss : AdvancedStyleSheet = getSpace( qn ).findCss( lname );
+			advCss.getStyle( lname ).getFormatter( ).format( tf );
 			tf.styleSheet = advCss.getCss( );
 			if( htmlText ) {
-				if( qn.localName.charAt( 0 ) == "." )
-					tf.htmlText = "<span class='" + stripDot( qn.localName.toLowerCase() ) + "'>" + htmlText + "</span>";
+				if( lname.charAt( 0 ) == "." )
+					tf.htmlText = "<span class='" + stripDot( lname ) + "'>" + htmlText + "</span>";
 				else
-					tf.htmlText = "<"+qn.localName.toLowerCase()+ ">" + htmlText + "</"+qn.localName.toLowerCase()+ ">";
+					tf.htmlText = "<"+lname+ ">" + htmlText + "</"+lname+ ">";
 			}
 		}
 
@@ -150,6 +151,11 @@ package fr.digitas.flowearth.text.styles {
 	}
 }
 
+import fr.digitas.flowearth.text.styles.AdvancedFormat;
+import fr.digitas.flowearth.text.styles.AdvancedStyleSheet;
+
+import flash.utils.Dictionary;
+
 //_____________________________________________________________________________
 //																    STYLE SPACE
 //
@@ -159,10 +165,7 @@ package fr.digitas.flowearth.text.styles {
 //		    SS   TT     YY    LL      EE                  SS PP      AAAAAAA CC   CC EE      
 //		SSSSS    TT     YY    LLLLLLL EEEEEEE         SSSSS  PP      AA   AA  CCCCC  EEEEEEE
 
-import fr.digitas.flowearth.text.styles.AdvancedFormat;
-import fr.digitas.flowearth.text.styles.AdvancedStyleSheet;
 
-import flash.utils.Dictionary;
 
 final class StyleSpace {
 

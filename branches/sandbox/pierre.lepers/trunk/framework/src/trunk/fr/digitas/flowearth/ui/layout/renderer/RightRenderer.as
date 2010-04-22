@@ -35,11 +35,11 @@ package fr.digitas.flowearth.ui.layout.renderer {
 			_offset = - padding.width;
 		}
 	
-		public override function render( child : DisplayObject ) : void {
-			var w : Number = ( child is ILayoutItem ) ? ( child as ILayoutItem).getWidth() : child.width;
-			_offset -= _margin.width + w;
-			child.x = _offset;
-			child.y = _margin.top + _padding.top;
+		public override function render( child : ILayoutItem ) : void {
+			var _do : DisplayObject = child.getDisplay();
+			_offset -= _margin.width + child.getWidth();
+			_do.x = _offset;
+			_do.y = _margin.top + _padding.top;
 			_offset -= _margin.left;
 		}
 	}
