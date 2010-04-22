@@ -7,7 +7,7 @@
                    
      lepersp                                                                
      ====================================================================== -->
-<project name="Digitas Fmk - Build docs Samples"
+<project name="Digitas Fmk - Doc Samples"
          default="main"
          basedir="../../../../">
 	<description>

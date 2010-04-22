@@ -1,9 +1,11 @@
 package fr.digitas.flowearth.ui.form {
 	import fr.digitas.flowearth.ui.layout.ILayoutItem;
 	
-	import flash.geom.ColorTransform;	import flash.display.MovieClip;
+	import flash.display.DisplayObject;
+	import flash.display.MovieClip;
 	import flash.display.Sprite;
-	import flash.text.TextField;		
+	import flash.geom.ColorTransform;
+	import flash.text.TextField;	
 
 	/**
 	 * @author Pierre Lepers
@@ -46,6 +48,10 @@ package fr.digitas.flowearth.ui.form {
 		
 		public function getHeight() : Number {
 			return bg.height;
+		}
+		
+		public function getDisplay() : DisplayObject {
+			return this;
 		}
 	}
 }

@@ -7,7 +7,7 @@
                    
      pierre                                                                
      ====================================================================== -->
-<project name="Digitas Fmk - AVM Confitur" default="main" basedir="../../../../">
+<project name="Digitas Fmk - Tools AVM Confitur" default="main" basedir="../../../../">
 
 	<description>
             build digitas ant tasks

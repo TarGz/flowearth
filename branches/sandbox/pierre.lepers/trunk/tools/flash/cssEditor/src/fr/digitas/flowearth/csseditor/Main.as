@@ -1,19 +1,16 @@
 package fr.digitas.flowearth.csseditor {
+	import fr.digitas.flowearth.csseditor.undo.HistoryClass;	
+	import fr.digitas.flowearth.csseditor.data.compiler.BuildsDataProvider;
+	import fr.digitas.flowearth.csseditor.data.compiler.buildsProvider;
 	import fr.digitas.flowearth.csseditor.view.MainLayout;
-	import fr.digitas.flowearth.process.flex.MxmlcConfiguration;
-	import fr.digitas.flowearth.process.flex.MxmlcProcess;
 	import fr.digitas.flowearth.text.fonts.FontManagerClass;
 	import fr.digitas.flowearth.text.styles.StyleManagerClass;
 	
-	import flash.desktop.NativeProcess;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
-	import flash.events.Event;
-	import flash.events.IOErrorEvent;
-	import flash.events.NativeProcessExitEvent;
-	import flash.events.ProgressEvent;
-	import flash.utils.IDataInput;		
+	
+	import fr.digitas.flowearth.csseditor.undo.history;	
 
 	/**
 	 * @author Pierre Lepers
@@ -28,9 +25,15 @@ package fr.digitas.flowearth.csseditor {
 			
 			stage.align = StageAlign.TOP_LEFT;
 			stage.scaleMode = StageScaleMode.NO_SCALE;
+			/*FDT_IGNORE*/
 			App.run( this );
+			/*FDT_IGNORE*/
 			
 			addChild( new MainLayout( ) );
+			
+			buildsProvider;
+			BuildsDataProvider;
+			HistoryClass;
 //			addChild( new TestTabs( ) );
 
 //			testMxmlcProcess();

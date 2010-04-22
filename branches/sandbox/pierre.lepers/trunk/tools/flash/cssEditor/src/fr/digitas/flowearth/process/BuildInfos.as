@@ -1,4 +1,4 @@
-package fr.digitas.flowearth.font {
+package fr.digitas.flowearth.process {
 	import flash.events.EventDispatcher;	
 	import flash.desktop.NativeProcess;
 	import flash.events.Event;
@@ -18,6 +18,15 @@ package fr.digitas.flowearth.font {
 			_init( );
 		}
 		
+		public function getLabel() : String {
+			return "build process - " +" (" + new Date().toLocaleString()+ ")";
+		}
+
+		
+		
+		public function get process() : NativeProcess {
+			return _process;
+		}
 			
 		public function get logs() : String {
 			return _logs;
@@ -66,12 +75,12 @@ package fr.digitas.flowearth.font {
             _errors = "";
 		}
 		
-		private function onOutputData(event : ProgressEvent) : void {
-			_logs += _process.standardOutput.readUTFBytes(_process.standardOutput.bytesAvailable);
+		private function onOutputData(event : ProgressEvent ) : void {
+			_logs += stripWhite( _process.standardOutput.readUTFBytes(_process.standardOutput.bytesAvailable) );
 		}
 
-		private function onErrorData(event : ProgressEvent) : void {
-			_errors += _process.standardError.readUTFBytes(_process.standardError.bytesAvailable);
+		private function onErrorData(event : ProgressEvent ) : void {
+			_errors += stripWhite( _process.standardError.readUTFBytes(_process.standardError.bytesAvailable) );
 			
 		}
 
@@ -86,9 +95,14 @@ package fr.digitas.flowearth.font {
 		}
 
 		private function onActivate(event : Event) : void {
-			
+		}
+		
+		private function stripWhite( str : String ) : String {
+			return str.replace( /[\n\r]{2,}/g, "\n");
 		}
 
+		
+		
 		
 		private var _process : NativeProcess;
 
@@ -98,6 +112,6 @@ package fr.digitas.flowearth.font {
 		
 		private var _logs : String;
 		private var _errors : String;
-	
+		
 	}
 }

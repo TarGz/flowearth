@@ -31,7 +31,7 @@ package fr.digitas.flowearth.ui.tabs {
 			tab.setData( tdata );
 			tab.addEventListener( Event.SELECT , onSelectTab );
 			_layout.addChild( tab );
-			_layout.itemList.push( tab );
+			//_layout.indexMap.push( _layout.indexMap.length );
 			_aItems.push( tdata );
 			_tabMap[ tdata ] = tab;
 			_layout.update( );
@@ -43,7 +43,7 @@ package fr.digitas.flowearth.ui.tabs {
 			var tab : Tab = _tabMap[ tdata ];
 			if( ! tdata.dispatchEvent( new Event( Event.CLOSING, false, true ) ) ) return;
 			_layout.removeChild( tab );
-			_layout.itemList.splice( _layout.itemList.indexOf( tab ), 1 );
+			//_layout. itemList.splice( _layout.itemList.indexOf( tab ), 1 );
 			_aItems.splice( _aItems.indexOf( tdata ), 1 );
 			tab.dispose( );
 			if( _currentItem == tdata ) _currentItem = null;
@@ -102,7 +102,6 @@ package fr.digitas.flowearth.ui.tabs {
 			_layout.y = 25;
 			_layout.padding = new Rectangle( 4 );
 			_layout.addEventListener( Layout.CHANGING , onChanging );
-			_layout.itemList = [];
 			addChild( _layout );
 		}
 		
@@ -128,14 +127,7 @@ package fr.digitas.flowearth.ui.tabs {
 		}
 		
 		private function reorder( tab  : Tab ) : void {
-			var index : int = _layout.itemList.indexOf( tab );
-			var i : int;
-			
-			for ( i = _layout.itemList.length-1; i > index ; i --)
-				_layout.addChild( _layout.itemList[i] );
-				
-			for ( i = 0; i <= index ; i ++)
-				_layout.addChild( _layout.itemList[i] );
+			_layout.setChildIndex( tab , _layout.numChildren - 1 );
 		}
 
 		private var _currentTabData : TabData;

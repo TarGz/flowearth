@@ -1,17 +1,21 @@
 package fr.digitas.flowearth.csseditor.view.picts {
-	import fr.digitas.flowearth.csseditor.picts.Remove;	
-	import fr.digitas.flowearth.csseditor.picts.Refresh;	
-	import fr.digitas.flowearth.csseditor.picts.SwfConfigurableFontFile;	
-	import fr.digitas.flowearth.csseditor.picts.FontItem;	
-	import fr.digitas.flowearth.csseditor.picts.SwfFontFile;	
-	import fr.digitas.flowearth.csseditor.picts.CollapseAll;	
-	import fr.digitas.flowearth.csseditor.picts.ExpandAll;	
-	import fr.digitas.flowearth.csseditor.picts.AddStyle;	
+	import fr.digitas.flowearth.csseditor.picts.AddStyle;
+	import fr.digitas.flowearth.csseditor.picts.BuildPlay;
+	import fr.digitas.flowearth.csseditor.picts.BuildRun;
+	import fr.digitas.flowearth.csseditor.picts.BuildStop;
+	import fr.digitas.flowearth.csseditor.picts.CollapseAll;
 	import fr.digitas.flowearth.csseditor.picts.ErrorIco;
-	import fr.digitas.flowearth.csseditor.picts.WarnIco;
+	import fr.digitas.flowearth.csseditor.picts.ExpandAll;
+	import fr.digitas.flowearth.csseditor.picts.FontItem;
 	import fr.digitas.flowearth.csseditor.picts.FontSettings;
+	import fr.digitas.flowearth.csseditor.picts.InfoIcon;
+	import fr.digitas.flowearth.csseditor.picts.Refresh;
+	import fr.digitas.flowearth.csseditor.picts.Remove;
+	import fr.digitas.flowearth.csseditor.picts.SwfConfigurableFontFile;
+	import fr.digitas.flowearth.csseditor.picts.SwfFontFile;
+	import fr.digitas.flowearth.csseditor.picts.WarnIco;
 	
-	import flash.display.BitmapData;	
+	import flash.display.BitmapData;		
 
 	/**
 	 * @author Pierre Lepers
@@ -21,6 +25,7 @@ package fr.digitas.flowearth.csseditor.view.picts {
 		
 		public static const WARN_ICO : BitmapData = new WarnIco( 0, 0 );
 		public static const ERROR_ICO : BitmapData = new ErrorIco( 0, 0 );
+		public static const INFO_ICO : BitmapData = new InfoIcon( 0 , 0 );
 		
 		
 		public static const ADD_STYLE : BitmapData = new AddStyle( 0 , 0 );
@@ -33,6 +38,10 @@ package fr.digitas.flowearth.csseditor.view.picts {
 		public static const FONT_SETTING : BitmapData = new FontSettings( 0 , 0 );
 		public static const REFRESH : BitmapData = new Refresh( 0 , 0 );
 		public static const REMOVE : BitmapData = new Remove( 0 , 0 );
+
+		public static const BUILD_RUN : BitmapData = new BuildRun( 0 , 0 );
+		public static const BUILD_PLAY : BitmapData = new BuildPlay( 0 , 0 );
+		public static const BUILD_STOP : BitmapData = new BuildStop( 0 , 0 );
 		
 	}
 }

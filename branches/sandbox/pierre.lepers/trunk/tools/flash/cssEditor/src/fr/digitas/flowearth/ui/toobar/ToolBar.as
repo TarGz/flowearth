@@ -23,7 +23,7 @@ package fr.digitas.flowearth.ui.toobar {
 			_buildLayout();
 		}
 		
-		public function addButton( id : String, label : String = null, icon : BitmapData = null ):  void {
+		public function addButton( id : String, label : String = null, icon : BitmapData = null ):  ToolBarButton {
 			
 			var btn : ToolBarButton = new ToolBarButton_FC();
 			if( icon )
@@ -34,6 +34,7 @@ package fr.digitas.flowearth.ui.toobar {
 			_layout.addChild( btn );
 			btn.addEventListener( MouseEvent.CLICK , onClickBtn );
 			_idMap[ btn ] = id;
+			return btn;
 		}
 
 		private function onClickBtn(event : MouseEvent) : void {

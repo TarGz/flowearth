@@ -1,19 +1,23 @@
 package fr.digitas.flowearth.font {
+	import fr.digitas.flowearth.csseditor.undo.Action;	
+	
 	import fl.controls.TextInput;
-
+	
 	import fr.digitas.flowearth.font.view.FontViewContainer;
 	import fr.digitas.flowearth.process.flex.MxmlcProcess;
 	import fr.digitas.flowearth.ui.layout.Layout;
 	import fr.digitas.flowearth.ui.layout.renderer.TopRenderer;
 	import fr.digitas.flowearth.ui.scroller.Scroller;
 	import fr.digitas.flowearth.ui.scroller.Scroller_FC;
-
+	
 	import flash.desktop.NativeProcess;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.filesystem.File;
 	import flash.text.TextField;
-	import flash.utils.Dictionary;		
+	import flash.utils.Dictionary;
+	
+	import fr.digitas.flowearth.csseditor.undo.history;	
 
 	/**
 	 * @author Pierre Lepers
@@ -38,8 +42,10 @@ package fr.digitas.flowearth.font {
 				_baseDir = File.desktopDirectory;
 			}
 			
+			_baseConfig = config;
+			
 			if( config )
-				_config = config;
+				_config = _baseConfig.clone();
 			else 
 				_config = new FontFileConfig( );
 			
@@ -55,22 +61,61 @@ package fr.digitas.flowearth.font {
 			
 			addEventListener( Event.ADDED_TO_STAGE , onAdded );
 			addEventListener( Event.REMOVED_FROM_STAGE , onRemoved );
+			
+			applyPanel.apply.addEventListener( MouseEvent.CLICK , onApply );
+			applyPanel.ok.addEventListener( MouseEvent.CLICK , onOk );
+			applyPanel.cancel.addEventListener( MouseEvent.CLICK , onCancel );
+		}
+		
+		private function onCancel(event : MouseEvent) : void {
+			stage.nativeWindow.close();
+		}
+
+		private function onApply(event : MouseEvent) : void {
+			
+			history.addAction( createApplyUndo() );
+			_baseConfig._import( _config.export() );
+		}
+	
+
+		private function onOk(event : MouseEvent) : void {
+			onApply( null );
+			stage.nativeWindow.close();
 		}
 
 		
+		public function dispose() : void {
+			_config.removeEventListener( Event.CHANGE , _update );
+			_config.removeEventListener( FontConfigEvent.CONFIG_ADDED , onConfigAdded );
+			_config.removeEventListener( FontConfigEvent.CONFIG_REMOVED , onConfigRemoved );
+			stage.removeEventListener( Event.RESIZE , onResize );
+			_config = null;
+			
+			_baseDir.removeEventListener( Event.SELECT , onOutputSelected );
+			_baseDir = null;
+			
+			_viewMap = null;
+			while( _layout.numChildren > 0 ) {
+				_layout.removeChildAt( 0 );
+			}
+		}
+
 		
 		private function onAdded( e : Event ) : void {
 			stage.addEventListener( Event.RESIZE , onResize );
 			onResize( null );
 		}
+		
+		private var _baseConfig : FontFileConfig;
 
 		private function onRemoved( e : Event ) : void {
 			stage.removeEventListener( Event.RESIZE , onResize );
 		}
 
 		private function onResize(event : Event) : void {
-			_scroller.height = stage.stageHeight - viewContainer.y;
+			applyPanel.y = 
 			bg.height = stage.stageHeight;
+			_scroller.height = stage.stageHeight - viewContainer.y - applyPanel.height;
 		}
 
 		public function buildFile( ) : NativeProcess {
@@ -90,8 +135,8 @@ package fr.digitas.flowearth.font {
 			addFont.addEventListener( MouseEvent.CLICK , onAddFont );
 			
 			_scroller = new Scroller_FC( );
-			_scroller.width = 419;
-			_scroller.height = 419;
+			_scroller.width = 430;
+			_scroller.height = 430;
 			viewContainer.addChild( _scroller );
 			_buildLayout( );
 			
@@ -206,6 +251,23 @@ package fr.digitas.flowearth.font {
 
 		private function onConfigRemoved(event : FontConfigEvent) : void {
 			_layout.removeChild( _viewMap[event.fontConfig] );
+			delete _viewMap[event.fontConfig];
+		}
+		
+			
+		private function createApplyUndo() : Action {
+			var orig : XML = _baseConfig.export();
+			var modif : XML = _config.export();
+			
+			var undo : Function = function() : void {
+				_baseConfig._import( orig );
+			};
+			
+			var redo : Function = function() : void {
+				_baseConfig._import( modif );
+			};
+			
+			return new Action( undo, redo );
 		}
 
 		private var _config : FontFileConfig;
@@ -217,7 +279,5 @@ package fr.digitas.flowearth.font {
 
 		private var _scroller : Scroller;		
 
-		public function dispose() : void {
-		}
 	}
 }

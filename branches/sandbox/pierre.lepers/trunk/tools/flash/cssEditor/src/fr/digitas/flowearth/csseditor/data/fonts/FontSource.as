@@ -1,4 +1,9 @@
 package fr.digitas.flowearth.csseditor.data.fonts {
+	import fr.digitas.flowearth.font.FontFileInfo;	
+	
+	import flash.text.FontStyle;	
+	
+	import fr.digitas.flowearth.font.FontInfo;	
 	import fr.digitas.flowearth.core.IIterator;
 	import fr.digitas.flowearth.core.Iterator;
 	import fr.digitas.flowearth.csseditor.event.FontEvent;
@@ -6,7 +11,9 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 	import fr.digitas.flowearth.text.fonts.IFontsProvider;
 	
 	import flash.events.EventDispatcher;
-	import flash.filesystem.File;		
+	import flash.filesystem.File;
+	import flash.text.Font;
+	import flash.utils.Dictionary;		
 
 	/**
 	 * @author Pierre Lepers
@@ -17,7 +24,7 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 		public function FontSource( file : File ) {
 			_file = file;
 			if( !builded() ) {
-				_config = new FontFileConfig();
+				createConfig();
 				_config.output = file;
 				_file = null;
 			}
@@ -35,6 +42,7 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 		
 		public function unload() : void {
 			_loaded = false;
+			dispatchEvent( new FontEvent( FontEvent.FONT_UNLOADED, this ) );
 		}
 
 		public function get loaded() : Boolean {
@@ -53,14 +61,21 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 		public function getConfig() : FontFileConfig {
 			return _config;
 		}
+
+		public function getInfos() : FontFileInfo {
+			return _info;
+		}
 		
 		
 		public function setFontProvider(_fontProvider : IFontsProvider) : void {
 			_loaded = true;
 			_afonts = _fontProvider.getFonts().concat();
-			dispatchEvent( new FontEvent( FontEvent.FONT_LOADED ) );
+			_buildFontInfos();
+			dispatchEvent( new FontEvent( FontEvent.FONT_LOADED, this ) );
 		}
 		
+		
+
 		public function addTrueType( ttf : File ) : void {
 			if( !configurable() ) throw new Error( "FontSource - addTrueType to unconfigurable source" );
 			_config.addTrueType( ttf );
@@ -73,7 +88,12 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 		public function selected() : Boolean {
 			return _profile.selectedSource == this;
 		}
+		
+		public function dispose() : void {
+			_profile = null;
+		}
 
+		
 		
 		
 		private var _afonts : Array;
@@ -83,15 +103,24 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 		private var _file : File;
 		
 		private var _config : FontFileConfig;
-		
+
+		private var _info : FontFileInfo;
+
 		private var _profile : FontProfile;
 		
+		private function _buildFontInfos() : void {
+			
+			_info = new FontFileInfo( _file );
+			_info.init( _afonts );
+			
+		}
+
 		
 		internal function _import(sdata : XML) : void {
 			
 			if( sdata.config.length() > 0 ) {
 				if( ! _config )
-					_config = new FontFileConfig( );
+					createConfig();
 				_config._import( sdata.config[0] );
 			}
 		}
@@ -100,5 +129,19 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 			_profile = profile;
 		}
 		
+		private function createConfig() : void {
+			if( _config ) {
+				_config.removeEventListener( FontEvent.FILE_CHANGE , onConfigBuilded );
+			}
+			_config = new FontFileConfig( );
+			_config.addEventListener( FontEvent.FILE_CHANGE , onConfigBuilded );
+		}
+		
+		private function onConfigBuilded(event : FontEvent) : void {
+			unload();
+			dispatchEvent( new FontEvent( FontEvent.FILE_CHANGE, this ) );
+		}
+		
 	}
+	
 }

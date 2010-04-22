@@ -7,7 +7,7 @@
                    
      lepersp                                                                
      ====================================================================== -->
-<project name="Digitas Fmk - test ant tasks" default="main" basedir="../../../../../">
+<project name="Digitas Fmk - Tools Ant Tasks Test" default="main" basedir="../../../../../">
 	<description>
             font provider task test
     </description>

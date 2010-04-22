@@ -1,12 +1,12 @@
 package fr.digitas.flowearth.ui.tabs {
-	import flash.events.MouseEvent;	
-	import flash.geom.ColorTransform;	
-	
 	import fr.digitas.flowearth.ui.layout.ILayoutItem;
 	
+	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.MouseEvent;
+	import flash.geom.ColorTransform;
 	import flash.text.TextField;		
 
 	/**
@@ -35,6 +35,10 @@ package fr.digitas.flowearth.ui.tabs {
 		
 		public function getHeight() : Number {
 			return 0;
+		}
+		
+		public function getDisplay() : DisplayObject {
+			return this;
 		}
 		
 		internal function set selected( flag : Boolean ) : void {

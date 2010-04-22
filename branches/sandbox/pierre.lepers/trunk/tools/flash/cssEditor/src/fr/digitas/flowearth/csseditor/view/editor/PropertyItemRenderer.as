@@ -20,7 +20,8 @@ package fr.digitas.flowearth.csseditor.view.editor {
 	import flash.events.MouseEvent;
 	import flash.events.TextEvent;
 	import flash.text.TextField;
-	import flash.text.TextFieldAutoSize;	
+	import flash.text.TextFieldAutoSize;
+	import flash.display.DisplayObject;	
 
 	/**
 	 * @author Pierre Lepers
@@ -122,7 +123,11 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			_prop.removeEventListener( ValidityEvent.VALIDITY_CHANGE , onValidityEvent );
 			_prop = null;
 			
-			if( _helper ) _helper.dispose();
+			if( _helper ) {
+				_helper.dispose();
+				removeChild( _helper );
+			}
+			_helper = null;
 			
 			_errorField.clear();
 		}
@@ -182,6 +187,10 @@ package fr.digitas.flowearth.csseditor.view.editor {
 		
 		public function getHeight() : Number {
 			return 22;
+		}
+		
+		public function getDisplay() : DisplayObject {
+			return this;
 		}
 	}
 }

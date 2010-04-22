@@ -1,4 +1,6 @@
 package fr.digitas.flowearth.font.view {
+	import flash.events.MouseEvent;	
+	
 	import fr.digitas.flowearth.font.FontConfig;
 	
 	import flash.events.Event;	
@@ -14,6 +16,12 @@ package fr.digitas.flowearth.font.view {
 			_fontConfig = fontConfig;
 			addEventListener( Event.ADDED_TO_STAGE, onAdded );
 			addEventListener( Event.REMOVED_FROM_STAGE, onRemoved );
+			
+			trashBtn.addEventListener( MouseEvent.CLICK , removeFontConfig );
+		}
+		
+		private function removeFontConfig(event : MouseEvent) : void {
+			_fontConfig.remove();
 		}
 
 		private function onAdded( e : Event ) : void {

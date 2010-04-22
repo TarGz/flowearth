@@ -24,9 +24,6 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 				fs.unload( );
 		}
 
-		public function addConfig(  ) : void {
-		}
-
 		
 		
 		public function addFont( file : File ) : FontSource {
@@ -34,11 +31,29 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 			addFontSource( fontSource );
 			return fontSource;
 		}
+		
+		public function removeSource( fontSource : FontSource ) : Boolean {
+			var index : int = _aFonts.indexOf( fontSource  );
+			if( index == -1 ) return false;
+			fontSource.unload();
+			fontSource.removeEventListener( FontEvent.FILE_CHANGE , onSourceFileChange );
+			_aFonts.splice( index, 1 );
+			dispatchEvent( new FontEvent( FontEvent.FONT_REMOVED , fontSource ) );
+			return true;
+			
+		}
 
+		
+		
 		private function addFontSource( fontSource : FontSource ) : void {
 			fontSource.setProfile( this );
 			_aFonts.push( fontSource );
-			dispatchEvent( new FontEvent( FontEvent.FONT_ADDED ) );
+			fontSource.addEventListener( FontEvent.FILE_CHANGE , onSourceFileChange );
+			dispatchEvent( new FontEvent( FontEvent.FONT_ADDED , fontSource ) );
+		}
+		
+		private function onSourceFileChange(event : FontEvent) : void {
+			dispatchEvent( event );
 		}
 
 		public function export() : XML {
@@ -95,14 +110,16 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 			return false;
 		}
 
-		public function addNewFont() : FontSource {
+		public function addNewFont( prefix : String = "untitled" ) : FontSource {
 			var fdir : File = new File( _css.filepath ).parent;
 			var f : File;
-			var c : int = 0;
+			var c : int = -1;
+			var cstr : String = "";
 			while( true ) {
-				f = fdir.resolvePath( "untitled" + c + ".swf" );
+				f = fdir.resolvePath( prefix + c + ".swf" );
 				if( ! f.exists && ! hasFontFile( f ) ) break;
 				c ++;
+				cstr = c.toString();
 			}
 			
 			var fs : FontSource = addFont( f );
@@ -111,8 +128,16 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 		}
 		
 		public function addTrueType( ttf : File ) : void {
-			var fs : FontSource = addNewFont();
+			var fs : FontSource = addNewFont( ttf.name.split( "." )[0] );
 			fs.addTrueType( ttf );
+		}
+		
+		public function rebuildAll() : void {
+			for each (var fs : FontSource in _aFonts) { 
+				if( !fs.configurable() ) continue;
+				fs.unload( );
+				fs.getConfig().build();
+			}
 		}
 		
 		
@@ -120,13 +145,14 @@ package fr.digitas.flowearth.csseditor.data.fonts {
 		public function set selectedSource ( source : FontSource ) : void {
 			if( _selectedSource == source) return;
 			_selectedSource = source;
-			dispatchEvent( new FontEvent( FontEvent.SELECTION_CHANGE ) );
+			dispatchEvent( new FontEvent( FontEvent.SELECTION_CHANGE , source ) );
 		}
 		public function get selectedSource ( ) :  FontSource {
 			return _selectedSource;
 		}
 				
 		private var _selectedSource :  FontSource;
-				
+		
+		
 	}
 }

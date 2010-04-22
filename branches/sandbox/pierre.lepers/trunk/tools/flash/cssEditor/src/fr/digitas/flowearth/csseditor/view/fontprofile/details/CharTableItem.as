@@ -1,11 +1,11 @@
 package fr.digitas.flowearth.csseditor.view.fontprofile.details {
 	import fr.digitas.flowearth.ui.layout.ILayoutItem;
 	
-	import flash.display.Sprite;
+	import flash.display.DisplayObject;
 	import flash.text.Font;
 	import flash.text.FontStyle;
 	import flash.text.TextField;
-	import flash.text.TextFormat;		
+	import flash.text.TextFormat;	
 
 	/**
 	 * @author Pierre Lepers
@@ -45,6 +45,10 @@ package fr.digitas.flowearth.csseditor.view.fontprofile.details {
 		
 		public function getHeight() : Number {
 			return HEIGHT;
+		}
+		
+		public function getDisplay() : DisplayObject {
+			return this;
 		}
 		
 		public static const WIDTH : int = 40;

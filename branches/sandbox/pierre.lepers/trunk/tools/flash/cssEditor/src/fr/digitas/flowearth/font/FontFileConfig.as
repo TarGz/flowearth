@@ -1,32 +1,33 @@
 package fr.digitas.flowearth.font {
-	import flash.desktop.NativeProcess;	
-	
-	import fr.digitas.flowearth.process.flex.MxmlcProcess;	
+	import fr.digitas.flowearth.csseditor.data.compiler.buildsProvider;
+	import fr.digitas.flowearth.csseditor.event.FontEvent;
+	import fr.digitas.flowearth.csseditor.view.fontprofile.FontDetailsManager;
 	import fr.digitas.flowearth.csseditor.view.fontprofile.details.RangeProvider;
 	import fr.digitas.flowearth.font.FontConfig;
-	import fr.digitas.flowearth.font.FontConfig;
+	import fr.digitas.flowearth.process.BuildInfos;
 	import fr.digitas.flowearth.process.flex.MxmlcConfiguration;
-
+	import fr.digitas.flowearth.process.flex.MxmlcProcess;
+	
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
+	import flash.events.NativeProcessExitEvent;
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
-	import flash.filesystem.FileStream;		
+	import flash.filesystem.FileStream;
+	import flash.utils.Dictionary;	
 
 	/**
 	 * @author Pierre Lepers
 	 */
-	public class FontFileConfig extends EventDispatcher {
+	public class FontFileConfig extends FontFileInfo {
 
-		public function get output() : File {
-			return _output;
-		}
-
+		
 		public function set output(output : File) : void {
 			_output = output;
 			change( );
 		}
 
+		
 		public function get className() : String {
 			return _className;
 		}
@@ -35,25 +36,70 @@ package fr.digitas.flowearth.font {
 			_className = className;
 			change( );
 		}
-
-		public function FontFileConfig( ) {
-			_fontConfigs = new Vector.<FontConfig>( );
+		
+		
+		override public function getInfoByName( fontName : String ) : FontInfo {
+			for each (var fConfig : FontConfig in _fontConfigs) 
+				if( fConfig.fontFamily == fontName ) return fConfig;
+			return null;
 		}
 
+		override public function hasInfoByName( fontName : String ) : Boolean {
+			trace( "--" + fontName );
+			for each (var fConfig : FontConfig in _fontConfigs) {
+				trace( "   "+fConfig.fontFamily );
+				if( fConfig.fontFamily == fontName ) return true;
+			}
+			return false;
+		}
+		
+		
+
+		public function FontFileConfig( ) {
+			super( null );
+			_fontConfigs = new Vector.<FontConfig>( );
+		}
+		
+		public function openPanel() : void {
+			FontDetailsManager.instance.openConfig( this );
+		}
+
+		
+		
 		public function build( ) : BuildInfos {
 			
-			if( _currentBuildProcess ) 
+			if( _currentBuildProcess ) {
 				_currentBuildProcess.dispose();
+				_currentBuildProcess.process.removeEventListener(NativeProcessExitEvent.EXIT, onProcessComplete );
+			}
 				
 			var config : MxmlcConfiguration = getMxmlcConfig( );
 			
 			MxmlcProcess.log =true;
 			_currentBuildProcess = new BuildInfos( MxmlcProcess.run( config ) );
+			_currentBuildProcess.process.addEventListener(NativeProcessExitEvent.EXIT, onProcessComplete );
 			
 			dispatchEvent( new FontConfigEvent( FontConfigEvent.BUILD_START, null ) );
 			
-			return _currentBuildProcess;
+			buildsProvider.getHistory().addBuild( _currentBuildProcess );
 			
+			
+			
+			return _currentBuildProcess;
+		}
+		
+		public function clone() : FontFileConfig {
+			var exp : XML = export();
+			var res : FontFileConfig = new FontFileConfig();
+			res._import( exp );
+			return res;
+		}
+
+		
+		
+		private function onProcessComplete(event : NativeProcessExitEvent) : void {
+			if( event.exitCode == 0 )
+				dispatchEvent( new FontEvent( FontEvent.FILE_CHANGE, null ) );
 		}
 
 		
@@ -134,9 +180,14 @@ package fr.digitas.flowearth.font {
 
 		public function _import(datas : XML) : void {
 			className = datas.cname.text( );
-			_output = new File( datas.output.text( ) );
+			output = new File( datas.output.text( ) );
 			
 			var fc : FontConfig;
+			
+			while( _fontConfigs.length > 0  )
+				removeConfig( _fontConfigs.shift() );
+			
+			
 			for each (var fdata : XML in datas.fonts.font ) {
 				fc = new FontConfig( fdata );
 				addConfig( fc );
@@ -166,14 +217,12 @@ package fr.digitas.flowearth.font {
 			return res;
 		}
 
-		private function change() : void {
-			dispatchEvent( new Event( Event.CHANGE ) );
-		}
 
 		public function addConfig( config : FontConfig ) : void {
 			if( _fontConfigs.indexOf( config ) == - 1 ) {
 				_fontConfigs.push( config );
 				dispatchEvent( new FontConfigEvent( FontConfigEvent.CONFIG_ADDED , config ) );
+				registerConfig( config );
 				change( );
 			}
 		}
@@ -183,6 +232,7 @@ package fr.digitas.flowearth.font {
 			if( index > - 1 ) {
 				_fontConfigs.splice( index , 1 );
 				dispatchEvent( new FontConfigEvent( FontConfigEvent.CONFIG_REMOVED , config ) );
+				unRegisterConfig( config );
 				change( );
 			}
 		}
@@ -199,14 +249,38 @@ package fr.digitas.flowearth.font {
 		public function getConfigs() : Vector.<FontConfig> {
 			return _fontConfigs.concat( );
 		}
+		
+		override public function getFontInfos() : Vector.<FontInfo> {
+			var res : Vector.<FontInfo> = new Vector.<FontInfo>( _fontConfigs.length, true );
+			for (var i : int = 0; i < res.length; i++)
+				res[i] = _fontConfigs[i];
+			
+			return res;
+		}
+		
+		private function registerConfig( config : FontConfig ) : void {
+			config.addEventListener( Event.REMOVED , confHandleRemove );
+			config.addEventListener( Event.CHANGE , confHandleChange );
+		}
+
+		private function unRegisterConfig( config : FontConfig ) : void {
+			config.removeEventListener( Event.REMOVED , confHandleRemove );
+			config.removeEventListener( Event.CHANGE , confHandleChange );
+		}
+		
+		private function confHandleRemove(event : Event) : void {
+			removeConfig( event.currentTarget as FontConfig );
+		}
+
+		private function confHandleChange(event : Event) : void {
+			change();
+		}
 
 		
 		
 		
 		private var _currentBuildProcess : BuildInfos;
 		
-		private var _output : File;
-
 		private var _className : String;
 
 		private var _fontConfigs : Vector.<FontConfig>;

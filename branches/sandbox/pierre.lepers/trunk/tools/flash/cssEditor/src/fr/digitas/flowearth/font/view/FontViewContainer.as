@@ -1,12 +1,11 @@
 package fr.digitas.flowearth.font.view {
-	import fr.digitas.flowearth.ui.layout.ILayoutItem;	
-	
-	import flash.events.MouseEvent;	
-	
 	import fr.digitas.flowearth.font.FontConfig;
+	import fr.digitas.flowearth.ui.layout.ILayoutItem;
 	
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
-	import flash.events.Event;	
+	import flash.events.Event;
+	import flash.events.MouseEvent;		
 
 	/**
 	 * @author Pierre Lepers
@@ -57,6 +56,10 @@ package fr.digitas.flowearth.font.view {
 		
 		public function getHeight() : Number {
 			return _collapse ? header.height : height;
+		}
+		
+		public function getDisplay() : DisplayObject {
+			return this;
 		}
 		
 		public function get fontConfig() : FontConfig {

@@ -1,10 +1,10 @@
 package fr.digitas.flowearth.ui.canvas {
-	import flash.events.MouseEvent;	
+	import fr.digitas.flowearth.ui.layout.ILayoutItem;
 	
-	import fr.digitas.flowearth.ui.layout.ILayoutItem;	
-	
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
-	
+	import flash.events.MouseEvent;		
+
 	/**
 	 * @author Pierre Lepers
 	 */
@@ -32,10 +32,12 @@ package fr.digitas.flowearth.ui.canvas {
 
 		private function out(event : MouseEvent) : void {
 			alpha = 0;
+//			Mouse.cursor = MouseCursor.AUTO;
 		}
 
 		private function over(event : MouseEvent) : void {
 			alpha = 0.8;
+//			Mouse.cursor = MouseCursor.IBEAM;
 		}
 
 		public function getWidth() : Number {
@@ -44,6 +46,10 @@ package fr.digitas.flowearth.ui.canvas {
 		
 		public function getHeight() : Number {
 			return 0;
+		}
+		
+		public function getDisplay() : DisplayObject {
+			return this;
 		}
 	}
 }

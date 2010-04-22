@@ -28,12 +28,13 @@ package fr.digitas.flowearth.csseditor.view.editor.helper {
 			super.dispose( );
 			_cb.removeEventListener( Event.CHANGE , onChange );
 			_enum = null;
-			
+			removeChild( _cb );
+			_cb = null;
 		}
 
 		private function _buildCb() : void {
 			_cb = new ComboBox();
-			_cb.focusManager = FlUtils.nullFocusManager;
+//			_cb.focusManager = FlUtils.nullFocusManager;
 			_cb.height = 19;
 			_cb.y = 1;
 			_cb.dropdown.setStyle( "contentPadding",  1 );

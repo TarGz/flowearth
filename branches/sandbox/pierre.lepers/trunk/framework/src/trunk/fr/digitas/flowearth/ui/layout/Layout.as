@@ -209,49 +209,6 @@ package fr.digitas.flowearth.ui.layout {
 			return _container.numChildren;
 		}
 		
-		bi_internal function addChild ( child : DisplayObject ) : DisplayObject {
-			return super.addChild( child );
-		}
-
-		bi_internal function addChildAt ( child : DisplayObject, index : int ) : DisplayObject {
-			return super.addChildAt( child, index );
-		}
-		
-		bi_internal function removeChild ( child : DisplayObject ) : DisplayObject {
-			return super.removeChild( child );
-		}
-
-		bi_internal function removeChildAt ( index : int ) : DisplayObject {
-			return super.removeChildAt( index );
-		}
-
-		bi_internal function swapChildren ( child1 : DisplayObject, child2 : DisplayObject ) : void {
-			super.swapChildren( child1, child2 );
-		}
-
-		bi_internal function setChildIndex ( child : DisplayObject, index : int ) : void {
-			super.setChildIndex( child, index );
-		}
-
-		bi_internal function swapChildrenAt ( index1 : int, index2 : int ) : void {
-			super.swapChildrenAt( index1, index2 );
-		}
-		
-		bi_internal function getChildByName (name : String) : DisplayObject {
-			return super.getChildByName( name );
-		}
-
-		bi_internal function getChildIndex (child : DisplayObject) : int {
-			return super.getChildIndex( child );
-		}
-		
-		bi_internal function contains (child : DisplayObject) : Boolean {
-			return super.contains ( child );
-		}
-		
-		bi_internal function getChildAt (index : int) : DisplayObject {
-			return super.getChildAt( index );
-		}
 
 		public override function addChild ( child : DisplayObject ) : DisplayObject {
 			register( child );
@@ -318,6 +275,51 @@ package fr.digitas.flowearth.ui.layout {
 			return _container.getChildAt( index );
 		}
 		
+				bi_internal function addChild ( child : DisplayObject ) : DisplayObject {
+			return super.addChild( child );
+		}
+
+		bi_internal function addChildAt ( child : DisplayObject, index : int ) : DisplayObject {
+			return super.addChildAt( child, index );
+		}
+		
+		bi_internal function removeChild ( child : DisplayObject ) : DisplayObject {
+			return super.removeChild( child );
+		}
+
+		bi_internal function removeChildAt ( index : int ) : DisplayObject {
+			return super.removeChildAt( index );
+		}
+
+		bi_internal function swapChildren ( child1 : DisplayObject, child2 : DisplayObject ) : void {
+			super.swapChildren( child1, child2 );
+		}
+
+		bi_internal function setChildIndex ( child : DisplayObject, index : int ) : void {
+			super.setChildIndex( child, index );
+		}
+
+		bi_internal function swapChildrenAt ( index1 : int, index2 : int ) : void {
+			super.swapChildrenAt( index1, index2 );
+		}
+		
+		bi_internal function getChildByName (name : String) : DisplayObject {
+			return super.getChildByName( name );
+		}
+
+		bi_internal function getChildIndex (child : DisplayObject) : int {
+			return super.getChildIndex( child );
+		}
+		
+		bi_internal function contains (child : DisplayObject) : Boolean {
+			return super.contains ( child );
+		}
+		
+		bi_internal function getChildAt (index : int) : DisplayObject {
+			return super.getChildAt( index );
+		}
+		
+		
 		/**
 		 * met a jour l'affichage ( range les items )
 		 */
@@ -353,11 +355,6 @@ package fr.digitas.flowearth.ui.layout {
 				child = iter.next( ) as DisplayObject;
 				_displayList.push( ( child is ILayoutItem ) ? child : new InternalLayoutItem( child ) );
 			}
-//			
-//			for ( var i : int = 0; i < _container.numChildren; i += 1 ) {
-//				depth = ( _indexMap.indexOf( item ) ? _indexMap[i] : i;
-//				child = _container.getChildAt( depth );
-//			}
 		}
 
 		private function register ( child : DisplayObject ) : void {

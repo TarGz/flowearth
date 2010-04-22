@@ -1,37 +1,25 @@
 package fr.digitas.flowearth.csseditor.view.fontprofile {
-	import flash.events.MouseEvent;	
-	
-	import fr.digitas.flowearth.core.IIterator;
 	import fr.digitas.flowearth.csseditor.data.fonts.FontSource;
 	import fr.digitas.flowearth.csseditor.event.FontEvent;
 	import fr.digitas.flowearth.csseditor.view.picts.Picts;
-	import fr.digitas.flowearth.font.FontBuilder;
-	import fr.digitas.flowearth.ui.layout.ILayoutItem;
-	import fr.digitas.flowearth.ui.layout.Layout;
-	import fr.digitas.flowearth.ui.layout.renderer.TopJustifyRenderer;
-	import fr.digitas.flowearth.ui.toobar.ToolBar;
+	import fr.digitas.flowearth.font.FontInfo;
+	import fr.digitas.flowearth.ui.tree.TreeItem;
+	import fr.digitas.flowearth.ui.tree.TreeItem_FC;
 	
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
-	import flash.display.NativeWindow;
-	import flash.display.NativeWindowInitOptions;
-	import flash.display.Shape;
-	import flash.display.StageAlign;
-	import flash.display.StageScaleMode;
 	import flash.events.Event;
-	import flash.events.TextEvent;
-	import flash.geom.Point;
-	import flash.text.TextField;
-	import flash.text.TextFieldAutoSize;		
+	import flash.events.MouseEvent;
+	import flash.text.TextField;	
 
 	/**
 	 * @author Pierre Lepers
 	 */
-	public class FontSourceItem extends FontSourceItem_FC implements ILayoutItem {
+	public class FontSourceItem extends TreeItem {
 
 		public function FontSourceItem( ) {
-			_build( );
+			super();
 		}
 
 		public function init( source : FontSource ) : void {
@@ -39,171 +27,137 @@ package fr.digitas.flowearth.csseditor.view.fontprofile {
 			label.text = source.file.name;
 			icon.bitmapData = getIconForType( );
 			bg.visible = false;
-			_buildToolbar( );
 			
 			if( source.loaded )
 				onSourceLoaded( );
-			else
-				source.addEventListener( FontEvent.FONT_LOADED , onSourceLoaded );
+			
+			source.addEventListener( FontEvent.FONT_LOADED , onSourceLoaded );
+			source.addEventListener( FontEvent.FONT_UNLOADED , onSourceUnloaded );
 				
 			source.profile.addEventListener( FontEvent.SELECTION_CHANGE , onSelectionChange );
 			onSelectionChange( null );
 			
-			if( _source.configurable() )
+			if( _source.configurable() ) {
 				label.addEventListener( MouseEvent.DOUBLE_CLICK , onDoubleClick );
+				_source.getConfig().addEventListener( Event.CHANGE, onConfigChange );
+				_dragManager = new FSDragManager();
+				_dragManager.init( this );
+			}
 		}
 		
-		public function dispose() : void {
+		public override function dispose() : void {
+			super.dispose();
 			_source.removeEventListener( FontEvent.FONT_LOADED , onSourceLoaded );
+			_source.removeEventListener( FontEvent.FONT_UNLOADED , onSourceUnloaded );
 			_source.profile.removeEventListener( FontEvent.SELECTION_CHANGE , onSelectionChange );
+			if( _source.configurable() ) 
+				_source.getConfig().removeEventListener( Event.CHANGE, onConfigChange );
 			_source = null;
-		}
-
-		
-		
-		public function collapse( flag : Boolean ) : void {
-			if( _collapsed == flag ) return;
-			_collapsed = flag;
-			collapseButton.collapse( flag );
-			treeShape.visible = _fontList.visible = ! flag;
-			dispatchEvent( new Event( Event.RESIZE ) );
+			
+			if( _dragManager )
+				_dragManager.dispose();
+				
+			_dragManager = null;
 		}
 		
-		public function getWidth() : Number {
-			return 10;
-		}
 		
-		public function getHeight() : Number {
-			return _collapsed ? 20: height;
-		}
 		
-
-		
-		private function _buildToolbar() : void {
-			_toolBar = new ToolBar( );
-			addChild( _toolBar );
-			
-
-			_toolBar.addButton( "remove" , null , Picts.REMOVE );
-			if( _source.configurable( ) ) {
-				_toolBar.addButton( "configure" , null , Picts.FONT_SETTING );
-				_toolBar.addButton( "rebuild" , null , Picts.REFRESH );
-			}
-			
-			_toolBar.width = 200;
-			_toolBar.addEventListener( Event.SELECT , onToolbarBtn );
-		}
-
-		private function onToolbarBtn(event : TextEvent) : void {
-			switch ( event.text ) {
-				case "remove" :
-					
-					break;
-				case "rebuild" :
-					_source.getConfig().build();
-					break;
-				case "configure" :
-					openFontConfig();
-					break;
-			}
-		}
-		
-		private function openFontConfig() : void {
-			
-			if( _currentFontBuilder ) {
-				_currentFontBuilder.stage.nativeWindow.orderToFront();
-				return;
-			}
-			
-			var W : int = 427;
-			
-			var nwio : NativeWindowInitOptions = new NativeWindowInitOptions( );
-			var detailWindow : NativeWindow = new NativeWindow( nwio );
-			detailWindow.activate();
-			detailWindow.stage.scaleMode = StageScaleMode.NO_SCALE;
-			detailWindow.stage.align = StageAlign.TOP_LEFT;
-			detailWindow.width = W;
-			detailWindow.minSize = new Point( W, 100 );
-			detailWindow.maxSize = new Point( W, 3000 );
-			detailWindow.addEventListener( Event.CLOSE , onConfigWindowClosed );
-			
-			_currentFontBuilder = new FontBuilder( _source.getConfig() );
-			detailWindow.stage.addChild( _currentFontBuilder );
-			
-		}
-		
-
-		private function onConfigWindowClosed(event : Event) : void {
-			_currentFontBuilder.dispose( );
-			_currentFontBuilder = null;
-			_source.getConfig().build();
-		}
-
-		private var _currentFontBuilder : FontBuilder;
-
-		
-		private function _build() : void {
-			label.autoSize = TextFieldAutoSize.LEFT;
-			label.backgroundColor = 0xbebebe;
-			label.background = false;
-			label.doubleClickEnabled = true;
-			
-			label.addEventListener( MouseEvent.CLICK , onClick );
-			
-			addChild( icon = new Bitmap( ) );
-			icon.y = 2;
-			icon.x = 20;
-			
-			collapseButton.visible = false;
-			
-			treeShape = new Shape();
-			addChildAt( treeShape , 0 );
-			treeShape.x = 25;
-			treeShape.visible = false;
-
-			_fontList = new Layout( );
-			_fontList.visible = false;
-			_fontList.renderer = new TopJustifyRenderer( );
-			treeShape.y = _fontList.y = bg.height;
-			
-			addChild( _fontList );
-			
-			
-			collapseButton.addEventListener( MouseEvent.CLICK , onSwitchCollapse );
-		}
 		
 		private function onDoubleClick(event : MouseEvent) : void {
-			openFontConfig();
+			_source.getConfig( ).openPanel();
 		}
 
-		private function onClick(event : MouseEvent) : void {
+		override protected function onClick(event : MouseEvent) : void {
 			_source.profile.selectedSource = _source;
 		}
 
-		private function onSwitchCollapse(event : MouseEvent) : void {
-			collapse( ! _collapsed );
+		private function onSourceUnloaded(event : FontEvent) : void {
+			clearLayout();
+		}
+		
+		private function onConfigChange(event : Event) : void {
+			createTree();
 		}
 
 		private function onSourceLoaded(event : FontEvent = null ) : void {
-			var fontItem : FontItem;
-			var iter : IIterator = _source.fonts;
-			var item : Class;
-			while( iter.hasNext( ) ) {
-				item = iter.next( ) as Class;
-				fontItem = new FontItem_FC( );
-				fontItem.init( new item( ) );
-				_fontList.addChild( fontItem );
-			}
-			_fontList.update( );
-			updateTree();
-			dispatchEvent( new Event( Event.RESIZE ) );
+			createTree();
 		}
 		
+		private function createTree() : void {
+			
+			clearLayout();
+			var fontItem : FontItem;
+			var cinfos : Vector.<FontInfo>;
+			var infos : Vector.<FontInfo>;
+			var item : FontInfo;
+			
+			if( _source.configurable() && _source.getInfos() ) {
+				
+				cinfos = _source.getConfig().getFontInfos();
+				infos = _source.getInfos().getFontInfos();
+				
+				for (var i : int = 0; i < cinfos.length; i++) {
+					item = cinfos[ i ];
+					fontItem = new FontItem( );
+					fontItem.collapse( false );
+					fontItem.init( item );
+					if( ! _source.getInfos().hasInfoByName( item.fontFamily ) ) {
+						fontItem.label.textColor = 0x808080;
+						fontItem.label.text = "+> "+fontItem.label.text;
+					}
+					addSubitem( fontItem );
+				}
+				
+				
 
-		override public function set width(value : Number) : void {
-			bg.width = value;
-			_fontList.width = value;
-			_toolBar.x = value - _toolBar.width -4;
+				for ( i = 0; i < infos.length; i++) {
+					item = infos[ i ];
+					if( _source.getConfig().hasInfoByName( item.fontFamily ) ) continue;
+					fontItem = new FontItem( );
+					fontItem.collapse( false );
+					fontItem.init( item );
+					fontItem.label.text = "<- "+fontItem.label.text;
+					fontItem.label.textColor = 0xBB0000;	
+					addSubitem( fontItem );
+				}
+				
+			} else if( _source.configurable() ) {
+				cinfos = _source.getConfig().getFontInfos();
+				
+				for ( i = 0; i < cinfos.length; i++) {
+					item = cinfos[ i ];
+					fontItem = new FontItem( );
+					fontItem.collapse( false );
+					fontItem.init( item );
+					addSubitem( fontItem );
+				}
+			} else {
+				cinfos = _source.getInfos().getFontInfos();
+				
+				for ( i = 0; i < cinfos.length; i++) {
+					item = cinfos[ i ];
+					fontItem = new FontItem( );
+					fontItem.collapse( false );
+					fontItem.init( item );
+					addSubitem( fontItem );
+				}
+				
+			}
+			
+			
+			_subLayout.update( );
+			updateTree();
+			dispatchEvent( new Event( Event.RESIZE ) );
+			
+		}
+
+		
+		
+		private function clearLayout() : void {
+			while( _subLayout.numChildren > 0 )
+				removeSubitem( _subLayout.getChildAt( 0 ) as FontItem );
+
+			dispatchEvent( new Event( Event.RESIZE ) );
 		}
 
 		
@@ -214,58 +168,28 @@ package fr.digitas.flowearth.csseditor.view.fontprofile {
 				return Picts.SWF_FONT_FILE;
 		}
 		
-		
-		private function updateTree() : void {
-			
-			
-			treeShape.graphics.clear( );
-			
-			if( _fontList.numChildren == 0 ) {
-				collapseButton.visible = false;
-				return;
-			}
-			collapseButton.visible = true;
-			treeShape.graphics.lineStyle( 1 );
-			treeShape.graphics.lineBitmapStyle(motif);
-			
-			var sub : DisplayObject;
-			for (var i : int = 0; i < _fontList.numChildren ; i++) {
-				sub = _fontList.getChildAt( i );
-				treeShape.graphics.moveTo(5, sub.y + 8 );
-				treeShape.graphics.lineTo(15, sub.y + 8 );
-			}
-			
-			treeShape.graphics.moveTo( 5 , -10 );
-			treeShape.graphics.lineTo( 5 , sub.y + 8 );
-		}
-		
+	
 		
 		private function onSelectionChange(event : FontEvent) : void {
+			label.backgroundColor = 0xe2e2e2;
 			label.background = _source.selected();
 		}
 		
 
-		private var treeShape : Shape;
-		
 		private var _source : FontSource;
-
-		private var icon : Bitmap;
-
-		private var _fontList : Layout;
-
-		private var _toolBar : ToolBar;
 		
-		private var _collapsed : Boolean = true;
-		
-		private static const motif : BitmapData = _buildMotif();
-		private static function _buildMotif() : BitmapData {
-			var bmp : BitmapData = new BitmapData( 2, 2, true, 0 );
-			bmp.setPixel32(0, 0, 0x80000000);
-			bmp.setPixel32(1, 1, 0x80000000);
-			return bmp;
+		private var _dragManager : FSDragManager;
+
+		public function dropIn( flag : Boolean) : void {
+			if( flag ) {
+				label.backgroundColor = 0xbebebe;
+				label.background = true;
+			} else
+				onSelectionChange( null );
 		}
 		
-		
-		
+		internal function get source() : FontSource {
+			return _source;
+		}
 	}
 }
