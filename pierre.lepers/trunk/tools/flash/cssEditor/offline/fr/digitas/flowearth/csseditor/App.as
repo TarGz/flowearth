@@ -1,12 +1,11 @@
 package fr.digitas.flowearth.csseditor {
-	import fr.digitas.flowearth.csseditor.view.menu.AppMenu;	
-	import fr.digitas.flowearth.csseditor.view.fontprofile.FontDetailsManager;	
-	import fr.digitas.flowearth.csseditor.view.console.Console;	
-	import fr.digitas.flowearth.csseditor.fonts.FontsSystem;
 	import fr.digitas.flowearth.csseditor.data.CSSProvider;
+	import fr.digitas.flowearth.csseditor.fonts.FontsSystem;
 	import fr.digitas.flowearth.csseditor.io.FileManager;
 	import fr.digitas.flowearth.csseditor.io.IFileManager;
-	import fr.digitas.flowearth.csseditor.managers.FileDragManager;	
+	import fr.digitas.flowearth.csseditor.view.console.Console;
+	import fr.digitas.flowearth.csseditor.view.fontprofile.FontDetailsManager;
+	import fr.digitas.flowearth.csseditor.view.menu.AppMenu;		
 
 	/**
 	 * @author Pierre Lepers
@@ -18,7 +17,7 @@ package fr.digitas.flowearth.csseditor {
 			CSSProvider.start();
 			
 			new Console( );
-			new FileDragManager().init( main );
+			
 			FontDetailsManager.start();
 			
 			main.stage.nativeWindow.menu = new AppMenu();

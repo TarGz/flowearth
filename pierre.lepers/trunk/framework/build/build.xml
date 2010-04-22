@@ -107,7 +107,7 @@
           target: _Build_swc                      
          - - - - - - - - - - - - - - - - - -->
 	<target name="_build_swc">
-
+<echo>${target-player}</echo>
 		<compc output="${digitas.dir.fmk}/bin/fp${target-player}/flowearth.swc"
 		       strict="true"
 		       optimize="false"

@@ -61,18 +61,21 @@
           target: compile                      
          - - - - - - - - - - - - - - - - - -->
 	<target name="compile">
-		<exec executable="${digitas.amxmlc}">
+		<exec executable="${digitas.amxmlc}" outputproperty="compileOut" errorproperty="compileErr" error="${projectDir}/build/error.log" output="${projectDir}/build/output.log">
 			<arg line="-debug=${DEBUG}" />
 			<arg line="-use-network=false" />
 			<arg line="-sp ${projectDir}/offline" />
 			<arg line="-sp ${projectDir}/src" />
 			<arg line="-l 'D:/work/librairies/Flex SDKs/air2_beta1/frameworks/libs/air/airglobal.swc'" />
-			<arg line="-l ${digitas.dir.fmk}/bin/fp9/flowearth.swc" />
+			<arg line="-l ${digitas.dir.fmk}/bin/fp10/flowearth.swc" />
 			<arg line="-l ${projectDir}/swc/assets.swc" />
 			<arg line="-l ${projectDir}/swc/fontBuilder.swc" />
 			<arg line="-o ${projectDir}/deploy/cssEditor.swf" />
 			<arg line="-- ${projectDir}/src/fr/digitas/flowearth/csseditor/Main.as" />
 		</exec>
+		
+		<echo>${compileOut}</echo>
+		<echo>${compileErr}</echo>
 	</target>
 
 

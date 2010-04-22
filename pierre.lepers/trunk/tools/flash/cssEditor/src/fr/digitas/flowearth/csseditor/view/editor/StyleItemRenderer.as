@@ -3,10 +3,11 @@ package fr.digitas.flowearth.csseditor.view.editor {
 	import fr.digitas.flowearth.csseditor.event.CSSEvent;
 	import fr.digitas.flowearth.ui.layout.ILayoutItem;
 	
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.FocusEvent;
-	import flash.events.MouseEvent;		
+	import flash.events.MouseEvent;	
 
 	/**
 	 * @author Pierre Lepers
@@ -43,7 +44,9 @@ package fr.digitas.flowearth.csseditor.view.editor {
 			value;
 		}
 		
-
+		public function getDisplay() : DisplayObject {
+			return this;
+		}
 		
 		public function getWidth() : Number {
 			return 0;

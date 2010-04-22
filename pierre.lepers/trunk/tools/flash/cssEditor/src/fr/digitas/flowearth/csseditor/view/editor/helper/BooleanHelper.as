@@ -30,9 +30,16 @@ package fr.digitas.flowearth.csseditor.view.editor.helper {
 		}
 
 		
+		override public function dispose() : void {
+			super.dispose( );
+			_cb.removeEventListener( Event.CHANGE , onCbChange );
+			removeChild( _cb );
+			_cb = null;
+		}
+
 		private function _buildCb() : void {
 			_cb = new CheckBox();
-			_cb.focusManager = FlUtils.nullFocusManager;
+//			_cb.focusManager = FlUtils.nullFocusManager;
 			addChild( _cb );
 			
 			_cb.addEventListener( Event.CHANGE , onCbChange );

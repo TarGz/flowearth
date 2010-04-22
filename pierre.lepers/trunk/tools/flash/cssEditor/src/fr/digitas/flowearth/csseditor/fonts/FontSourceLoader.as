@@ -15,7 +15,11 @@ package fr.digitas.flowearth.csseditor.fonts {
 	 * @author Pierre Lepers
 	 */
 	public class FontSourceLoader extends EventDispatcher {
-
+		
+		
+		public function get source() : FontSource {
+			return _source;
+		}
 		
 		public function FontSourceLoader( source : FontSource ) {
 			_source = source;

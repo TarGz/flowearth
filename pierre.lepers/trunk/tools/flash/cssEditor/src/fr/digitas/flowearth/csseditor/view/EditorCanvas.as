@@ -1,4 +1,5 @@
 package fr.digitas.flowearth.csseditor.view {
+	import fr.digitas.flowearth.csseditor.managers.CssDragManager;	
 	import fr.digitas.flowearth.csseditor.view.editor.EditorToolBar_FC;	
 	import fr.digitas.flowearth.csseditor.view.editor.EditorToolBar;	
 	import fr.digitas.flowearth.csseditor.data.CSSProvider;
@@ -22,6 +23,8 @@ package fr.digitas.flowearth.csseditor.view {
 			
 			addEventListener( Event.ADDED_TO_STAGE, onAdded );
 			addEventListener( Event.REMOVED_FROM_STAGE, onRemoved );
+			
+			new CssDragManager( ).init( this );
 		}
 		
 

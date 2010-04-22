@@ -45,7 +45,7 @@ package fr.digitas.flowearth.csseditor.view.console {
 				_stressTimer = null;
 			}
 			if( _stress ) {
-				_stressTimer = new Timer( 10 , 1000 );
+				_stressTimer = new Timer( 1000 , 1000 );
 				_stressTimer.start();
 				_stressTimer.addEventListener( TimerEvent.TIMER , stressTick );
 			}

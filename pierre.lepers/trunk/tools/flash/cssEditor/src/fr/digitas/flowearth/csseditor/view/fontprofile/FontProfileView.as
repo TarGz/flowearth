@@ -42,6 +42,7 @@ package fr.digitas.flowearth.csseditor.view.fontprofile {
 			_scroll.width = value;
 			if( _table ) _table.width = _scroll.width;
 		}
+		
 
 		override public function set height(value : Number) : void {
 			bg.height = value;
@@ -49,12 +50,15 @@ package fr.digitas.flowearth.csseditor.view.fontprofile {
 		}
 		
 		private function _build() : void {
-			addChild( bg = new Shape() );
+			addChild( bg = new Sprite() );
 			bg.graphics.beginFill( 0xffffff );
 			bg.graphics.drawRect(0, 0, 150, 150 );
 			
 			_scroll = new Scroller_FC();
 			addChild( _scroll );
+			
+			_dragManager = new TreeDragManager( );
+			_dragManager.init( bg );
 //			_scroll.addEventListener( Scroller.SCROLL_CHANGE , onScrollChange );
 //			_initKeyManager();
 		}
@@ -81,7 +85,9 @@ package fr.digitas.flowearth.csseditor.view.fontprofile {
 
 		private var _scroll : Scroller;
 		
-		private var bg : Shape;
+		private var _dragManager : TreeDragManager;
+
+		private var bg : Sprite;
 		
 	}
 }

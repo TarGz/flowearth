@@ -54,12 +54,14 @@ package fr.digitas.flowearth.csseditor.fonts {
 			if( _currentProfile ) {
 				_currentProfile.unload();
 				_currentProfile.removeEventListener( FontEvent.FONT_ADDED , loadProfile );
+				_currentProfile.removeEventListener( FontEvent.FILE_CHANGE , loadProfile );
 			}
 			_currentProfile = profile;
 			_watchers = [];
 			if( ! _currentProfile ) return;
 			
 			_currentProfile.addEventListener( FontEvent.FONT_ADDED , loadProfile );
+			_currentProfile.addEventListener( FontEvent.FILE_CHANGE , loadProfile );
 			loadProfile();
 		}
 		
@@ -81,7 +83,8 @@ package fr.digitas.flowearth.csseditor.fonts {
 		private var _currentProfile : FontProfile;
 		
 		private function onFontLoaded(event : Event) : void {
-			dispatchEvent( new FontEvent( FontEvent.FONT_LOADED ) );
+			var l : FontSourceLoader = event.currentTarget as FontSourceLoader;
+			dispatchEvent( new FontEvent( FontEvent.FONT_LOADED, l.source ) );
 		}
 
 		public function get fontSandbox() : Object {
@@ -90,7 +93,7 @@ package fr.digitas.flowearth.csseditor.fonts {
 		
 		private function _build() : void {
 			_fontSandbox = new FontSandbox();
-			dispatchEvent( new FontEvent( FontEvent.SANDBOX_READY ) );
+			dispatchEvent( new FontEvent( FontEvent.SANDBOX_READY , null ) );
 		}
 		
 

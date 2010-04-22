@@ -46,8 +46,8 @@ package fr.digitas.flowearth.ui.canvas {
 		
 		override protected function onSepDown(event : MouseEvent) : void {
 			var sep : DisplayObject = event.currentTarget as DisplayObject;
-			var index : int = _layout.itemList.indexOf( sep );
-			new SlideSizeHandler( stage, sep, _layout.itemList[index - 1 ] as Canvas , _layout.itemList[index + 1 ] as Canvas );
+			var index : int = _layout.indexMap.indexOf( sep );
+			new SlideSizeHandler( stage, sep, _layout.indexMap.getItemAt( index - 1 ) as Canvas , _layout.indexMap.getItemAt( index + 1 ) as Canvas );
 		}
 		
 	}

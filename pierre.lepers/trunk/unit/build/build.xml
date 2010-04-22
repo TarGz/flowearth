@@ -7,7 +7,7 @@
                    
      lepersp                                                                
      ====================================================================== -->
-<project name="Digitas Fmk - Unit Tests" default="main" basedir="../../">
+<project name="Digitas Fmk - Framework Unit Tests" default="main" basedir="../../">
 	<description>
             Build Unit Tests
     </description>

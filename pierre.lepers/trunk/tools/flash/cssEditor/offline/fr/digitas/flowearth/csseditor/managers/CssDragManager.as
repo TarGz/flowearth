@@ -1,23 +1,21 @@
 package fr.digitas.flowearth.csseditor.managers {
-	import fr.digitas.flowearth.csseditor.data.fonts.FontSource;	
 	import fr.digitas.flowearth.csseditor.data.CSS;
 	import fr.digitas.flowearth.csseditor.data.CSSProvider;
 	import fr.digitas.flowearth.csseditor.view.console.Console;
 	
 	import flash.desktop.ClipboardFormats;
-	import flash.desktop.NativeDragActions;
 	import flash.desktop.NativeDragManager;
 	import flash.display.InteractiveObject;
 	import flash.events.NativeDragEvent;
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
-	import flash.utils.ByteArray;	
+	import flash.utils.ByteArray;		
 
 	/**
 	 * @author Pierre Lepers
 	 */
-	public class FileDragManager implements IFileDragManager {
+	public class CssDragManager implements IFileDragManager {
 
 		private var _do : InteractiveObject;
 		
@@ -28,13 +26,17 @@ package fr.digitas.flowearth.csseditor.managers {
 		}
 
 		private function dragEnterHandler(evt : NativeDragEvent) : void {
-			if(evt.clipboard.hasFormat( ClipboardFormats.FILE_LIST_FORMAT )) {
+			var dropFiles : Array = evt.clipboard.getData( ClipboardFormats.FILE_LIST_FORMAT ) as Array;
+			if(evt.clipboard.hasFormat( ClipboardFormats.FILE_LIST_FORMAT )
+				&&
+				containHandledFile( dropFiles )
+					) {
 				NativeDragManager.acceptDragDrop( _do );
 			}
 		}
 
 		private function dragDropHandler(evt : NativeDragEvent) : void {
-			NativeDragManager.dropAction = NativeDragActions.COPY;
+//			NativeDragManager.dropAction = NativeDragActions.COPY;
 			var dropFiles : Array = evt.clipboard.getData( ClipboardFormats.FILE_LIST_FORMAT ) as Array;
 			
 			for each (var file : File in dropFiles) {
@@ -43,19 +45,19 @@ package fr.digitas.flowearth.csseditor.managers {
 		}
 
 		private function handleDropFile(file : File) : void {
-			switch( file.extension ) {
+			switch( file.extension.toLowerCase() ) {
 				case "css" :
 					handleCssFile( file );
 					break;
-				case "swf" :
-					handleSwfFile( file );
-					break;
-				case "ttf" :
-					handleTrueTypeFile( file );
-					break;
-				case "otf" :
-					handleTrueTypeFile( file );
-					break;
+//				case "swf" :
+//					handleSwfFile( file );
+//					break;
+//				case "ttf" :
+//					handleTrueTypeFile( file );
+//					break;
+//				case "otf" :
+//					handleTrueTypeFile( file );
+//					break;
 				default :
 					unhandledFileFormat();
 					break;
@@ -70,7 +72,6 @@ package fr.digitas.flowearth.csseditor.managers {
 			}
 			
 			css.fontProfile.addTrueType( file );
-			
 			
 		}
 
@@ -112,7 +113,26 @@ package fr.digitas.flowearth.csseditor.managers {
 			fileStream.readBytes( fileBytes, 0, fileStream.bytesAvailable);
 			fileStream.close();
 			return fileBytes;
-		} 
+		}
+		
+		
+		
+		public static function containHandledFile( fileList : Array) : Boolean {
+			
+			for each (var file : File in fileList) {
+				if( isFontFile( file ) ) return true;
+			}
+			
+			return false;
+		}
+
+		public static function isFontFile( file : File ) : Boolean {
+			return _formats.indexOf( String( file.name.split( "." ).pop()).toLowerCase() ) > - 1;
+		}
+
+		
+		
+		private static const _formats : Array = [ "css" ];
 		
 	}
 }

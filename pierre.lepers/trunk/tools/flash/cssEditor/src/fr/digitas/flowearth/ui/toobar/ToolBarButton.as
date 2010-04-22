@@ -1,4 +1,6 @@
 package fr.digitas.flowearth.ui.toobar {
+	import flash.filters.ColorMatrixFilter;	
+	
 	import fr.digitas.flowearth.ui.layout.ILayoutItem;
 	
 	import flash.display.Bitmap;
@@ -8,7 +10,8 @@ package fr.digitas.flowearth.ui.toobar {
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
-	import flash.text.TextFormat;		
+	import flash.text.TextFormat;
+	import flash.display.DisplayObject;		
 
 	/**
 	 * @author Pierre Lepers
@@ -78,8 +81,15 @@ package fr.digitas.flowearth.ui.toobar {
 			dispatchEvent( new Event( Event.RESIZE ) );
 		}
 
-		
-		
+		override public function set mouseEnabled(enabled : Boolean) : void {
+			super.mouseEnabled = enabled;
+			
+			if( enabled )
+				filters = [ ];
+			else
+				filters = [ greyCMF ];
+		}
+
 		
 		
 		public function getWidth() : Number {
@@ -90,6 +100,15 @@ package fr.digitas.flowearth.ui.toobar {
 			return bg.height;
 		}
 		
+		public function getDisplay() : DisplayObject {
+			return this;
+		}
+		
 		private var icon : Bitmap;
+		
+		private static const greyCMF : ColorMatrixFilter = new ColorMatrixFilter([ 	.3 ,.3 ,.3 ,0 ,0 ,
+																					.3, .3 ,.3 ,0 ,0 ,
+																					.3, .3 ,.3 ,0 ,0 ,
+																					0, 0, 0 ,1 ,0 ] );
 	}
 }

@@ -19,7 +19,6 @@ package fr.digitas.flowearth.ui.canvas {
 			_ratios = new Dictionary( );
 			_layout = new Layout();
 			addChild( _layout );
-			_layout.itemList = new Array();
 		}
 
 		
@@ -31,11 +30,10 @@ package fr.digitas.flowearth.ui.canvas {
 				var s : DisplayObject = getSeparator();
 				s.addEventListener( MouseEvent.MOUSE_DOWN , onSepDown );
 				_layout.addChild( s );
-				_layout.itemList.push( s );
 			}
 			setSizeProp( canvas, Math.ceil(spSize/2) );
-			_layout.addChildAt( canvas, 0 );
-			_layout.itemList.push( canvas );
+			_layout.addChild( canvas );
+			_layout.indexMap.setItemIndex( canvas, _layout.indexMap.length-1 );
 			
 			if( _percentedChild == null ) _percentedChild = canvas;
 		}

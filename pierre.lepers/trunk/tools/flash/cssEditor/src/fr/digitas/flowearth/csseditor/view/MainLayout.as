@@ -43,11 +43,15 @@ package fr.digitas.flowearth.csseditor.view {
 			_rtoolsCanvas = new VLayout();
 			
 			var _TrtoolCanvas : Canvas = new MasterCanvas();
+			var _T2rtoolCanvas : Canvas= new MasterCanvas( );
 			var _BrtoolCanvas : Canvas= new MasterCanvas( );
-			_BrtoolCanvas.height = 300;
-			_TrtoolCanvas.height = 300;
 			_rtoolsCanvas.addCanvas( _TrtoolCanvas );
+			_rtoolsCanvas.addCanvas( _T2rtoolCanvas );
 			_rtoolsCanvas.addCanvas( _BrtoolCanvas );
+
+			_BrtoolCanvas.height = 300;
+			_T2rtoolCanvas.height = 300;
+			_TrtoolCanvas.height = 300;
 			// MAIN LAYOUT
 
 			_mainLayout.addCanvas( leftLayout );
@@ -68,7 +72,14 @@ package fr.digitas.flowearth.csseditor.view {
 			_editorCanvas.addContent( new EditorCanvas(), true );
 
 			// EDITOR CANVAS
-			_TrtoolCanvas.addContent( new FontProfileCanvas( ), true );
+			var fpc : FontProfileCanvas = new FontProfileCanvas( );
+			_TrtoolCanvas.addContent( fpc, true );
+			var bc : BuildsCanvas = new BuildsCanvas( );
+			_T2rtoolCanvas.addContent( bc, true );
+			
+			fpc.height = 300;
+			bc.height = 300;
+			
 			_BrtoolCanvas.addContent( new Infos_FC( ) );
 			_BrtoolCanvas.addContent( Console.instance , true );
 //			_rtoolsCanvas.addContent( new Preview( ), true );

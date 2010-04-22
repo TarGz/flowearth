@@ -7,53 +7,39 @@ package fr.digitas.flowearth.font {
 	/**
 	 * @author Pierre Lepers
 	 */
-	public class FontConfig extends EventDispatcher {
+	public class FontConfig extends FontInfo {
 
 		
+		private var _sourceName : String;
+
+		private var _sourceFile : File;
 		
 		public function FontConfig( datas : XML = null ) {
+			super();
+			_style_normal = true;
 			if( datas )
 				_import( datas );
 		}
 		
-		private var _fontFamily : String;
 
-		private var _sourceName : String;
 
-		private var _sourceFile : File;
 
-		private var _unicodeRange : Vector.<uint>;
-
-		private var _style_normal : Boolean = true;
-		private var _style_bold : Boolean = false;
-		private var _style_italic : Boolean = false;
-		private var _style_bolditalic : Boolean = false;
-
-		public function setUnicodeRange( range : Vector.<uint> ) : void {
-			
-			if( equalsRange( range ) ) return;
-			
-			_unicodeRange = range;
-			change( );
+		
+		
+		public function remove() : void {
+			dispatchEvent( new Event( Event.REMOVED ) );
 		}
 		
-		
-
-		public function setChars( chars : String ) : void {
-			setUnicodeRange( cleanChars( chars ) );
+		public function clone() : FontConfig {
+			//TODO optimizer le clone des FontConfig
+			return new FontConfig( export() );
 		}
 
 		
-		public function get fontFamily() : String {
-			return _fontFamily;
-		}
-
-		public function set fontFamily(fontFamily : String) : void {
-			if( _fontFamily == fontFamily ) return;
-			_fontFamily = fontFamily;
-			change( );
-		}
-
+		
+		
+		
+		
 		
 		public function get sourceName() : String {
 			return _sourceName;
@@ -76,13 +62,31 @@ package fr.digitas.flowearth.font {
 			change( );
 		}
 
+		public function getDeclarations() : Vector.<FontDeclaration> {
+			var res : Vector.<FontDeclaration> = new Vector.<FontDeclaration>( );
+			
+			if( style_normal )
+				res.push( new FontDeclaration( getClassName( false , false ) , getOutput( false , false ) ) );
+			if( style_bold )
+				res.push( new FontDeclaration( getClassName( true , false ) , getOutput( true , false ) ) );
+			if( style_italic )
+				res.push( new FontDeclaration( getClassName( false , true ) , getOutput( false , true ) ) );
+			if( style_bolditalic )
+				res.push( new FontDeclaration( getClassName( true , true ) , getOutput( true , true ) ) );
+				
+			return res;
+		}
+
 		private function getSource() : String {
+			/*FDT_IGNORE*/
 			if( _sourceFile != null )
 				return "source='" + _sourceFile.nativePath.replace( /\\/g, "/" ) + "'";
 			else if( _sourceName != null )
 				return "systemFont='" + _sourceName + "'";
 			else
-				throw new Error( "FontConfig : sourceName or sourceFile must be defined" );		
+				throw new Error( "FontConfig : sourceName or sourceFile must be defined" );	
+			/*FDT_IGNORE*/
+			return null;	
 		}
 
 		internal function getClassName( bold : Boolean, italic : Boolean ) : String {
@@ -114,22 +118,7 @@ package fr.digitas.flowearth.font {
 			return res;
 		}
 		
-		
 
-		public function getDeclarations() : Vector.<FontDeclaration> {
-			var res : Vector.<FontDeclaration> = new Vector.<FontDeclaration>( );
-			
-			if( style_normal )
-				res.push( new FontDeclaration( getClassName( false , false ) , getOutput( false , false ) ) );
-			if( style_bold )
-				res.push( new FontDeclaration( getClassName( true , false ) , getOutput( true , false ) ) );
-			if( style_italic )
-				res.push( new FontDeclaration( getClassName( false , true ) , getOutput( false , true ) ) );
-			if( style_bolditalic )
-				res.push( new FontDeclaration( getClassName( true , true ) , getOutput( true , true ) ) );
-				
-			return res;
-		}
 
 		private function transcodeRange() : String {
 			var res : String = "";
@@ -169,31 +158,7 @@ package fr.digitas.flowearth.font {
 
 		
 		
-		private function cleanChars( input : String ) : Vector.<uint> {
-			var result : Vector.<uint> = new Vector.<uint>( );
-			var l : int = input.length;
-			var code : uint;
-			for (var i : int = 0; i < l ; i ++) {
-				code = input.charCodeAt( i );
-				if( result.indexOf( code ) == - 1 )
-					result.push( code );
-			}
-		
-			return result;
-		}
-		
-		private function equalsRange(range : Vector.<uint> ) : Boolean {
-			if( _unicodeRange == null ) return false;
-			if( range.length != _unicodeRange.length ) return false;
-			for (var i : int = 0; i < range.length; i++) {
-				if( _unicodeRange.indexOf( range[i] ) == -1 ) return false;
-			}
-			return true;
-		}
 
-		private function change() : void {
-			dispatchEvent( new Event( Event.CHANGE ) );
-		}
 
 		private static const EMBED_TEMPLATE : String = "[Embed(${fontStyles} unicodeRange='${unicodeRange}', fontName='${fontName}', ${source}, _pathsep='true', mimeType='application/x-font')]";
 
@@ -201,50 +166,7 @@ package fr.digitas.flowearth.font {
 
 		
 		
-		public function get unicodeRange() : Vector.<uint> {
-			if( ! _unicodeRange ) return new Vector.<uint>();
-			return _unicodeRange;
-		}
-
-		public function get style_normal() : Boolean {
-			return _style_normal;
-		}
-
-		public function set style_normal(style_normal : Boolean) : void {
-			if( _style_normal ==  style_normal ) return;
-			_style_normal = style_normal;
-			change( );
-		}
-
-		public function get style_bold() : Boolean {
-			return _style_bold;
-		}
-
-		public function set style_bold(style_bold : Boolean) : void {
-			if( _style_bold ==  style_bold ) return;
-			_style_bold = style_bold;
-			change( );
-		}
-
-		public function get style_italic() : Boolean {
-			return _style_italic;
-		}
-
-		public function set style_italic(style_italic : Boolean) : void {
-			if( _style_italic ==  style_italic ) return;
-			_style_italic = style_italic;
-			change( );
-		}
-
-		public function get style_bolditalic() : Boolean {
-			return _style_bolditalic;
-		}
-
-		public function set style_bolditalic(style_bolditalic : Boolean) : void {
-			if( _style_bolditalic ==  style_bolditalic ) return;
-			_style_bolditalic = style_bolditalic;
-			change( );
-		}
+		
 		
 		public function export() : XML {
 			var res : XML = <font normal={style_normal} bold={style_bold} italic={style_italic} bolditalic={style_bolditalic}/>;
@@ -286,5 +208,6 @@ package fr.digitas.flowearth.font {
 			fontFamily = datas.fontfamily[0].text();
 			
 		}
+		
 	}
 }

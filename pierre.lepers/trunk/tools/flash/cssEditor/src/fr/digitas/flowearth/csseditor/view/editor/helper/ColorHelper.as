@@ -21,7 +21,15 @@ package fr.digitas.flowearth.csseditor.view.editor.helper {
 			_buildCb( );
 			onValueChange( null );
 		}
-		
+
+		override public function dispose() : void {
+			super.dispose( );
+			
+			_cp.removeEventListener( Event.CHANGE , onCpChange );
+			removeChild(_cp);
+			_cp = null;
+		}
+
 		
 		override protected function onValueChange(event : PropertyEvent) : void {
 			super.onValueChange( event );

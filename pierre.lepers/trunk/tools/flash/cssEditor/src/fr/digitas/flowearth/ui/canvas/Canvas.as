@@ -86,7 +86,9 @@
 			return _height;
 		}
 		
-
+		public function getDisplay() : DisplayObject {
+			return this;
+		}
 		
 		
 		protected var _height : Number = 10;
