@@ -19,8 +19,8 @@
 
 
 package fr.digitas.flowearth.ui.layout {
+	import flash.display.DisplayObject;		
 
-	
 	/**
 	 * @author Pierre Lepers
 	 */
@@ -29,6 +29,8 @@ package fr.digitas.flowearth.ui.layout {
 		function getWidth() : Number;
 
 		function getHeight() : Number;
+
+		function getDisplay() : DisplayObject;
 
 	}
 }

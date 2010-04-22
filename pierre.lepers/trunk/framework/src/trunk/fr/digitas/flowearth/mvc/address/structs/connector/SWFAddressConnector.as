@@ -18,6 +18,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 package fr.digitas.flowearth.mvc.address.structs.connector {
+	import fr.digitas.flowearth.mvc.address.structs.utils.PathTools;	
 	import fr.digitas.flowearth.event.NodeEvent;
 	import fr.digitas.flowearth.mvc.address.SWFAddress;
 	import fr.digitas.flowearth.mvc.address.SWFAddressEvent;
@@ -79,10 +80,10 @@ package fr.digitas.flowearth.mvc.address.structs.connector {
 			for each ( var n : INode in _nodes ) {
 				buffer = _buffers[ n ];
 				if( buffer.lockAddress() )
-					url += encodePath( buffer.pendingPath );
+					url += encodePath( PathTools.removeDefaultPart( buffer.pendingPath ) );
 				else {
 				if( n.activePath )
-					url += encodePath( n.activePath );
+					url += encodePath( PathTools.removeDefaultPart( n.activePath ) );
 				}
 				url += pathSeparator;
 			}

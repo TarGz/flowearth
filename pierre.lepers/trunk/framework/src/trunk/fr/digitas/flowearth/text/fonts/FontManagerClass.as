@@ -24,7 +24,7 @@ package fr.digitas.flowearth.text.fonts {
 	/**
 	 * @author Pierre Lepers
 	 */
-	internal class FontManagerClass {
+	public class FontManagerClass {
 
 
 		public function hasFont( fontName : String ) : Boolean {

@@ -19,6 +19,9 @@
 
 
 package fr.digitas.flowearth.ui.layout {
+	import fr.digitas.flowearth.core.IIterator;	
+	import fr.digitas.flowearth.core.Pile;	
+	import fr.digitas.flowearth.ui.utils.InvalidationManager;	
 	import fr.digitas.flowearth.bi_internal;
 	import fr.digitas.flowearth.core.IDisplayObjectContainer;
 	import fr.digitas.flowearth.ui.layout.renderer.RendererFactory;
@@ -31,9 +34,9 @@ package fr.digitas.flowearth.ui.layout {
 
 	/**
 	 * dispatché lorsque les item ont été reordonné
-	 * @see Event#CHANGE
+	 * @see Event#RESIZE 
 	 */
-	[Event(name="change", type="flash.events.Event")]
+	[Event(name="resize", type="flash.events.Event")]
 	
 	/**
 	 * Gere le positionnement d'éléments (DisplayObject) dans un conteneur (Layout.container)
@@ -42,15 +45,28 @@ package fr.digitas.flowearth.ui.layout {
 	 * 
 	 * @author Pierre Lepers
 	 */
-	public class Layout extends Sprite implements IDisplayObjectContainer {
-		
+	public class Layout extends Sprite implements IDisplayObjectContainer, ILayoutItem {
+
 		public static const CHANGING : String = "_l_changing";
 		
-		/**
+		/*
 		 * Contient la liste des element a positionné.
 		 * Si cette prop est null, la displayList est utilisé
+		 * @deprecated 
 		 */
-		public var itemList : Array;
+		//public var itemList : Array;
+		/**
+		 * An Array of uint used to display item in a different order than displayList order.
+		 * If set to null, the displayList order is used.
+		 * 
+		 * for a layout with 3 item  A, B, C )
+		 * 
+		 * to render item in this order B, C, A set the indexMap to [ 1, 2, 0 ]
+		 * 
+		 */
+		public function get indexMap() : Pile {
+			return _indexMap;
+		}
 		
 		/**
 		 * defini un conteneur specifique pour le layout.
@@ -69,7 +85,6 @@ package fr.digitas.flowearth.ui.layout {
 			var newDl : Array = new Array();
 			while( c.numChildren > 0 ) newDl.push( c.removeChildAt(0) );
 			
-//			var oldContainer : DisplayObjectContainer = _container;
 			if( _container )
 				while( _container.numChildren > 0 ) c.addChildAt( getChildAt( 0 ), 0 );	
 			
@@ -77,8 +92,10 @@ package fr.digitas.flowearth.ui.layout {
 			
 			while( newDl.length > 0 ) addChild( newDl.shift() );
 			
+			invalidateDl();
 			invalidate();
 		}
+		
 		/** @private */
 		public function get container () : DisplayObjectContainer {
 			return _container;
@@ -165,53 +182,121 @@ package fr.digitas.flowearth.ui.layout {
 		public function Layout () {
 			if( _container == null ) super.addChild( _container = new Sprite() );
 			renderer = RendererFactory.getRenderer( LayoutAlign.TOP );
+			_indexMap = new Pile();
 			width = super.width;
 			height = super.height;
 			
 			addEventListener( Event.REMOVED_FROM_STAGE, onRemoved );
 		}
 
+
+		//_____________________________________________________________________________
+		//																	ILayoutItem
+		
+		public function getWidth() : Number {
+			return renderer.renderWidth;
+		}
+		
+		public function getHeight() : Number {
+			return renderer.renderHeight;
+		}
+		
+		public function getDisplay() : DisplayObject {
+			return this;
+		}
 		
 		public override function get numChildren() : int {
 			return _container.numChildren;
 		}
+		
+		bi_internal function addChild ( child : DisplayObject ) : DisplayObject {
+			return super.addChild( child );
+		}
+
+		bi_internal function addChildAt ( child : DisplayObject, index : int ) : DisplayObject {
+			return super.addChildAt( child, index );
+		}
+		
+		bi_internal function removeChild ( child : DisplayObject ) : DisplayObject {
+			return super.removeChild( child );
+		}
+
+		bi_internal function removeChildAt ( index : int ) : DisplayObject {
+			return super.removeChildAt( index );
+		}
+
+		bi_internal function swapChildren ( child1 : DisplayObject, child2 : DisplayObject ) : void {
+			super.swapChildren( child1, child2 );
+		}
+
+		bi_internal function setChildIndex ( child : DisplayObject, index : int ) : void {
+			super.setChildIndex( child, index );
+		}
+
+		bi_internal function swapChildrenAt ( index1 : int, index2 : int ) : void {
+			super.swapChildrenAt( index1, index2 );
+		}
+		
+		bi_internal function getChildByName (name : String) : DisplayObject {
+			return super.getChildByName( name );
+		}
+
+		bi_internal function getChildIndex (child : DisplayObject) : int {
+			return super.getChildIndex( child );
+		}
+		
+		bi_internal function contains (child : DisplayObject) : Boolean {
+			return super.contains ( child );
+		}
+		
+		bi_internal function getChildAt (index : int) : DisplayObject {
+			return super.getChildAt( index );
+		}
 
 		public override function addChild ( child : DisplayObject ) : DisplayObject {
 			register( child );
-			invalidate();
+			invalidateDl();
+			invalidate( );
+			if( _indexMap.indexOf( child ) == -1 )
+				_indexMap.addItem( child );
 			return _container.addChild( child );
 		}
 
 		public override function addChildAt ( child : DisplayObject, index : int ) : DisplayObject {
 			register( child );
+			invalidateDl();
 			invalidate();
+			if( _indexMap.indexOf( child ) == -1 )
+				_indexMap.addItemAt( child, index );
 			return _container.addChildAt( child, index );
 		}
 
 		public override function removeChild ( child : DisplayObject ) : DisplayObject {
 			unregister( child );
+			invalidateDl();
 			invalidate();
+			_indexMap.removeItem( child );
 			return _container.removeChild( child );
 		}
 
 		public override function removeChildAt ( index : int ) : DisplayObject {
-			var child : DisplayObject = _container.removeChildAt( index );
-			unregister( child );
-			invalidate();
-			return child;
+			return removeChild( _container.getChildAt( index ) );
 		}
 
 		public override function swapChildren ( child1 : DisplayObject, child2 : DisplayObject ) : void {
+			invalidateDl();
 			invalidate();
 			_container.swapChildren( child1, child2 );
 		}
 
 		public override function setChildIndex ( child : DisplayObject, index : int ) : void {
+			invalidateDl();
 			invalidate();
 			_container.setChildIndex( child, index );
 		}
 
 		public override function swapChildrenAt ( index1 : int, index2 : int ) : void {
+			invalidateDl();
 			invalidate( );
 			_container.swapChildrenAt( index1, index2 );
 		}
@@ -239,26 +324,42 @@ package fr.digitas.flowearth.ui.layout {
 		public function update( e : Event = null ) : void {
 			dispatchEvent( new Event( CHANGING ) );
 			_renderer.init( _padding, _margin, _width, _height );
+			
+			if( ! _validDl ) _buildDl();
+			
 			var i : int;
-			if( itemList ) {
-				for ( i = 0; i < itemList.length; i += 1 )
-					_renderer.render( itemList[ i ] );
-			} else 
-				for ( i = 0; i < _container.numChildren; i += 1 )
-					_renderer.render( _container.getChildAt( i ) );
+			for ( i = 0; i < _displayList.length ; i += 1 )
+				_renderer.render( _displayList[ i ] );
+			
 				
 			_renderer.complete();
 			if( stage )
-				stage.removeEventListener( Event.RENDER, update );
+				InvalidationManager.getManager( stage ).removeEventListener( Event.RENDER, update );
 			_valid = true;
-			dispatchEvent( new Event( Event.CHANGE ) );
+			dispatchEvent( new Event( Event.RESIZE ) );
 		}
 
 		
 		//_____________________________________________________________________________
 		//																	   PRIVATES
-
 		
+		
+		private function _buildDl() : void {
+			_displayList = [];
+			var child : DisplayObject;
+			var iter : IIterator = _indexMap.getIterator();
+			
+			while( iter.hasNext() ) {
+				child = iter.next( ) as DisplayObject;
+				_displayList.push( ( child is ILayoutItem ) ? child : new InternalLayoutItem( child ) );
+			}
+//			
+//			for ( var i : int = 0; i < _container.numChildren; i += 1 ) {
+//				depth = ( _indexMap.indexOf( item ) ? _indexMap[i] : i;
+//				child = _container.getChildAt( depth );
+//			}
+		}
+
 		private function register ( child : DisplayObject ) : void {
 			child.addEventListener( Event.RESIZE, onChildUpdate );
 		}
@@ -272,23 +373,28 @@ package fr.digitas.flowearth.ui.layout {
 		}
 		
 		private function onRendererUpdate (event : Event) : void {
-			dispatchEvent( new Event( Event.CHANGE  ) );
+			dispatchEvent( new Event( Event.RESIZE  ) );
 		}
 		
 		private function onRemoved( e : Event ) : void {
-			stage.removeEventListener( Event.RENDER, update );
+			InvalidationManager.getManager( stage ).removeEventListener( Event.RENDER, update );
 			removeEventListener( Event.ADDED_TO_STAGE , update );
 		}
 		
 		protected function invalidate() : void {
 			if( ! _valid ) return;
+			_valid = false;
 			if( stage ) {
-				stage.addEventListener( Event.RENDER, update );
-				stage.invalidate();
+				var im : InvalidationManager = InvalidationManager.getManager( stage );
+				im.addEventListener( Event.RENDER, update );
+				im.invalidate();
 			} else 
 				addEventListener( Event.ADDED_TO_STAGE , update );
 			
-			_valid = false;
+		}
+
+		protected function invalidateDl() : void {
+			_validDl = false;
 		}
 
 		
@@ -298,10 +404,11 @@ package fr.digitas.flowearth.ui.layout {
 		protected var _width 		: Number = 0;
 		protected var _height 		: Number = 0;
 		protected var _valid 		: Boolean = true;
+		protected var _validDl 		: Boolean = false;
 		protected var _align 		: String;
 		protected var _renderer 	: IChildRenderer;
 		protected var _container 	: DisplayObjectContainer;
-		
-		
+		protected var _displayList 	: Array/*ILayoutItem*/;
+		protected var _indexMap 	: Pile;
 	}
 }

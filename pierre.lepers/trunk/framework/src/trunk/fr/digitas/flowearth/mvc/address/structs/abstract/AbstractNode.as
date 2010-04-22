@@ -302,6 +302,13 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 			super.addEventListener( type , listener , useCapture , priority , useWeakReference );
 		}
 
+		/**
+		 * by default listener are removed for capture flow.
+		 */
+		override public function removeEventListener(type : String, listener : Function, useCapture : Boolean = true ) : void {
+			super.removeEventListener( type , listener , useCapture );
+		}
+
 		//_____________________________________________________________________________
 		//																	  INTERNALS
 
