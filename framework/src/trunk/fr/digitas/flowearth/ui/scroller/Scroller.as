@@ -19,7 +19,18 @@
 
 
 package fr.digitas.flowearth.ui.scroller {
-	import fr.digitas.flowearth.bi_internal;	import fr.digitas.flowearth.core.IDisposable;	import fr.digitas.flowearth.event.BoolEvent;		import flash.display.DisplayObject;	import flash.display.Sprite;	import flash.events.Event;	import flash.events.MouseEvent;	import flash.geom.Rectangle;		/**
+	import fr.digitas.flowearth.bi_internal;
+	import fr.digitas.flowearth.core.IDisposable;
+	import fr.digitas.flowearth.event.BoolEvent;
+	import fr.digitas.flowearth.ui.utils.InvalidationManager;
+	
+	import flash.display.DisplayObject;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.MouseEvent;
+	import flash.geom.Rectangle;		
+
+	/**
 	 * dispatché lorsque la taile de la zone de scroll change
 	 * @see Event#RESIZE
 	 */
@@ -278,9 +289,14 @@ package fr.digitas.flowearth.ui.scroller {
 		}
 		
 		public function invalidate( e : Event = null ) : void {
-			if( ! _valid ) addEventListener( Event.RENDER, update );
-			if( stage ) stage.invalidate();
+			if( ! _valid ) return;
 			_valid = false;
+			if( stage ) {
+				var im : InvalidationManager = InvalidationManager.getManager( stage );
+				im.addEventListener( Event.RENDER, update );
+				im.invalidate();
+			} else 
+				addEventListener( Event.ADDED_TO_STAGE , update );
 		}
 
 		
@@ -364,7 +380,7 @@ package fr.digitas.flowearth.ui.scroller {
 		protected var _subContent 	: ScrollerContent;
 		protected var _scrollRect 	: Rectangle;
 		protected var _position 	: Number = 0;
-		protected var _valid 		: Boolean = false;
+		protected var _valid 		: Boolean = true;
 		protected var _watchResize 	: Boolean = false;
 		
 		protected var _needScroll 	: Boolean;
