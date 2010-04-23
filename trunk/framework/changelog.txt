@@ -50,3 +50,6 @@ v2.5.191
 	refactoring Layout render
 	start Layout tutorial
 	fix fonts ant task bug (error when compile only swc) 
+
+v2.5.216
+	add GraphicTools (fixed fill bug on exact angles)

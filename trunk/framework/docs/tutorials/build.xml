@@ -132,6 +132,36 @@
 
 	</target>
 
+	<!-- ================================= 
+          target: graphictools             
+         ================================= -->
+	<target name="graphictools"
+	        depends="init"
+	        description="Build graphictools"
+	        if="FLASH_EXE">
+
+		<property name="tuto_name" value="graphictools" />
+
+		<!--compileFla logoutput="true" logerror="true">
+			<fileset dir="${tutoDir}/${tuto_name}/fla/" includes="*.fla" />
+		</compileFla-->
+
+		<mxmlc file="${tutoDir}/${tuto_name}/src/fr/digitas/tutorial/graphictools/Main.as"
+		       output="${tutoDir}/${tuto_name}/deploy/${tuto_name}.swf"
+		       debug="true"
+		       static-rsls="true"
+		       strict="true">
+			<default-size width="400" height="400" />
+			<default-background-color>0xF8F8F8</default-background-color>
+			
+			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc"
+			              append="true" />
+			<source-path path-element="${tutoDir}/${tuto_name}/src" />
+			<jvmarg value="${digitas.compiler.jvmargs}"/>
+		</mxmlc>
+
+	</target>
+
 	<!-- - - - - - - - - - - - - - - - - - 
           target: init                      
          - - - - - - - - - - - - - - - - - -->

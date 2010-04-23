@@ -48,9 +48,17 @@ package fr.digitas.flowearth.ui.layout.renderer {
 
 		override public function init (padding : Rectangle, margin : Rectangle, w : Number, h : Number) : void {
 			super.init( padding, margin, w, h );
+			_lineBreaks = [];
+			_firstItem = true;
 			_mawWidth 	= w;
 			_mawHeight 	= h;
 			_baseOffset = 0;
+		}
+		
+		override public function complete() : void {
+			super.complete( );
+			_rheight += _padding.height + _margin.height;
+			_rwidth += _padding.width + _margin.width;
 		}
 		
 		protected var _baseLine : Number;
@@ -58,5 +66,6 @@ package fr.digitas.flowearth.ui.layout.renderer {
 		protected var _mawWidth : Number;
 		protected var _mawHeight : Number;
 		protected var _lineBreaks : Array;
+		protected var _firstItem : Boolean;
 	}
 }
