@@ -89,13 +89,14 @@ package fr.digitas.flowearth.mvc.address.structs.connector {
 			}
 			
 			url = url.replace( STRIP_PATH, "" );
-
 			SWFAddress.setValue( url );
+			SWFAddress.setTitle( url );
 		}
 		
 		protected function onAddressChange( event : SWFAddressEvent ) : void {
 			
 			var paths : Array = SWFAddress.getValue( ).split( pathSeparator );
+			
 			while( paths.length > _nodes.length ) 
 				paths.pop();
 
@@ -105,7 +106,7 @@ package fr.digitas.flowearth.mvc.address.structs.connector {
 			
 			for (var i : int = 0; i < _nodes.length ; i ++) {
 				node =_nodes[ i ];
-				path = ( i > pLength ) ? node.path() : new Path( decodePath( paths[i] ) );
+				path = ( i > pLength ) ? node.path() : node.path().append( new Path( decodePath( paths[i] ) ) );
 				_buffers[ node ].apply( path );
 			}
 			
@@ -161,6 +162,7 @@ class ActivationBuffer {
 	}
 
 	internal function apply( path : IPath ) : void {
+		
 		if( path.nodeExist() ) {
 			path.toNode().activate();
 			_pendingPath = null;

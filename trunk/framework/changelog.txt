@@ -53,3 +53,6 @@ v2.5.191
 
 v2.5.216
 	add GraphicTools (fixed fill bug on exact angles)
+	
+v2.5.224
+	fix SWFAddressConnector bug (when register multiple nodes)
