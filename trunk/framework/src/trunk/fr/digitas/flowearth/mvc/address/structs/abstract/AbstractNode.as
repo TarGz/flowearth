@@ -19,8 +19,6 @@
 
 package fr.digitas.flowearth.mvc.address.structs.abstract {
 	import fr.digitas.flowearth.bi_internal;
-	import fr.digitas.flowearth.core.IIterator;
-	import fr.digitas.flowearth.core.Iterator/*INodeIterator*/;
 	import fr.digitas.flowearth.event.FlowEventDispatcher;
 	import fr.digitas.flowearth.event.NodeEvent;
 	import fr.digitas.flowearth.mvc.address.structs.INode;
@@ -31,8 +29,7 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 	import flash.net.URLVariables;
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;	
-	
-	
+
 	/**
 	 * Dispatched when a child is added to this current INode
 	 * 
@@ -99,7 +96,7 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 
 		
 		public function AbstractNode( descriptor : INodeDescriptor = null ) {
-			_childs = new Array/*INode*/( );
+			_childs = new Array( );
 			_cMap = new Dictionary( true );
 			if( descriptor ) 
 				describe( descriptor );
@@ -175,8 +172,8 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 
 		
 		/** @inheritDoc */
-		public function getChilds() : IIterator {
-			return new Iterator/*INodeIterator*/( _childs );
+		public function getChilds() : Array {
+			return _childs;
 		}
 
 		
@@ -247,11 +244,11 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 				bi_internal::setDefaultId( descriptor.getDefaultId( ) );
 			
 			target = target || this;
-			var iter : IIterator = descriptor.getChilds( );
+			var childs : Array = descriptor.getChilds( );
 			var subDesc : INodeDescriptor;
-			
-			while( iter.hasNext( ) ) {
-				subDesc = iter.next( ) as INodeDescriptor;
+			var l : int = childs.length;
+			while( --l > -1 ) {
+				subDesc = childs[ l ];
 				if( target.hasChild( subDesc.getId() ) )
 					target.getChild( subDesc.getId() ).describe( subDesc );
 				else 
@@ -401,7 +398,7 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 		 * Childs of this node
 		 * Can be empty if node is a leaf
 		 */
-		protected var _childs : Array/*INode*/;
+		protected var _childs : Array;
 
 		/**
 		 * map of childs nodes by childs nodes id's

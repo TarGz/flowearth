@@ -18,7 +18,6 @@
  * ***** END LICENSE BLOCK ***** */
 
 package fr.digitas.flowearth.mvc.address.structs.descriptor {
-	import fr.digitas.flowearth.core.IIterator;				
 
 	/**
 	 * Basic description of an INode.
@@ -30,7 +29,7 @@ package fr.digitas.flowearth.mvc.address.structs.descriptor {
 		/**
 		 * return childs (INodeDescriptor) of this node
 		 */
-		function getChilds() : IIterator /*INodeDescriptor*/; 
+		function getChilds() : Array; 
 
 		/**
 		 * the id of the node

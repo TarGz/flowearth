@@ -220,9 +220,12 @@ package fr.digitas.flowearth.mvc.address.structs {
 			var n : INode = this;
 			while( (n = n.parent( ) ) != null )
 				pchain.push( n.getId( ) );
+			var device : String = pchain.pop( );
 			pchain = pchain.reverse( );
-			var pStr : String = pchain.shift( ) + AbstractPath.DEVICE_SEP + pchain.join( AbstractPath.SEPARATOR );
-			return new Path( pStr );
+			
+			var p : Path = new Path( null, _params );
+			p.bi_internal::precompile( pchain, device, 1, 0 );
+			return p;
 		}
 
 		/** @inheritDoc */

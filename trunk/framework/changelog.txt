@@ -62,3 +62,7 @@ v2.5.291
 	huge node construction optimization
 	add perftests in unit
 	
+v2.5.299
+	INode.getChilds() now return an Array;
+
+	

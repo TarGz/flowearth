@@ -166,24 +166,11 @@
 	<target name="_build_unit_tests" depends="init">
 
 
-		<mxmlc file="${temp_src}${target-player}/fr/digitas/flowearth/Runner.as"
-		       output="${UNIT_HOME}/deploy/unitTest_fp${target-player}.swf"
-		       debug="true"
-		       static-rsls="true"
-		       use-network="false">
-			<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml" />
-			<load-config filename="${constsConfFile}" />
-			<default-size width="800" height="900" />
-			<default-background-color>0xFFFFFF</default-background-color>
-			<library-path file="${FMK_HOME}/framework/bin/fp${target-player}/flowearth.swc" />
-			<source-path path-element="${temp_src}${target-player}" />
-			<jvmarg value="${digitas.compiler.jvmargs}" />
-		</mxmlc>
-
 		<mxmlc file="${temp_src}${target-player}/fr/digitas/flowearth/perf/Performances.as"
 		       output="${UNIT_HOME}/deploy/perfTest_fp${target-player}.swf"
 		       debug="true"
 		       static-rsls="true"
+		       target-player="${target-player}"
 		       use-network="false">
 			<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml" />
 			<load-config filename="${constsConfFile}" />
@@ -193,42 +180,58 @@
 			<source-path path-element="${temp_src}${target-player}" />
 			<jvmarg value="${digitas.compiler.jvmargs}" />
 		</mxmlc>
-		
+
+		<mxmlc file="${temp_src}${target-player}/fr/digitas/flowearth/Runner.as"
+		       output="${UNIT_HOME}/deploy/unitTest_fp${target-player}.swf"
+		       debug="true"
+		       static-rsls="true"
+		       target-player="${target-player}"
+		       use-network="false">
+			<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml" />
+			<load-config filename="${constsConfFile}" />
+			<default-size width="800" height="900" />
+			<default-background-color>0xFFFFFF</default-background-color>
+			<library-path file="${FMK_HOME}/framework/bin/fp${target-player}/flowearth.swc" />
+			<source-path path-element="${temp_src}${target-player}" />
+			<jvmarg value="${digitas.compiler.jvmargs}" />
+		</mxmlc>
+
 	</target>
-	
+
 	<!-- ================================= 
 	          target: FP10_optim              
 	         ================================= -->
-		<target name="FP10_optim">
+	<target name="FP10_optim">
 
-			<copy todir="${temp_src}${target-player}" overwrite="true">
-				<fileset dir="${UNIT_HOME}/src" includes="**/*" />
-				<filterchain>
+		<copy todir="${temp_src}${target-player}" overwrite="true">
+			<fileset dir="${UNIT_HOME}/src" includes="**/*" />
+			<filterchain>
 
-					<tokenfilter>
-						<linetokenizer />
-						<replaceregex pattern="Array\/\*([\w]+)\*\/"
-						              flags="s"
-						              replace="Vector.\&lt;\1\\&gt;" />
-							
-						<replaceregex pattern="\[\]\/\*([\w]+)\*\/"
-						              flags="s"
-						              replace="new Vector.\&lt;\1\\&gt;()" />
-						
-						<replaceregex pattern="\/\*([\w]+)\(\*\/([^/*]+)\/\*\)\*\/"
-						              flags="s"
-						              replace="Vector.\&lt;\1\\&gt;(\2)" />
+				<tokenfilter>
+					<linetokenizer />
+					<replaceregex pattern="Array\/\*([\w]+)\*\/"
+					              flags="s"
+					              replace="Vector.\&lt;\1\\&gt;" />
 
-						<replacestring from="Iterator/*VIterator*/" to="VIterator"/>
+					<replaceregex pattern="\[\]\/\*([\w]+)\*\/"
+					              flags="s"
+					              replace="new Vector.\&lt;\1\\&gt;()" />
 
+					<replaceregex pattern="\/\*([\w]+)\(\*\/([^/*]+)\/\*\)\*\/"
+					              flags="s"
+					              replace="Vector.\&lt;\1\\&gt;(\2)" />
 
-					</tokenfilter>
-				</filterchain>
+					<replacestring from="Iterator/*VIterator*/"
+					               to="VIterator" />
 
 
-			</copy>
+				</tokenfilter>
+			</filterchain>
 
-		</target>
+
+		</copy>
+
+	</target>
 
 
 	<!-- - - - - - - - - - - - - - - - - - 
