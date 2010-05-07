@@ -18,9 +18,14 @@
  * ***** END LICENSE BLOCK ***** */
 
 package fr.digitas.flowearth.mvc.address.structs.intern {
+	import fr.digitas.flowearth.mvc.address.structs.abstract.AbstractPath;	
+	
+	import flash.net.URLVariables;	
+	
 	import fr.digitas.flowearth.core.IDisposable;	
 	import fr.digitas.flowearth.mvc.address.structs.INodeSystem;
-	import fr.digitas.flowearth.mvc.address.structs.Path;	
+	import fr.digitas.flowearth.mvc.address.structs.Path;
+	import fr.digitas.flowearth.bi_internal;	
 
 	/**
 	 * Path running in specific <code>INodeSystem</code>
@@ -33,8 +38,9 @@ package fr.digitas.flowearth.mvc.address.structs.intern {
 	 */
 	public class ProcessPath extends Path implements IDisposable {
 
-		public function ProcessPath( system : INodeSystem, path : String = "/" ) {
-			super( path );
+		public function ProcessPath( system : INodeSystem, segs : Array, params : URLVariables = null ) {
+			super( null, params );
+			bi_internal::precompile(segs, null, AbstractPath.ABSOLUT, 0 );
 			_system = system;
 		}
 		

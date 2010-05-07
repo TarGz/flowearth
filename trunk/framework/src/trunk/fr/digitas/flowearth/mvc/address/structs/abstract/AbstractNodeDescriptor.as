@@ -19,7 +19,7 @@
 
 package fr.digitas.flowearth.mvc.address.structs.abstract {
 	import fr.digitas.flowearth.core.IIterator;
-	import fr.digitas.flowearth.core.Iterator;
+	import fr.digitas.flowearth.core.Iterator/*INodeDescriptorIterator*/;
 	import fr.digitas.flowearth.mvc.address.structs.descriptor.INodeDescriptor;	
 
 	/**
@@ -31,7 +31,7 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 		
 		
 		public function getChilds() : IIterator {
-			return new Iterator( _childs );
+			return new Iterator/*INodeDescriptorIterator*/( _childs ); 
 		}
 		
 		public function getId() : String {

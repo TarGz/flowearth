@@ -167,7 +167,7 @@ package fr.digitas.tutorial.nodes {
 		}
 
 		private function onCbChange(event : Event) : void {
-			rootNode.activate( new Path( pathCb.selectedItem.data as String ) );
+			new Path( pathCb.selectedItem.data as String ).toNode().activate();
 		}
 
 		private function generateDesc( Id : String, childPerNode : int = 3, recurtion : uint = 1 ) : INodeDescriptor {

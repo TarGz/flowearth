@@ -17,6 +17,8 @@ package fr.digitas.tutorial.graphictools {
 			
 			stage.align = StageAlign.TOP_LEFT;
 			stage.scaleMode = StageScaleMode.NO_SCALE;
+			stage.frameRate = 60;
+			
 			
 			addChild( circleSegment1 = new Shape( ) );
 			addChild( circleSegment2 = new Shape( ) );
@@ -58,13 +60,14 @@ package fr.digitas.tutorial.graphictools {
 		private function _oef(event : Event) : void {
 			
 			circleSegment3.graphics.clear( );
-			circleSegment3.graphics.lineStyle( 1 , 0 );
+			circleSegment3.graphics.lineStyle( 2 , 0 );
 			cs3A += .08;
 			cs3B += .01;
 			
 			if( cs3A > 2 * Math.PI ) cs3A = 0;
 			if( cs3B > 2 * Math.PI ) cs3B = 0;
 			GraphicTools.drawCircleSegment( circleSegment3.graphics , 25 , cs3B , cs3A , 500 , 100 );
+			circleSegment3.graphics.lineStyle( 1 , 0 );
 			circleSegment3.graphics.beginFill( 0 , .5 );
 			GraphicTools.fillCircleSegment( circleSegment3.graphics , 20 , 25 , cs3B , cs3A , 500 , 200 );
 			

@@ -23,7 +23,11 @@ package fr.digitas.flowearth.mvc.address.structs {
 	import fr.digitas.flowearth.mvc.address.structs.system.nodeSystem;
 	import fr.digitas.flowearth.utils.VariablesTools;
 	
-	import flash.net.URLVariables;	
+	import flash.net.URLVariables;
+	
+	import fr.digitas.flowearth.bi_internal;
+	
+	use namespace bi_internal;	
 
 	/**
 	 * Concrete implementation of AbstractPath.
@@ -33,31 +37,42 @@ package fr.digitas.flowearth.mvc.address.structs {
 	 */
 	public class Path extends AbstractPath implements IPath {
 		
-		public function Path( path : String , params : URLVariables = null ) {
+		public function Path( path : String = null , params : URLVariables = null ) {
 			_system = GLOBAL_SYSTEM;
-			super( path , params );
+			if( path != null ) _solve( path );
+			if( params ) _params = params;
 		}
 
 		override public function append(path : IPath) : IPath {
-			var fpath : String = _device ? _device + DEVICE_SEP + SEPARATOR : "";
-			fpath += _path + SEPARATOR + path.getPath( );
 			var params : URLVariables = VariablesTools.concat( _params , path.getParams( ) );
-			return new Path( fpath , params ) as IPath;
+			var p : Path = new Path( null , params );
+			
+			var rb : int;
+			var cs : Array;
+			var _segLen : int = _segments.length;
+			if( (rb = ( path as Path )._rbackCount) > 0 )
+				cs = _segments.slice( 0 , _segLen - rb );
+			else
+				cs = _segments;
+			p.bi_internal::precompile( cs.concat( path.segments( ) ) , _device , _types , _rbackCount );
+			return p;
 		}
 
 		override public function clone() : IPath {
-			return new Path( toString( ) );
+			var p : Path = new Path( null , _params );
+			p.bi_internal::precompile( _segments, _device, _types, _rbackCount, _path );
+			return p;
 		}
 		
 		/**
 		 * provide a copy of internaly solved node's branch
 		 */
-		override public function nodes(until : INode = null) : Array {
-			return [].concat( _getNodes() );
+		override public function nodes(until : INode = null) : Array/*INode*/ {
+			return []/*INode*/.concat( _getNodes() );
 		}
 
 		override public function toNode() : INode {
-			var na : Array = _getNodes( );
+			var na : Array/*INode*/ = _getNodes( );
 			if( ! _exist ) return null;
 			return na[ na.length - 1 ];
 		}
@@ -81,13 +96,13 @@ package fr.digitas.flowearth.mvc.address.structs {
 		/**
 		 * lazy creation of node's branch
 		 */
-		protected function _getNodes() : Array {
+		protected function _getNodes() : Array/*INode*/ {
 			if( ! _nodes ) _nodes = _solveNodes( );
 			return _nodes;
 		}
 		
-		protected function _solveNodes() : Array {
-			
+		protected function _solveNodes() : Array/*INode*/ {
+				
 			var ref : Path;
 			
 			if( ! isAbsolute() ) 
@@ -98,7 +113,8 @@ package fr.digitas.flowearth.mvc.address.structs {
 			var segs : Array = ref.segments();
 			var currNode : INode = ref._getBaseNode( );
 			
-			var ns : Array = [ currNode ];
+			var ns : Array/*INode*/ = []/*INode*/;
+			ns.push( currNode );
 			
 			var l : int = segs.length;
 			var i : int = - 1;
@@ -121,8 +137,9 @@ package fr.digitas.flowearth.mvc.address.structs {
 		 * invalidate _nodes value, whenever the structure is modified
 		 */
 		protected function onChildAdded(event : NodeEvent) : void {
+			//if( _nodes ) return;
 			while( _nodes.length > 0 )
-				_nodes.pop( ).removeEventListener( NodeEvent.CHILD_ADDED , onChildAdded );
+				_nodes.pop( ).removeEventListener( NodeEvent.CHILD_ADDED , onChildAdded, false );
 			_nodes = null;
 		}
 
@@ -133,7 +150,7 @@ package fr.digitas.flowearth.mvc.address.structs {
 			return _device ? _system.getDevice( _device ) : _system.getDefaultDevice( );
 		}
 
-		protected var _nodes : Array;
+		protected var _nodes : Array/*INode*/;
 
 		protected var _exist : Boolean;
 

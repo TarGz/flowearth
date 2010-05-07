@@ -44,7 +44,7 @@ package fr.digitas.flowearth.mvc.address.structs {
 		 * activate the given relative path in this node. If no path given, activate this node that has effect to deactivate potentialy active childs.
 		 * @param IPath path to activate.
 		 */
-		function activate( path : IPath = null ) : void;
+		function activate( params : URLVariables = null ) : void;
 
 		/**
 		 * the child that should be activate if no child explicitely active, null if no default id defined

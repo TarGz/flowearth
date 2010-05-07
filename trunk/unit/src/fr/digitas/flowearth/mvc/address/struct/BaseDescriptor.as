@@ -19,7 +19,8 @@
 
 
 package fr.digitas.flowearth.mvc.address.struct {
-	import fr.digitas.flowearth.mvc.address.structs.abstract.AbstractNodeDescriptor;					
+	import fr.digitas.flowearth.mvc.address.structs.abstract.AbstractNodeDescriptor;
+	import fr.digitas.flowearth.mvc.address.structs.descriptor.INodeDescriptor;						
 
 	/**
 	 * @author Pierre Lepers
@@ -27,13 +28,12 @@ package fr.digitas.flowearth.mvc.address.struct {
 	public class BaseDescriptor extends AbstractNodeDescriptor {
 
 		
-		
 		public function BaseDescriptor( datas : XML ) {
 			_parse( datas );
 		}
 		
 		private function _parse(datas : XML) : void {
-			_childs = new Array( );
+			_childs = new Array/*INodeDescriptor*/( );
 			
 			if( datas == null ) return;
 			
@@ -56,9 +56,11 @@ package fr.digitas.flowearth.mvc.address.struct {
 			_defaultId = id;
 		}
 		
-		public function getChildsArray() : Array {
+		public function getChildsArray() : Array/*INodeDescriptor*/ {
 			return _childs;	
 		}
+		
+		INodeDescriptor;
 		
 	}
 }

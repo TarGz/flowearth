@@ -27,6 +27,7 @@
 	<target name="main" description="Complete build">
 		<ant antfile="${digitas.dir.antTasks}/build/build.xml" />
 		<ant antfile="${digitas.dir.fmk}/build/build.xml" />
+		<ant antfile="${digitas.dir.fmk}/docs/samples/build/build.xml" />
 		<ant antfile="${digitas.dir.fmk}/docs/tutorials/build.xml" />
 		<ant antfile="${digitas.dir.units}/build/build.xml" />
 	</target>

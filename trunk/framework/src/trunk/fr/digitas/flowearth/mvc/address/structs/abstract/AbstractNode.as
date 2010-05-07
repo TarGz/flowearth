@@ -20,7 +20,7 @@
 package fr.digitas.flowearth.mvc.address.structs.abstract {
 	import fr.digitas.flowearth.bi_internal;
 	import fr.digitas.flowearth.core.IIterator;
-	import fr.digitas.flowearth.core.Iterator;
+	import fr.digitas.flowearth.core.Iterator/*INodeIterator*/;
 	import fr.digitas.flowearth.event.FlowEventDispatcher;
 	import fr.digitas.flowearth.event.NodeEvent;
 	import fr.digitas.flowearth.mvc.address.structs.INode;
@@ -74,7 +74,6 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 	 */
 	[Event( name = "_nodeParamChange", type = "fr.digitas.flowearth.event.NodeEvent" )]
 	
-	
 	/**
 	 * Dispatched when the node is added to a parent node
 	 * 
@@ -100,7 +99,7 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 
 		
 		public function AbstractNode( descriptor : INodeDescriptor = null ) {
-			_childs = new Array( );
+			_childs = new Array/*INode*/( );
 			_cMap = new Dictionary( true );
 			if( descriptor ) 
 				describe( descriptor );
@@ -121,7 +120,7 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 		 * ABSTRACT
 		 * @private 
 		 */
-		public function activate( path : IPath = null ) : void {
+		public function activate( params : URLVariables = null ) : void {
 			// abstract, need INodeSystem
 		}
 
@@ -177,14 +176,14 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 		
 		/** @inheritDoc */
 		public function getChilds() : IIterator {
-			return new Iterator( _childs );
+			return new Iterator/*INodeIterator*/( _childs );
 		}
 
 		
 		/** @inheritDoc */
 		public function getDefaultChild() : INode {
 			if( _default && hasChild( _default ) )
-				return getChild( _default );
+				return getChild( _default ); 
 			return null;
 		}
 
@@ -235,7 +234,7 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 			if( ! traverser.enter( this ) ) return;
 			var l : int = _childs.length;
 			for (var i : int = 0; i < l ; i += 1 )
-				_childs[i].scan( traverser );
+				INode( _childs[i] ).scan( traverser );
 			traverser.leave( this );
 		}
 		
@@ -253,8 +252,10 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 			
 			while( iter.hasNext( ) ) {
 				subDesc = iter.next( ) as INodeDescriptor;
-				var node : INode = createNode( subDesc );
-				node = target.addChild( node );
+				if( target.hasChild( subDesc.getId() ) )
+					target.getChild( subDesc.getId() ).describe( subDesc );
+				else 
+					target.addChild( createNode( subDesc ) );
 			}
 		}
 
@@ -314,29 +315,35 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 
 		bi_internal function setParent( parent : INode ) : void {
 			_parent = parent;
-			dispatchEvent( new NodeEvent( NodeEvent.ADDED , this ) );
+			if( hasEventListener( NodeEvent.ADDED ) )
+				dispatchEvent( new NodeEvent( NodeEvent.ADDED , this ) );
 		}
 
 		bi_internal function setDefaultId( id : String ) : void {
 			if( _default == id ) return;
 			_default = id;
-			dispatchEvent( new NodeEvent( NodeEvent.DEFAULT_CHANGE , this , false ) );
+			if( hasEventListener( NodeEvent.DEFAULT_CHANGE ) )
+				dispatchEvent( new NodeEvent( NodeEvent.DEFAULT_CHANGE , this , false ) );
 		}
 
 		bi_internal function setParams( params : URLVariables ) : void {
+			if( _params == params ) return;
 			_params = params;
-			dispatchEvent( new NodeEvent( NodeEvent.PARAM_CHANGE , this ) );
+			if( hasEventListener( NodeEvent.PARAM_CHANGE ) )
+				dispatchEvent( new NodeEvent( NodeEvent.PARAM_CHANGE , this ) );
 		}
 		
 		bi_internal function fireCapture( event : NodeEvent ) : void {
 			if( _parent )
 				_parent.bi_internal::fireCapture( event );
-			dispatchEvent( event );
+			if( hasEventListener( event.type ) )
+				dispatchEvent( event );
 		}
 
 		
 		bi_internal function fireBubbling( event : NodeEvent ) : void {
-			dispatchEvent( event );
+			if( hasEventListener( event.type ) )
+				dispatchEvent( event );
 			if( _parent )
 				_parent.bi_internal::fireBubbling( event );
 		}
@@ -394,7 +401,7 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 		 * Childs of this node
 		 * Can be empty if node is a leaf
 		 */
-		protected var _childs : Array/*AbstractNode*/;
+		protected var _childs : Array/*INode*/;
 
 		/**
 		 * map of childs nodes by childs nodes id's

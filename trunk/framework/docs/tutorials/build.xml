@@ -27,6 +27,7 @@
 		<antcall target="batcher_events_flow" />
 		<antcall target="node_events_flow" />
 		<antcall target="layout_usage" />
+		<antcall target="graphictools" />
 
 	</target>
 

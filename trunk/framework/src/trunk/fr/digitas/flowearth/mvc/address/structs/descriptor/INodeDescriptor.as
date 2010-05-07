@@ -30,7 +30,7 @@ package fr.digitas.flowearth.mvc.address.structs.descriptor {
 		/**
 		 * return childs (INodeDescriptor) of this node
 		 */
-		function getChilds() : IIterator/*INodeDescriptor*/;
+		function getChilds() : IIterator /*INodeDescriptor*/; 
 
 		/**
 		 * the id of the node
@@ -41,6 +41,5 @@ package fr.digitas.flowearth.mvc.address.structs.descriptor {
 		 * the id of the child that should be activate if no child explicitely active, null if no default id defined
 		 */
 		function getDefaultId() : String;
-		
 	}
 }

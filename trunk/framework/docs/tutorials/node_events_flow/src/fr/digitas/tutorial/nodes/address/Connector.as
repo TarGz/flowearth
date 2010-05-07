@@ -26,11 +26,11 @@ package fr.digitas.tutorial.nodes.address {
 		private function onAdressChange(event : SWFAddressEvent) : void {
 			var url : String = SWFAddress.getValue();
 			var path : Path = new Path( url );
-			nodeSystem.getDefaultDevice().activate( path );
+			path.toNode().activate();
 		}
-		
-		
 
+		
+		
 		
 		
 		
