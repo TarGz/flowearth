@@ -18,20 +18,18 @@
  * ***** END LICENSE BLOCK ***** */
 
 package fr.digitas.flowearth.mvc.address.structs.abstract {
-	import fr.digitas.flowearth.core.IIterator;
-	import fr.digitas.flowearth.core.Iterator/*INodeDescriptorIterator*/;
 	import fr.digitas.flowearth.mvc.address.structs.descriptor.INodeDescriptor;	
 
 	/**
 	 * Basic implementation of <code>INodeDescriptor</code>
 	 * 
-	 * @author Pierre Lepers
+	 * @author Pierre Lepers 
 	 */
 	public class AbstractNodeDescriptor implements INodeDescriptor {
 		
 		
-		public function getChilds() : IIterator {
-			return new Iterator/*INodeDescriptorIterator*/( _childs ); 
+		public function getChilds() : Array {
+			return _childs; 
 		}
 		
 		public function getId() : String {
@@ -46,6 +44,6 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 		
 		protected var _defaultId : String;
 		
-		protected var _childs : Array/*INodeDescriptor*/; 
+		protected var _childs : Array; 
 	}
 }

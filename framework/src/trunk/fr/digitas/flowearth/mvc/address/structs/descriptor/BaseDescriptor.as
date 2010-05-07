@@ -1,7 +1,5 @@
 package fr.digitas.flowearth.mvc.address.structs.descriptor {
-	import fr.digitas.flowearth.core.Iterator;	
-	import fr.digitas.flowearth.mvc.address.structs.descriptor.INodeDescriptor;
-	import fr.digitas.flowearth.core.IIterator;	
+	import fr.digitas.flowearth.mvc.address.structs.descriptor.INodeDescriptor;		
 
 	/**
 	 * @author Pierre Lepers
@@ -23,8 +21,8 @@ package fr.digitas.flowearth.mvc.address.structs.descriptor {
 			return defaultId;
 		}
 		
-		public function getChilds() : IIterator {
-			return new Iterator( childs );
+		public function getChilds() : Array {
+			return childs;
 		}
 		
 		public function getId() : String {
