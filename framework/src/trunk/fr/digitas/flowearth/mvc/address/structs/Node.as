@@ -24,8 +24,10 @@ package fr.digitas.flowearth.mvc.address.structs {
 	import fr.digitas.flowearth.mvc.address.structs.abstract.AbstractPath;
 	import fr.digitas.flowearth.mvc.address.structs.descriptor.INodeDescriptor;
 	import fr.digitas.flowearth.mvc.address.structs.intern.ProcessPath;
-	import fr.digitas.flowearth.mvc.address.structs.proxy.WeakNode;	
-	
+	import fr.digitas.flowearth.mvc.address.structs.proxy.WeakNode;
+
+	import flash.net.URLVariables;	
+
 	/**
 	 * Dispatched when activation of any descendant or this node itself change
 	 * 
@@ -70,9 +72,7 @@ package fr.digitas.flowearth.mvc.address.structs {
 	 * @eventType NodeEvent.CHILD_CHANGE
 	 */
 	[Event( name = "_child_nodeChange", type = "fr.digitas.flowearth.event.NodeEvent" )]
-	
-	
-	
+
 	/**
 	 * Concrete implementation of AbstractNode
 	 * Handle activation/deactivation action of node's branch, result of sync with a model (eg. browser Url segment) 
@@ -84,38 +84,30 @@ package fr.digitas.flowearth.mvc.address.structs {
 		public function Node( descriptor : INodeDescriptor = null ) {
 			super( descriptor );
 		}
-		
+
 		/** @inheritDoc */
 		override public function get activePath() : IPath {
 			return _activePath;
 		}
 
 		/** @inheritDoc */
-		override public function activate( path : IPath = null ) : void {
-			
-			if( path ) {
-				if( ! path.isAbsolute( ) ) 
-					path = path.makeAbsolute( this.path( ) );
-				path.toNode( ).activate( );
-				return;
-			}
+		override public function activate( params : URLVariables = null ) : void {
 
-			if( getDefaultChild() ) {
-				getDefaultChild().activate();	
+			if( _default && hasChild( _default ) ) {
+				getChild( _default ).activate( params );	
 				return;
 			}
 			
 			
 			var l : int, i : int;
 			var common : INode = this;
-			var n : INode;
-			var achain : Array = [];
-			var uchain : Array = [];
-			var dchain : Array;
-			var chain : Array = uchain;
+			var n : Node;
+			var achain : Array /*Node*/ = [] /*Node*/;
+			var uchain : Array /*Node*/ = []/*Node*/;
+			var dchain : Array/*Node*/;
+			var chain : Array /*Node*/ = uchain;
 			var cross : INode;
-			var ps : String = "";
-			
+			var psegs : Array = [];
 			
 			while( common ) {
 				chain.push( common );
@@ -132,22 +124,22 @@ package fr.digitas.flowearth.mvc.address.structs {
 			if( isActive( ) ) {
 				var cc : INode = getCurrentChild( );
 				
-				if( !cc ) return;
+				if( ! cc ) return;
 				
 				l = chain.length;
 				while ( -- l > - 1 ) {
 					n = chain[ l ];
-					n.bi_internal::_activate( new ProcessPath( n , ps ) );
-					ps = AbstractPath.SEPARATOR + n.getId( ) + ps;
+					n.bi_internal::_activate( new ProcessPath( n, psegs, params ) );
+					psegs.unshift( n.getId );
 				}
 				
 				chain = chain.concat( cc.bi_internal::_deactivate( ) );
 				
 				i = - 1;
 				l = chain.length;
-				while( ++ i < l ) 	chain[ i ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE , this , true ) );
+				while( ++ i < l ) 	if( chain[i].hasEventListener( NodeEvent.PATH_CHANGE ) ) chain[ i ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE, this, true ) );
 				i --;
-				while( -- i > -1 ) 	chain[ i ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE , this , false ) );
+				while( -- i > - 1 ) 	if( chain[i].hasEventListener( NodeEvent.PATH_CHANGE ) ) chain[ i ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE, this, false ) );
 				return;
 			}
 			
@@ -156,64 +148,62 @@ package fr.digitas.flowearth.mvc.address.structs {
 
 			cross = cross.parent( );
 			
-//			trace( "uchain 1" , uchain );
-//			trace( "achain 1" , achain );
-//			trace( "cross" , cross );
-			
 			
 			// deactivate old branch
 			( cross as Node ).pendingSwitch( );
-
-			if( cross && cross.getCurrentChild( ) ) {
-				dchain = cross.getCurrentChild( ).bi_internal::_deactivate( );
-//				dchain.reverse( );
+			
+			var ccc : INode;
+			if( cross && ( ccc = cross.getCurrentChild( ) ) ) {
+				dchain = ccc.bi_internal::_deactivate( );
 			}
 			
 			// activate whole branch (common and new one)
 			l = chain.length;
 			while ( -- l > - 1 ) {
 				n = chain[ l ];
-				n.bi_internal::_activate( new ProcessPath( n , ps ) );
-				ps = AbstractPath.SEPARATOR + n.getId( ) + ps;
+				n.bi_internal::_activate( new ProcessPath( n, psegs, params ) );
+				psegs.unshift( n.getId );
 			}
 			
 			
 			// dispatch PATH_CHANGE (capture) in common branch
 			l = achain.length;
 			i = - 1;
-			while( ++ i < l ) achain[ i ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE , this , true ) );
+			while( ++ i < l ) if( achain[i].hasEventListener( NodeEvent.PATH_CHANGE ) ) achain[ i ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE, this, true ) );
 			
-			cross.dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE , this , true ) );
+			if( cross.hasEventListener( NodeEvent.PATH_CHANGE ) ) 
+				cross.dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE, this, true ) );
 			
 			// dispatch PATH_CHANGE in old branch
 			if( dchain ) {
 				l = dchain.length;
 				i = - 1;
 				while( ++ i < l ) 
-					dchain[ i ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE , this , true ) );
+					if( dchain[i].hasEventListener( NodeEvent.PATH_CHANGE ) ) dchain[ i ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE, this, true ) );
 				i --;
-				while( -- i > -1 ) 
-					dchain[ i ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE , this , false ) );
+				while( -- i > - 1 ) 
+					if( dchain[i].hasEventListener( NodeEvent.PATH_CHANGE ) ) dchain[ i ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE, this, false ) );
 			}
 			
 			// dispatch change in newly activated branch
 			l = uchain.length;
 			i = 0;
 			while( ++ i < l ) {
-				uchain[ i ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE , this , true ) );
-				uchain[ i ].dispatchEvent( new NodeEvent( NodeEvent.CHANGE , this , true ) );
+				if( uchain[i].hasEventListener( NodeEvent.PATH_CHANGE ) ) uchain[ i ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE, this, true ) );
+				if( uchain[i].hasEventListener( NodeEvent.CHANGE ) ) uchain[ i ].dispatchEvent( new NodeEvent( NodeEvent.CHANGE, this, true ) );
 			}
 			i --;
 			while( -- i > 0 ) {
-				uchain[ i ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE , this , false ) );
-				uchain[ i ].dispatchEvent( new NodeEvent( NodeEvent.CHANGE , this , false ) );
+				if( uchain[i].hasEventListener( NodeEvent.PATH_CHANGE ) ) uchain[ i ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE, this, false ) );
+				if( uchain[i].hasEventListener( NodeEvent.CHANGE ) ) uchain[ i ].dispatchEvent( new NodeEvent( NodeEvent.CHANGE, this, false ) );
 			}
 
-			cross.dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE , this , false ) );
+			if( cross.hasEventListener( NodeEvent.PATH_CHANGE ) ) 
+				cross.dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE, this, false ) );
 			
 			// dispatch PATH_CHANGE (capture) in common branch
 			l = achain.length;
-			while( -- l > - 1 ) achain[ l ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE , this , false ) );
+			while( -- l > - 1 ) if( achain[l].hasEventListener( NodeEvent.PATH_CHANGE ) ) achain[ l ].dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE, this, false ) );
 		}
 
 		/**
@@ -234,19 +224,23 @@ package fr.digitas.flowearth.mvc.address.structs {
 			var pStr : String = pchain.shift( ) + AbstractPath.DEVICE_SEP + pchain.join( AbstractPath.SEPARATOR );
 			return new Path( pStr );
 		}
-		
+
 		/** @inheritDoc */
 		override public function getCurrentChild() : INode {
-			for each (var n : INode in _childs) 
+			var l : int = _childs.length;
+			var n : INode;
+			for (var i : int = 0; i < l ; i ++) {
+				n = _childs[ i ];
 				if( n.isActive( ) ) return n;
+			}
 			return null;
 		}
-		
+
 		/** @inheritDoc */
 		override public function addChild(node : INode) : INode {
 			var result : INode = super.addChild( node );
-			result.addEventListener( NodeEvent.CHANGE , onChildChange , true , - 20000 );
-			result.addEventListener( NodeEvent.CHANGE , onChildChange , false , - 20000 );
+			result.addEventListener( NodeEvent.CHANGE, onChildChange, true, - 20000 );
+			result.addEventListener( NodeEvent.CHANGE, onChildChange, false, - 20000 );
 			return result;
 		}
 
@@ -263,18 +257,19 @@ package fr.digitas.flowearth.mvc.address.structs {
 			var n : INode = new WeakNode( this );
 			return n;
 		}
-		
+
 		/** @inheritDoc */
 		bi_internal function _activate( path : ProcessPath ) : void {
 			if( _activePath ) _activePath.dispose( );
 			_activePath = path;
 			_active = true;
-			//dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE , this , false ) );
+			bi_internal::setParams( path.getParams( ) );
 		}
+
 		/** @inheritDoc */
-		bi_internal function _deactivate() : Array {
-			//debug
-			if( ! _active ) throw new Error( "bi.mvc.address.structs.Node - _deactivate : already unactive node "+getId() );
+		bi_internal function _deactivate() : Array/*Node*/ {
+			
+			if( ! _active ) throw new Error( "bi.mvc.address.structs.Node - _deactivate : already unactive node " + getId( ) );
 			
 			var target : INode = _activePath.toNode( );
 			_active = false;
@@ -282,21 +277,22 @@ package fr.digitas.flowearth.mvc.address.structs {
 			_activePath.dispose( );
 			_activePath = null;
 			
-
-//			dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE , this , true ) );
-			dispatchEvent( new NodeEvent( NodeEvent.CHANGE , target , true ) );
+			if( hasEventListener( NodeEvent.CHANGE ) )
+				dispatchEvent( new NodeEvent( NodeEvent.CHANGE, target, true ) );
+			bi_internal::setParams( null );
 			
-			var res : Array;
+			var res : Array/*Node*/;
 			var cc : INode = getCurrentChild( );
 			if( cc ) {
 				res = cc.bi_internal::_deactivate( );
-//				dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE , this , false ) );
-				dispatchEvent( new NodeEvent( NodeEvent.CHANGE , target , false ) );
-			} else res = [];
+				if( hasEventListener( NodeEvent.CHANGE ) )
+					dispatchEvent( new NodeEvent( NodeEvent.CHANGE, target, false ) );
+			} else res = []/*Node*/;
 			
 			res.unshift( this );
 			return res;
 		}
+
 		/** @inheritDoc */
 		override protected function createNode( descriptor : INodeDescriptor ) : INode {
 			return new Node( descriptor );
@@ -305,12 +301,12 @@ package fr.digitas.flowearth.mvc.address.structs {
 		private function onChildChange(event : NodeEvent) : void {
 			if( ! event.nodeCurrentTarget.isActive( ) && _pendingSwitch ) return;
 			_pendingSwitch = false;
-			dispatchEvent( new NodeEvent( NodeEvent.CHILD_CHANGE , this , event.capureFlow ) );
+			if( hasEventListener( NodeEvent.CHILD_CHANGE ) )
+				dispatchEvent( new NodeEvent( NodeEvent.CHILD_CHANGE, this, event.capureFlow ) );
 		}
 
 		protected var _activePath : ProcessPath;
-		
+
 		protected var _pendingSwitch : Boolean = false;
-		
 	}
 }

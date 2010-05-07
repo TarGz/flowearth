@@ -33,7 +33,7 @@ package fr.digitas.flowearth.mvc.address.structs {
 		 * return an array of string corresponding to list of child nodees id's
 		 * @return Array an array of string
 		 */
-		function segments() : Array/*String*/;
+		function segments() : Array;
 
 		function nodes( until : INode = null ) : Array/*INode*/;
 

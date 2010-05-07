@@ -16,9 +16,9 @@
 	<property name="FMK_HOME" location="${basedir}" />
 	<loadproperties srcfile="${basedir}/build.config" />
 	<loadproperties srcfile="${basedir}/.properties" />
-	
+
 	<taskdef resource="flexTasks.tasks"
-		         classpath="${digitas.flex}/ant/lib/flexTasks.jar" />
+	         classpath="${digitas.flex}/ant/lib/flexTasks.jar" />
 
 	<!-- ================================= 
           target: main              
@@ -37,6 +37,7 @@
          ================================= -->
 	<target name="FP9 Build" depends="init" description="build FP9 binaries">
 		<property name="target-player" value="9" />
+		<antcall target="_post_Build" />
 		<antcall target="_Build" inheritall="true" />
 	</target>
 
@@ -45,6 +46,8 @@
          ================================= -->
 	<target name="FP10 Build" depends="init" description="build FP10 binaries">
 		<property name="target-player" value="10" />
+		<antcall target="_post_Build" />
+		<antcall target="FP10_optim" inheritall="true" />
 		<antcall target="_Build" inheritall="true" />
 	</target>
 
@@ -53,6 +56,7 @@
           target: _Build                      
          - - - - - - - - - - - - - - - - - -->
 	<target name="_Build">
+		<antcall target="_pre_Build" />
 		<antcall target="_build_unit_tests" />
 	</target>
 
@@ -69,7 +73,7 @@
 		       use-network="false">
 			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
 			<source-path path-element="${UNIT_HOME}/src" />
-			<jvmarg value="${digitas.compiler.jvmargs}"/>
+			<jvmarg value="${digitas.compiler.jvmargs}" />
 		</mxmlc>
 		<mxmlc file="${UNIT_HOME}/src/fr/digitas/flowearth/site/Preload.as"
 		       output="${UNIT_HOME}/deploy/assets/swf/preload.swf"
@@ -78,7 +82,7 @@
 		       use-network="false">
 			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
 			<source-path path-element="${UNIT_HOME}/src" />
-			<jvmarg value="${digitas.compiler.jvmargs}"/>
+			<jvmarg value="${digitas.compiler.jvmargs}" />
 		</mxmlc>
 		<mxmlc file="${UNIT_HOME}/src/fr/digitas/flowearth/site/Rsl.as"
 		       output="${UNIT_HOME}/deploy/assets/swf/rsl.swf"
@@ -87,7 +91,7 @@
 		       use-network="false">
 			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
 			<source-path path-element="${UNIT_HOME}/src" />
-			<jvmarg value="${digitas.compiler.jvmargs}"/>
+			<jvmarg value="${digitas.compiler.jvmargs}" />
 		</mxmlc>
 
 
@@ -141,12 +145,28 @@
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
+          target: _pre_Build                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="_pre_Build" unless="swc.uptodate">
+		<copy todir="${temp_src}${target-player}">
+			<fileset dir="${UNIT_HOME}/src" includes="**/*" />
+		</copy>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: _post_Build                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="_post_Build" unless="swc.uptodate">
+		<delete dir="${temp_src}${target-player}" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
           target: _build_unit_tests                      
          - - - - - - - - - - - - - - - - - -->
 	<target name="_build_unit_tests" depends="init">
 
 
-		<mxmlc file="${UNIT_HOME}/src/fr/digitas/flowearth/Runner.as"
+		<mxmlc file="${temp_src}${target-player}/fr/digitas/flowearth/Runner.as"
 		       output="${UNIT_HOME}/deploy/unitTest_fp${target-player}.swf"
 		       debug="true"
 		       static-rsls="true"
@@ -156,10 +176,59 @@
 			<default-size width="800" height="900" />
 			<default-background-color>0xFFFFFF</default-background-color>
 			<library-path file="${FMK_HOME}/framework/bin/fp${target-player}/flowearth.swc" />
-			<source-path path-element="${UNIT_HOME}/src" />
-			<jvmarg value="${digitas.compiler.jvmargs}"/>
+			<source-path path-element="${temp_src}${target-player}" />
+			<jvmarg value="${digitas.compiler.jvmargs}" />
 		</mxmlc>
+
+		<mxmlc file="${temp_src}${target-player}/fr/digitas/flowearth/perf/Performances.as"
+		       output="${UNIT_HOME}/deploy/perfTest_fp${target-player}.swf"
+		       debug="true"
+		       static-rsls="true"
+		       use-network="false">
+			<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml" />
+			<load-config filename="${constsConfFile}" />
+			<default-size width="800" height="900" />
+			<default-background-color>0xFFFFFF</default-background-color>
+			<library-path file="${FMK_HOME}/framework/bin/fp${target-player}/flowearth.swc" />
+			<source-path path-element="${temp_src}${target-player}" />
+			<jvmarg value="${digitas.compiler.jvmargs}" />
+		</mxmlc>
+		
 	</target>
+	
+	<!-- ================================= 
+	          target: FP10_optim              
+	         ================================= -->
+		<target name="FP10_optim">
+
+			<copy todir="${temp_src}${target-player}" overwrite="true">
+				<fileset dir="${UNIT_HOME}/src" includes="**/*" />
+				<filterchain>
+
+					<tokenfilter>
+						<linetokenizer />
+						<replaceregex pattern="Array\/\*([\w]+)\*\/"
+						              flags="s"
+						              replace="Vector.\&lt;\1\\&gt;" />
+							
+						<replaceregex pattern="\[\]\/\*([\w]+)\*\/"
+						              flags="s"
+						              replace="new Vector.\&lt;\1\\&gt;()" />
+						
+						<replaceregex pattern="\/\*([\w]+)\(\*\/([^/*]+)\/\*\)\*\/"
+						              flags="s"
+						              replace="Vector.\&lt;\1\\&gt;(\2)" />
+
+						<replacestring from="Iterator/*VIterator*/" to="VIterator"/>
+
+
+					</tokenfilter>
+				</filterchain>
+
+
+			</copy>
+
+		</target>
 
 
 	<!-- - - - - - - - - - - - - - - - - - 
@@ -167,6 +236,7 @@
          - - - - - - - - - - - - - - - - - -->
 	<target name="init">
 		<property name="UNIT_HOME" location="${FMK_HOME}/unit" />
+		<property name="temp_src" location="${UNIT_HOME}/tempsrc" />
 		<property name="constsConfFile"
 		          location="${UNIT_HOME}/build/compile_consts.xml" />
 	</target>

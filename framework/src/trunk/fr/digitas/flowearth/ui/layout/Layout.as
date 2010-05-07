@@ -356,7 +356,7 @@ package fr.digitas.flowearth.ui.layout {
 		
 		
 		private function _buildDl() : void {
-			_displayList = [];
+			_displayList = []/*ILayoutItem*/;
 			var child : DisplayObject;
 			var iter : IIterator = _indexMap.getIterator();
 			

@@ -18,11 +18,14 @@
  * ***** END LICENSE BLOCK ***** */
 
 package fr.digitas.flowearth.mvc.address.structs.abstract {
+	import fr.digitas.flowearth.bi_internal;
 	import fr.digitas.flowearth.mvc.address.structs.INode;
 	import fr.digitas.flowearth.mvc.address.structs.IPath;
 	import fr.digitas.flowearth.utils.VariablesTools;
 	
-	import flash.net.URLVariables;	
+	import flash.net.URLVariables;
+	
+	use namespace bi_internal;
 
 	/**
 	 * Base class for IPath object.
@@ -50,11 +53,20 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 		
 		
 		/** @inheritDoc */
-		public function AbstractPath( path : String , params : URLVariables = null ) {
-			_solve( path );
-			if( params ) _params = params;
+		public function AbstractPath(  ) {
+		}
+		
+		bi_internal function precompile( segs : Array, device : String, types : int, bcount : int, path : String = null ) : void {
+			_segments = [].concat( segs );
+			_device = device;
+			_types = types;
+			_rbackCount = bcount;
+			_path = path;
+			if( !_path )_normalize();
 		}
 
+		
+		
 		/**
 		 * return the canonical form of this path
 		 */
@@ -72,7 +84,7 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 		}
 
 		/** @inheritDoc */
-		public function nodes(until : INode = null) : Array {
+		public function nodes(until : INode = null) : Array/*INode*/ {
 			// abstract, need nodeSystem
 			return null;
 		}
@@ -196,23 +208,16 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 			var l : int = psegs.length;
 			var sl : int = _segments.length;
 			var _p : String = REL_STRING + SEPARATOR;
-			var ci : int = 0;
+			var ci : int = -1;
 			
-			while( psegs[ci] == _segments[ci] && ci ++ < l ) true;
+			
+			
+			while( ++ci < l && ci < sl && psegs[ci] == _segments[ci] ) true;
 			while( -- l >= ci )	_p += BACK_STRING + SEPARATOR;
 			while( ++ l < sl )	_p += _segments[l] + SEPARATOR;
 			
 			return _p;
 		}
-
-		
-		protected var _path : String;
-
-		protected var _device : String;
-
-		protected var _params : URLVariables;
-
-		protected var _types : int = 0;
 
 		
 		protected function _split() : void {
@@ -286,7 +291,7 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 				throw new Error( "Path - the method is only implemented on absolute path" );
 		}
 
-		private function _solve(path : String) : void {
+		protected function _solve(path : String) : void {
 			_path = path;
 			_split( );
 			_segments = _buildSegments( );
@@ -294,8 +299,16 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 		}
 
 		
+		protected var _path : String;
+
+		protected var _device : String;
+
+		protected var _params : URLVariables;
+
+		protected var _types : int = 0;
+		
 		protected var _segments : Array;
 
-		internal var _rbackCount : int;
+		bi_internal var _rbackCount : int;
 	}
 }

@@ -90,7 +90,6 @@ package fr.digitas.flowearth.mvc.address.structs.connector {
 			
 			url = url.replace( STRIP_PATH, "" );
 			SWFAddress.setValue( url );
-			SWFAddress.setTitle( url );
 		}
 		
 		protected function onAddressChange( event : SWFAddressEvent ) : void {
@@ -164,12 +163,12 @@ class ActivationBuffer {
 	internal function apply( path : IPath ) : void {
 		
 		if( path.nodeExist() ) {
-			path.toNode().activate();
+			path.toNode().activate( path.getParams() );
 			_pendingPath = null;
 		} else {
 			_pendingPath = path;
 			_lock = true;
-			path.cleanup().toNode().activate();
+			path.cleanup().toNode().activate( path.getParams() );
 		}
 		_lock = false;
 	}

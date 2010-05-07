@@ -56,3 +56,9 @@ v2.5.216
 	
 v2.5.224
 	fix SWFAddressConnector bug (when register multiple nodes)
+
+v2.5.291
+	fp10 optimizations
+	huge node construction optimization
+	add perftests in unit
+	

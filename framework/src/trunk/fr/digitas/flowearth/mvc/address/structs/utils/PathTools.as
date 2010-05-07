@@ -9,7 +9,7 @@ package fr.digitas.flowearth.mvc.address.structs.utils {
 
 		public static function removeDefaultPart( path : IPath ) : IPath {
 			
-			var segs : Array =  path.nodes();
+			var segs : Array/*INode*/ =  path.nodes();
 			var len : int = segs.length;
 			var ilen : int = len;
 			var n : INode;

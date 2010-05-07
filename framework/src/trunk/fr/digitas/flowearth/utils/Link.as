@@ -109,7 +109,7 @@ package fr.digitas.flowearth.utils {
 			} 
 			else if( _type == INT ) {
 				var path : Path = new Path( src, params );
-				path.toNode( ).activate( );
+				path.toNode( ).activate( path.getParams() );
 			} else {
 				throw new ArgumentError( "fr.digitas.flowearth.utils.Link 'type' value is not valid : " + _type );
 			}
