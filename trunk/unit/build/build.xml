@@ -37,8 +37,8 @@
          ================================= -->
 	<target name="FP9 Build" depends="init" description="build FP9 binaries">
 		<property name="target-player" value="9" />
-		<antcall target="_post_Build" />
 		<antcall target="_Build" inheritall="true" />
+		<antcall target="_post_Build" />
 	</target>
 
 	<!-- ================================= 
@@ -46,9 +46,9 @@
          ================================= -->
 	<target name="FP10 Build" depends="init" description="build FP10 binaries">
 		<property name="target-player" value="10" />
-		<antcall target="_post_Build" />
 		<antcall target="FP10_optim" inheritall="true" />
 		<antcall target="_Build" inheritall="true" />
+		<antcall target="_post_Build" />
 	</target>
 
 
