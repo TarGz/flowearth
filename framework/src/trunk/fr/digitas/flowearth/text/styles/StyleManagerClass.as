@@ -18,8 +18,22 @@
  * ***** END LICENSE BLOCK ***** */
 
 package fr.digitas.flowearth.text.styles {
+
 	import flash.text.TextField;
 	import flash.utils.Dictionary;
+
+	/*FDT_IGNORE*/
+	/*-FP10*/
+	import flashx.textLayout.conversion.TextConverter;
+	import flashx.textLayout.conversion.ITextImporter;
+	import flashx.textLayout.elements.TextFlow;
+	/*FP10-*/
+	/*FDT_IGNORE*/
+
+
+	
+
+	
 
 	/**
 	 * @author Pierre Lepers
@@ -58,6 +72,22 @@ package fr.digitas.flowearth.text.styles {
 					tf.htmlText = "<"+qn.localName.toLowerCase()+ ">" + htmlText + "</"+qn.localName.toLowerCase()+ ">";
 			}
 		}
+		
+		/*FDT_IGNORE*/
+		/*-FP10*/
+		public function getHtmlTlf( styleName : Object, htmlText : String ) : TextFlow {
+			var qn : QName = new QName( styleName );
+			var advCss : AdvancedStyleSheet = getSpace( qn ).findCss( qn.localName );
+			var advFmt : AdvancedFormat = advCss.getStyle( qn.localName );
+			var _tlfImporter : ITextImporter = TextConverter.getImporter( TextConverter.TEXT_FIELD_HTML_FORMAT, advFmt.getTlfConfig() );
+			var _tf : TextFlow = _tlfImporter.importToFlow( htmlText );
+			_tf.formatResolver = advCss.getTlfFormatResolver();
+			_tf.hostFormat = advFmt.getTlfFormat();
+			return _tf;
+		}
+
+		/*FP10-*/
+		/*FDT_IGNORE*/
 
 		
 		public function applyFormat( tf : TextField, styleName : Object ) : void {
@@ -146,6 +176,12 @@ package fr.digitas.flowearth.text.styles {
 		}
 		
 		private static var _instance : StyleManagerClass;
+		
+		/*FDT_IGNORE-*/
+		/*-FP10*/
+		//private static const _tlfImporter : ITextImporter = TextConverter.getImporter( TextConverter.TEXT_FIELD_HTML_FORMAT,  );
+		/*FP10-*/
+		/*FDT_IGNORE-*/
 		
 	}
 }

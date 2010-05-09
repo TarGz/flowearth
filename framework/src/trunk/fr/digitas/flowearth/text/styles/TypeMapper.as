@@ -18,7 +18,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 package fr.digitas.flowearth.text.styles {
-	import flash.utils.Dictionary;				
+	import flash.utils.Dictionary;
 
 	/**
 	 * @author Pierre Lepers
@@ -26,25 +26,43 @@ package fr.digitas.flowearth.text.styles {
 	final public class TypeMapper {
 
 
-		public static function transtype( prop : String, value : String ) : * {
-			return ( _map[ prop ] || _null_transtyper as Object )( value );
+		public static function transtype( prop : String, value : String ) : TypeMapping {
+			var mdata : MapData = _map[ prop ];
+			if( mdata )
+				return mdata.getMapping( value );
+			return null;
 		}
 		
 		
 		private static var _isinit : Boolean = _init();
 		
 		private static function _init() : Boolean {
+			
+			
 			_map = new Dictionary();
+			
+			trace( _int_transtyper );
+			trace( _int_transtyper( "2000" ) );
+			trace( _map );
+			trace( MapData );
+			trace( TypeMapping );
+			trace( TypeMapping.STYLESHEET );
+			trace( new MapData( TypeMapping.STYLESHEET, _int_transtyper ) );
+
+
+			//_____________________________________________________________________________
+			//																	 STYLESHEET
+			
 			// INT
 			_map[ "maxChars" ] =
 			_map[ "scrollH" ] =
 			_map[ "scrollV" ] =
-			_map[ "tabIndex" ] = _int_transtyper;
+			_map[ "tabIndex" ] = new MapData( TypeMapping.STYLESHEET, _int_transtyper );
 			
 			// UINT
 			_map[ "borderColor" ] =
-			_map[ "textColor" ] =
-			_map[ "backgroundColor" ] = _uint_transtyper;
+			_map[ "textColor" ] = new MapData( TypeMapping.STYLESHEET, _uint_transtyper );
+			//_map[ "backgroundColor" ] = 
 				
 			// NUMBER	
 			_map[ "alpha" ] =
@@ -56,7 +74,7 @@ package fr.digitas.flowearth.text.styles {
 			_map[ "thickness" ] =
 			_map[ "width" ] =
 			_map[ "x" ] =
-			_map[ "y" ] = _number_transtyper;
+			_map[ "y" ] = new MapData( TypeMapping.STYLESHEET, _number_transtyper );
 			
 			// BOOL
 			_map[ "background" ] =
@@ -73,7 +91,7 @@ package fr.digitas.flowearth.text.styles {
 			_map[ "tabEnabled" ] =
 			_map[ "useRichTextClipboard" ] =
 			_map[ "visible" ] =
-			_map[ "wordWrap" ] = _boolean_transtyper;
+			_map[ "wordWrap" ] = new MapData( TypeMapping.STYLESHEET, _boolean_transtyper );
 				
 			// STRING
 			_map[ "antiAliasType" ] =
@@ -84,19 +102,96 @@ package fr.digitas.flowearth.text.styles {
 			_map[ "name" ] =
 			_map[ "restrict" ] =
 			_map[ "text" ] =
-			_map[ "type" ] = _string_transtyper;
+			_map[ "type" ] = new MapData( TypeMapping.STYLESHEET, _string_transtyper );
+
+			_map[ "backgroundColor" ] = new MapData( TypeMapping.TLF_FORMAT | TypeMapping.STYLESHEET, _uint_transtyper );
 			
-			// FILTERS
-//			_map[ "filters" ] = _filters_transtyper;
 			
-			// BitmapFilter
-			//_map[ "dropShadow"
+			/*-FP10*/
+
+			//_____________________________________________________________________________
+			//																	 TLF_CONFIG
+			
+			//BOOL
+			_map["enableAccessibility"] = 
+			_map["manageEnterKey"] = 
+			_map["manageTabKey"] = 
+			_map["releaseLineCreationData"] = new MapData( TypeMapping.TLF_CONFIG, _boolean_transtyper );
+			
+			//STRING
+			_map["overflowPolicy"] = new MapData( TypeMapping.TLF_CONFIG, _string_transtyper );
+			
+			//NUMBER
+			_map["scrollDragDelay"] = 
+			_map["scrollDragPixels"] = 
+			_map["scrollMouseWheelMultiplier"] = 
+			_map["scrollPagePercentage"] = new MapData( TypeMapping.TLF_CONFIG, _number_transtyper );
+			
+			
+			//_____________________________________________________________________________
+			//																	 TLF_FORMAT
+
+			
+			_map[ "alignmentBaseline" ] =
+			_map[ "backgroundAlpha" ] =
+			_map[ "baselineShift" ] =
+			_map[ "blockProgression" ] =
+			_map[ "breakOpportunity" ] =
+			_map[ "cffHinting" ] =
+			_map[ "color" ] =
+			_map[ "columnCount" ] =
+			_map[ "columnGap" ] =
+			_map[ "columnWidth" ] =
+			_map[ "digitCase" ] =
+			_map[ "digitWidth" ] =
+			_map[ "direction" ] =
+			_map[ "dominantBaseline" ] =
+			_map[ "firstBaselineOffset" ] =
+			_map[ "fontFamily" ] =
+			_map[ "fontLookup" ] =
+			_map[ "fontSize" ] =
+			_map[ "fontStyle" ] =
+			_map[ "fontWeight" ] =
+			_map[ "justificationRule" ] =
+			_map[ "justificationStyle" ] =
+			_map[ "kerning" ] =
+			_map[ "leadingModel" ] =
+			_map[ "ligatureLevel" ] =
+			_map[ "lineBreak" ] =
+			_map[ "lineHeight" ] =
+			_map[ "lineThrough" ] =
+			_map[ "locale" ] =
+			_map[ "paddingBottom" ] =
+			_map[ "paddingLeft" ] =
+			_map[ "paddingRight" ] =
+			_map[ "paddingTop" ] =
+			_map[ "paragraphEndIndent" ] =
+			_map[ "paragraphSpaceAfter" ] =
+			_map[ "paragraphSpaceBefore" ] =
+			_map[ "paragraphStartIndent" ] =
+			_map[ "renderingMode" ] =
+			_map[ "tabStops" ] =
+			_map[ "textAlign" ] =
+			_map[ "textAlignLast" ] =
+			_map[ "textAlpha" ] =
+			_map[ "textDecoration" ] =
+			_map[ "textIndent" ] =
+			_map[ "textJustify" ] =
+			_map[ "textRotation" ] =
+			_map[ "trackingLeft" ] =
+			_map[ "trackingRight" ] =
+			_map[ "typographicCase" ] =
+			_map[ "verticalAlign" ] =
+			_map[ "whiteSpaceCollapse" ] = new MapData( TypeMapping.TLF_FORMAT, _string_transtyper );
+			
+			/*FP10-*/
 			
 			
 			
 			_isinit;
 			return true;
 		}
+		
 		
 		//_____________________________________________________________________________
 		//																	TRANSTYPERS
@@ -123,11 +218,6 @@ package fr.digitas.flowearth.text.styles {
 
 		private static function _string_transtyper( value : String ) : String {
 			return value;
-		}
-
-		private static function _null_transtyper( value : String ) : String {
-			return null;
-			value;
 		}
 		
 		

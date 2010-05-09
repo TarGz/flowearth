@@ -1,0 +1,18 @@
+
+.my_style
+{
+	fontSize: 12;
+	fontFamily: Arial;
+	whiteSpaceCollapse: collapse;
+}
+
+
+.title {
+    color: #000000;
+	fontSize: 18;
+}
+
+.redbig {
+    color: #FF0000;
+	fontSize: 18;
+}

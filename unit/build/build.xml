@@ -46,7 +46,7 @@
          ================================= -->
 	<target name="FP10 Build" depends="init" description="build FP10 binaries">
 		<property name="target-player" value="10" />
-		<antcall target="FP10_optim" inheritall="true" />
+		<!--antcall target="FP10_optim" inheritall="true" /-->
 		<antcall target="_Build" inheritall="true" />
 		<antcall target="_post_Build" />
 	</target>

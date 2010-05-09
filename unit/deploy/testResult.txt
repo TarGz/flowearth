@@ -1,0 +1,32 @@
+flowearthv2.5.224  -  FP9
+node description 1 : 56 ms
+node description 2 : 252 ms
+500 activations : 99 ms
+constructorTest 1 : 4 ms
+constructorTest 2 : 5 ms
+appendTest : 3 ms
+fill array : 100 ms
+split cast in vector : 6 ms
+join : 9 ms
+
+flowearthv2.5.224  -  FP9
+node description 1 : 57 ms
+node description 2 : 272 ms
+500 activations : 100 ms
+constructorTest 1 : 3 ms
+constructorTest 2 : 4 ms
+appendTest : 2 ms
+fill array : 80 ms
+split cast in vector : 6 ms
+join : 9 ms
+
+flowearthv2.5.224  -  FP9
+node description 1 : 56 ms
+node description 2 : 264 ms
+500 activations : 100 ms
+constructorTest 1 : 4 ms
+constructorTest 2 : 3 ms
+appendTest : 3 ms
+fill array : 83 ms
+split cast in vector : 7 ms
+join : 10 ms

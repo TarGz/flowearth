@@ -20,6 +20,12 @@
 package fr.digitas.flowearth.text.styles {
 	import flash.text.StyleSheet;
 	import flash.utils.Dictionary;	
+	
+	/*FDT_IGNORE*/
+	/*-FP10*/
+	import flashx.textLayout.elements.IFormatResolver;
+	/*FP10-*/
+	/*FDT_IGNORE*/
 
 	/**
 	 * @author Pierre Lepers
@@ -32,6 +38,11 @@ package fr.digitas.flowearth.text.styles {
 			this.ns = ns;
 			_baseSheet = new StyleSheet( );
 			_styles = new Dictionary( );
+			/*FDT_IGNORE*/
+			/*-FP10*/
+			_tlfFormatResolver = new FormatResolver( this );
+			/*FP10-*/
+			/*FDT_IGNORE*/
 		}
 
 		public function parseCSS(CSSText : String) : void {
@@ -63,7 +74,17 @@ package fr.digitas.flowearth.text.styles {
 			if ( ! s ) throw new Error( "com.nissan.core.styles.AdvStyleSheet - getStyle : unable to find style '" + styleName + "' in styles library" );
 			return s;
 		}
+		
+		/*FDT_IGNORE*/
+		/*-FP10*/
+		public function getTlfFormatResolver() : IFormatResolver {
+			return _tlfFormatResolver;
+		}
+		
+		private var _tlfFormatResolver : IFormatResolver;
 
+		/*FP10-*/
+		/*FDT_IGNORE*/
 			
 		
 		//_____________________________________________________________________________
