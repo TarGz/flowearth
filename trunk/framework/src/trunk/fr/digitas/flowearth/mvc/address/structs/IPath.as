@@ -35,7 +35,7 @@ package fr.digitas.flowearth.mvc.address.structs {
 		 */
 		function segments() : Array;
 
-		function nodes( until : INode = null ) : Array/*INode*/;
+		function nodes( until : INode = null ) : Array;
 
 		function toNode () : INode;
 		

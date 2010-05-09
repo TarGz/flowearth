@@ -19,7 +19,7 @@ package {
 			var label : StyledLabel = new StyledLabel( );
 			
 			label.styleName = ".my_style";
-			label.text = "A multiline text <br/>render in a StyledLabel";
+			label.text = "A multiline text <br/>render in a StyledLabel <br/><span class='title'>With red big text from another style</span>";
 			
 			addChild( label );
 		}

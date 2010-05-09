@@ -102,10 +102,10 @@ package fr.digitas.flowearth.mvc.address.structs {
 			var l : int, i : int;
 			var common : INode = this;
 			var n : Node;
-			var achain : Array /*Node*/ = [] /*Node*/;
-			var uchain : Array /*Node*/ = []/*Node*/;
-			var dchain : Array/*Node*/;
-			var chain : Array /*Node*/ = uchain;
+			var achain : Array = [];
+			var uchain : Array = [];
+			var dchain : Array;
+			var chain : Array = uchain;
 			var cross : INode;
 			var psegs : Array = [];
 			
@@ -130,7 +130,7 @@ package fr.digitas.flowearth.mvc.address.structs {
 				while ( -- l > - 1 ) {
 					n = chain[ l ];
 					n.bi_internal::_activate( new ProcessPath( n, psegs, params ) );
-					psegs.unshift( n.getId );
+					psegs.unshift( n.getId() );
 				}
 				
 				chain = chain.concat( cc.bi_internal::_deactivate( ) );
@@ -162,7 +162,7 @@ package fr.digitas.flowearth.mvc.address.structs {
 			while ( -- l > - 1 ) {
 				n = chain[ l ];
 				n.bi_internal::_activate( new ProcessPath( n, psegs, params ) );
-				psegs.unshift( n.getId );
+				psegs.unshift( n.getId() );
 			}
 			
 			
@@ -270,7 +270,7 @@ package fr.digitas.flowearth.mvc.address.structs {
 		}
 
 		/** @inheritDoc */
-		bi_internal function _deactivate() : Array/*Node*/ {
+		bi_internal function _deactivate() : Array {
 			
 			if( ! _active ) throw new Error( "bi.mvc.address.structs.Node - _deactivate : already unactive node " + getId( ) );
 			
@@ -284,13 +284,13 @@ package fr.digitas.flowearth.mvc.address.structs {
 				dispatchEvent( new NodeEvent( NodeEvent.CHANGE, target, true ) );
 			bi_internal::setParams( null );
 			
-			var res : Array/*Node*/;
+			var res : Array;
 			var cc : INode = getCurrentChild( );
 			if( cc ) {
 				res = cc.bi_internal::_deactivate( );
 				if( hasEventListener( NodeEvent.CHANGE ) )
 					dispatchEvent( new NodeEvent( NodeEvent.CHANGE, target, false ) );
-			} else res = []/*Node*/;
+			} else res = [];
 			
 			res.unshift( this );
 			return res;

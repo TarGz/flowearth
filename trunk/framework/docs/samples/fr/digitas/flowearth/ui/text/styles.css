@@ -3,6 +3,7 @@
 {
 	font-size: 12;
 	font-family: Arial;
+    color: #808080;
 	autoSize: left;
 	wordWrap: false;
 	selectable: false;
@@ -10,5 +11,10 @@
 	wordWrap: false;
 	x: 10;
 	y: 10;
+}
+
+.title {
+    color: #FF0000;
+	font-size: 18;
 }
 

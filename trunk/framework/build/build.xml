@@ -18,8 +18,14 @@
 	<loadproperties srcfile="${FMK_HOME}/build.config" />
 	<loadproperties srcfile="${FMK_HOME}/.properties" />
 
-	<taskdef resource="flexTasks.tasks"
-	         classpath="${digitas.flex}/ant/lib/flexTasks.jar" />
+
+	<path id="flexTasks.path"
+	      location="${digitas.flex}/ant/lib/flexTasks.jar" />
+
+	<taskdef resource="flexTasks.tasks" classpathref="flexTasks.path" />
+	<typedef classname="flex.ant.types.FlexFileSet"
+	         name="flexfileset"
+	         classpathref="flexTasks.path" />
 
 
 	<!-- ================================= 
@@ -41,8 +47,7 @@
          ================================= -->
 	<target name="FP9 Build" depends="init" description="build FP9 binaries">
 		<property name="target-player" value="9" />
-		<antcall target="_Build" inheritall="true" />
-		<antcall target="_post_Build" inheritall="true" />
+		<antcall target="_Build" inheritall="true" inheritrefs="true"/>
 	</target>
 
 	<!-- ================================= 
@@ -50,10 +55,8 @@
          ================================= -->
 	<target name="FP10 Build" depends="init" description="build FP10 binaries">
 		<property name="target-player" value="10" />
-		<antcall target="FP10_optim"/>
-		<antcall target="_Build" inheritall="true" />
-		<antcall target="_post_Build" inheritall="true" />
-		
+		<antcall target="_Build" inheritall="true" inheritrefs="true" />
+
 	</target>
 
 	<!-- ================================= 
@@ -70,11 +73,11 @@
 					<replaceregex pattern="Array\s*\/\*([\w]+)\*\/"
 					              flags="s"
 					              replace="Vector.\&lt;\1\\&gt;" />
-						
+
 					<replaceregex pattern="\[\]\s*\/\*([\w]+)\*\/"
 					              flags="s"
 					              replace="new Vector.\&lt;\1\\&gt;()" />
-					
+
 					<replaceregex pattern="\/\*([\w]+)\(\*\/([^/*]+)\/\*\)\*\/"
 					              flags="s"
 					              replace="Vector.\&lt;\1\\&gt;(\2)" />
@@ -108,6 +111,7 @@
 		<antcall target="_pre_Build" inheritall="true" />
 		<!--antcall target="_run_pmd" /-->
 		<antcall target="_build_swc" />
+		<antcall target="_post_Build" inheritall="true" />
 	</target>
 
 
@@ -118,6 +122,7 @@
 		<antcall target="_version_class" />
 		<copy todir="${temp_src}${target-player}">
 			<fileset dir="${digitas.dir.fmk}/src/trunk" includes="**/*" />
+			<filterchain refid="fc_fp${target-player}" />
 		</copy>
 		<copy todir="${temp_src}${target-player}" overwrite="true">
 			<fileset dir="${digitas.dir.fmk}/src/fp${target-player}"
@@ -156,15 +161,24 @@
 		       target-player="${target-player}"
 		       link-report="${digitas.dir.fmk}/bin/fp${target-player}/report.xml"
 		       static-rsls="true">
+			<load-config filename="${digitas.dir.fmk}/build/flex-config.xml" />
+
+			<el dir="${FLEX_HOME}/frameworks" append="true" includes="**/*">
+				<selector refid="fp${target-player}_externals" />
+			</el>
+
 			<include-file name="fp${target-player}_v${digitas.version.major}.${digitas.version.minor}.${build.number}.txt"
 			              path="${digitas.dir.fmk}/build/buildnumber.txt" />
-			<include-sources dir="${temp_src}${target-player}" includes="**/*" />
+			<include-sources dir="${temp_src}${target-player}"
+			                 includes="**/*" />
 			<include-libraries file="${digitas.dir.fmk}/assets/CS3Component.swc"
 			                   append="true" />
 			<jvmarg line="${digitas.compiler.jvmargs}" />
 		</compc>
 
 	</target>
+
+	
 
 	<!-- - - - - - - - - - - - - - - - - - 
           target: _post_Build                      
@@ -226,6 +240,36 @@
 	</target>
 
 
+	<selector id="fp9_externals">
+		<filename name="libs/player/9.0/playerglobal.swc" />
+	</selector>
+
+	<selector id="fp10_externals">
+		<or>
+			<filename name="libs/player/10.0/playerglobal.swc" />
+			<filename name="libs/textLayout.swc" />
+		</or>
+	</selector>
+
+	<filterchain id="fc_fp10">
+		<tokenfilter>
+			<linetokenizer />
+			<!--replacestring from="/*-FP10" to="/*-FP10*/" />
+			<replacestring from="FP10-*/" to="/*FP10-*/" /-->
+			<replacestring from="/*-FP9*/" to="/*-FP9" />
+			<replacestring from="/*FP9-*/" to="FP9-*/" />
+		</tokenfilter>
+	</filterchain>
+
+	<filterchain id="fc_fp9">
+		<tokenfilter>
+			<linetokenizer />
+			<replacestring from="/*-FP9" to="/*-FP9*/" />
+			<replacestring from="FP9-*/" to="/*FP9-*/" />
+			<replacestring from="/*-FP10*/" to="/*-FP10" />
+			<replacestring from="/*FP10-*/" to="FP10-*/" />
+		</tokenfilter>
+	</filterchain>
 
 	<!-- - - - - - - - - - - - - - - - - - 
           target: name                      

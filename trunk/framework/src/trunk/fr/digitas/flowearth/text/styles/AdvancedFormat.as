@@ -18,8 +18,15 @@
  * ***** END LICENSE BLOCK ***** */
 
 package fr.digitas.flowearth.text.styles {
+	/*FDT_IGNORE*/
+	/*-FP10*/
+	import flashx.textLayout.elements.IConfiguration;
+	import flashx.textLayout.formats.ITextLayoutFormat;
+	/*FP10-*/ 
+	/*FDT_IGNORE*/
+
 	import flash.text.TextField;
-	import flash.text.TextFormat;	
+	import flash.text.TextFormat;
 
 	/**
 	 * @author Pierre Lepers
@@ -48,12 +55,42 @@ package fr.digitas.flowearth.text.styles {
 			return _obj;
 		}
 
+
+		/*FDT_IGNORE*/
+		/*-FP10*/
+		public function getTlfConfig () : IConfiguration {
+			return _formatter.tlfConfig;
+		}
+
+		public function getTlfFormat () : ITextLayoutFormat {
+			return _formatter.tlformat;
+		}
+		/*FP10-*/
+		/*FDT_IGNORE*/
+		
+
 		private var _obj : Object;
 
 		private var _format : TextFormat;
 		private var _formatter : Formatter;
 	}
 }
+/*FDT_IGNORE*/
+/*-FP10*/
+import flashx.textLayout.elements.Configuration;
+import flashx.textLayout.elements.IConfiguration;
+import flashx.textLayout.formats.ITextLayoutFormat;
+import flashx.textLayout.formats.TextLayoutFormat;
+/*FP10-*/
+/*FDT_IGNORE*/
+
+import fr.digitas.flowearth.text.styles.TypeMapper;
+import fr.digitas.flowearth.text.styles.TypeMapping;
+
+import flash.text.StyleSheet;
+import flash.text.TextField;
+import flash.text.TextFormat;
+import flash.utils.Dictionary;
 
 //_____________________________________________________________________________
 //																 FORMAT FACTORY
@@ -64,12 +101,7 @@ package fr.digitas.flowearth.text.styles {
 //		FF     OO  OO RR  RR  MM M MM AAAAAAA   TT           FF     AAAAAAA CC   CC   TT   OO  OO RR  RR    YY    
 //		FF      OOOO  RR   RR MM   MM AA   AA   TT           FF     AA   AA  CCCCC    TT    OOOO  RR   RR   YY
 
-import fr.digitas.flowearth.text.styles.TypeMapper;
 
-import flash.text.StyleSheet;
-import flash.text.TextField;
-import flash.text.TextFormat;
-import flash.utils.Dictionary;
 
 final class FormatFactory extends StyleSheet {
 
@@ -103,6 +135,10 @@ final class Formatter {
 	public function Formatter( obj : Object ) {
 		_props = new Dictionary( );
 		_tfp =  new Array();
+		/*FDT_IGNORE*//*-FP10*/
+		tlfConfig = new Configuration( );
+		tlformat = new TextLayoutFormat( );
+		/*FP10-*//*FDT_IGNORE*/
 		_compileProps( obj );
 	}
 
@@ -119,17 +155,42 @@ final class Formatter {
 
 	private function _compileProps(obj : Object) : void {
 		var pname : String;
-		var transtyped : *;
+		var tmapping : TypeMapping;
+		
 		for( pname in obj ) {
-			transtyped = TypeMapper.transtype( pname , obj[ pname ] );
-			if( transtyped != null ) {
-				_props[ pname ] = transtyped;
+			tmapping = TypeMapper.transtype( pname , obj[ pname ] );
+			if( tmapping != null ) {
+				
+				/*-FP9
+				_props[ pname ] = tmapping.value;
 				_tfp.push( pname );
+				FP9-*/
+				 
+				
+				/*FDT_IGNORE*//*-FP10*/
+				if( tmapping.handleStyleSheet() ) {
+					_props[ pname ] = tmapping.value;
+					_tfp.push( pname );
+				}
+				if( tmapping.handleTlfConfig() )
+					tlfConfig[ pname ] = tmapping.value;
+				else if( tmapping.handleTlfFormat() )
+					tlformat[ pname ] = tmapping.value;
+				/*FP10-*//*FDT_IGNORE*/
+				
 			}
+			
+			
 		}
 	}
 
 	private var _tfp : Array;
 	
 	private var _props : Dictionary;
+	/*FDT_IGNORE*/
+	/*-FP10*/
+	internal var tlfConfig : IConfiguration;
+	internal var tlformat : ITextLayoutFormat;
+	/*FP10-*/
+	/*FDT_IGNORE*/
 }

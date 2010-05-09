@@ -161,6 +161,30 @@
 
 	</target>
 
+	<!-- ================================= 
+          target: TlfStyledLabelSample      
+         ================================= -->
+	<target name="TlfStyledLabelSample"
+	        depends="init"
+	        description="TlfStyledLabelSample">
+
+		<mxmlc file="${sampleDir}/fr/digitas/flowearth/ui/text/TlfStyledLabelSample.as"
+		       output="${sampleDir}/fr/digitas/flowearth/ui/text/TlfStyledLabelSample.swf"
+		       incremental="false"
+		       static-rsls="true"
+		       debug="true"
+		       target-player="10"
+		       use-network="false">
+			<default-size width="400" height="400" />
+			<default-background-color>0xF8F8F8</default-background-color>
+			<library-path file="${FLEX_HOME}/frameworks/libs/textLayout.swc" />
+			<library-path file="${FMK_HOME}/framework/bin/fp10/flowearth.swc" />
+			<source-path path-element="${sampleDir}/sampleslib" />
+			<jvmarg value="${digitas.compiler.jvmargs}" />
+		</mxmlc>
+
+	</target>
+
 
 
 	<!-- - - - - - - - - - - - - - - - - - 

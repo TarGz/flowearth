@@ -84,7 +84,7 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 		}
 
 		/** @inheritDoc */
-		public function nodes(until : INode = null) : Array/*INode*/ {
+		public function nodes(until : INode = null) : Array {
 			// abstract, need nodeSystem
 			return null;
 		}

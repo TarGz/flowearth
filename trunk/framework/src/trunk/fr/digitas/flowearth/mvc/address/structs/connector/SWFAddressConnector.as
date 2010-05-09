@@ -81,8 +81,7 @@ package fr.digitas.flowearth.mvc.address.structs.connector {
 				buffer = _buffers[ n ];
 				if( buffer.lockAddress() )
 					url += encodePath( PathTools.removeDefaultPart( buffer.pendingPath ) );
-				else {
-				if( n.activePath )
+				else if( n.activePath ) {
 					url += encodePath( PathTools.removeDefaultPart( n.activePath ) );
 				}
 				url += pathSeparator;
