@@ -46,7 +46,6 @@
          ================================= -->
 	<target name="FP10 Build" depends="init" description="build FP10 binaries">
 		<property name="target-player" value="10" />
-		<!--antcall target="FP10_optim" inheritall="true" /-->
 		<antcall target="_Build" inheritall="true" />
 		<antcall target="_post_Build" />
 	</target>
@@ -191,6 +190,7 @@
 			<load-config filename="${constsConfFile}" />
 			<default-size width="800" height="900" />
 			<default-background-color>0xFFFFFF</default-background-color>
+			<library-path file="${FLEX_HOME}/frameworks/libs/textLayout.swc"/>
 			<library-path file="${FMK_HOME}/framework/bin/fp${target-player}/flowearth.swc" />
 			<source-path path-element="${temp_src}${target-player}" />
 			<jvmarg value="${digitas.compiler.jvmargs}" />

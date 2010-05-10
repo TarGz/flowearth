@@ -171,9 +171,10 @@ class Nav extends Sprite  {
 		_layout.renderer = new TopRenderer();
 		
 		// for each child nodes, we create a menu item
-		var iter : IIterator = _node.getChilds();
+		var childs : Array = _node.getChilds();
 		var child : INode;
-		while( child = iter.next() as INode ) {
+		for (var i : int = 0; i < childs.length; i++) {
+			child = childs[ i ];
 			_layout.addChild( new NavItem ( child ) );
 		}
 	}
