@@ -1,0 +1,57 @@
+<p class="title">Tell-All Generation Learns to Keep Things Offline</p>
+
+<p class="info">By LAURA M. HOLSON</p>
+<p class="info">Published: May 8, 2010</p>
+
+<p><img src="img.jpg"/>Min Liu, a 21-year-old liberal arts student at the New School in New York City, got a Facebook account at 17 and chronicled her college life in detail, from rooftop drinks with friends to dancing at a downtown club. Recently, though, she has had second thoughts.</p>
+
+
+
+
+
+
+
+<p>بينما يستحوذ ثلاثمائة ألف مليونير صيني على أكثر من ثلاثين في المائة من الناتج القومي للبلاد, يعيش أكثر من نصف عدد السكان الذي يبلغ ملياراً وثلاثمائة مليون نسمة فقراً لازمهم منذ أن بدأت الصين سياسة الإصلاح والانفتاح قبل ثلاثة عقود. وقد أصبحت هذه المفارقة تهدد البلاد بقلاقل إجتماعية ما لم توضع الخطط لجسر الهوة بين الأغنياء و الفقراء.</p>
+
+<p>Concerned about her career prospects, she asked a friend to take down a photograph of her drinking and wearing a tight dress. When the woman overseeing her internship asked to join her Facebook circle, Ms. Liu agreed, but limited access to her Facebook page. “I want people to take me seriously,” she said.</p>
+
+<p>The conventional wisdom suggests that everyone under 30 is comfortable revealing every facet of their lives online, from their favorite pizza to most frequent sexual partners. But many members of the tell-all generation are rethinking what it means to live out loud.</p>
+
+<p>While participation in social networks is still strong, a survey released last month by the University of California, Berkeley, found that more than half the young adults questioned had become more concerned about privacy than they were five years ago — mirroring the number of people their parent’s age or older with that worry.</p>
+
+<p>They are more diligent than older adults, however, in trying to protect themselves. In a new study to be released this month, the Pew Internet Project has found that people in their 20s exert more control over their digital reputations than older adults, more vigorously deleting unwanted posts and limiting information about themselves. “Social networking requires vigilance, not only in what you post, but what your friends post about you,” said Mary Madden, a senior research specialist who oversaw the study by Pew, which examines online behavior. “Now you are responsible for everything.”</p>
+
+<p>The erosion of privacy has become a pressing issue among active users of social networks. Last week, Facebook scrambled to fix a security breach that allowed users to see their friends’ supposedly private information, including personal chats.</p>
+
+<p>Sam Jackson, a junior at Yale who started a blog when he was 15 and who has been an intern at Google, said he had learned not to trust any social network to keep his information private. “If I go back and look, there are things four years ago I would not say today,” he said. “I am much more self-censoring. I’ll try to be honest and forthright, but I am conscious now who I am talking to.”</p>
+
+<p class="quote">"I am much more self-censoring"</p>
+
+
+<p>He has learned to live out loud mostly by trial and error and has come up with his own theory: concentric layers of sharing.</p>
+
+<p id="editable">His Facebook account, which he has had since 2005, is strictly personal. “I don’t want people to know what my movie rentals are,” he said. “If I am sharing something, I want to know what’s being shared with others.”</p>
+
+<p>Mistrust of the intentions of social sites appears to be pervasive. In its telephone survey of 1,000 people, the Berkeley Center for Law and Technology at the University of California found that 88 percent of the 18- to 24-year-olds it surveyed last July said there should be a law that requires Web sites to delete stored information. And 62 percent said they wanted a law that gave people the right to know everything a Web site knows about them.</p>
+
+<p>That mistrust is translating into action. In the Pew study, to be released shortly, researchers interviewed 2,253 adults late last summer and found that people ages 18 to 29 were more apt to monitor privacy settings than older adults are, and they more often delete comments or remove their names from photos so they cannot be identified. Younger teenagers were not included in these studies, and they may not have the same privacy concerns. But anecdotal evidence suggests that many of them have not had enough experience to understand the downside to oversharing.</p>
+
+<p>Elliot Schrage, who oversees Facebook’s global communications and public policy strategy, said it was a good thing that young people are thinking about what they put online. “We are not forcing anyone to use it,” he said of Facebook. But at the same time, companies like Facebook have a financial incentive to get friends to share as much as possible. That’s because the more personal the information that Facebook collects, the more valuable the site is to advertisers, who can mine it to serve up more targeted ads.</p>
+
+<p>Two weeks ago, Senator Charles E. Schumer, Democrat of New York, petitioned the Federal Trade Commission to review the privacy policies of social networks to make sure consumers are not being deliberately confused or misled. The action was sparked by a recent change to Facebook’s settings that forced its more than 400 million users to choose to “opt out” of sharing private information with third-party Web sites instead of “opt in,” a move which confounded many of them.</p>
+
+<p>Mr. Schrage of Facebook said, “We try diligently to get people to understand the changes.”</p>
+
+<p>But in many cases, young adults are teaching one another about privacy.</p>
+
+<p>Ms. Liu is not just policing her own behavior, but her sister’s, too. Ms. Liu sent a text message to her 17-year-old sibling warning her to take down a photo of a guy sitting on her sister’s lap. Why? Her sister wants to audition for “Glee” and Ms. Liu didn’t want the show’s producers to see it. Besides, what if her sister became a celebrity? “It conjures up an image where if you became famous anyone could pull up a picture and send it to TMZ,” Ms. Liu said.</p>
+
+<p>Andrew Klemperer, a 20-year-old at Georgetown University, said it was a classmate who warned him about the implications of the recent Facebook change — through a status update on (where else?) Facebook. Now he is more diligent in monitoring privacy settings and apt to warn others, too.</p>
+
+<p>Helen Nissenbaum, a professor of culture, media and communication at New York University and author of “Privacy in Context,” a book about information sharing in the digital age, said teenagers were naturally protective of their privacy as they navigate the path to adulthood, and the frequency with which companies change privacy rules has taught them to be wary.</p>
+
+<p>That was the experience of Kanupriya Tewari, a 19-year-old pre-med student at Tufts University. Recently she sought to limit the information a friend could see on Facebook but found the process cumbersome. “I spent like an hour trying to figure out how to limit my profile, and I couldn’t,” she said. She gave up because she had chemistry homework to do, but vowed to figure it out after finals.</p>
+
+<p>“I don’t think they would look out for me,” she said. “I have to look out for me.”</p>
+
+<p class="info">A version of this article appeared in print on May 9, 2010, on page A1 of the New York edition.</p>

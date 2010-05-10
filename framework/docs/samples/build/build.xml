@@ -32,6 +32,7 @@
 		<antcall target="NodeSystemSample" />
 		<antcall target="SWFAddressSample" />
 		<antcall target="StyledLabelSample" />
+		<antcall target="TlfStyledLabelSample" />
 	</target>
 
 	<!-- ================================= 
@@ -185,7 +186,17 @@
 
 	</target>
 
+	<!-- ================================= 
+          target: clean_cache              
+         ================================= -->
+    <target name="clean_cache" depends="init" description="remove .cache fiel to force recompilation">
+        <delete >
+        	<fileset dir="${sampleDir}" >
+			    <include name="**/*.cache"/>
+			</fileset>
 
+        </delete>
+    </target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
           target: init                      

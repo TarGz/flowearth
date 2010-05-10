@@ -29,7 +29,7 @@ package fr.digitas.flowearth.text.styles {
 			
 			if( target is FlowElement ) {
 				var styleName : String = target.styleName;
-				if( styleName == null ) return null;
+				if( styleName == null ) return (target as FlowElement).format;
 				return _css.getStyle( styleName ).getTlfFormat();
 			}
 			

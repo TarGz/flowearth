@@ -1,0 +1,31 @@
+.main {
+	fontFamily: Times;
+	fontSize: 13;
+	fontLookup: embeddedCFF;
+	textAlign: justify;
+	whiteSpaceCollapse: collapse;
+	verticalScrollPolicy: auto;
+}
+
+.title {
+	fontFamily: Times;
+	fontSize: 24;
+}
+
+.info {
+	fontFamily: Times;
+	fontSize: 12;
+}
+
+.quote{
+	fontFamily: Times;
+	color: #808080;
+	fontWeight: bold;
+	textAlign: center;
+	fontSize: 28;
+	typographicCase: capsToSmallCaps;
+	paragraphSpaceAfter: 20;
+	paragraphSpaceBefore: 20;
+	paddingLeft: 20;
+	paddingRight: 20;
+}

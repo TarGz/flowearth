@@ -75,10 +75,10 @@ package {
 			btn.x = indent * 20;
 			_layout.addChild( btn );
 			
-			var iter : IIterator = node.getChilds();
+			var items : Array = node.getChilds();
 			var item : Node;
-			while( iter.hasNext() ) {
-				item = iter.next() as Node;
+			for (var i : int = 0; i < items.length; i++) {
+				item = items[ i ];
 				addChildNodes( item, indent+1 );
 			}
 		}

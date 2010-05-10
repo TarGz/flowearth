@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     10 mai 2010 12:06:01                                                        
+
+     Flowearth_tutorials_tlf font build    
+     build cff fonts for tlf tutorial
+                   
+     lepersp                                                                
+     ====================================================================== -->
+<project name="Flowearth_tutorials_tlf font build"
+         default="main"
+         basedir="../../../../../">
+
+
+	<description>
+            build cff fonts for tlf tutorial
+    </description>
+
+
+	<property name="FMK_HOME" location="${basedir}" />
+	<property name="TLF_HOME"
+	          location="${basedir}/framework/docs/tutorials/textLayoutFramework" />
+	<loadproperties srcfile="${FMK_HOME}/build.config" />
+	<loadproperties srcfile="${FMK_HOME}/.properties" />
+
+	<taskdef resource="digitasAnt.tasks" classpath="${digitas.antTasks.jar}" />
+
+
+	<!-- ================================= 
+          target: main              
+         ================================= -->
+	<target name="main"
+	        depends="init"
+	        description="build cff fonts for tlf tutorial">
+
+		<createFont classname="fr.digitas.tutorials.fonts.Times"
+		            swc="${TLF_HOME}/libs/times_fonts.swc"
+		            compc="${digitas.compc}"
+		            keepgenerated="false">
+
+			
+			<font fontfamily="times"
+			      fontweight="bold"
+			      sourcefile="${TLF_HOME}/fonts/TIMESBD.TTF"
+			      cff="true"
+			      unicoderange="U+0020-U+024F,U+20AC,U+2013" />
+
+			<font fontfamily="times"
+			      sourcefile="${TLF_HOME}/fonts/TIMES.TTF"
+			      cff="true"
+			      unicoderange="U+0020-U+FFFF" />
+
+			<arg line="-debug=true" />
+			<arg line="-static-rsls=true" />
+
+		</createFont>
+
+
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="init">
+
+	</target>
+
+</project>

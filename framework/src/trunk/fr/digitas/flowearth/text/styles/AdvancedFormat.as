@@ -31,7 +31,7 @@ package fr.digitas.flowearth.text.styles {
 	/**
 	 * @author Pierre Lepers
 	 */
-	public class AdvancedFormat {
+	public class AdvancedFormat { 
 
 		
 		public function format( tf : TextField ) : void {
@@ -78,7 +78,6 @@ package fr.digitas.flowearth.text.styles {
 /*FDT_IGNORE*/
 /*-FP10*/
 import flashx.textLayout.elements.Configuration;
-import flashx.textLayout.elements.IConfiguration;
 import flashx.textLayout.formats.ITextLayoutFormat;
 import flashx.textLayout.formats.TextLayoutFormat;
 /*FP10-*/
@@ -182,6 +181,10 @@ final class Formatter {
 			
 			
 		}
+		
+		/*FDT_IGNORE*//*-FP10*/
+		tlfConfig.textFlowInitialFormat = tlformat;
+		/*FP10-*//*FDT_IGNORE*/
 	}
 
 	private var _tfp : Array;
@@ -189,7 +192,7 @@ final class Formatter {
 	private var _props : Dictionary;
 	/*FDT_IGNORE*/
 	/*-FP10*/
-	internal var tlfConfig : IConfiguration;
+	internal var tlfConfig : Configuration;
 	internal var tlformat : ITextLayoutFormat;
 	/*FP10-*/
 	/*FDT_IGNORE*/
