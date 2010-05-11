@@ -1,4 +1,5 @@
 package fr.digitas.tutorial.tlf {
+	import fr.digitas.flowearth.text.styles.TlfSupport;	
 	import fr.digitas.flowearth.command.Batcher;
 	import fr.digitas.flowearth.net.BatchURLLoaderItem;
 	import fr.digitas.flowearth.text.fonts.IFontsProvider;
@@ -26,6 +27,9 @@ package fr.digitas.tutorial.tlf {
 		}
 		
 		private function boot() : void {
+			
+			// init support of Tlf by styles api
+			TlfSupport.init();
 			
 			// register fonts libraries (libs/times_fonts.swc)
 			// note that font lib can also be compiled in swf and loaded at runtime

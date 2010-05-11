@@ -47,7 +47,7 @@
          ================================= -->
 	<target name="FP9 Build" depends="init" description="build FP9 binaries">
 		<property name="target-player" value="9" />
-		<antcall target="_Build" inheritall="true" inheritrefs="true"/>
+		<antcall target="_Build" inheritall="true" inheritrefs="true" />
 	</target>
 
 	<!-- ================================= 
@@ -55,44 +55,24 @@
          ================================= -->
 	<target name="FP10 Build" depends="init" description="build FP10 binaries">
 		<property name="target-player" value="10" />
+
+		<uptodate property="tlfsubset.outofdate"
+		          value="true"
+		          targetfile="${FLEX_HOME}/frameworks/libs/textLayout.swc">
+					<srcfiles dir="${digitas.dir.fmk}/assets" includes="**/*">
+						<or>
+							<filename name="tlfRest.swc"/>
+							<filename name="tlfSubset.xml"/>
+							<filename name="tlfSubset.swc"/>
+						</or>
+					</srcfiles>
+		</uptodate>
+		
+		<antcall target="build tlf subset" inheritall="true" />
 		<antcall target="_Build" inheritall="true" inheritrefs="true" />
 
 	</target>
 
-	<!-- ================================= 
-          target: FP10_optim              
-         ================================= -->
-	<target name="FP10_optim">
-
-		<copy todir="${temp_src}${target-player}" overwrite="true">
-			<fileset dir="${digitas.dir.fmk}/src/trunk" includes="**/*" />
-			<filterchain>
-
-				<tokenfilter>
-					<linetokenizer />
-					<replaceregex pattern="Array\s*\/\*([\w]+)\*\/"
-					              flags="s"
-					              replace="Vector.\&lt;\1\\&gt;" />
-
-					<replaceregex pattern="\[\]\s*\/\*([\w]+)\*\/"
-					              flags="s"
-					              replace="new Vector.\&lt;\1\\&gt;()" />
-
-					<replaceregex pattern="\/\*([\w]+)\(\*\/([^/*]+)\/\*\)\*\/"
-					              flags="s"
-					              replace="Vector.\&lt;\1\\&gt;(\2)" />
-
-					<replaceregex pattern="Iterator\/\*([\w]+)\*\/"
-					              flags="s"
-					              replace="\1" />
-
-				</tokenfilter>
-			</filterchain>
-
-
-		</copy>
-
-	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
           target: _Build                      
@@ -110,7 +90,7 @@
 
 		<antcall target="_pre_Build" inheritall="true" />
 		<!--antcall target="_run_pmd" /-->
-		<antcall target="_build_swc" />
+		<antcall target="_build_swc_${target-player}" />
 		<antcall target="_post_Build" inheritall="true" />
 	</target>
 
@@ -151,7 +131,7 @@
 	<!-- - - - - - - - - - - - - - - - - - 
           target: _Build_swc                      
          - - - - - - - - - - - - - - - - - -->
-	<target name="_build_swc" unless="swc.uptodate">
+	<target name="_build_swc_9" unless="swc.uptodate">
 
 		<compc output="${digitas.dir.fmk}/bin/fp${target-player}/flowearth.swc"
 		       strict="true"
@@ -164,7 +144,7 @@
 			<load-config filename="${digitas.dir.fmk}/build/flex-config.xml" />
 
 			<el dir="${FLEX_HOME}/frameworks" append="true" includes="**/*">
-				<selector refid="fp${target-player}_externals" />
+				<filename name="libs/player/9.0/playerglobal.swc" />
 			</el>
 
 			<include-file name="fp${target-player}_v${digitas.version.major}.${digitas.version.minor}.${build.number}.txt"
@@ -178,7 +158,42 @@
 
 	</target>
 
-	
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: _Build_swc                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="_build_swc_10" unless="swc.uptodate">
+
+		<compc output="${digitas.dir.fmk}/bin/fp${target-player}/flowearth.swc"
+		       strict="true"
+		       optimize="false"
+		       debug="true"
+		       compute-digest="false"
+		       target-player="${target-player}"
+		       link-report="${digitas.dir.fmk}/bin/fp${target-player}/report.xml"
+		       static-rsls="true">
+			<load-config filename="${digitas.dir.fmk}/build/flex-config.xml" />
+
+
+			<include-file name="fp${target-player}_v${digitas.version.major}.${digitas.version.minor}.${build.number}.txt"
+			              path="${digitas.dir.fmk}/build/buildnumber.txt" />
+			<include-sources dir="${temp_src}${target-player}"
+			                 includes="**/*" />
+			<include-libraries file="${digitas.dir.fmk}/assets/CS3Component.swc"
+			                   append="true" />
+			<include-libraries file="${digitas.dir.fmk}/assets/tlfSubset.swc"
+			                   append="true" />
+
+			<el file="${FLEX_HOME}/frameworks/libs/player/10.0/playerglobal.swc"
+			    append="true" />
+			<el file="${digitas.dir.fmk}/assets/tlfRest.swc" append="true" />
+
+			<jvmarg line="${digitas.compiler.jvmargs}" />
+		</compc>
+
+	</target>
+
+
 
 	<!-- - - - - - - - - - - - - - - - - - 
           target: _post_Build                      
@@ -237,20 +252,16 @@
 			<jvmarg line="${digitas.jvm.args}" />
 		</asdoc>
 
+
+
 	</target>
 
 
-	<selector id="fp9_externals">
-		<filename name="libs/player/9.0/playerglobal.swc" />
-	</selector>
 
-	<selector id="fp10_externals">
-		<or>
-			<filename name="libs/player/10.0/playerglobal.swc" />
-			<filename name="libs/textLayout.swc" />
-		</or>
-	</selector>
 
+	<!-- ================================= 
+          			  FP 10 code transform              
+         ================================= -->
 	<filterchain id="fc_fp10">
 		<tokenfilter>
 			<linetokenizer />
@@ -282,6 +293,47 @@
 			</fileset>
 		</compileFla>
 	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: build tlf subset  
+          create a swc of embeded tlf framework (only few interfaces)                 
+         - - - - - - - - - - - - - - - - - -->
+	<target name="build tlf subset" if="tlfsubset.outofdate">
+		<compc output="${digitas.dir.fmk}/assets/tlfSubset.swc"
+		       strict="true"
+		       optimize="true"
+		       debug="false"
+		       compute-digest="false"
+		       target-player="10"
+		       link-report="${digitas.dir.fmk}/assets/tlfSubset.xml"
+		       static-rsls="true">
+			<load-config filename="${digitas.dir.fmk}/build/flex-config.xml" />
+
+			<sp path-element="${digitas.dir.fmk}/src/fp10" />
+			<el file="${FLEX_HOME}/frameworks/libs/player/10.0/playerglobal.swc" />
+			<l file="${FLEX_HOME}/frameworks/libs/textLayout.swc" />
+			<include-sources file="${digitas.dir.fmk}/src/fp10/fr/digitas/flowearth/text/styles/ITlfFactory.as" />
+
+			<jvmarg line="${digitas.compiler.jvmargs}" />
+		</compc>
+
+		<compc output="${digitas.dir.fmk}/assets/tlfRest.swc"
+		       strict="true"
+		       optimize="true"
+		       debug="false"
+		       compute-digest="false"
+		       target-player="10"
+		       load-externs="${digitas.dir.fmk}/assets/tlfSubset.xml"
+		       static-rsls="true">
+			<load-config filename="${digitas.dir.fmk}/build/flex-config.xml" />
+
+			<include-libraries file="${FLEX_HOME}/frameworks/libs/textLayout.swc" />
+			<el file="${FLEX_HOME}/frameworks/libs/player/10.0/playerglobal.swc" />
+
+			<jvmarg line="${digitas.compiler.jvmargs}" />
+		</compc>
+	</target>
+
 
 
 

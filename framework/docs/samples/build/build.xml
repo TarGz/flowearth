@@ -155,7 +155,7 @@
 		       use-network="false">
 			<default-size width="400" height="400" />
 			<default-background-color>0xF8F8F8</default-background-color>
-			<library-path file="${FMK_HOME}/framework/bin/fp9/flowearth.swc" />
+			<library-path file="${FMK_HOME}/framework/bin/fp10/flowearth.swc" />
 			<source-path path-element="${sampleDir}/sampleslib" />
 			<jvmarg value="${digitas.compiler.jvmargs}" />
 		</mxmlc>

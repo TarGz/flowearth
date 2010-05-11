@@ -20,10 +20,11 @@
 package fr.digitas.flowearth.text.styles {
 	import flash.text.StyleSheet;
 	import flash.utils.Dictionary;	
+		
 	
 	/*FDT_IGNORE*/
 	/*-FP10*/
-	import flashx.textLayout.elements.IFormatResolver;
+	//import flashx.textLayout.elements.IFormatResolver;
 	/*FP10-*/
 	/*FDT_IGNORE*/
 
@@ -40,7 +41,10 @@ package fr.digitas.flowearth.text.styles {
 			_styles = new Dictionary( );
 			/*FDT_IGNORE*/
 			/*-FP10*/
-			_tlfFormatResolver = new FormatResolver( this );
+			if( tlfFactory.hasSupport() ) {
+				_tlfFormatResolver = tlfFactory.getFormatResolver( );
+				_tlfFormatResolver.init( this );
+			}
 			/*FP10-*/
 			/*FDT_IGNORE*/
 		}
@@ -77,11 +81,11 @@ package fr.digitas.flowearth.text.styles {
 		
 		/*FDT_IGNORE*/
 		/*-FP10*/
-		public function getTlfFormatResolver() : IFormatResolver {
+		public function getTlfFormatResolver() : Object {
 			return _tlfFormatResolver;
 		}
 		
-		private var _tlfFormatResolver : IFormatResolver;
+		private var _tlfFormatResolver : Object;
 
 		/*FP10-*/
 		/*FDT_IGNORE*/
