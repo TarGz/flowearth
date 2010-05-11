@@ -2,30 +2,28 @@ package {
 	import flashx.textLayout.container.ContainerController;
 	import flashx.textLayout.elements.TextFlow;
 
+	import fr.digitas.flowearth.text.styles.TlfSupport;
 	import fr.digitas.flowearth.text.styles.styleManager;
 
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.net.URLLoader;
-	import flash.net.URLRequest;
+	import flash.net.URLRequest;		
 
 	public class TlfStyledLabelSample extends BasicExample {
 
-		public function TlfStyledLabelSample () {
+		public function TlfStyledLabelSample() {
 			super( );
-			createControllers();
+			TlfSupport.init( );
+			createControllers( );
 			loadText( );
 		}
 
-		private function createLabel () : void {
+		private function createLabel() : void {
 			
-			//var label : StyledTlfLabel = new StyledTlfLabel( );
-
-			var text : String = "A multiline text <br/>render in a StyledLabel";
 			var styleName : String = ".my_style";
 			
-			textFlow = styleManager.getHtmlTlf( styleName, bigText );
-			
+			textFlow = styleManager.getHtmlTlf( styleName, bigText ) as TextFlow;
 			
 			textFlow.flowComposer.addControllerAt( titleController, 0 );
 			textFlow.flowComposer.addControllerAt( paragraphController, 1 );
@@ -36,9 +34,9 @@ package {
 //			addChild( label );
 		}
 
-		private function createControllers () : void {
-			titleController = new ContainerController( addChild( new Sprite() ) as Sprite );
-			paragraphController = new ContainerController( addChild( new Sprite() ) as Sprite );
+		private function createControllers() : void {
+			titleController = new ContainerController( addChild( new Sprite( ) ) as Sprite );
+			paragraphController = new ContainerController( addChild( new Sprite( ) ) as Sprite );
 			paragraphController.container.y = 35;
 			paragraphController.container.x = 50;
 			paragraphController.columnWidth = 200;
@@ -64,25 +62,24 @@ package {
 			l.load( new URLRequest( baseUrl + "/bigtext.txt" ) );
 		}
 
-		private function loadStyles () : void {
+		private function loadStyles() : void {
 			var l : URLLoader = new URLLoader( );
 			l.addEventListener( Event.COMPLETE, stylesLoaded );
 			l.load( new URLRequest( baseUrl + "/styles_tlf.css" ) );
 		}
 
-		private function textLoaded (event : Event) : void {
+		private function textLoaded(event : Event) : void {
 			bigText = event.target.data;
-			loadStyles();
+			loadStyles( );
 		}
 
-		private function stylesLoaded (event : Event) : void {
+		private function stylesLoaded(event : Event) : void {
 			styleManager.addCss( event.target.data );
 			
 			createLabel( );
 		}
-		
+
 		private var bigText : String;
-		
-		private var smallText : String = '<span id="title">TITLE</span><p>paragraph 1</p><p>paragraph 2 with <b>bold</b> and <i>italic</i> (and <b><i>both of them</i></b>)</p><span class="title">With red big text from another style</span>';
+
 	}
 }

@@ -20,13 +20,12 @@
 package fr.digitas.flowearth.text.styles {
 	/*FDT_IGNORE*/
 	/*-FP10*/
-	import flashx.textLayout.elements.IConfiguration;
-	import flashx.textLayout.formats.ITextLayoutFormat;
+//	import flashx.textLayout.elements.IConfiguration;
+//	import flashx.textLayout.formats.ITextLayoutFormat;
 	/*FP10-*/ 
 	/*FDT_IGNORE*/
-
 	import flash.text.TextField;
-	import flash.text.TextFormat;
+	import flash.text.TextFormat;	
 
 	/**
 	 * @author Pierre Lepers
@@ -58,11 +57,11 @@ package fr.digitas.flowearth.text.styles {
 
 		/*FDT_IGNORE*/
 		/*-FP10*/
-		public function getTlfConfig () : IConfiguration {
+		public function getTlfConfig () : * {
 			return _formatter.tlfConfig;
 		}
 
-		public function getTlfFormat () : ITextLayoutFormat {
+		public function getTlfFormat () : * {
 			return _formatter.tlformat;
 		}
 		/*FP10-*/
@@ -75,11 +74,13 @@ package fr.digitas.flowearth.text.styles {
 		private var _formatter : Formatter;
 	}
 }
+
+
 /*FDT_IGNORE*/
 /*-FP10*/
-import flashx.textLayout.elements.Configuration;
+import flashx.textLayout.elements.IConfiguration;
 import flashx.textLayout.formats.ITextLayoutFormat;
-import flashx.textLayout.formats.TextLayoutFormat;
+import fr.digitas.flowearth.text.styles.tlfFactory;
 /*FP10-*/
 /*FDT_IGNORE*/
 
@@ -127,17 +128,21 @@ final class FormatFactory extends StyleSheet {
 //		FF      OOOO  RR   RR MM   MM AA   AA   TT     TT   EEEEEEE RR   RR 
 
 
-
 final class Formatter {
 
 
 	public function Formatter( obj : Object ) {
 		_props = new Dictionary( );
 		_tfp =  new Array();
-		/*FDT_IGNORE*//*-FP10*/
-		tlfConfig = new Configuration( );
-		tlformat = new TextLayoutFormat( );
-		/*FP10-*//*FDT_IGNORE*/
+		/*FDT_IGNORE*/
+		/*-FP10*/
+		
+		if( tlfFactory.hasSupport() ) {
+			tlfConfig = tlfFactory.getConfiguration( );
+			tlformat = tlfFactory.getTextLayoutFormat( );
+		}
+		/*FP10-*/
+		/*FDT_IGNORE*/
 		_compileProps( obj );
 	}
 
@@ -156,35 +161,55 @@ final class Formatter {
 		var pname : String;
 		var tmapping : TypeMapping;
 		
+		/*-FP9
 		for( pname in obj ) {
 			tmapping = TypeMapper.transtype( pname , obj[ pname ] );
 			if( tmapping != null ) {
-				
-				/*-FP9
 				_props[ pname ] = tmapping.value;
 				_tfp.push( pname );
-				FP9-*/
-				 
+			}
+		}
+		FP9-*/
+		
+		
+		/*FDT_IGNORE*/
+		/*-FP10*/
+		
+		if( tlfFactory.hasSupport() ) {
+			
+			
+		
+			for( pname in obj ) {
 				
-				/*FDT_IGNORE*//*-FP10*/
-				if( tmapping.handleStyleSheet() ) {
+				tmapping = TypeMapper.transtype( pname , obj[ pname ] );
+				if( tmapping != null ) {
+					
+					if( tmapping.handleStyleSheet() ) {
+						_props[ pname ] = tmapping.value;
+						_tfp.push( pname );
+					}
+					if( tmapping.handleTlfConfig() )
+						tlfConfig[ pname ] = tmapping.value;
+					else if( tmapping.handleTlfFormat() )
+						tlformat[ pname ] = tmapping.value;
+					
+				}
+			}
+
+			(tlfConfig as Object).textFlowInitialFormat = tlformat;
+			
+		} else {
+			for( pname in obj ) {
+				tmapping = TypeMapper.transtype( pname , obj[ pname ] );
+				if( tmapping != null ) {
 					_props[ pname ] = tmapping.value;
 					_tfp.push( pname );
 				}
-				if( tmapping.handleTlfConfig() )
-					tlfConfig[ pname ] = tmapping.value;
-				else if( tmapping.handleTlfFormat() )
-					tlformat[ pname ] = tmapping.value;
-				/*FP10-*//*FDT_IGNORE*/
-				
 			}
-			
-			
 		}
 		
-		/*FDT_IGNORE*//*-FP10*/
-		tlfConfig.textFlowInitialFormat = tlformat;
-		/*FP10-*//*FDT_IGNORE*/
+		/*FP10-*/
+		/*FDT_IGNORE*/
 	}
 
 	private var _tfp : Array;
@@ -192,7 +217,7 @@ final class Formatter {
 	private var _props : Dictionary;
 	/*FDT_IGNORE*/
 	/*-FP10*/
-	internal var tlfConfig : Configuration;
+	internal var tlfConfig : IConfiguration;
 	internal var tlformat : ITextLayoutFormat;
 	/*FP10-*/
 	/*FDT_IGNORE*/

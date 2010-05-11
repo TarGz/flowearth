@@ -18,15 +18,15 @@
  * ***** END LICENSE BLOCK ***** */
 
 package fr.digitas.flowearth.text.styles {
-
 	import flash.text.TextField;
-	import flash.utils.Dictionary;
+	import flash.utils.Dictionary;	
+	
 
 	/*FDT_IGNORE*/
 	/*-FP10*/
-	import flashx.textLayout.conversion.TextConverter;
-	import flashx.textLayout.conversion.ITextImporter;
-	import flashx.textLayout.elements.TextFlow;
+//	import flashx.textLayout.conversion.TextConverter;
+//	import flashx.textLayout.conversion.ITextImporter;
+//	import flashx.textLayout.elements.TextFlow;
 	/*FP10-*/
 	/*FDT_IGNORE*/
 
@@ -39,7 +39,8 @@ package fr.digitas.flowearth.text.styles {
 	 * @author Pierre Lepers
 	 */
 	internal final class StyleManagerClass {
-
+		
+		
 		
 		public function StyleManagerClass( ) {
 			if( _instance != null ) throw new Error( "bi.text.styles.StyleManagerClass est deja instancié" );
@@ -75,12 +76,12 @@ package fr.digitas.flowearth.text.styles {
 		
 		/*FDT_IGNORE*/
 		/*-FP10*/
-		public function getHtmlTlf( styleName : Object, htmlText : String ) : TextFlow {
+		public function getHtmlTlf( styleName : Object, htmlText : String ) : Object {
 			var qn : QName = new QName( styleName );
 			var advCss : AdvancedStyleSheet = getSpace( qn ).findCss( qn.localName );
 			var advFmt : AdvancedFormat = advCss.getStyle( qn.localName );
-			var _tlfImporter : ITextImporter = TextConverter.getImporter( TextConverter.TEXT_FIELD_HTML_FORMAT, advFmt.getTlfConfig() );
-			var _tf : TextFlow = _tlfImporter.importToFlow( htmlText );
+			var _tlfImporter : Object = tlfFactory.getHtmlTextImporter( advFmt.getTlfConfig() );//TextConverter.getImporter( TextConverter.TEXT_FIELD_HTML_FORMAT, advFmt.getTlfConfig() );
+			var _tf : Object = _tlfImporter.importToFlow( htmlText );
 			_tf.formatResolver = advCss.getTlfFormatResolver();
 			_tf.hostFormat = advFmt.getTlfFormat();
 			return _tf;
@@ -177,11 +178,6 @@ package fr.digitas.flowearth.text.styles {
 		
 		private static var _instance : StyleManagerClass;
 		
-		/*FDT_IGNORE-*/
-		/*-FP10*/
-		//private static const _tlfImporter : ITextImporter = TextConverter.getImporter( TextConverter.TEXT_FIELD_HTML_FORMAT,  );
-		/*FP10-*/
-		/*FDT_IGNORE-*/
 		
 	}
 }
@@ -284,6 +280,9 @@ class Unique {
 	private static var _provided : Dictionary = new Dictionary();
 		
 }
+
+
+
 
 //_____________________________________________________________________________
 //																		 stripDot

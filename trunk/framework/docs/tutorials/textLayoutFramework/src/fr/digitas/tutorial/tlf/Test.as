@@ -26,7 +26,7 @@ package fr.digitas.tutorial.tlf {
 			
 			var styleName : String = ".main";
 			
-			textFlow = styleManager.getHtmlTlf( styleName, text );
+			textFlow = styleManager.getHtmlTlf( styleName, text ) as TextFlow;
 			
 			textFlow.interactionManager = new SelectionManager( );
 			

@@ -18,7 +18,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 package fr.digitas.flowearth.text.styles {
-	import flash.utils.Dictionary;
+	import flash.utils.Dictionary;	
 
 	/**
 	 * @author Pierre Lepers
@@ -103,7 +103,7 @@ package fr.digitas.flowearth.text.styles {
 			_map[ "restrict" ] =
 			_map[ "text" ] =
 			_map[ "type" ] = new MapData( TypeMapping.STYLESHEET, _string_transtyper );
-
+			
 			_map[ "backgroundColor" ] = new MapData( TypeMapping.TLF_FORMAT | TypeMapping.STYLESHEET, _uint_transtyper );
 			
 			
@@ -111,6 +111,8 @@ package fr.digitas.flowearth.text.styles {
 
 			//_____________________________________________________________________________
 			//																	 TLF_CONFIG
+			
+			if( tlfFactory.hasSupport() ) {
 			
 			//BOOL
 			_map["enableAccessibility"] = 
@@ -183,6 +185,8 @@ package fr.digitas.flowearth.text.styles {
 			_map[ "typographicCase" ] =
 			_map[ "verticalAlign" ] =
 			_map[ "whiteSpaceCollapse" ] = new MapData( TypeMapping.TLF_FORMAT, _string_transtyper );
+			
+			}
 			
 			/*FP10-*/
 			

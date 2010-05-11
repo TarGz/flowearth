@@ -11,13 +11,16 @@ package fr.digitas.flowearth.text.styles {
 
 		private var _css : AdvancedStyleSheet;
 		
-		public function FormatResolver ( css : AdvancedStyleSheet ) {
-			
+		public function FormatResolver () {
+		
+		}
+
+		public function init( css : AdvancedStyleSheet ) : void {
 			_css = css;
 		}
 
 		
-		public function invalidateAll (textFlow : TextFlow) : void {
+		public function invalidateAll (textFlow : TextFlow) : void { 
 			
 		}
 		
@@ -29,8 +32,11 @@ package fr.digitas.flowearth.text.styles {
 			
 			if( target is FlowElement ) {
 				var styleName : String = target.styleName;
-				if( styleName == null ) return (target as FlowElement).format;
+//				if( styleName == null ) return (target as FlowElement).format;
+				if( styleName == null ) return null;
+				/*FDT_IGNORE*/
 				return _css.getStyle( styleName ).getTlfFormat();
+				/*FDT_IGNORE*/
 			}
 			
 			// TODO: handle Containers
