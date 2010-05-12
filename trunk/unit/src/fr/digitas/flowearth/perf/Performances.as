@@ -1,4 +1,5 @@
 package fr.digitas.flowearth.perf {
+	import fr.digitas.flowearth.perf.conf.ConfTest;	
 	import fr.digitas.flowearth.perf.mvc.BasicVectorTest;	
 	import fr.digitas.flowearth.Version;	
 	import fr.digitas.flowearth.perf.mvc.NodeTest;	
@@ -31,7 +32,7 @@ package fr.digitas.flowearth.perf {
 			stage.addEventListener( Event.RESIZE, onResize );
 			onResize( null );
 			
-			setTimeout(runNextTest, 2000 );
+			setTimeout(runNextTest, 1000 );
 		}
 		
 		private function runNextTest() : void {
@@ -65,9 +66,10 @@ package fr.digitas.flowearth.perf {
 			
 			_testsClasses = [  ];
 			
+			_testsClasses.push( ConfTest );
 			_testsClasses.push( NodeTest );
 			_testsClasses.push( PathTest );
-			_testsClasses.push( BasicVectorTest );
+			//_testsClasses.push( BasicVectorTest );
 		}
 
 		

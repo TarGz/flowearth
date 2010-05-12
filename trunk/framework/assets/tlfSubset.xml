@@ -1,0 +1,40 @@
+<report>
+  <scripts>
+    <script name="D:\work\librairies\Flex SDKs\flex_4_0_0_14159\frameworks\libs\textLayout.swc(flashx.textLayout.edit:SelectionFormat)" mod="1264794041744" size="2023" optimizedsize="852">
+      <def id="flashx.textLayout.edit:SelectionFormat" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\fp10\fr\digitas\flowearth\text\styles\ITlfFactory.as" mod="1273583396234" size="399" optimizedsize="399">
+      <def id="fr.digitas.flowearth.text.styles:ITlfFactory" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.elements:IConfiguration" />
+    </script>
+    <script name="D:\work\librairies\Flex SDKs\flex_4_0_0_14159\frameworks\libs\textLayout.swc(flashx.textLayout.elements:IConfiguration)" mod="1264794041963" size="3416" optimizedsize="892">
+      <def id="flashx.textLayout.elements:IConfiguration" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.edit:SelectionFormat" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="AS3" />
+    </script>
+    <script name="_52b401b4312ad428b6c30e26f86770fe8e0c14651d19f06f179de0bbe25a8a2b_flash_display_Sprite.as" mod="1273585978010" size="550" optimizedsize="511">
+      <def id="_52b401b4312ad428b6c30e26f86770fe8e0c14651d19f06f179de0bbe25a8a2b_flash_display_Sprite" />
+      <pre id="flash.display:Sprite" />
+      <dep id="flash.system:Security" />
+      <dep id="AS3" />
+    </script>
+    <script name="D:\work\librairies\Flex SDKs\flex_4_0_0_14159\frameworks\libs\textLayout.swc(flashx.textLayout.formats:ITextLayoutFormat)" mod="1264794041994" size="8013" optimizedsize="1437">
+      <def id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+  </scripts>
+  <external-defs>
+    <ext id="flash.system:Security" />
+    <ext id="flash.display:Sprite" />
+    <ext id="AS3" />
+    <ext id="Object" />
+  </external-defs>
+</report>

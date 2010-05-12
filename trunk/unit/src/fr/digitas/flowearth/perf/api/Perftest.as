@@ -21,7 +21,7 @@ package fr.digitas.flowearth.perf.api {
 			
 			if( _methods.length == 0 ) _complete();
 			else {
-				setTimeout( _runNextTest, 2000 );
+				setTimeout( _runNextTest, 500 );
 			}
 		}
 		
