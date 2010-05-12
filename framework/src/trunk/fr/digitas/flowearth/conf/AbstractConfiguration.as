@@ -267,9 +267,10 @@ package fr.digitas.flowearth.conf {
 		private function _parseDatas ( xml : XML ) : void {
 			_retrieveNamespaceDeclaration( xml );
 			
-			_buildProperties( xml );
-			_computeSwitchs( xml );
-			_enqueue( xml );
+			var extract : ChildExtraction = _extract( xml );
+			_buildProperties( extract.props );
+			_computeSwitchs( extract.switches );
+			_enqueue( extract );
 		}
 
 		
@@ -303,15 +304,15 @@ package fr.digitas.flowearth.conf {
 		}
 		
 		
-		private function _buildProperties ( xml : XML ) : void 
+		private function _buildProperties ( props :Array ) : void 
 		{
 			
-			var propsNodes : XMLList = _getPropertyNodes( xml );
 			var prop : ConfProperty;
 			var name : QName;
-			
-			for each ( var propNode : XML in propsNodes ) 
-			{
+			var l : int = props.length;
+			var propNode : XML;
+			for (var i : int = 0; i < l; i++) {
+				propNode = props[ i];
 				name = new QName( propNode.name() );
 				
 				if( _pProvider.getProperty( name ) ) 
@@ -332,24 +333,44 @@ package fr.digitas.flowearth.conf {
 		}
 
 
-		private function _getPropertyNodes ( xml : XML ) : XMLList {
-			return xml.children( ).( 	localName( ) != DATA_TO_LOAD_NODE 
-									&& 	localName( ) != EXTERNAL_NODE
-									&& 	localName( ) != SWITCH_NODE
-									);
+		private function _extract ( xml : XML ) : ChildExtraction {
+			var res : ChildExtraction = new ChildExtraction();
+			var list : XMLList = xml.children();
+			var l : int = list.length();
+			var node : XML;
+			for (var i : int = 0; i < l; i++) {
+				node = list[ i ];
+				switch ( node.localName() ) {
+					case DATA_TO_LOAD_NODE :
+						res.dtls.push( node );
+						break;
+					case EXTERNAL_NODE :
+						res.exts.push( node );
+						break;
+					case SWITCH_NODE :
+						res.switches.push( node );
+						break;
+					default :
+						res.props.push( node );
+						break;
+				}
+			}
+			
+			return res;
 		}
 		
 
 		//_____________________________________________________________________________
 		//																		SWITCHS
 		
-		private function _computeSwitchs ( xml : XML ) : void 
+		private function _computeSwitchs ( switches : Array ) : void 
 		{
 			var switchNode : XML;
-			var ns : Namespace = xml.namespace();
-			
-			for each( switchNode in xml.children().( localName() == SWITCH_NODE ) ) 
-			{
+			var ns : Namespace;
+			var l  : int = switches.length;
+			for (var i : int = 0; i < l; i++) {
+				switchNode = switches[ i ];
+				ns = switchNode.namespace();
 				var prop : String = getString( new QName( ns.uri, switchNode.@property ) );
 				
 				var resultsNode : XMLList = switchNode.child(new QName( ns.uri, "case" ) ).( @value == prop );
@@ -367,20 +388,26 @@ package fr.digitas.flowearth.conf {
 		
 		
 	
-		private function _enqueue ( xml : XML ) : void 
+		private function _enqueue ( extract : ChildExtraction ) : void 
 		{
+			var exts : Array = extract.exts;
+			var l : int = exts.length;
 			var hspace : Namespace;
-			var extList : XMLList = xml.children().( localName() == EXTERNAL_NODE );
-			var extFiles: XMLList;
-			for each (var ext : XML in extList ) {
+			var ext : XML;
+			for (var i : int = 0; i < l; i++) {
+				ext = exts[ i ];
 				if( ext.@inheritSpace == "true" ) hspace = ext.namespace();
 				else hspace =  null;
-				extFiles = ext.descendants().( localName() == "file" );//xml.child( EXTERNAL_NODE ).descendants( "file" );
-				_enqueExt( extFiles , hspace );
+				_enqueExt( ext.descendants().( localName() == "file" ) , hspace );
 			}
 			
-			var dtpList : XMLList = xml.children().( localName() == DATA_TO_LOAD_NODE ).descendants().( localName() == "file" );//xml.child( DATA_TO_LOAD_NODE ).descendants( "file" );
-			_enqueDtl( dtpList );
+			exts = extract.dtls;
+			l = exts.length;
+			for (i = 0; i < l; i++) {
+				ext = exts[ i ];
+				_enqueDtl( ext.descendants().( localName() == "file" ) );
+			}
+			
 		}
 		
 		private function _enqueExt ( list : XMLList, inheritSpace : Namespace = null ) : void {
@@ -468,7 +495,6 @@ package fr.digitas.flowearth.conf {
 	}
 }
 
-
 import flash.utils.Dictionary;
 
 //_____________________________________________________________________________
@@ -495,7 +521,7 @@ final internal class ConfProperty {
 		resolved = false;
 		if ( hasSimpleContent || source == null ) _source = str;
 		else _source += str;
-		if( ! QUICK_PROP_REGEXP.test( _source ) ) value = _source; 
+		if( _source.indexOf( "}" ) == -1 ) value = _source; 
 	}
 
 
@@ -519,7 +545,9 @@ final internal class ConfProperty {
 
 	internal function invalidate( properties : PropProvider ) : void {
 		resolved = nresolved = false;
-		for each( var pname : QName in _dependers ) properties.getProperty( pname ).invalidate(properties);
+		if( _dependers == null ) return;
+		for (var i : int = 0; i < _dependers.length; i++)
+			properties.getProperty( _dependers[i] ).invalidate(properties);
 	}
 
 	internal function addDepender ( propName : QName ) : void {
@@ -563,8 +591,6 @@ final internal class ConfProperty {
 
 	
 	private function cleanNs( input : String ) : String {
-		//var r : RegExp = /xmlns(:\w)?="[^"]*"/ig;
-//		var r : RegExp = new RegExp( "xmlns(:\\w)?=\"[^\"]*\"", "gi" );
 		var r : RegExp = new RegExp( "xmlns(:\\w)?=\""+uri+"\"", "gi" );
 		return input.replace( r , "" );
 	}
@@ -667,24 +693,70 @@ internal class Solver {
 	}
 
 	internal function solve() : String {
-		var r : String = _prop.value = _prop.source.replace( PROP_REGEXP, _propReplaceFunction );
+		
+		
+		var r : String = _prop.value = process( _prop.source );
 		
 		var dependers : Array = _prop.getDependers( ) ;
-		for ( var i : String in dependers )
-			_provider.getProperty( dependers[i] ).resolved = false;
+		if( dependers ) {
+			for (var i : int = 0; i < dependers.length; i++) {
+				_provider.getProperty( dependers[i] ).resolved = false;
+			}
+		}
 		
-//		_prop.value;	
 		_provider 	= null;
 		_prop 		= null;
 		
 		return r;
 	}
 	
+	private function process( input : String ) : String {
+		
+		var res : String;
+		var si : int = -1;
+		var se : int = -1;
+		var c : int = 0;
+		var ranges : Array = [];
+		
+		while( true ) {
+			si = input.indexOf( S_TOKEN, si+1 );
+			if( si == -1 ) break;
+			
+			se = input.indexOf( E_TOKEN, si );
+			if( se == -1 ) break;
+			
+			ranges[c++] = si;
+			ranges[c++] = se;
+		}
+		
+		var token : String;
+		var len : int = ranges.length;
+		var psepIndex : int;
+		res = input.substring( 0, ranges[0]);
+		for (var i : int = 0; i < len; i+=2) {
+			token = input.substring( ranges[i]+2, ranges[i+1] );
+			psepIndex = token.indexOf( "::" );
+			
+			if( psepIndex == -1 ) 
+				token = _propReplaceFunction( token, _prop.uri );
+			else 
+				token = _propReplaceFunction( token.substring( psepIndex+2 ), _provider.namespace( token.substring( 0, psepIndex ) ) );
+			
+			res += token;
+			if( i+2 < len )
+				res += input.substring( ranges[i+1]+1, ranges[i+2]);
+			
+		}
+
+		res += input.substring( ranges[ranges.length-1]+1 );
+		return res;
+	}
+
 	
-	protected function _propReplaceFunction () : String {
-		var local : String = arguments[5];
-		var prefix : String = arguments[3];
-		var uri : String = ( prefix != "" ) ? _provider.namespace( prefix ) : _prop.uri;
+	
+	
+	protected function _propReplaceFunction ( local : String, uri : String ) : String {
+		
 		var name : QName = new QName( uri, local );
 		var prop : ConfProperty = _provider.getProperty( name, false );
 		//TODO gerer le ns dans la création from scratch
@@ -693,6 +765,7 @@ internal class Solver {
 		return ( prop.resolved ) ? prop.value : new Solver( prop, _provider ).solve(); 
 	}
 	
+
 	
 	protected var _prop : ConfProperty;
 	protected var _provider : PropProvider;
@@ -707,15 +780,31 @@ final internal class LazySolver extends Solver {
 		super( prop, properties );
 	}
 
-	override protected function _propReplaceFunction () : String {
-		var local : String = arguments[5];
-		var prefix : String = arguments[3];
-		var uri : String = ( prefix != "" ) ? _provider.namespace( prefix ) : _prop.uri;
+	override protected function _propReplaceFunction ( local : String, uri : String ) : String {
+		
 		var name : QName = new QName( uri, local );
 		var prop : ConfProperty = _provider.getProperty( name, false );
 		if( !prop ) return "";
 		return ( prop.resolved ) ? prop.value : new Solver( prop, _provider ).solve(); 
 	}
+}
+
+class ChildExtraction {
+
+	
+	
+	public function ChildExtraction() {
+		switches = [];
+		dtls = [];
+		exts = [];
+		props = [];
+	}
+
+	public var switches : Array;	
+	public var dtls : Array;	
+	public var exts : Array;	
+	public var props : Array;	
+
 }
 
 
@@ -727,8 +816,6 @@ final internal class LazySolver extends Solver {
 //		RR  RR  EE      GG   GG EE        X X   PP      
 //		RR   RR EEEEEEE  GGGGG  EEEEEEE X     X PP   q   
 
-internal const PROP_REGEXP 			: RegExp = new RegExp( "(\\$\\{)((\\w*)(::))?(\\w+)(\\})", "gi" );
-internal const QUICK_PROP_REGEXP 	: RegExp = new RegExp( "(\\$\\{\\w*(::)?\\w+\\})", "i" );
 internal const S_TOKEN 				: String = "${" ;
 internal const E_TOKEN 				: String = "}" ;
 
