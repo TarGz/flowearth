@@ -22,18 +22,6 @@ package fr.digitas.flowearth.text.styles {
 	import flash.utils.Dictionary;	
 	
 
-	/*FDT_IGNORE*/
-	/*-FP10*/
-//	import flashx.textLayout.conversion.TextConverter;
-//	import flashx.textLayout.conversion.ITextImporter;
-//	import flashx.textLayout.elements.TextFlow;
-	/*FP10-*/
-	/*FDT_IGNORE*/
-
-
-	
-
-	
 
 	/**
 	 * @author Pierre Lepers

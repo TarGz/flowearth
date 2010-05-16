@@ -25,6 +25,8 @@ package fr.digitas.flowearth.debug {
 	import flash.ui.Keyboard;	
 
 	/**
+	 * 
+	 * 
 	 * @author Pierre Lepers
 	 */
 	public class Reload {
