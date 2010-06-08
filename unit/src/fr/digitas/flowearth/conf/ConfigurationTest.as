@@ -74,7 +74,9 @@ package fr.digitas.flowearth.conf {
 									"testBaseNs",
 									"testBaseNsProxy",
 									"testNsDependancies",
-									"testNsDtl"
+									"testNsDtl",
+									
+									"testNsParenting"
 									
 									];
 										
@@ -357,8 +359,93 @@ package fr.digitas.flowearth.conf {
 			assertFalse( "testNsSwitchExist", Conf.hasProperty( "ns_switch_result" ) );
 			assertEquals( "testNsSwitch", "ns_ok", Conf.defNs::ns_switch_result );
 			assertEquals( "testNsSwitch", "ns_ok", Conf.getString( new QName( defNs, "ns_switch_result" ) ) );
+		}
+		
+		public function testNsParenting() : void {
+			
+			var sp1 : String = "__tnp1";
+			var sp2 : String = "___tnp2";
+			var sp3 : String = "____tnp3";
+			var sp4 : String = "_____tnp4";
+			
+			Conf.createSpace( sp1 );
+			Conf.createSpace( sp2, sp1 );
+			Conf.createSpace( sp3, sp2 );
+			Conf.createSpace( sp4, sp3 );
+			
+			
+			var name : QName;
+			var val : String;
+			
+			
+			name = new QName( sp1, "tnp1_p1" );
+			val = "&tnp1_p1&";
+			Conf.setProperty( name, val );
+			
+			name = new QName( sp1, "tnp1_p2" );
+			val = "&tnp1_p2&";
+			Conf.setProperty( name, val );
+
+			name = new QName( sp3, "tnp3_p1" );
+			val = "${tnp1_p1}_${tnp1_p2}_&tnp3_p1&";
+			Conf.setProperty( name, val );
+			
+
+			name = new QName( sp1, "tnp_px" );
+			val = "_PX1_";
+			Conf.setProperty( name, val );
+			name = new QName( sp2, "tnp_px" );
+			val = "_PX2_";
+			Conf.setProperty( name, val );
+			name = new QName( sp2, "tnp_pxb" );
+			val = "_PX2b_";
+			Conf.setProperty( name, val );
+			name = new QName( sp3, "tnp_px" );
+			val = "_PX3_";
+			Conf.setProperty( name, val );
+			name = new QName( sp4, "tnp_pxe" );
+			val = "${tnp_px}${tnp_pxb}";
+			Conf.setProperty( name, val );
+
+
+			name = new QName( sp4, "tnp_px_nodep" );
+			val = "_${unexist}_";
+			Conf.setProperty( name, val );
+			
+			assertEquals( "testNsSwitch", "__", Conf.getString( new QName( sp4, "tnp_px_nodep" ) ) );
+
+			name = new QName( sp2, "unexist" );
+			val = "_snp2_unexist_";
+			Conf.setProperty( name, val );
+
+			assertEquals( "testNsSwitch", "__", Conf.getString( new QName( sp4, "tnp_px_nodep" ) ) );
+
+			name = new QName( sp4, "unexist" );
+			val = "_snp4_unexist_";
+			Conf.setProperty( name, val );
+
+			assertEquals( "testNsSwitch", "__snp4_unexist__", Conf.getString( new QName( sp4, "tnp_px_nodep" ) ) );
+			
+			
+			
+
+			assertEquals( "testNsSwitch", "&tnp1_p1&_&tnp1_p2&_&tnp3_p1&", Conf.getString( new QName( sp3, "tnp3_p1" ) ) );
+
+			assertEquals( "testNsSwitch", "_PX3__PX2b_", Conf.getString( new QName( sp4, "tnp_pxe" ) ) );
+			assertEquals( "testNsSwitch", "_PX3_", Conf.getString( new QName( sp3, "tnp_px" ) ) );
+			assertEquals( "testNsSwitch", "_PX2_", Conf.getString( new QName( sp2, "tnp_px" ) ) );
+			assertEquals( "testNsSwitch", "_PX1_", Conf.getString( new QName( sp1, "tnp_px" ) ) );
+			
+			name = new QName( sp4, "tnp_pxb" );
+			val = "_PX4b_";
+			Conf.setProperty( name, val );
+			
+			assertEquals( "testNsSwitch", "_PX3__PX4b_", Conf.getString( new QName( sp4, "tnp_pxe" ) ) );
 			
 		}
+
+		
+		
 		
 		private var defNs : Namespace = new Namespace( "http://www.digitas.fr.flash.conftest/ns/defaultNsDefConf" );
 		
