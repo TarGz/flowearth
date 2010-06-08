@@ -69,3 +69,4 @@ v2.5.
 	fix (big) processPath error in node activation (since 2.5.291)
 	faster Configuration parsing
 	insanely faster Conf property solving
+	add ns hierarchy in conf props

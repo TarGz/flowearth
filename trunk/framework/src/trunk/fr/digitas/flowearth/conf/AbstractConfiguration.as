@@ -205,6 +205,12 @@ package fr.digitas.flowearth.conf {
 			_pProvider.deleteProperty( name ) ;
 		}
 		
+		public function createSpace( uri : String, parentSpace : String = "" ) : void {
+			_pProvider.createSpace( uri, parentSpace );
+		}
+
+		
+		
 		
 		/**
 		 * supprime un namespace du Conf et toutes les prop associées
@@ -523,7 +529,8 @@ final internal class ConfProperty {
 		else _source += str;
 		if( _source.indexOf( "}" ) == -1 ) value = _source; 
 	}
-
+	
+	
 
 	internal function get source ( ) : String {
 		return _source;
@@ -610,38 +617,45 @@ final internal class ConfProperty {
 }
 
 
-final internal class PropProvider {
 
+
+final internal class PropProvider {
+	
+	private static const DEFAULT_SPACE : String = "";
 	
 	public function PropProvider() {
 		_spaces = new Dictionary();
 		_pres = new Dictionary();
-		_pres[null] = _pres[ "" ] = "";
+		_pres[null] = _pres[ "" ] = DEFAULT_SPACE;
+		_spaces[ DEFAULT_SPACE ] = new PropSpace( DEFAULT_SPACE );
 	}
 
 	internal function setProperty( name : QName, prop : ConfProperty ) : void {
-		var space : Dictionary = _spaces[ name.uri ];
-		if( ! space ) _spaces[ name.uri ] = space = new Dictionary();
-		space[ name.localName ] = prop;
+		var space : PropSpace = _spaces[ name.uri ];
+		if( ! space ) space = createSpace( name.uri );
+		space._dprop[ name.localName ] = prop;
 	}
 
 	internal function getProperty( name : QName, strict : Boolean = true ) : ConfProperty {
-		var space : Dictionary = _spaces[ name.uri ];
-		if( space ) {
-			if ( space[ name.localName ] )
-				return space[ name.localName ];
-			else if ( _spaces[ "" ] && ! strict ) {
-				return _spaces[ "" ][ name.localName ];
-				
-			}
-		}
 		
-			
+		
+		var lname : String = name.localName;
+		var solvedSpace : PropSpace = _spaces[ name.uri ];
+		var res : ConfProperty;
+		
+		if( solvedSpace == null )
+			return null;
+		
+		do{
+			res = solvedSpace._dprop[ lname ];
+			if( res ) return res;
+		} while( (solvedSpace = solvedSpace._parent) && !strict );
+		
 		return null;
 	}
 	
 	internal function deleteProperty( name : QName ) : void {
-		delete _spaces[ name.uri ][ name.localName ];
+		delete _spaces[ name.uri ]._dprop[ name.localName ];
 	}
 	
 	internal function openNamespace( ns : Namespace ) : void {
@@ -654,8 +668,24 @@ final internal class PropProvider {
 		return _pres[ pre ];// || emptyNs;
 	}
 	
+	internal function createSpace( uri : String, parentSpace : String = "" ) : PropSpace {
+		if( _spaces[ uri ] ) throw new Error( "AbstractConfiguration.createSpace() : space '" + uri + "' already exist");
+		var res : PropSpace = new PropSpace( uri );
+		var parent : PropSpace = _spaces[parentSpace];
+		if( parent == null ) throw new Error( "AbstractConfiguration.createSpace() : invalid parent URI : '" + parentSpace + "'" );
+		res._parent = parent;
+		_spaces[ uri ] = res;
+		return res;
+	}
+
 	internal function deleteSpace( uri : String ) : void {
-		var space : Dictionary = _spaces[ uri ];
+		var space : PropSpace = _spaces[ uri ];
+		var childSpaces : Array = space._childs;
+		
+		for (var i : int = 0; i < childSpaces.length; i++) {
+			deleteSpace( ( childSpaces[i] as PropSpace )._uri );
+		}
+		
 		for each (var prop : ConfProperty in space ) {
 			var deps : Array = prop.getDependers();
 			var dep : QName;
@@ -663,12 +693,68 @@ final internal class PropProvider {
 			for each ( dep in deps ) getProperty( dep ).breakDependancie( prop );
 			delete space[ prop.name ];
 		}
+		
+		space.dispose();
 		delete _spaces[ uri ];
 	}
 
 	internal var _pres : Dictionary;
 	internal var _spaces : Dictionary;
 }
+
+
+final internal class PropSpace {
+
+	
+	
+	public function PropSpace( uri : String ) {
+		_uri = uri;
+		_dprop = new Dictionary();
+		_childs = [];
+	}
+	
+	public function get parent() : PropSpace {
+		return _parent;
+	}
+	
+	public function set parent(parent : PropSpace) : void {
+		if ( _parent ) _parent.removeChild( this );
+		_parent = parent;
+		if ( _parent ) _parent.addChild( this );
+	}
+	
+	internal function addChild( space : PropSpace) : void{
+		if( _childs.indexOf( space ) > -1 ) return;
+		_childs.push( space );
+	}
+
+	internal function removeChild( space : PropSpace) : void{
+		var ind : int = _childs.indexOf( space );
+		if( ind == -1 ) return;
+		_childs.splice( ind, 1 );
+	}
+	
+	internal function dispose() : void {
+		_childs = null;
+		_dprop = null;
+		_parent = null;
+	}
+
+	
+	
+	
+	
+	
+	internal var _parent : PropSpace;
+
+	internal var _childs : Array;
+
+	internal var _dprop : Dictionary;
+
+	internal var _uri : String;
+	
+}
+
 
 
 //_____________________________________________________________________________
@@ -759,8 +845,10 @@ internal class Solver {
 		
 		var name : QName = new QName( uri, local );
 		var prop : ConfProperty = _provider.getProperty( name, false );
-		//TODO gerer le ns dans la création from scratch
-		if( !prop ) _provider.setProperty( name, prop = new ConfProperty( XML("<"+name.localName+"/>") ) );
+		
+		if( !prop ) 
+			_provider.setProperty( name, prop = new ConfProperty( XML("<"+name.localName+"/>") ) );
+		
 		prop.addDepender( _prop.name );
 		return ( prop.resolved ) ? prop.value : new Solver( prop, _provider ).solve(); 
 	}
