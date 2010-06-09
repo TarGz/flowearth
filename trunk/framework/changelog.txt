@@ -65,8 +65,9 @@ v2.5.291
 v2.5.299
 	INode.getChilds() now return an Array;
 
-v2.5.
+v2.5.451
 	fix (big) processPath error in node activation (since 2.5.291)
 	faster Configuration parsing
 	insanely faster Conf property solving
 	add ns hierarchy in conf props
+	start pixel bender library

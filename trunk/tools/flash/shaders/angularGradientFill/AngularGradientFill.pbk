@@ -1,0 +1,47 @@
+<languageVersion : 1.0;>
+
+kernel AngularGradientFill
+<   namespace : "fr.digitas.flowearth.shaders::AngularGradientFill";
+    vendor : "Pierr Lepers";
+    version : 1;
+    description : "Angular Gradient Fill Shader";
+>
+{
+    
+    parameter float4 color1 // coordinates of the first point 
+    < 
+        defaultValue:float4(0.0, 0.0, 0.0, 1.0); 
+    >; 
+    
+    parameter float4 color2 // coordinates of the first point 
+    < 
+        defaultValue:float4(1.0, 1.0, 1.0, 1.0); 
+    >;
+    
+    parameter float2 center // coordinates of the first point 
+    < 
+        defaultValue:float2(0, 0); 
+    >;
+    
+    parameter float angle // coordinates of the first point 
+    < 
+        defaultValue:0.0; 
+    >;
+    
+    output pixel4 dst;
+    
+    
+
+    void
+    evaluatePixel()
+    {
+    
+        float2 dpos = outCoord() - center;
+        
+        float meltp = atan( dpos.x, dpos.y );
+        
+        float p = smoothStep( -3.14159265358, 3.14159265358, meltp );
+        
+        dst = mix( color1, color2, p );
+    }
+}
