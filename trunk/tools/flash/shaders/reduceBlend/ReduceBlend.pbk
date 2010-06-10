@@ -1,0 +1,23 @@
+<languageVersion : 1.0;>
+
+kernel ReduceBlend
+<   namespace : "fr.digitas.flowearth.shaders::ReduceBlend";
+    vendor : "Pierre Lepers";
+    version : 1;
+    description : "Reduce the number of color using the value of the blend layer channel";
+>
+{
+    input image4 background;
+    input image4 foreground;
+    
+    output pixel4 dst;
+
+    void
+    evaluatePixel()
+    {
+        float4 hex = 255.0 * sampleNearest(foreground,outCoord());
+   
+        dst = floor( sampleNearest(background,outCoord()) * hex ) / hex;
+    
+    }
+}
