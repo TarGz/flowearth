@@ -1,0 +1,26 @@
+<languageVersion : 1.0;>
+
+kernel AngularGradientFill
+<   namespace : "fr.digitas.flowearth.shaders::MappedAngularGradientFill";
+    vendor : "Pierre Lepers";
+    version : 1;
+    description : "Mapped Angular Gradient Fill Shader, draw an angular gradient based on a linear gradient map";
+>
+{
+    
+    parameter float mapsize;
+    
+    input image4 map;
+    
+    output pixel4 dst;
+   
+
+    void evaluatePixel()
+    {
+        
+        float2 dpos = outCoord();
+        
+        dst = sampleNearest( map, float2( smoothStep( -3.14159265358, 3.14159265358, atan( dpos.x, dpos.y ) ) * mapsize, .5 ) );
+        
+    }
+}
