@@ -18,15 +18,7 @@ kernel AngularGradientFill
         defaultValue:float4(1.0, 1.0, 1.0, 1.0); 
     >;
     
-    parameter float2 center // coordinates of the first point 
-    < 
-        defaultValue:float2(0, 0); 
-    >;
-    
-    parameter float angle // coordinates of the first point 
-    < 
-        defaultValue:0.0; 
-    >;
+ 
     
     output pixel4 dst;
     
@@ -35,13 +27,9 @@ kernel AngularGradientFill
     void
     evaluatePixel()
     {
-    
-        float2 dpos = outCoord() - center;
         
-        float meltp = atan( dpos.x, dpos.y );
+        float2 dpos = outCoord();
         
-        float p = smoothStep( -3.14159265358, 3.14159265358, meltp );
-        
-        dst = mix( color1, color2, p );
+        dst = mix( color1, color2, smoothStep( -3.14159265358, 3.14159265358, atan( dpos.x, dpos.y ) ) );
     }
 }
