@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     19 oct. 2009 15:17:16                                                        
+
+     Digitas - docs samples    
+     Build docs samples swf
+                   
+     lepersp                                                                
+     ====================================================================== -->
+<project name="Digitas Fmk - Build Shaders Lib"
+         default="main"
+         basedir="../../../">
+	<description>
+		Build Shaders Lib
+    </description>
+
+	<property name="FMK_HOME" location="${basedir}" />
+	<loadproperties srcfile="${FMK_HOME}/build.config" />
+	<loadproperties srcfile="${FMK_HOME}/.properties" />
+
+	<taskdef resource="flexTasks.tasks"
+	         classpath="${digitas.flex}/ant/lib/flexTasks.jar" />
+
+
+	<!-- ================================= 
+          target: main              
+         ================================= -->
+	<target name="main" depends="init" description="Build docs samples swf">
+		<antcall target="buildSwc" />
+		
+	</target>
+
+	<!-- ================================= 
+          target: buildSwc              
+         ================================= -->
+	<target name="buildSwc" depends="init" description="build shader lib's swc">
+
+		<compc output="${shaderlibDir}/bin/flowearth_shaders.swc"
+		       strict="true"
+		       optimize="true"
+		       debug="true"
+		       compute-digest="false"
+		       target-player="10"
+		       static-rsls="true">
+
+			<include-sources dir="${shaderlibDir}/src"
+			                 includes="**/*" />
+			
+			<jvmarg line="${digitas.compiler.jvmargs}" />
+		</compc>
+
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="init">
+		<property name="shaderlibDir" value="${FMK_HOME}/tools/flash/shadersLib" />
+	</target>
+
+</project>
+
+

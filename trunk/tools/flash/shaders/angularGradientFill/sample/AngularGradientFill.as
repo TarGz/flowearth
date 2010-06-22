@@ -56,7 +56,7 @@ package {
          
         private function updateShaderFill(event:Event):void 
         { 
-            //colorAngle += .06; 
+            colorAngle += .01; 
              
           	shader.data.color1.value = [1.0, 0, 0, 1.0]; 
           	shader.data.color2.value = [0, 1.0, 0, 1.0]; 
