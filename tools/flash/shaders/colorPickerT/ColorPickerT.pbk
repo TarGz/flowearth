@@ -1,0 +1,36 @@
+<languageVersion : 1.0;>
+
+kernel ColorPickerT
+<   namespace : "fr.digitas.flowearth.shaders::ColorPickerT";
+    vendor : "Pierre Lepers ";
+    version : 1;
+    description : "fill a color picker rect based on tint value, tint should be a full saturated color";
+>
+{
+    
+    parameter float3 color 
+    < 
+        description : "base tint of the map, should be a full saturated color";
+        defaultValue:float3(1.0, 0.0, 0.0); 
+    >;
+    
+    parameter float2 size
+    < 
+        description : "[width, height] - size of the rect to draw";
+        defaultValue:float2(100.0, 100.0); 
+    >;
+    
+    #define white float3( 1.0, 1.0, 1.0 )
+    
+    
+    output pixel3 dst;
+
+    void
+    evaluatePixel()
+    {
+        float2 satlum = outCoord()/size;
+       
+        dst = mix( white, color, satlum.x ) * ( 1.0-satlum.y );
+       
+    }
+}
