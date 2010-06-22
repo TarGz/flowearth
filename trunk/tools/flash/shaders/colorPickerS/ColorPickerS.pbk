@@ -1,0 +1,43 @@
+<languageVersion : 1.0;>
+
+kernel ColorPickerS
+<   namespace : "fr.digitas.flowearth.shaders::ColorPickerS";
+    vendor : "Pierre Lepers ";
+    version : 1;
+    description : "fill a color picker rect based on saturation value";
+>
+{
+    
+    parameter float saturation // coordinates of the first point 
+    < 
+        description : "saturation, value between 0.0 and 1.0, 1 mean full saturation, 0 mean no color, default value : 0.0";
+        minValue:0.0;
+        maxValue:1.0;
+        defaultValue:float(0.0); 
+    >;
+    
+    parameter float2 size// coordinates of the first point 
+    < 
+        description : "[width, height] - size of the rect to draw";
+        defaultValue:float2(100.0, 100.0); 
+    >;
+    
+    #define white float3( 1.0, 1.0, 1.0 )
+   
+    
+    input image3 saw;
+    
+    output pixel3 dst;
+
+    void
+    evaluatePixel()
+    {
+        float2 mappoint = float2( outCoord().x / size.x * 1536.0 , 0 );
+        pixel3 color = sample( saw, mappoint );
+      
+        color = mix( white, color, saturation );
+        color *= 1.0-( outCoord().y /size.y );
+    
+        dst = color;
+    }
+}
