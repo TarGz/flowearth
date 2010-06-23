@@ -20,10 +20,10 @@ kernel RectGradientFill
         defaultValue:float4( 0.0, 0.0, 0.0, 0.0 ); 
     >;
     
-    parameter float4 rect
+    parameter float2 size
     < 
-        description : "[x, y, w, h] the base rect zone of the gradient";
-        defaultValue:float4(12.0, 12.0, 100.0, 100.0); 
+        description : "[w, h] size of the base rect zone of the gradient";
+        defaultValue:float2(100.0, 100.0); 
     >;
     
     
@@ -40,16 +40,20 @@ kernel RectGradientFill
     void
     evaluatePixel()
     {
-        float2 misize = float2( rect.z/2.0, rect.w/2.0 );
+        float2 rectCenter = float2( size.x/2.0, size.y/2.0 );
         
-        float2 rectCenter = float2( rect.x + misize.x, rect.y + misize.y );
+       
+        float2 distances = max( ZERO, abs( rectCenter - outCoord() ) - rectCenter );
         
-        float2 distances = max( ZERO, abs( rectCenter - outCoord() ) - misize );
         
-        float rdist = length( distances );
         
-       // float2 rdist = ( float2( distance( rectCenter.x, outCoord().x ), distance( rectCenter.y, outCoord().y ) ) - misize ) / dist ;
+        float rdist = clamp( length( distances / dist ), 0.0, 1.0 );
+        
+        rdist = -rdist *( rdist - 2.0 );
         
         dst = mix( insetColor, outsetColor, rdist );
+        
+        // float2 rdist = ( float2( distance( rectCenter.x, outCoord().x ), distance( rectCenter.y, outCoord().y ) ) - misize ) / dist ;
+        //dst = mix( mix( insetColor, outsetColor, rdist.x ), mix( insetColor, outsetColor, rdist.y ), .5);
     }
 }
