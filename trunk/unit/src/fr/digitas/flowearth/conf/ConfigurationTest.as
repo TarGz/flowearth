@@ -440,7 +440,7 @@ package fr.digitas.flowearth.conf {
 			val = "_PX4b_";
 			Conf.setProperty( name, val );
 			
-			assertEquals( "testNsSwitch", "_PX3__PX4b_", Conf.getString( new QName( sp4, "tnp_pxe" ) ) );
+			assertEquals( "testNsSwitch", "_PX3__PX2b_", Conf.getString( new QName( sp4, "tnp_pxe" ) ) );
 			
 		}
 

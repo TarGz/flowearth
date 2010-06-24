@@ -1,6 +1,6 @@
 <report>
   <scripts>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\Link.as" mod="1276012047076" size="2144" optimizedsize="1186">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\Link.as" mod="1277389732138" size="2144" optimizedsize="1186">
       <def id="fr.digitas.flowearth.utils:Link" />
       <pre id="Object" />
       <dep id="flash.net:navigateToURL" />
@@ -12,12 +12,12 @@
       <dep id="flash.net:URLRequest" />
       <dep id="flash.net:URLVariables" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\NumberEvent.as" mod="1276012047560" size="828" optimizedsize="387">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\NumberEvent.as" mod="1277389732685" size="828" optimizedsize="387">
       <def id="fr.digitas.flowearth.event:NumberEvent" />
       <pre id="flash.events:Event" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\system\NodeSystemClass.as" mod="1276012047326" size="2413" optimizedsize="1121">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\system\NodeSystemClass.as" mod="1277389732419" size="2413" optimizedsize="1121">
       <def id="fr.digitas.flowearth.mvc.address.structs.system:NodeSystemClass" />
       <pre id="fr.digitas.flowearth.mvc.address.structs:INodeSystem" />
       <pre id="Object" />
@@ -27,7 +27,7 @@
       <dep id="fr.digitas.flowearth.mvc.address.structs:INode" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\connector\NodeConnector.as" mod="1276012047576" size="1872" optimizedsize="943">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\connector\NodeConnector.as" mod="1277389732701" size="1872" optimizedsize="943">
       <def id="fr.digitas.flowearth.mvc.address.structs.connector:NodeConnector" />
       <pre id="Object" />
       <dep id="Error" />
@@ -35,12 +35,12 @@
       <dep id="fr.digitas.flowearth.event:NodeEvent" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\fonts\fontsManager.as" mod="1276012047576" size="289" optimizedsize="134">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\fonts\fontsManager.as" mod="1277389732701" size="289" optimizedsize="134">
       <def id="fr.digitas.flowearth.text.fonts:fontsManager" />
       <dep id="fr.digitas.flowearth.text.fonts:FontManagerClass" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\net\BatchLoaderItem.as" mod="1276012047435" size="1692" optimizedsize="989">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\net\BatchLoaderItem.as" mod="1277389732544" size="1692" optimizedsize="989">
       <def id="fr.digitas.flowearth.net:BatchLoaderItem" />
       <pre id="fr.digitas.flowearth.net:AbstractBLoader" />
       <dep id="fr.digitas.flowearth:bi_internal" />
@@ -52,7 +52,7 @@
       <dep id="flash.net:URLRequest" />
       <dep id="flash.display:Loader" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\debug\DebuggingMenu.as" mod="1276012047388" size="4384" optimizedsize="2566">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\debug\DebuggingMenu.as" mod="1277389732466" size="4384" optimizedsize="2566">
       <def id="fr.digitas.flowearth.debug:DebuggingMenu" />
       <pre id="flash.display:Sprite" />
       <pre id="Object" />
@@ -73,12 +73,12 @@
       <dep id="flash.display:InteractiveObject" />
       <dep id="flash.text:TextFormat" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\Version.as" mod="1276012047576" size="539" optimizedsize="284">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\Version.as" mod="1277389732716" size="539" optimizedsize="284">
       <def id="fr.digitas.flowearth:Version" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\IChildRenderer.as" mod="1276012047545" size="1345" optimizedsize="408">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\IChildRenderer.as" mod="1277389732669" size="1345" optimizedsize="408">
       <def id="fr.digitas.flowearth.ui.layout:IChildRenderer" />
       <pre id="flash.events:IEventDispatcher" />
       <pre id="Object" />
@@ -86,14 +86,14 @@
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\controls\SimpleButton.as" mod="1276012047576" size="3023" optimizedsize="1592">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\controls\SimpleButton.as" mod="1277389732701" size="3023" optimizedsize="1592">
       <def id="fr.digitas.flowearth.ui.controls:SimpleButton" />
       <pre id="flash.display:MovieClip" />
       <dep id="flash.events:MouseEvent" />
       <dep id="flash.events:FocusEvent" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\controls\ToggleButton.as" mod="1276012047467" size="2090" optimizedsize="1090">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\controls\ToggleButton.as" mod="1277389732591" size="2090" optimizedsize="1090">
       <def id="fr.digitas.flowearth.ui.controls:ToggleButton" />
       <pre id="fr.digitas.flowearth.ui.controls:SimpleButton" />
       <dep id="flash.events:MouseEvent" />
@@ -104,7 +104,7 @@
       <dep id="flash.ui:Keyboard" />
       <dep id="fr.digitas.flowearth.event:BoolEvent" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\INode.as" mod="1276012047326" size="2653" optimizedsize="754">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\INode.as" mod="1277389732419" size="2653" optimizedsize="754">
       <def id="fr.digitas.flowearth.mvc.address.structs:INode" />
       <pre id="fr.digitas.flowearth.mvc.address.structs.descriptor:INodeDescriptor" />
       <pre id="fr.digitas.flowearth.mvc.address.structs:INodeSystem" />
@@ -115,7 +115,13 @@
       <dep id="AS3" />
       <dep id="flash.net:URLVariables" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\scroller\Scroller.as" mod="1276012047513" size="8756" optimizedsize="3771">
+    <script name="_f29fa3e44ae26a23a8e04913b90b46b45abe3acd89748cf5db041da0f13c71b5_flash_display_Sprite.as" mod="1277389737372" size="1147" optimizedsize="511">
+      <def id="_f29fa3e44ae26a23a8e04913b90b46b45abe3acd89748cf5db041da0f13c71b5_flash_display_Sprite" />
+      <pre id="flash.display:Sprite" />
+      <dep id="flash.system:Security" />
+      <dep id="AS3" />
+    </script>
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\scroller\Scroller.as" mod="1277389732638" size="8756" optimizedsize="3771">
       <def id="fr.digitas.flowearth.ui.scroller:Scroller" />
       <pre id="fr.digitas.flowearth.core:IDisposable" />
       <pre id="flash.display:Sprite" />
@@ -132,25 +138,25 @@
       <dep id="fr.digitas.flowearth.ui.scroller:ScrollPolicy" />
       <dep id="fr.digitas.flowearth.event:BoolEvent" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\styles\styleManager.as" mod="1276012047123" size="292" optimizedsize="136">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\styles\styleManager.as" mod="1277389732185" size="292" optimizedsize="136">
       <def id="fr.digitas.flowearth.text.styles:styleManager" />
       <dep id="fr.digitas.flowearth.text.styles:StyleManagerClass" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\utils\IInterpolable.as" mod="1276012047388" size="763" optimizedsize="273">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\utils\IInterpolable.as" mod="1277389732482" size="763" optimizedsize="273">
       <def id="fr.digitas.flowearth.ui.layout.utils:IInterpolable" />
       <pre id="Object" />
       <dep id="fr.digitas.flowearth.ui.layout.utils:AnimationHelper" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\TopWeakRenderer.as" mod="1276012047373" size="1352" optimizedsize="754">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\TopWeakRenderer.as" mod="1277389732466" size="1352" optimizedsize="754">
       <def id="fr.digitas.flowearth.ui.layout.renderer:TopWeakRenderer" />
       <pre id="fr.digitas.flowearth.ui.layout.renderer:ChildRenderer" />
       <dep id="flash.geom:Rectangle" />
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\Layout.as" mod="1276012047482" size="9819" optimizedsize="4168">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\Layout.as" mod="1277389732591" size="9819" optimizedsize="4168">
       <def id="fr.digitas.flowearth.ui.layout:Layout" />
       <pre id="fr.digitas.flowearth.core:IDisplayObjectContainer" />
       <pre id="flash.display:Sprite" />
@@ -169,11 +175,15 @@
       <dep id="flash.display:DisplayObjectContainer" />
       <dep id="fr.digitas.flowearth.ui.layout.renderer:RendererFactory" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\utils\PathTools.as" mod="1276012047013" size="1075" optimizedsize="662">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\utils\PathTools.as" mod="1277389732060" size="1075" optimizedsize="662">
       <def id="fr.digitas.flowearth.mvc.address.structs.utils:PathTools" />
       <pre id="Object" />
       <dep id="fr.digitas.flowearth.mvc.address.structs:IPath" />
       <dep id="fr.digitas.flowearth.mvc.address.structs:INode" />
+      <dep id="AS3" />
+    </script>
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\bi_internal.as" mod="1277389732529" size="223" optimizedsize="129">
+      <def id="fr.digitas.flowearth:bi_internal" />
       <dep id="AS3" />
     </script>
     <script name="D:\work\workspaces\as3\Flowearth\framework\assets\CS3Component.swc(org.owflow:Framework)" mod="1254839536051" size="646" optimizedsize="470">
@@ -183,11 +193,7 @@
       <dep id="org.owflow:Version" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\bi_internal.as" mod="1276012047420" size="223" optimizedsize="129">
-      <def id="fr.digitas.flowearth:bi_internal" />
-      <dep id="AS3" />
-    </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\IDisplayObject.as" mod="1276012047248" size="6919" optimizedsize="1206">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\IDisplayObject.as" mod="1277389732326" size="6919" optimizedsize="1206">
       <def id="fr.digitas.flowearth.core:IDisplayObject" />
       <pre id="Object" />
       <dep id="flash.display:LoaderInfo" />
@@ -200,18 +206,24 @@
       <dep id="AS3" />
       <dep id="flash.geom:Transform" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\ILayoutItem.as" mod="1276012047029" size="805" optimizedsize="276">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\ILayoutItem.as" mod="1277389732076" size="805" optimizedsize="276">
       <def id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
       <pre id="Object" />
       <dep id="flash.display:DisplayObject" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\system\nodeSystem.as" mod="1276012047217" size="302" optimizedsize="135">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\system\nodeSystem.as" mod="1277389732294" size="302" optimizedsize="135">
       <def id="fr.digitas.flowearth.mvc.address.structs.system:nodeSystem" />
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.mvc.address.structs.system:NodeSystemClass" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\abstract\AbstractNode.as" mod="1276012047045" size="7913" optimizedsize="3457">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\colorpicker\PickerSkin.as" mod="1277389732044" size="987" optimizedsize="510">
+      <def id="fr.digitas.flowearth.ui.colorpicker:PickerSkin" />
+      <pre id="fr.digitas.flowearth.ui.colorpicker:ColorPreview" />
+      <dep id="flash.display:MovieClip" />
+      <dep id="AS3" />
+    </script>
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\abstract\AbstractNode.as" mod="1277389732091" size="7913" optimizedsize="3457">
       <def id="fr.digitas.flowearth.mvc.address.structs.abstract:AbstractNode" />
       <pre id="fr.digitas.flowearth.event:FlowEventDispatcher" />
       <pre id="fr.digitas.flowearth.mvc.address.structs:INode" />
@@ -227,14 +239,14 @@
       <dep id="flash.utils:getQualifiedClassName" />
       <dep id="flash.net:URLVariables" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\InternalLayoutItem.as" mod="1276012047060" size="973" optimizedsize="429">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\InternalLayoutItem.as" mod="1277389732122" size="973" optimizedsize="429">
       <def id="fr.digitas.flowearth.ui.layout:InternalLayoutItem" />
       <pre id="Object" />
       <pre id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
       <dep id="flash.display:DisplayObject" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\traverser\BaseTraverser.as" mod="1276012047123" size="1368" optimizedsize="612">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\traverser\BaseTraverser.as" mod="1277389732185" size="1368" optimizedsize="612">
       <def id="fr.digitas.flowearth.command.traverser:BaseTraverser" />
       <pre id="fr.digitas.flowearth.command.traverser:IBatchTraverser" />
       <pre id="Object" />
@@ -243,7 +255,7 @@
       <dep id="fr.digitas.flowearth.command:IBatchable" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\RendererFactory.as" mod="1276012047435" size="1119" optimizedsize="653">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\RendererFactory.as" mod="1277389732544" size="1119" optimizedsize="653">
       <def id="fr.digitas.flowearth.ui.layout.renderer:RendererFactory" />
       <pre id="Object" />
       <dep id="fr.digitas.flowearth.ui.layout.renderer:TopRenderer" />
@@ -254,10 +266,16 @@
       <dep id="fr.digitas.flowearth.ui.layout.renderer:LeftRenderer" />
       <dep id="fr.digitas.flowearth.ui.layout.renderer:ChildRenderer" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\XmlEvent.as" mod="1276012047326" size="909" optimizedsize="444">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\XmlEvent.as" mod="1277389732404" size="909" optimizedsize="444">
       <def id="fr.digitas.flowearth.event:XmlEvent" />
       <pre id="flash.events:Event" />
       <dep id="XML" />
+      <dep id="AS3" />
+    </script>
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\colorpicker\SelectorSkin.as" mod="1277389732169" size="1226" optimizedsize="619">
+      <def id="fr.digitas.flowearth.ui.colorpicker:SelectorSkin" />
+      <pre id="flash.display:MovieClip" />
+      <dep id="fr.digitas.flowearth.ui.colorpicker:TiledView" />
       <dep id="AS3" />
     </script>
     <script name="D:\work\workspaces\as3\Flowearth\framework\assets\CS3Component.swc(org.owflow:Version)" mod="1254845505019" size="443" optimizedsize="264">
@@ -265,7 +283,7 @@
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\traverser\nullTraverser.as" mod="1276012047138" size="964" optimizedsize="444">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\traverser\nullTraverser.as" mod="1277389732201" size="964" optimizedsize="444">
       <def id="fr.digitas.flowearth.command.traverser:nullTraverser" />
       <pre id="fr.digitas.flowearth.command.traverser:IBatchTraverser" />
       <pre id="Object" />
@@ -274,14 +292,14 @@
       <dep id="fr.digitas.flowearth.command:IBatchable" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\Pile.as" mod="1276012047107" size="3165" optimizedsize="1437">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\Pile.as" mod="1277389732169" size="3165" optimizedsize="1437">
       <def id="fr.digitas.flowearth.core:Pile" />
       <pre id="Object" />
       <dep id="fr.digitas.flowearth.core:IIterator" />
       <dep id="fr.digitas.flowearth.core:Iterator" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\URLRequestHelper.as" mod="1276012047279" size="4142" optimizedsize="2123">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\URLRequestHelper.as" mod="1277389732357" size="4142" optimizedsize="2123">
       <def id="fr.digitas.flowearth.utils:URLRequestHelper" />
       <pre id="Object" />
       <dep id="RegExp" />
@@ -291,7 +309,7 @@
       <dep id="flash.net:URLRequest" />
       <dep id="flash.net:URLVariables" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\IBatchable.as" mod="1276012047170" size="815" optimizedsize="303">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\IBatchable.as" mod="1277389732232" size="815" optimizedsize="303">
       <def id="fr.digitas.flowearth.command:IBatchable" />
       <pre id="fr.digitas.flowearth.core:IDisposable" />
       <pre id="flash.events:IEventDispatcher" />
@@ -299,7 +317,7 @@
       <dep id="fr.digitas.flowearth.event:BatchEvent" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\traverser\StopTraverser.as" mod="1276012047217" size="1018" optimizedsize="434">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\traverser\StopTraverser.as" mod="1277389732294" size="1018" optimizedsize="434">
       <def id="fr.digitas.flowearth.command.traverser:StopTraverser" />
       <pre id="fr.digitas.flowearth.command.traverser:IBatchTraverser" />
       <pre id="Object" />
@@ -307,7 +325,7 @@
       <dep id="fr.digitas.flowearth.command:IBatchable" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\abstract\AbstractPath.as" mod="1276012047404" size="6813" optimizedsize="3063">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\abstract\AbstractPath.as" mod="1277389732513" size="6813" optimizedsize="3063">
       <def id="fr.digitas.flowearth.mvc.address.structs.abstract:AbstractPath" />
       <pre id="fr.digitas.flowearth.mvc.address.structs:IPath" />
       <pre id="Object" />
@@ -318,13 +336,7 @@
       <dep id="AS3" />
       <dep id="flash.net:URLVariables" />
     </script>
-    <script name="_9a572bb07a9107f09c9eb492974771caf7aa2e81a47e04cafdb3795043ef7873_flash_display_Sprite.as" mod="1276012051732" size="1147" optimizedsize="511">
-      <def id="_9a572bb07a9107f09c9eb492974771caf7aa2e81a47e04cafdb3795043ef7873_flash_display_Sprite" />
-      <pre id="flash.display:Sprite" />
-      <dep id="flash.system:Security" />
-      <dep id="AS3" />
-    </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\net\AbstractBLoader.as" mod="1276012047013" size="3614" optimizedsize="1780">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\net\AbstractBLoader.as" mod="1277389732060" size="3614" optimizedsize="1780">
       <def id="fr.digitas.flowearth.net:AbstractBLoader" />
       <pre id="fr.digitas.flowearth.command:BatchableDecorator" />
       <pre id="fr.digitas.flowearth.command:IBatchable" />
@@ -345,7 +357,7 @@
       <dep id="flash.utils:getQualifiedClassName" />
       <dep id="flash.events:ErrorEvent" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\LeftJustifyRenderer.as" mod="1276012047560" size="1242" optimizedsize="714">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\LeftJustifyRenderer.as" mod="1277389732685" size="1242" optimizedsize="714">
       <def id="fr.digitas.flowearth.ui.layout.renderer:LeftJustifyRenderer" />
       <pre id="fr.digitas.flowearth.ui.layout.renderer:ChildRenderer" />
       <dep id="flash.geom:Rectangle" />
@@ -353,7 +365,7 @@
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\conf\ExternalFile.as" mod="1276012047248" size="1132" optimizedsize="663">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\conf\ExternalFile.as" mod="1277389732326" size="1132" optimizedsize="663">
       <def id="fr.digitas.flowearth.conf:ExternalFile" />
       <pre id="Object" />
       <dep id="fr.digitas.flowearth.conf:AbstractConfiguration" />
@@ -363,14 +375,14 @@
       <dep id="AS3" />
       <dep id="flash.net:URLRequest" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\NodeEvent.as" mod="1276012047170" size="1828" optimizedsize="1032">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\NodeEvent.as" mod="1277389732247" size="1828" optimizedsize="1032">
       <def id="fr.digitas.flowearth.event:NodeEvent" />
       <pre id="fr.digitas.flowearth.event:FlowEvent" />
       <dep id="fr.digitas.flowearth.mvc.address.structs:INode" />
       <dep id="flash.events:Event" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\InterpolatedRenderer.as" mod="1276012047482" size="2512" optimizedsize="1295">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\InterpolatedRenderer.as" mod="1277389732607" size="2512" optimizedsize="1295">
       <def id="fr.digitas.flowearth.ui.layout.renderer:InterpolatedRenderer" />
       <pre id="fr.digitas.flowearth.ui.layout.renderer:ChildRenderer" />
       <dep id="flash.geom:Rectangle" />
@@ -382,13 +394,19 @@
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\styles\MapData.as" mod="1276012047326" size="697" optimizedsize="323">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\colorpicker\ColorPreview.as" mod="1277389732232" size="1033" optimizedsize="543">
+      <def id="fr.digitas.flowearth.ui.colorpicker:ColorPreview" />
+      <pre id="flash.display:Sprite" />
+      <dep id="AS3" />
+      <dep id="flash.geom:ColorTransform" />
+    </script>
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\styles\MapData.as" mod="1277389732419" size="697" optimizedsize="323">
       <def id="fr.digitas.flowearth.text.styles:MapData" />
       <pre id="Object" />
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.text.styles:TypeMapping" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\debug\Reload.as" mod="1276012047451" size="1378" optimizedsize="886">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\debug\Reload.as" mod="1277389732560" size="1378" optimizedsize="886">
       <def id="fr.digitas.flowearth.debug:Reload" />
       <pre id="Object" />
       <dep id="flash.external:ExternalInterface" />
@@ -398,14 +416,27 @@
       <dep id="AS3" />
       <dep id="flash.ui:Keyboard" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\descriptor\BaseDescriptor.as" mod="1276012047342" size="1466" optimizedsize="656">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\colorpicker\ColorPicker.as" mod="1277389732404" size="3746" optimizedsize="1794">
+      <def id="fr.digitas.flowearth.ui.colorpicker:ColorPicker" />
+      <pre id="flash.display:Sprite" />
+      <dep id="flash.events:MouseEvent" />
+      <dep id="fr.digitas.flowearth.ui.colorpicker:SelectorSkin" />
+      <dep id="flash.events:KeyboardEvent" />
+      <dep id="fr.digitas.flowearth.ui.colorpicker:TiledView" />
+      <dep id="flash.geom:Point" />
+      <dep id="fr.digitas.flowearth.ui.colorpicker:PickerSkin" />
+      <dep id="flash.events:Event" />
+      <dep id="AS3" />
+      <dep id="flash.ui:Keyboard" />
+    </script>
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\descriptor\BaseDescriptor.as" mod="1277389732435" size="1466" optimizedsize="656">
       <def id="fr.digitas.flowearth.mvc.address.structs.descriptor:BaseDescriptor" />
       <pre id="fr.digitas.flowearth.mvc.address.structs.descriptor:INodeDescriptor" />
       <pre id="Object" />
       <dep id="XML" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\styles\AdvancedFormat.as" mod="1276012047498" size="2637" optimizedsize="1348">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\styles\AdvancedFormat.as" mod="1277389732638" size="2637" optimizedsize="1348">
       <def id="fr.digitas.flowearth.text.styles:AdvancedFormat" />
       <pre id="flash.text:StyleSheet" />
       <pre id="Object" />
@@ -417,20 +448,20 @@
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.text.styles:TypeMapping" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\abstract\AbstractNodeDescriptor.as" mod="1276012047201" size="1140" optimizedsize="500">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\abstract\AbstractNodeDescriptor.as" mod="1277389732279" size="1140" optimizedsize="500">
       <def id="fr.digitas.flowearth.mvc.address.structs.abstract:AbstractNodeDescriptor" />
       <pre id="fr.digitas.flowearth.mvc.address.structs.descriptor:INodeDescriptor" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\LeftWeakRenderer.as" mod="1276012047529" size="1361" optimizedsize="757">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\LeftWeakRenderer.as" mod="1277389732669" size="1361" optimizedsize="757">
       <def id="fr.digitas.flowearth.ui.layout.renderer:LeftWeakRenderer" />
       <pre id="fr.digitas.flowearth.ui.layout.renderer:ChildRenderer" />
       <dep id="flash.geom:Rectangle" />
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\styles\TypeMapping.as" mod="1276012047420" size="1080" optimizedsize="481">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\styles\TypeMapping.as" mod="1277389732529" size="1080" optimizedsize="481">
       <def id="fr.digitas.flowearth.text.styles:TypeMapping" />
       <pre id="Object" />
       <dep id="AS3" />
@@ -446,14 +477,14 @@
       <dep id="flash.display:StageAlign" />
       <dep id="flash.utils:getDefinitionByName" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\BatchStatusEvent.as" mod="1276012047076" size="1367" optimizedsize="674">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\BatchStatusEvent.as" mod="1277389732138" size="1367" optimizedsize="674">
       <def id="fr.digitas.flowearth.event:BatchStatusEvent" />
       <pre id="flash.events:StatusEvent" />
       <dep id="fr.digitas.flowearth.command:IBatchable" />
       <dep id="flash.events:Event" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\conf\AbstractConfiguration.as" mod="1276012047060" size="17813" optimizedsize="8406">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\conf\AbstractConfiguration.as" mod="1277389732107" size="17814" optimizedsize="8407">
       <def id="fr.digitas.flowearth.conf:AbstractConfiguration" />
       <pre id="flash.utils:Proxy" />
       <pre id="Object" />
@@ -468,13 +499,13 @@
       <dep id="fr.digitas.flowearth.conf:ExternalFile" />
       <dep id="flash.net:URLRequest" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\SWFAddressEvent.as" mod="1276012047467" size="2044" optimizedsize="939">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\SWFAddressEvent.as" mod="1277389732591" size="2044" optimizedsize="939">
       <def id="fr.digitas.flowearth.mvc.address:SWFAddressEvent" />
       <pre id="flash.events:Event" />
       <dep id="fr.digitas.flowearth.mvc.address:SWFAddress" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\SimpleInterpolatedRenderer.as" mod="1276012047060" size="1518" optimizedsize="825">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\SimpleInterpolatedRenderer.as" mod="1277389732107" size="1518" optimizedsize="825">
       <def id="fr.digitas.flowearth.ui.layout.renderer:SimpleInterpolatedRenderer" />
       <pre id="fr.digitas.flowearth.ui.layout.renderer:InterpolatedRenderer" />
       <dep id="fr.digitas.flowearth.ui.layout.utils:IInterpolable" />
@@ -483,12 +514,22 @@
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.ui.layout.renderer:ChildRenderer" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\IDisposable.as" mod="1276012047529" size="479" optimizedsize="187">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\IDisposable.as" mod="1277389732654" size="479" optimizedsize="187">
       <def id="fr.digitas.flowearth.core:IDisposable" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\TopJustifyRenderer.as" mod="1276012047560" size="1235" optimizedsize="712">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\colorpicker\TilesCanvas.as" mod="1277389732263" size="2601" optimizedsize="1603">
+      <def id="fr.digitas.flowearth.ui.colorpicker:TilesCanvas" />
+      <pre id="flash.display:Sprite" />
+      <dep id="fr.digitas.flowearth.ui.colorpicker:Tile" />
+      <dep id="flash.events:MouseEvent" />
+      <dep id="fr.digitas.flowearth.ui.colorpicker:ColorUtils" />
+      <dep id="fr.digitas.flowearth.event:UintEvent" />
+      <dep id="AS3" />
+      <dep id="Math" />
+    </script>
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\TopJustifyRenderer.as" mod="1277389732685" size="1235" optimizedsize="712">
       <def id="fr.digitas.flowearth.ui.layout.renderer:TopJustifyRenderer" />
       <pre id="fr.digitas.flowearth.ui.layout.renderer:ChildRenderer" />
       <dep id="flash.geom:Rectangle" />
@@ -496,25 +537,25 @@
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\Iterator.as" mod="1276012047357" size="836" optimizedsize="414">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\Iterator.as" mod="1277389732466" size="836" optimizedsize="414">
       <def id="fr.digitas.flowearth.core:Iterator" />
       <pre id="fr.digitas.flowearth.core:IIterator" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\text\StyledLabel.as" mod="1276012047060" size="1477" optimizedsize="761">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\text\StyledLabel.as" mod="1277389732122" size="1477" optimizedsize="761">
       <def id="fr.digitas.flowearth.ui.text:StyledLabel" />
       <pre id="flash.display:Sprite" />
       <dep id="flash.text:TextField" />
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.text.styles:styleManager" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\BoolEvent.as" mod="1276012047295" size="806" optimizedsize="376">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\BoolEvent.as" mod="1277389732388" size="806" optimizedsize="376">
       <def id="fr.digitas.flowearth.event:BoolEvent" />
       <pre id="flash.events:Event" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\SWFAddress.as" mod="1276012047310" size="8561" optimizedsize="4112">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\SWFAddress.as" mod="1277389732404" size="8561" optimizedsize="4112">
       <def id="fr.digitas.flowearth.mvc.address:SWFAddress" />
       <pre id="Object" />
       <dep id="flash.external:ExternalInterface" />
@@ -528,7 +569,7 @@
       <dep id="AS3" />
       <dep id="flash.net:URLRequest" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\utils\InvalidationManager.as" mod="1276012047092" size="1855" optimizedsize="998">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\utils\InvalidationManager.as" mod="1277389732138" size="1855" optimizedsize="998">
       <def id="fr.digitas.flowearth.ui.utils:InvalidationManager" />
       <pre id="fr.digitas.flowearth.event:DisposableEventDispatcher" />
       <dep id="flash.utils:Dictionary" />
@@ -536,19 +577,26 @@
       <dep id="flash.events:Event" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\debug\FPS.as" mod="1276012047498" size="2116" optimizedsize="1312">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\debug\FPS.as" mod="1277389732622" size="9135" optimizedsize="5040">
       <def id="fr.digitas.flowearth.debug:FPS" />
       <pre id="flash.display:Sprite" />
+      <dep id="flash.events:MouseEvent" />
+      <dep id="flash.text:TextFieldAutoSize" />
+      <dep id="flash.display:Bitmap" />
       <dep id="flash.text:TextField" />
-      <dep id="flash.utils:getTimer" />
-      <dep id="flash.display:BlendMode" />
       <dep id="flash.events:Event" />
       <dep id="AS3" />
-      <dep id="flash.text:TextFormat" />
       <dep id="Math" />
       <dep id="flash.system:System" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flash.utils:getTimer" />
+      <dep id="flash.display:BitmapData" />
+      <dep id="flash.display:Graphics" />
+      <dep id="flash.display:GradientType" />
+      <dep id="flash.text:TextFormat" />
+      <dep id="flash.display:Shape" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\connector\SWFAddressConnector.as" mod="1276012047138" size="5231" optimizedsize="2789">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\connector\SWFAddressConnector.as" mod="1277389732201" size="5231" optimizedsize="2789">
       <def id="fr.digitas.flowearth.mvc.address.structs.connector:SWFAddressConnector" />
       <pre id="fr.digitas.flowearth.mvc.address.structs.connector:NodeConnector" />
       <pre id="Object" />
@@ -567,14 +615,14 @@
       <dep id="Error" />
       <dep id="fr.digitas.flowearth.event:NodeEvent" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\encryption\Base64.as" mod="1276012047248" size="2178" optimizedsize="1322">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\encryption\Base64.as" mod="1277389732326" size="2178" optimizedsize="1322">
       <def id="fr.digitas.flowearth.utils.encryption:Base64" />
       <pre id="Object" />
       <dep id="Error" />
       <dep id="flash.utils:ByteArray" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\IProgressor.as" mod="1276012047451" size="1081" optimizedsize="377">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\IProgressor.as" mod="1277389732576" size="1081" optimizedsize="377">
       <def id="fr.digitas.flowearth.core:IProgressor" />
       <pre id="flash.events:IEventDispatcher" />
       <pre id="Object" />
@@ -584,7 +632,7 @@
       <dep id="AS3" />
       <dep id="flash.events:ErrorEvent" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\StringUtility.as" mod="1276012047404" size="1486" optimizedsize="843">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\StringUtility.as" mod="1277389732513" size="1486" optimizedsize="843">
       <def id="fr.digitas.flowearth.utils:StringUtility" />
       <pre id="Object" />
       <dep id="flash.net:URLRequestMethod" />
@@ -594,7 +642,7 @@
       <dep id="flash.net:URLRequest" />
       <dep id="flash.net:URLVariables" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\fonts\FontManagerClass.as" mod="1276012047482" size="1736" optimizedsize="900">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\fonts\FontManagerClass.as" mod="1277389732607" size="1736" optimizedsize="900">
       <def id="fr.digitas.flowearth.text.fonts:FontManagerClass" />
       <pre id="Object" />
       <dep id="flash.utils:Dictionary" />
@@ -603,19 +651,27 @@
       <dep id="flash.text:Font" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\scroller\ScrollerContent.as" mod="1276012047357" size="1446" optimizedsize="769">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\scroller\ScrollerContent.as" mod="1277389732451" size="1446" optimizedsize="769">
       <def id="fr.digitas.flowearth.ui.scroller:ScrollerContent" />
       <pre id="flash.display:Sprite" />
       <dep id="flash.events:Event" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\FlowEventDispatcher.as" mod="1276012047404" size="1246" optimizedsize="560">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\scroller\Ascenseur.as" mod="1277389732076" size="1285" optimizedsize="758">
+      <def id="fr.digitas.flowearth.ui.scroller:Ascenseur" />
+      <pre id="fr.digitas.flowearth.ui.controls:SimpleButton" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flash.display:Sprite" />
+      <dep id="AS3" />
+      <dep id="Math" />
+    </script>
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\FlowEventDispatcher.as" mod="1277389732529" size="1246" optimizedsize="560">
       <def id="fr.digitas.flowearth.event:FlowEventDispatcher" />
       <pre id="flash.events:EventDispatcher" />
       <dep id="flash.events:IEventDispatcher" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\conf\Configuration.as" mod="1276012047420" size="5475" optimizedsize="2649">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\conf\Configuration.as" mod="1277389732529" size="5475" optimizedsize="2649">
       <def id="fr.digitas.flowearth.conf:Configuration" />
       <pre id="fr.digitas.flowearth.conf:AbstractConfiguration" />
       <pre id="fr.digitas.flowearth.core:IProgressor" />
@@ -636,46 +692,38 @@
       <dep id="flash.events:ErrorEvent" />
       <dep id="flash.net:URLVariables" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\scroller\Ascenseur.as" mod="1276012047029" size="1285" optimizedsize="758">
-      <def id="fr.digitas.flowearth.ui.scroller:Ascenseur" />
-      <pre id="fr.digitas.flowearth.ui.controls:SimpleButton" />
-      <dep id="flash.geom:Rectangle" />
-      <dep id="flash.display:Sprite" />
-      <dep id="AS3" />
-      <dep id="Math" />
-    </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\BlockRenderer.as" mod="1276012047545" size="1392" optimizedsize="698">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\BlockRenderer.as" mod="1277389732669" size="1392" optimizedsize="698">
       <def id="fr.digitas.flowearth.ui.layout.renderer:BlockRenderer" />
       <pre id="fr.digitas.flowearth.ui.layout.renderer:ChildRenderer" />
       <dep id="flash.geom:Rectangle" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\IDisplayObjectContainer.as" mod="1276012047545" size="2348" optimizedsize="549">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\IDisplayObjectContainer.as" mod="1277389732669" size="2348" optimizedsize="549">
       <def id="fr.digitas.flowearth.core:IDisplayObjectContainer" />
       <pre id="Object" />
       <dep id="flash.display:DisplayObject" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\FlowEvent.as" mod="1276012047295" size="1291" optimizedsize="676">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\FlowEvent.as" mod="1277389732372" size="1291" optimizedsize="676">
       <def id="fr.digitas.flowearth.event:FlowEvent" />
       <pre id="flash.events:Event" />
       <dep id="fr.digitas.flowearth.event:FlowEventDispatcher" />
       <dep id="flash.events:EventPhase" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\IPath.as" mod="1276012047107" size="3072" optimizedsize="633">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\IPath.as" mod="1277389732154" size="3072" optimizedsize="633">
       <def id="fr.digitas.flowearth.mvc.address.structs:IPath" />
       <pre id="Object" />
       <dep id="fr.digitas.flowearth.mvc.address.structs:INode" />
       <dep id="AS3" />
       <dep id="flash.net:URLVariables" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\UintEvent.as" mod="1276012047545" size="812" optimizedsize="381">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\UintEvent.as" mod="1277389732685" size="817" optimizedsize="386">
       <def id="fr.digitas.flowearth.event:UintEvent" />
       <pre id="flash.events:Event" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\styles\StyleManagerClass.as" mod="1276012047154" size="5220" optimizedsize="2680">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\styles\StyleManagerClass.as" mod="1277389732216" size="5220" optimizedsize="2680">
       <def id="fr.digitas.flowearth.text.styles:StyleManagerClass" />
       <pre id="Object" />
       <dep id="String" />
@@ -687,30 +735,30 @@
       <dep id="QName" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\traverser\INodeTraverser.as" mod="1276012047388" size="887" optimizedsize="323">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\traverser\INodeTraverser.as" mod="1277389732482" size="887" optimizedsize="323">
       <def id="fr.digitas.flowearth.mvc.address.structs.traverser:INodeTraverser" />
       <pre id="Object" />
       <dep id="fr.digitas.flowearth.mvc.address.structs:INode" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\ArrayEvent.as" mod="1276012047263" size="820" optimizedsize="384">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\ArrayEvent.as" mod="1277389732357" size="820" optimizedsize="384">
       <def id="fr.digitas.flowearth.event:ArrayEvent" />
       <pre id="flash.events:Event" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\ISizable.as" mod="1276012047123" size="479" optimizedsize="188">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\ISizable.as" mod="1277389732185" size="479" optimizedsize="188">
       <def id="fr.digitas.flowearth.core:ISizable" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\Batch.as" mod="1276012047295" size="1446" optimizedsize="722">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\Batch.as" mod="1277389732388" size="1446" optimizedsize="722">
       <def id="fr.digitas.flowearth.command:Batch" />
       <pre id="fr.digitas.flowearth.core:Pile" />
       <pre id="fr.digitas.flowearth.core:IIterator" />
       <dep id="ArgumentError" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\HTidyBlockRenderer.as" mod="1276012047201" size="2635" optimizedsize="1549">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\HTidyBlockRenderer.as" mod="1277389732279" size="2635" optimizedsize="1549">
       <def id="fr.digitas.flowearth.ui.layout.renderer:HTidyBlockRenderer" />
       <pre id="fr.digitas.flowearth.ui.layout.renderer:BlockRenderer" />
       <dep id="flash.geom:Rectangle" />
@@ -718,19 +766,19 @@
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\traverser\IBatchTraverser.as" mod="1276012047388" size="1086" optimizedsize="327">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\traverser\IBatchTraverser.as" mod="1277389732482" size="1086" optimizedsize="327">
       <def id="fr.digitas.flowearth.command.traverser:IBatchTraverser" />
       <pre id="Object" />
       <dep id="fr.digitas.flowearth.command:Batcher" />
       <dep id="fr.digitas.flowearth.command:IBatchable" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\IIterator.as" mod="1276012046998" size="582" optimizedsize="212">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\IIterator.as" mod="1277389732044" size="582" optimizedsize="212">
       <def id="fr.digitas.flowearth.core:IIterator" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\LeftRenderer.as" mod="1276012047263" size="1417" optimizedsize="819">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\LeftRenderer.as" mod="1277389732341" size="1417" optimizedsize="819">
       <def id="fr.digitas.flowearth.ui.layout.renderer:LeftRenderer" />
       <pre id="fr.digitas.flowearth.ui.layout.renderer:ChildRenderer" />
       <dep id="flash.geom:Rectangle" />
@@ -738,7 +786,7 @@
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\ChildRenderer.as" mod="1276012047529" size="1652" optimizedsize="735">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\ChildRenderer.as" mod="1277389732654" size="1652" optimizedsize="735">
       <def id="fr.digitas.flowearth.ui.layout.renderer:ChildRenderer" />
       <pre id="fr.digitas.flowearth.ui.layout:IChildRenderer" />
       <pre id="flash.events:EventDispatcher" />
@@ -746,7 +794,7 @@
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\debug\Recorder.as" mod="1276012047185" size="14764" optimizedsize="7465">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\debug\Recorder.as" mod="1277389732247" size="14764" optimizedsize="7465">
       <def id="fr.digitas.flowearth.debug:Recorder" />
       <pre id="flash.display:Sprite" />
       <pre id="flash.events:Event" />
@@ -766,17 +814,17 @@
       <dep id="flash.text:TextFormat" />
       <dep id="flash.display:Shape" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\descriptor\INodeDescriptor.as" mod="1276012047451" size="1039" optimizedsize="301">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\descriptor\INodeDescriptor.as" mod="1277389732576" size="1039" optimizedsize="301">
       <def id="fr.digitas.flowearth.mvc.address.structs.descriptor:INodeDescriptor" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\motion\psplitter\IProgressive.as" mod="1276012047560" size="768" optimizedsize="256">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\motion\psplitter\IProgressive.as" mod="1277389732685" size="768" optimizedsize="256">
       <def id="fr.digitas.flowearth.utils.motion.psplitter:IProgressive" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\styles\AdvancedStyleSheet.as" mod="1276012047092" size="4733" optimizedsize="2315">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\styles\AdvancedStyleSheet.as" mod="1277389732154" size="4733" optimizedsize="2315">
       <def id="fr.digitas.flowearth.text.styles:AdvancedStyleSheet" />
       <pre id="Object" />
       <dep id="flash.text:StyleSheet" />
@@ -787,7 +835,7 @@
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.text.styles:styleManager" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\Path.as" mod="1276012047013" size="3797" optimizedsize="2201">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\Path.as" mod="1277389732076" size="3797" optimizedsize="2201">
       <def id="fr.digitas.flowearth.mvc.address.structs:Path" />
       <pre id="fr.digitas.flowearth.mvc.address.structs:IPath" />
       <pre id="fr.digitas.flowearth.mvc.address.structs.abstract:AbstractPath" />
@@ -800,7 +848,7 @@
       <dep id="AS3" />
       <dep id="flash.net:URLVariables" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\DisposableEventDispatcher.as" mod="1276012047076" size="2238" optimizedsize="1147">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\DisposableEventDispatcher.as" mod="1277389732122" size="2238" optimizedsize="1147">
       <def id="fr.digitas.flowearth.event:DisposableEventDispatcher" />
       <pre id="fr.digitas.flowearth.core:IDisposable" />
       <pre id="flash.events:EventDispatcher" />
@@ -809,7 +857,7 @@
       <dep id="flash.events:IEventDispatcher" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\utils\Stringifyer.as" mod="1276012047029" size="2028" optimizedsize="1203">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\utils\Stringifyer.as" mod="1277389732091" size="2028" optimizedsize="1203">
       <def id="fr.digitas.flowearth.mvc.address.structs.utils:Stringifyer" />
       <pre id="fr.digitas.flowearth.mvc.address.structs.traverser:INodeTraverser" />
       <pre id="Object" />
@@ -817,7 +865,12 @@
       <dep id="fr.digitas.flowearth.mvc.address.structs:INode" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\BatchableDecorator.as" mod="1276012047123" size="2965" optimizedsize="1281">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\colorpicker\ColorUtils.as" mod="1277389732544" size="585" optimizedsize="263">
+      <def id="fr.digitas.flowearth.ui.colorpicker:ColorUtils" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\BatchableDecorator.as" mod="1277389732185" size="2965" optimizedsize="1281">
       <def id="fr.digitas.flowearth.command:BatchableDecorator" />
       <pre id="fr.digitas.flowearth.command:IBatchable" />
       <pre id="flash.events:EventDispatcher" />
@@ -826,14 +879,31 @@
       <dep id="flash.events:IEventDispatcher" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\INodeSystem.as" mod="1276012047529" size="1092" optimizedsize="330">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\colorpicker\TiledView.as" mod="1277389732451" size="4416" optimizedsize="2207">
+      <def id="fr.digitas.flowearth.ui.colorpicker:TiledView" />
+      <pre id="flash.display:Sprite" />
+      <dep id="flash.events:MouseEvent" />
+      <dep id="flash.utils:setTimeout" />
+      <dep id="flash.events:FocusEvent" />
+      <dep id="fr.digitas.flowearth.ui.colorpicker:TilesCanvas" />
+      <dep id="flash.text:TextField" />
+      <dep id="flash.display:MovieClip" />
+      <dep id="flash.events:Event" />
+      <dep id="AS3" />
+      <dep id="fr.digitas.flowearth.ui.colorpicker:ColorPreview" />
+      <dep id="fr.digitas.flowearth.event:UintEvent" />
+      <dep id="fr.digitas.flowearth.ui.colorpicker:SelectorSkin" />
+      <dep id="flash.events:KeyboardEvent" />
+      <dep id="flash.ui:Keyboard" />
+    </script>
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\INodeSystem.as" mod="1277389732654" size="1092" optimizedsize="330">
       <def id="fr.digitas.flowearth.mvc.address.structs:INodeSystem" />
       <pre id="Object" />
       <dep id="fr.digitas.flowearth.mvc.address.structs:IPath" />
       <dep id="fr.digitas.flowearth.mvc.address.structs:INode" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\net\BatchURLLoaderItem.as" mod="1276012047342" size="1555" optimizedsize="882">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\net\BatchURLLoaderItem.as" mod="1277389732435" size="1555" optimizedsize="882">
       <def id="fr.digitas.flowearth.net:BatchURLLoaderItem" />
       <pre id="fr.digitas.flowearth.net:AbstractBLoader" />
       <dep id="flash.net:URLLoader" />
@@ -843,14 +913,14 @@
       <dep id="AS3" />
       <dep id="flash.net:URLRequest" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\IBatchEvent.as" mod="1276012047138" size="528" optimizedsize="231">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\IBatchEvent.as" mod="1277389732201" size="528" optimizedsize="231">
       <def id="fr.digitas.flowearth.event:IBatchEvent" />
       <pre id="fr.digitas.flowearth.event:IEvent" />
       <pre id="Object" />
       <dep id="fr.digitas.flowearth.command:IBatchable" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\RightRenderer.as" mod="1276012047185" size="1179" optimizedsize="682">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\RightRenderer.as" mod="1277389732263" size="1179" optimizedsize="682">
       <def id="fr.digitas.flowearth.ui.layout.renderer:RightRenderer" />
       <pre id="fr.digitas.flowearth.ui.layout.renderer:ChildRenderer" />
       <dep id="flash.geom:Rectangle" />
@@ -858,7 +928,7 @@
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\styles\TypeMapper.as" mod="1276012047263" size="3050" optimizedsize="1848">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\styles\TypeMapper.as" mod="1277389732341" size="3050" optimizedsize="1848">
       <def id="fr.digitas.flowearth.text.styles:TypeMapper" />
       <pre id="Object" />
       <dep id="flash.utils:Dictionary" />
@@ -867,7 +937,7 @@
       <dep id="fr.digitas.flowearth.text.styles:TypeMapping" />
       <dep id="fr.digitas.flowearth.text.styles:MapData" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\scroller\ScrollBar.as" mod="1276012047154" size="3146" optimizedsize="1614">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\scroller\ScrollBar.as" mod="1277389732216" size="3146" optimizedsize="1614">
       <def id="fr.digitas.flowearth.ui.scroller:ScrollBar" />
       <pre id="flash.display:Sprite" />
       <dep id="flash.geom:Rectangle" />
@@ -878,7 +948,7 @@
       <dep id="Math" />
       <dep id="fr.digitas.flowearth.ui.controls:SimpleButton" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\Node.as" mod="1276012047279" size="5643" optimizedsize="3496">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\Node.as" mod="1277389732372" size="5643" optimizedsize="3496">
       <def id="fr.digitas.flowearth.mvc.address.structs:Node" />
       <pre id="fr.digitas.flowearth.mvc.address.structs.abstract:AbstractNode" />
       <dep id="fr.digitas.flowearth.mvc.address.structs:IPath" />
@@ -893,18 +963,18 @@
       <dep id="fr.digitas.flowearth.mvc.address.structs:Path" />
       <dep id="flash.net:URLVariables" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\fonts\IFontsProvider.as" mod="1276012047201" size="538" optimizedsize="207">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\text\fonts\IFontsProvider.as" mod="1277389732279" size="538" optimizedsize="207">
       <def id="fr.digitas.flowearth.text.fonts:IFontsProvider" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\VariablesTools.as" mod="1276012047170" size="1040" optimizedsize="578">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\VariablesTools.as" mod="1277389732232" size="1040" optimizedsize="578">
       <def id="fr.digitas.flowearth.utils:VariablesTools" />
       <pre id="Object" />
       <dep id="AS3" />
       <dep id="flash.net:URLVariables" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\proxy\WeakNode.as" mod="1276012047513" size="3077" optimizedsize="1594">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\proxy\WeakNode.as" mod="1277389732654" size="3077" optimizedsize="1594">
       <def id="fr.digitas.flowearth.mvc.address.structs.proxy:WeakNode" />
       <pre id="fr.digitas.flowearth.mvc.address.structs.abstract:AbstractNode" />
       <pre id="fr.digitas.flowearth.mvc.address.structs:INode" />
@@ -914,7 +984,7 @@
       <dep id="AS3" />
       <dep id="flash.net:URLVariables" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\BatchErrorEvent.as" mod="1276012047217" size="1512" optimizedsize="726">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\BatchErrorEvent.as" mod="1277389732294" size="1512" optimizedsize="726">
       <def id="fr.digitas.flowearth.event:BatchErrorEvent" />
       <pre id="fr.digitas.flowearth.event:IBatchEvent" />
       <pre id="flash.events:ErrorEvent" />
@@ -922,7 +992,7 @@
       <dep id="flash.events:Event" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\HBlockRenderer.as" mod="1276012047201" size="1989" optimizedsize="1179">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\HBlockRenderer.as" mod="1277389732263" size="1989" optimizedsize="1179">
       <def id="fr.digitas.flowearth.ui.layout.renderer:HBlockRenderer" />
       <pre id="fr.digitas.flowearth.ui.layout.renderer:BlockRenderer" />
       <dep id="flash.geom:Rectangle" />
@@ -931,7 +1001,13 @@
       <dep id="Math" />
       <dep id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\GraphicTools.as" mod="1276012047451" size="5962" optimizedsize="3440">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\colorpicker\Tile.as" mod="1277389732451" size="1427" optimizedsize="770">
+      <def id="fr.digitas.flowearth.ui.colorpicker:Tile" />
+      <pre id="flash.display:Sprite" />
+      <dep id="flash.events:MouseEvent" />
+      <dep id="AS3" />
+    </script>
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\GraphicTools.as" mod="1277389732576" size="5962" optimizedsize="3440">
       <def id="fr.digitas.flowearth.utils:GraphicTools" />
       <pre id="Object" />
       <dep id="flash.geom:Point" />
@@ -939,7 +1015,7 @@
       <dep id="AS3" />
       <dep id="Math" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\VBlockRenderer.as" mod="1276012047092" size="1991" optimizedsize="1181">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\VBlockRenderer.as" mod="1277389732154" size="1991" optimizedsize="1181">
       <def id="fr.digitas.flowearth.ui.layout.renderer:VBlockRenderer" />
       <pre id="fr.digitas.flowearth.ui.layout.renderer:BlockRenderer" />
       <dep id="flash.geom:Rectangle" />
@@ -948,14 +1024,14 @@
       <dep id="Math" />
       <dep id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\BatchEvent.as" mod="1276012047342" size="1714" optimizedsize="986">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\BatchEvent.as" mod="1277389732435" size="1714" optimizedsize="986">
       <def id="fr.digitas.flowearth.event:BatchEvent" />
       <pre id="fr.digitas.flowearth.event:IBatchEvent" />
       <pre id="flash.events:Event" />
       <dep id="fr.digitas.flowearth.command:IBatchable" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\Batcher.as" mod="1276012047232" size="11521" optimizedsize="5009">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\command\Batcher.as" mod="1277389732310" size="11521" optimizedsize="5009">
       <def id="fr.digitas.flowearth.command:Batcher" />
       <pre id="fr.digitas.flowearth.command:IBatchable" />
       <pre id="flash.events:EventDispatcher" />
@@ -976,7 +1052,7 @@
       <dep id="Error" />
       <dep id="flash.events:ErrorEvent" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\utils\AnimationHelper.as" mod="1276012047295" size="1859" optimizedsize="909">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\utils\AnimationHelper.as" mod="1277389732372" size="1859" optimizedsize="909">
       <def id="fr.digitas.flowearth.ui.layout.utils:AnimationHelper" />
       <pre id="fr.digitas.flowearth.utils.motion.psplitter:IProgressive" />
       <pre id="flash.display:Shape" />
@@ -985,7 +1061,7 @@
       <dep id="flash.display:DisplayObject" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\TopRenderer.as" mod="1276012047560" size="1410" optimizedsize="817">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\TopRenderer.as" mod="1277389732701" size="1410" optimizedsize="817">
       <def id="fr.digitas.flowearth.ui.layout.renderer:TopRenderer" />
       <pre id="fr.digitas.flowearth.ui.layout.renderer:ChildRenderer" />
       <dep id="flash.geom:Rectangle" />
@@ -993,7 +1069,7 @@
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\BottomRenderer.as" mod="1276012047217" size="1188" optimizedsize="686">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\renderer\BottomRenderer.as" mod="1277389732294" size="1188" optimizedsize="686">
       <def id="fr.digitas.flowearth.ui.layout.renderer:BottomRenderer" />
       <pre id="fr.digitas.flowearth.ui.layout.renderer:ChildRenderer" />
       <dep id="flash.geom:Rectangle" />
@@ -1001,14 +1077,14 @@
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.ui.layout:ILayoutItem" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\BatchProgressEvent.as" mod="1276012047263" size="1032" optimizedsize="534">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\BatchProgressEvent.as" mod="1277389732357" size="1032" optimizedsize="534">
       <def id="fr.digitas.flowearth.event:BatchProgressEvent" />
       <pre id="flash.events:ProgressEvent" />
       <dep id="fr.digitas.flowearth.command:IBatchable" />
       <dep id="flash.events:Event" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\motion\psplitter\ProgressionSplitter.as" mod="1276012047435" size="2210" optimizedsize="1040">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\utils\motion\psplitter\ProgressionSplitter.as" mod="1277389732560" size="2210" optimizedsize="1040">
       <def id="fr.digitas.flowearth.utils.motion.psplitter:ProgressionSplitter" />
       <pre id="Object" />
       <dep id="fr.digitas.flowearth.utils.motion.psplitter:IProgressive" />
@@ -1018,12 +1094,12 @@
       <dep id="Math" />
       <dep id="fr.digitas.flowearth.core:IteratorR" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\scroller\ScrollPolicy.as" mod="1276012047498" size="645" optimizedsize="350">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\scroller\ScrollPolicy.as" mod="1277389732622" size="645" optimizedsize="350">
       <def id="fr.digitas.flowearth.ui.scroller:ScrollPolicy" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\traverser\PathTraverser.as" mod="1276012047138" size="1406" optimizedsize="729">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\traverser\PathTraverser.as" mod="1277389732201" size="1406" optimizedsize="729">
       <def id="fr.digitas.flowearth.mvc.address.structs.traverser:PathTraverser" />
       <pre id="fr.digitas.flowearth.mvc.address.structs.traverser:INodeTraverser" />
       <pre id="Object" />
@@ -1031,24 +1107,24 @@
       <dep id="fr.digitas.flowearth.mvc.address.structs:INode" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\IteratorR.as" mod="1276012047435" size="852" optimizedsize="422">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\core\IteratorR.as" mod="1277389732560" size="852" optimizedsize="422">
       <def id="fr.digitas.flowearth.core:IteratorR" />
       <pre id="fr.digitas.flowearth.core:IIterator" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\IEvent.as" mod="1276012047310" size="1961" optimizedsize="528">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\event\IEvent.as" mod="1277389732388" size="1961" optimizedsize="528">
       <def id="fr.digitas.flowearth.event:IEvent" />
       <pre id="Object" />
       <dep id="flash.events:Event" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\LayoutAlign.as" mod="1276012047326" size="580" optimizedsize="294">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\ui\layout\LayoutAlign.as" mod="1277389732419" size="580" optimizedsize="294">
       <def id="fr.digitas.flowearth.ui.layout:LayoutAlign" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\intern\ProcessPath.as" mod="1276012047498" size="1118" optimizedsize="681">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\mvc\address\structs\intern\ProcessPath.as" mod="1277389732607" size="1118" optimizedsize="681">
       <def id="fr.digitas.flowearth.mvc.address.structs.intern:ProcessPath" />
       <pre id="fr.digitas.flowearth.core:IDisposable" />
       <pre id="fr.digitas.flowearth.mvc.address.structs:Path" />
@@ -1058,7 +1134,7 @@
       <dep id="AS3" />
       <dep id="flash.net:URLVariables" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\conf\Conf.as" mod="1276012047185" size="258" optimizedsize="118">
+    <script name="D:\work\workspaces\as3\Flowearth\framework\src\temp9\fr\digitas\flowearth\conf\Conf.as" mod="1277389732263" size="258" optimizedsize="118">
       <def id="fr.digitas.flowearth.conf:Conf" />
       <dep id="AS3" />
       <dep id="fr.digitas.flowearth.conf:Configuration" />
@@ -1083,7 +1159,6 @@
     <ext id="flash.net:navigateToURL" />
     <ext id="flash.geom:Matrix" />
     <ext id="flash.events:FocusEvent" />
-    <ext id="flash.display:BlendMode" />
     <ext id="flash.system:System" />
     <ext id="flash.geom:Rectangle" />
     <ext id="flash.utils:clearInterval" />
@@ -1097,6 +1172,7 @@
     <ext id="flash.utils:Proxy" />
     <ext id="flash.events:EventDispatcher" />
     <ext id="flash.geom:Transform" />
+    <ext id="flash.utils:setTimeout" />
     <ext id="flash.accessibility:AccessibilityProperties" />
     <ext id="flash.net:URLLoader" />
     <ext id="flash.display:Sprite" />
@@ -1114,6 +1190,7 @@
     <ext id="flash.events:SecurityErrorEvent" />
     <ext id="flash.utils:getTimer" />
     <ext id="Error" />
+    <ext id="flash.display:GradientType" />
     <ext id="flash.net:URLVariables" />
     <ext id="flash.display:StageScaleMode" />
     <ext id="flash.display:Loader" />
@@ -1134,6 +1211,7 @@
     <ext id="flash.display:LoaderInfo" />
     <ext id="flash.net:URLRequestMethod" />
     <ext id="flash.display:DisplayObject" />
+    <ext id="flash.geom:ColorTransform" />
     <ext id="flash.events:Event" />
     <ext id="flash.display:DisplayObjectContainer" />
     <ext id="trace" />

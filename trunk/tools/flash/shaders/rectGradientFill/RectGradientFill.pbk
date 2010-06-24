@@ -40,12 +40,9 @@ kernel RectGradientFill
     void
     evaluatePixel()
     {
-        float2 rectCenter = float2( size.x/2.0, size.y/2.0 );
+        float2 rectCenter = size/2.0;
         
-       
         float2 distances = max( ZERO, abs( rectCenter - outCoord() ) - rectCenter );
-        
-        
         
         float rdist = clamp( length( distances / dist ), 0.0, 1.0 );
         
@@ -53,7 +50,5 @@ kernel RectGradientFill
         
         dst = mix( insetColor, outsetColor, rdist );
         
-        // float2 rdist = ( float2( distance( rectCenter.x, outCoord().x ), distance( rectCenter.y, outCoord().y ) ) - misize ) / dist ;
-        //dst = mix( mix( insetColor, outsetColor, rdist.x ), mix( insetColor, outsetColor, rdist.y ), .5);
     }
 }
