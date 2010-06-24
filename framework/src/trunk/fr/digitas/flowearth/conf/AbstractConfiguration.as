@@ -303,7 +303,7 @@ package fr.digitas.flowearth.conf {
 		protected function getProperty( pName : Object ) : ConfProperty 
 		{
 			var name : QName = new QName( pName);
-			var prop : ConfProperty = _pProvider.getProperty( name );
+			var prop : ConfProperty = _pProvider.getProperty( name, false );
 			if( ! prop ) throw new Error( "Unable to find '" + String( pName ) + "' property" );
 			if( ! prop.resolved ) _resolveProperty( prop );
 			return prop;
