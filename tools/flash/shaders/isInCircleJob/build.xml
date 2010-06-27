@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     27 juin 2010 16:07:03                                                        
+
+     Flowearth - isInCircleJob Assembler    
+     description
+                   
+     plepers                                                                
+     ====================================================================== -->
+<project name="Flowearth - isInCircleJob Assembler" default="main">
+    <description>
+            description
+    </description>
+
+    <!-- ================================= 
+          target: main              
+         ================================= -->
+    <target name="main" depends="init" description="description">
+    </target>
+	
+	<!-- ================================= 
+          target: dissasemble              
+         ================================= -->
+    <target name="dissasemble" depends="init" description="dissasemble pbj file">
+
+    	<exec executable="${dpbj}">
+        	<arg line="IsInCircleJob.pbj"/>
+        	<arg line="-o IsInCircleJob.dpbj"/>
+        </exec>
+        
+    </target>
+	
+	<!-- ================================= 
+          target: assemble              
+         ================================= -->
+    <target name="assemble" depends="init" description="assemble pbj file">
+    	
+    	<exec executable="${apbj}">
+        	<arg line="IsInCircleJob.asm"/>
+        	<arg line="-o IsInCircleJobF.pbj"/>
+        </exec>
+        
+    </target>
+
+
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="init">
+    	
+    	<condition property="dpbj" value="../../pbAssembler/bin/dpbj">
+    		<os family="mac"/>
+    	</condition>
+    	<condition property="dpbj" value="../../pbAssembler/bin/dpbj.exe">
+    		<os family="windows"/>
+    	</condition>
+
+    	<condition property="apbj" value="../../pbAssembler/bin/apbj">
+    		<os family="mac"/>
+    	</condition>
+    	<condition property="apbj" value="../../pbAssembler/bin/apbj.exe">
+    		<os family="windows"/>
+    	</condition>
+
+    </target>
+
+</project>

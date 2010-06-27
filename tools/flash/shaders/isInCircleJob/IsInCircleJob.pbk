@@ -1,0 +1,35 @@
+<languageVersion : 1.0;>
+
+kernel IsInCircleJob
+<   namespace : "fr.digitas.flowearth.shaders::IsInCircleJob";
+    vendor : "Pierre Lepers";
+    version : 1;
+    description : "your description";
+>
+{
+
+    parameter float2 center
+    <
+        defaultValue:float2(0.0, 0.0); 
+        description : "[x,y] center position of the circle";
+    >;
+    
+    parameter float radius
+    <
+        defaultValue:float(0.0); 
+        description : "radius of the circle";
+    >;
+
+    input image4 src;
+    
+    output float4 dst;
+
+    void
+    evaluatePixel()
+    {
+        float2 dpos = sample(src,outCoord()).xy - center;
+        float angle = atan( dpos.x, dpos.y );
+        float dist = length( dpos );
+        dst = float4( angle,  (( dist < radius ) ? 1.0: 0.0) , dist, 0.0 ); 
+    }
+}
