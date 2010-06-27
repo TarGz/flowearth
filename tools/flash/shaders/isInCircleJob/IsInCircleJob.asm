@@ -15,16 +15,14 @@
 	meta		"defaultValue", 0
 	meta		"description", "radius of the circle"
 
-	texture		"src", t0
+	texture		"src", t0.rg
 
 	parameter	"dst", float4, f2, out
 
 ;----------------------------------------------------------
 
 	texb	f3, f0.rg, t0
-	mov		f1.gb, f3.gb
-	sub		f1.gb, f0.ba
-	mov		f3.rg, f1.gb
+	sub		f3.rg, f0.ba
 	mov		f1.g, f3.r
 	atan2	f1.g, f3.g
 	mov		f1.b, f1.g
