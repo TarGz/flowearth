@@ -17,7 +17,7 @@
 
 	texture		"src", t0.rg
 
-	parameter	"dst", float4, f2, out
+	parameter	"dst", float3, f2.rgb, out
 
 ;----------------------------------------------------------
 
@@ -28,14 +28,13 @@
 	mov		f1.b, f1.g
 	len		f1.g, f3.rg
 	mov		f1.a, f1.g
-	mov		f4.r, f1.b
+	mov		f2.r, f1.b
 	ltn		f1.a, f1.r
 	mov		i1.r, i0.r
 	set		f1.g, 1
 	set		f3.b, 0
 	sel		f3.a, i1.r, f1.g, f3.b
-	mov		f4.g, f3.a
-	mov		f4.b, f1.a
+	mov		f2.g, f3.a
+	mov		f2.b, f1.a
 	set		f1.g, 0
-	mov		f4.a, f1.g
-	mov		f2, f4
+	mov		f2.a, f1.g

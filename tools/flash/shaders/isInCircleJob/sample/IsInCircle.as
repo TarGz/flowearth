@@ -102,7 +102,7 @@ package {
 				
 				
 				
-				_result.readFloat();
+				//_result.readFloat();
 //				trace( "dist	: " + dist );
 //				trace( "angle	: " + angle );
 //				trace( "isInval	: " + isInRadius );
