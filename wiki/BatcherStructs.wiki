@@ -125,8 +125,8 @@ function onPictComplete ( e : BatchEvent ) : void {
 Using the previous structure, here is different way to handle errors on batchers structure.
 
 {{{
-mainBatcher.addEventListener( Event.COMPLETE, onError );
-pictsBatcher.addEventListener( Event.COMPLETE, onPictError );
+mainBatcher.addEventListener( BatchErrorEvent.ERROR, onError );
+pictsBatcher.addEventListener( BatchErrorEvent.ITEM_ERROR, onPictError );
 
 function onError ( e : BatchErrorEvent ) : void {
    trace( e.item );
