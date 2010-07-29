@@ -74,6 +74,9 @@ package fr.digitas.flowearth.mvc.address.structs.connector
 		override protected function onPathChange(event : NodeEvent) : void 
 		{
 			super.onPathChange( event );
+			
+			trace( 'pathChange' );
+			
 			_nodeChange( );
 		}
 
@@ -85,9 +88,12 @@ package fr.digitas.flowearth.mvc.address.structs.connector
 			{
 				buffer = nodeSystem.getActivationBuffer( n );
 				
+				trace( '_nodeChange()', buffer.bi_internal::pendingPath );
 				
-				url += encodePath( PathTools.removeDefaultPart( buffer.bi_internal::pendingPath ) );
-				
+				if( buffer.bi_internal::pendingPath )
+				{
+					url += encodePath( PathTools.removeDefaultPart( buffer.bi_internal::pendingPath ) );
+				}
 				
 				
 				url += pathSeparator;
