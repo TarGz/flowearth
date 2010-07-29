@@ -20,7 +20,10 @@
 
 
 
-package fr.digitas.flowearth.utils {
+package fr.digitas.flowearth.utils 
+{
+	import fr.digitas.flowearth.bi_internal;
+	import fr.digitas.flowearth.mvc.address.structs.system.nodeSystem;
 	import fr.digitas.flowearth.mvc.address.structs.INode;
 	import fr.digitas.flowearth.mvc.address.structs.Path;
 
@@ -31,19 +34,23 @@ package fr.digitas.flowearth.utils {
 	/**
 	 * @author Pierre Lepers
 	 */
-	public class Link {
+	public class Link 
+	{
 
 		public var target : String = "_blank";
 
-		public function get type () : String {
+		public function get type() : String 
+		{
 			return _type;
 		}
 
-		public function get src () : String {
+		public function get src() : String 
+		{
 			return _src;
 		}
 
-		public function get label () : String {
+		public function get label() : String 
+		{
 			return _label;
 		}
 
@@ -51,7 +58,8 @@ package fr.digitas.flowearth.utils {
 		 * if Link type is internal, return the corresponding node. return null for other types.
 		 * @return INode the node corresponding to the internal link.
 		 */
-		public function get node () : INode {
+		public function get node() : INode 
+		{
 			if( _type == INT )
 				return new Path( src, params ).toNode( );
 			return null;
@@ -80,43 +88,54 @@ package fr.digitas.flowearth.utils {
 		 * 	-if int, site tree path description (node's ids separated by '/'
 		 * 	-if ext, classic url
 		 */
-		public function Link ( desc : XML ) {
+		public function Link( desc : XML ) 
+		{
 			_parse( desc );
 		}
 
 		/**
 		 * not implemented yet for internal link
 		 */
-		public function get params () : URLVariables {
+		public function get params() : URLVariables 
+		{
 			return _params;
 		}
 
 		/**
 		 * not implemented yet for internal links
 		 */
-		public function set params (params : URLVariables) : void {
+		public function set params(params : URLVariables) : void 
+		{
 			_params = params;
 		}
 
 		
-		public function navigate () : void {
-			
-			
-			if( _type == EXT ) {
+		public function navigate() : void 
+		{
+			if( _type == EXT ) 
+			{
 				var req : URLRequest = new URLRequest( src );
 				req.data = _params;
 				navigateToURL( req, target );
 			} 
-			else if( _type == INT ) {
+			else if( _type == INT ) 
+			{
 				var path : Path = new Path( src, params );
-				path.toNode( ).activate( path.getParams() );
-			} else {
+//				path.toNode( ).activate( path.getParams( ) );
+				
+				var n : INode = nodeSystem.getDevice( path.getDevice() );
+				nodeSystem.getActivationBuffer( n ).bi_internal::apply(path);
+				
+			} 
+			else 
+			{
 				throw new ArgumentError( "fr.digitas.flowearth.utils.Link 'type' value is not valid : " + _type );
 			}
 		}
 
 		
-		private function _parse ( desc : XML ) : void {
+		private function _parse( desc : XML ) : void 
+		{
 			_type = desc.@type;
 			target = desc.@target;
 			_src = desc.src.text( );
