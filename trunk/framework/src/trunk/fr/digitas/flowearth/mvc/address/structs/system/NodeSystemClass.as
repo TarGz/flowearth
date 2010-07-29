@@ -17,66 +17,96 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-package fr.digitas.flowearth.mvc.address.structs.system {
+package fr.digitas.flowearth.mvc.address.structs.system 
+{
 	import fr.digitas.flowearth.mvc.address.structs.INode;
 	import fr.digitas.flowearth.mvc.address.structs.INodeSystem;
 	import fr.digitas.flowearth.mvc.address.structs.IPath;
-	
-	import flash.utils.Dictionary;	
 
-	public class NodeSystemClass implements INodeSystem {
+	import flash.utils.Dictionary;
+
+	public class NodeSystemClass implements INodeSystem 
+	{
 
 		
 		
-		function NodeSystemClass() {
+		function NodeSystemClass() 
+		{
 			_devices = new Dictionary( );
+			_buffers = new Dictionary( );
 		}
 
-		public function getDevice( device : String = null ) : INode {
+		public function getDevice( device : String = null ) : INode 
+		{
 			return _devices[ device ];
 		}
 
-		public function addDevice( node : INode ) : void {
+		public function addDevice( node : INode ) : void 
+		{
 			var id : String = node.getId( );
 			if( hasDevice( id ) )
 			if( node != _devices[ id ] ) throw new Error( "nodeSystem - addDevice : device '" + id + "' already exist." );
 			else return;
 			_devices[ id ] = node;
+			_buffers[node] = new ActivationBuffer( node );
 		
-			if( ! _defaultPath ) setDefaultNode( node );
-			if( ! _defaultDevice ) _defaultDevice = node;
+			if( !_defaultPath ) setDefaultNode( node );
+			if( !_defaultDevice ) _defaultDevice = node;
 		}
 
-		public function hasDevice( device : String ) : Boolean {
+		//		public function removeDevice( node : INode ) : void
+		//		{
+		//			save removal
+		//
+		//			var b : ActivationBuffer = _buffers[node];
+		//			b.bi_internal::dispose( );
+		//			delete _buffers[node];
+		//		}
+
+		// _____________________________________________________________________ ActivationBuffer
+
+		public function getActivationBuffer(node : INode) : ActivationBuffer 
+		{
+			return _buffers[ node ];
+		}
+
+		
+		public function hasDevice( device : String ) : Boolean 
+		{
 			return ( _devices[ device ] != undefined );
 		}
 
-		public function setDefaultNode( n : INode ) : void {
+		public function setDefaultNode( n : INode ) : void 
+		{
 			_defaultPath = n.path( );
 		}
 
-		public function setDefaultPath( p : IPath ) : void {
+		public function setDefaultPath( p : IPath ) : void 
+		{
 			_defaultPath = p;
 		}
 
-		public function getDefaultPath() : IPath {
+		public function getDefaultPath() : IPath 
+		{
 			return _defaultPath;
 		}
 
 		
-		public function setDefaultDevice( id : String ) : void {
+		public function setDefaultDevice( id : String ) : void 
+		{
 			_defaultDevice = getDevice( id );
 		}
 
-		public function getDefaultDevice() : INode {
+		public function getDefaultDevice() : INode 
+		{
 			return _defaultDevice;
 		}
 
 		
 		
 		private var _devices : Dictionary;
+		private var _buffers : Dictionary;
 
-		
 		private var _defaultPath : IPath;
 
 		private var _defaultDevice : INode;
