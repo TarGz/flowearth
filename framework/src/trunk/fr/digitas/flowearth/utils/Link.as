@@ -121,7 +121,6 @@ package fr.digitas.flowearth.utils
 			else if( _type == INT ) 
 			{
 				var path : Path = new Path( src, params );
-//				path.toNode( ).activate( path.getParams( ) );
 				
 				var n : INode = nodeSystem.getDevice( path.getDevice() );
 				nodeSystem.getActivationBuffer( n ).bi_internal::apply(path);
