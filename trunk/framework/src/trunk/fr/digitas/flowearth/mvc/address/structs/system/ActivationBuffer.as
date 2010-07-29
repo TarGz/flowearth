@@ -1,9 +1,10 @@
-package fr.digitas.flowearth.mvc.address.structs.system 
-{
+package fr.digitas.flowearth.mvc.address.structs.system {
 	import fr.digitas.flowearth.bi_internal;
 	import fr.digitas.flowearth.event.NodeEvent;
 	import fr.digitas.flowearth.mvc.address.structs.INode;
 	import fr.digitas.flowearth.mvc.address.structs.IPath;
+	
+	import flash.events.EventDispatcher;		
 
 	//_____________________________________________________________________________
 	//															   ActivationBuffer
@@ -16,8 +17,9 @@ package fr.digitas.flowearth.mvc.address.structs.system
 
 	
 	
-	public class ActivationBuffer 
-	{
+	public class ActivationBuffer extends EventDispatcher {
+		
+		
 		private var _node : INode;
 
 		function ActivationBuffer( node : INode ) 
@@ -28,7 +30,7 @@ package fr.digitas.flowearth.mvc.address.structs.system
 
 		bi_internal function apply( path : IPath ) : void 
 		{
-		
+			
 			if( path.nodeExist( ) ) 
 			{
 				path.toNode( ).activate( path.getParams( ) );
@@ -38,7 +40,12 @@ package fr.digitas.flowearth.mvc.address.structs.system
 			{
 				_pendingPath = path;
 				_lock = true;
-				path.cleanup( ).toNode( ).activate( path.getParams( ) );
+				var cleaned : IPath = path.cleanup();
+				
+				if( cleaned.equals( _node.activePath ) )
+					dispatchEvent( new NodeEvent( NodeEvent.PATH_CHANGE, cleaned.toNode( ) ) );
+				else
+					cleaned.toNode( ).activate( path.getParams( ) );
 			}
 			_lock = false;
 			
