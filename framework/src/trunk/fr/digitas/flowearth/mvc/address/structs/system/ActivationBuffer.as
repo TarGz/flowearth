@@ -58,7 +58,7 @@ package fr.digitas.flowearth.mvc.address.structs.system
 
 		bi_internal function get pendingPath() : IPath
 		{
-			return _pendingPath;
+			return _pendingPath || _node.activePath;
 		}
 
 		

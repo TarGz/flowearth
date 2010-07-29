@@ -73,7 +73,7 @@ package fr.digitas.flowearth.utils
 		 * 		&lt;link type="int|ext" target="_blank|_self|_parent|..."&gt;url&lt;/link&gt;
 		 * 		<link type="int">
 		 *			<src><![CDATA[]]></src>
-		 *			<text><![CDATA[]]></text>
+		 *			<label><![CDATA[]]></label>
 		 *		</link>
 		 * </pre>
 		 * 
