@@ -85,14 +85,10 @@ package fr.digitas.flowearth.mvc.address.structs.connector
 			{
 				buffer = nodeSystem.getActivationBuffer( n );
 				
-				if( buffer.bi_internal::lockAddress( ) )
-				{
-					url += encodePath( PathTools.removeDefaultPart( buffer.bi_internal::pendingPath ) );
-				}
-				else if( n.activePath ) 
-				{
-					url += encodePath( PathTools.removeDefaultPart( n.activePath ) );
-				}
+				
+				url += encodePath( PathTools.removeDefaultPart( buffer.bi_internal::pendingPath ) );
+				
+				
 				
 				url += pathSeparator;
 			}

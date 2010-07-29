@@ -53,7 +53,7 @@ package fr.digitas.flowearth.mvc.address.structs.proxy {
 		}
 		
 		override public function activate( params : URLVariables = null ) : void {
-			_referer.activate( params );	
+			_referer.activate( params );
 		}
 		
 		override public function getDefaultId() : String {
