@@ -205,6 +205,11 @@ package fr.digitas.flowearth.conf {
 			_pProvider.deleteProperty( name ) ;
 		}
 		
+
+		public function hasSpace( uri : String ) : Boolean {
+			return _pProvider.hasSpace( uri );
+		}
+		
 		public function createSpace( uri : String, parentSpace : String = "" ) : void {
 			_pProvider.createSpace( uri, parentSpace );
 		}
@@ -668,8 +673,13 @@ final internal class PropProvider {
 		return _pres[ pre ];// || emptyNs;
 	}
 	
+	internal function hasSpace( uri : String ) : Boolean
+	{
+		return _spaces[ uri ] != null;
+	}
+	
 	internal function createSpace( uri : String, parentSpace : String = "" ) : PropSpace {
-		if( _spaces[ uri ] ) throw new Error( "AbstractConfiguration.createSpace() : space '" + uri + "' already exist");
+		if( _spaces[ uri ] ) throw new Error( "AbstractConfiguration.createSpace() : space '" + uri + "' already exist - use hasSpace( uri )");
 		var res : PropSpace = new PropSpace( uri );
 		var parent : PropSpace = _spaces[parentSpace];
 		if( parent == null ) throw new Error( "AbstractConfiguration.createSpace() : invalid parent URI : '" + parentSpace + "'" );
