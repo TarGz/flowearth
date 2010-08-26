@@ -123,9 +123,15 @@ package fr.digitas.flowearth.utils
 				
 				var path : Path = new Path( src, params );
 				
-				var n : INode = nodeSystem.getDevice( path.getDevice( ) ) || nodeSystem.getDefaultDevice();
-				nodeSystem.getActivationBuffer( n ).bi_internal::apply(path );
-				
+				if( path.nodeExist() )
+				{
+					path.toNode().activate();
+				}
+				else
+				{
+					var n : INode = nodeSystem.getDevice( path.getDevice( ) ) || nodeSystem.getDefaultDevice();
+					nodeSystem.getActivationBuffer( n ).bi_internal::apply(path );
+				}
 			} 
 			else 
 			{
