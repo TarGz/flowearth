@@ -16,43 +16,63 @@
  *   Digitas France Flash Team
  *
  * ***** END LICENSE BLOCK ***** */
-
-
-package fr.digitas.flowearth.utils {
-	import flash.net.URLVariables;		
+package fr.digitas.flowearth.utils
+{
+	import flash.net.URLVariables;
 
 	/**
 	 * Provide tools for URLVariables
 	 * 
 	 * @author Pierre Lepers
 	 */
-	public class VariablesTools {
-		
-		
+	public class VariablesTools
+	{
 		/**
 		 * check if to URLVariables have strictely same values
 		 * @return Boolean true if variables are equals.
 		 */
-		public static function equals( v1 : URLVariables, v2 : URLVariables) : Boolean {
-			var c : int = 0;
-			for (var p : String in v1) {
-				c++;
-				if( v2[ p ] != v1[ p ] ) return false;
+		public static function equals( v1 : URLVariables, v2 : URLVariables ) : Boolean
+		{
+			if( v1 && v2 )
+			{
+				var c : int = 0;
+				for (var p : String in v1)
+				{
+					c++;
+					if( v2[ p ] != v1[ p ] )
+					{
+						return false;
+					}
+				}
+				for ( p in v2 )
+				{
+					c--;
+				}
+				return c == 0;
 			}
-			for ( p in v2 ) c--;
-			return c==0;
+			else
+			{
+				if( v1 || v2 ) return false;
+				else return true;
+			}
 		}
-		
+
 		/**
 		 * concat values of 2 URLVAriables.
 		 * note that if a variable exist in the 2 given URLVariables, the value of the first param is keep.
 		 */
-		public static function concat( v1 : URLVariables, v2 : URLVariables ) : URLVariables {
-			if( !v1 && !v2 ) return null;
+		public static function concat( v1 : URLVariables, v2 : URLVariables ) : URLVariables
+		{
+			if( !v1 && !v2 )
+				return null;
 			var res : URLVariables = new URLVariables();
 			var p : String;
-			if( v2 ) for ( p in v2 ) res[p] = v2[p];
-			if( v1 ) for ( p in v1 ) res[p] = v1[p];
+			if( v2 )
+				for ( p in v2 )
+					res[p] = v2[p];
+			if( v1 )
+				for ( p in v1 )
+					res[p] = v1[p];
 			return res;
 		}
 	}

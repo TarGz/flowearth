@@ -40,14 +40,18 @@ package fr.digitas.flowearth.event {
 		}
 
 		public function FlowEvent( type : String, bubbles : Boolean = false, cancelable : Boolean = false, capureFlow : Boolean = false ) {
+			
+//			trace( "FlowEvent()",type, bubbles, cancelable, capureFlow );
+			
 			_nativeType = type;
 			if( capureFlow ) type = FlowEventDispatcher.CAPTURE_PREFIX + _nativeType;
 			_capureFlow = capureFlow;
 			super( type , bubbles , cancelable );
 		}
 
-		override public function clone() : Event {
-			var c : FlowEvent = new FlowEvent( type, bubbles, cancelable );
+		override public function clone() : Event
+		{
+			var c : FlowEvent = new FlowEvent( _nativeType, bubbles, cancelable, _capureFlow );
 			return c;
 		}
 		
