@@ -18,6 +18,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 package fr.digitas.flowearth.mvc.address.structs.abstract {
+	import fr.digitas.flowearth.utils.VariablesTools;
 	import fr.digitas.flowearth.bi_internal;
 	import fr.digitas.flowearth.event.FlowEventDispatcher;
 	import fr.digitas.flowearth.event.NodeEvent;
@@ -323,11 +324,15 @@ package fr.digitas.flowearth.mvc.address.structs.abstract {
 				dispatchEvent( new NodeEvent( NodeEvent.DEFAULT_CHANGE , this , false ) );
 		}
 
-		bi_internal function setParams( params : URLVariables ) : void {
-			if( _params == params ) return;
+		bi_internal function setParams( params : URLVariables ) : void 
+		{
+			if( VariablesTools.equals( _params, params) ) return;
+			
 			_params = params;
 			if( hasEventListener( NodeEvent.PARAM_CHANGE ) )
+			{
 				dispatchEvent( new NodeEvent( NodeEvent.PARAM_CHANGE , this ) );
+			}
 		}
 		
 		bi_internal function fireCapture( event : NodeEvent ) : void {
