@@ -19,9 +19,9 @@
 
 package fr.digitas.flowearth.net {
 	import flash.media.SoundLoaderContext;
-	import bi.bi_internal;
-	import bi.event.BatchEvent;
-	import bi.net.AbstractBLoader;
+	import fr.digitas.flowearth.bi_internal;
+	import fr.digitas.flowearth.event.BatchEvent;
+	import fr.digitas.flowearth.net.AbstractBLoader;
 
 	import flash.media.Sound;
 	import flash.net.URLRequest;
