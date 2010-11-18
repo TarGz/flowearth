@@ -41,7 +41,7 @@ package fr.digitas.flowearth.ui.layout.renderer {
 
 		override protected function renderChildProgress ( proxy : AnimationHelper ) : void {
 			var ownProgress : Number = proxy.getProgress();
-			var _do : DisplayObject = proxy.getDisplay();
+			var _do : DisplayObject = proxy.original.getDisplay();
 			if( _do is IInterpolable ) 
 				if( ! ( _do as IInterpolable ).setProgress( proxy ) ) return;
 			

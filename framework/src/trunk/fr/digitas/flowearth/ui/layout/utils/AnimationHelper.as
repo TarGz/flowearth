@@ -40,7 +40,7 @@ package fr.digitas.flowearth.ui.layout.utils {
 		}
 		
 		public function getDisplay() : DisplayObject {
-			return _original.getDisplay();
+			return this;
 		}
 
 		public function getWidth () : Number {
