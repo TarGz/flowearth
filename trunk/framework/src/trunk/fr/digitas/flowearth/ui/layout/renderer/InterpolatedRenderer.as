@@ -71,6 +71,7 @@ package fr.digitas.flowearth.ui.layout.renderer {
 			super.init( _baseRenderer._padding, _baseRenderer._margin, w, h );
 			_offset = _baseRenderer._offset;
 			_pSplitter = new ProgressionSplitter( );
+			_pSplitter.decay = decay;
 		}
 
 		public override function render ( child : ILayoutItem ) : void {
@@ -82,18 +83,26 @@ package fr.digitas.flowearth.ui.layout.renderer {
 		
 		override public function complete () : void {
 			if( ! _pSplitter ) return;
+			_baseRenderer.complete();
 			_pSplitter.progress = _progress;
 			var iterator : IIterator = _pSplitter.getIterator();
 			while ( iterator.hasNext() )
 				renderChildProgress( iterator.next( ) as AnimationHelper );
 			
-			
 			super.complete( );
 		}
-		
+
+		override public function get renderHeight() : Number {
+			return _baseRenderer.renderHeight;
+		}
+
+		override public function get renderWidth() : Number {
+			return _baseRenderer.renderWidth;
+		}
+
 		protected function renderChildProgress( proxy : AnimationHelper ) : void {
-			if( proxy.getDisplay() is IInterpolable )
-				( proxy.getDisplay() as IInterpolable ).setProgress( proxy );
+			if( proxy.original.getDisplay() is IInterpolable )
+				( proxy.original.getDisplay() as IInterpolable ).setProgress( proxy );
 		}
 
 

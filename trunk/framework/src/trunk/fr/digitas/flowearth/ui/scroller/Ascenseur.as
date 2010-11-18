@@ -36,8 +36,9 @@ package fr.digitas.flowearth.ui.scroller {
 		
 		public function Ascenseur()
 		{
-			setScale9( );
 			super();
+			if( scale9Grid == null )
+				setScale9( );
 		}
 		
 		public function setHeight( val : Number ) : void {
