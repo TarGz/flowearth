@@ -16,7 +16,7 @@ package fr.digitas.flowearth.shaders {
 
 		public function set map ( map : BitmapData ) : void {
 			_shader.data.map.input = map;
-			shader.data.mapsize.value = [ map.width ];
+			_shader.data.mapsize.value = [ map.width ];
 		}
 	}
 }

@@ -1,0 +1,79 @@
+	version		1
+	name		"RectGradientFill"
+	kernel		"namespace", "fr.digitas.flowearth.shaders::RectGradientFill"
+	kernel		"vendor", "Pierre Lepers"
+	kernel		"version", 1
+	kernel		"description", "Create a rectGradient fill, suited for vector dropShadow..."
+
+	parameter	"_OutCoord", float2, f0.rg, in
+
+	parameter	"insetColor", float4, f1, in
+	meta		"description", "inset gradient color"
+	meta		"defaultValue", 0, 0, 0, 1
+
+	parameter	"outsetColor", float4, f2, in
+	meta		"description", "outset gradient color"
+	meta		"defaultValue", 0, 0, 0, 0
+
+	parameter	"size", float2, f0.ba, in
+	meta		"description", "[w, h] size of the base rect zone of the gradient"
+	meta		"defaultValue", 100, 100
+
+	parameter	"dist", float2, f3.rg, in
+	meta		"description", "[x,y] gradient size for each x, y coordinates"
+	meta		"defaultValue", 12, 12
+
+	parameter	"dst", float4, f4, out
+
+;----------------------------------------------------------
+
+	set		f5.r, 2
+	rcp		f5.g, f5.r
+	mul		f5.g, f0.b
+	mov		f3.b, f5.g
+	set		f5.r, 2
+	rcp		f5.g, f5.r
+	mul		f5.g, f0.a
+	mov		f3.a, f5.g
+	mov		f5.rg, f3.ba
+	set		f3.b, 0
+	set		f3.a, 0
+	mov		f5.ba, f5.rg
+	sub		f5.ba, f0.rg
+	abs		f6.rg, f5.ba
+	mov		f5.ba, f6.rg
+	sub		f5.ba, f5.rg
+	mov		f6.rg, f3.ba
+	max		f6.rg, f5.ba
+	mov		f3.ba, f6.rg
+	rcp		f5.ba, f3.rg
+	mul		f5.ba, f3.ba
+	len		f6.r, f5.ba
+	mov		f5.b, f6.r
+	set		f5.a, 0
+	set		f6.g, 1
+	mov		f6.b, f5.b
+	max		f6.b, f5.a
+	mov		f6.a, f6.b
+	min		f6.a, f6.g
+	mov		f5.b, f6.a
+	set		f5.a, 0
+	sub		f5.a, f5.b
+	set		f6.r, 2
+	mov		f6.g, f5.b
+	sub		f6.g, f6.r
+	mov		f6.r, f5.a
+	mul		f6.r, f6.g
+	mov		f5.b, f6.r
+	mov		f6.r, f5.b
+	mov		f6.g, f5.b
+	mov		f6.b, f5.b
+	mov		f6.a, f5.b
+	set		f7, 1
+	sub		f7, f6
+	mov		f8, f1
+	mul		f8, f7
+	mov		f9, f2
+	mul		f9, f6
+	add		f8, f9
+	mov		f4, f8
