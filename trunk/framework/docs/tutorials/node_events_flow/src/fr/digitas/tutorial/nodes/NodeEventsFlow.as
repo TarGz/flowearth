@@ -110,6 +110,7 @@ package fr.digitas.tutorial.nodes {
 		
 		private function addSomeNodes(event : MouseEvent) : void {
 			rootNode.scan( new NodeAddTraverser () );
+			_watcher.connect( rootNode );
 		}
 
 		

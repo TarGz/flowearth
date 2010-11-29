@@ -14,13 +14,15 @@ kernel AngularGradientFill
     
     output pixel4 dst;
    
-
+    const float PI = 3.141592653589793;
+    const float PI2 = 2.0*3.141592653589793;
+    
     void evaluatePixel()
     {
         
         float2 dpos = outCoord();
         
-        dst = sampleNearest( map, float2( smoothStep( -3.14159265358, 3.14159265358, atan( dpos.x, dpos.y ) ) * mapsize, .5 ) );
+        dst = sample( map, float2(  ( atan( dpos.x, dpos.y ) + 3.14159265359 ) / PI2  * mapsize, 0 ) );
         
     }
 }

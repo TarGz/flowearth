@@ -1,0 +1,35 @@
+<languageVersion : 1.0;>
+
+kernel WatermarkOneOneFilter
+<   namespace : "fr.digitas.flowearth.shaders::WatermarkOneOneFilter";
+    vendor : "Pierre Lepers";
+    version : 1;
+    description : "Add a watermark with a 'checkerboard' like pattern.";
+>
+{
+    
+    parameter float4 color
+    < 
+        description : "watermark color";
+        defaultValue:float4( 0.0, 0.0, 0.0, 1.0 ); 
+    >;
+    
+    parameter float2 size
+    < 
+        description : "tiles size";
+        defaultValue:float2( 30.0, 30.0 ); 
+    >;
+    
+    
+    input image4 src;
+    
+    output pixel4 dst;
+
+    void
+    evaluatePixel()
+    {
+    float2 mod = ( mod(  outCoord(), size ) / size);
+    dst = mix( sample( src, outCoord() ), color, log(  mod.y+ mod.x ) );
+      
+    }
+}

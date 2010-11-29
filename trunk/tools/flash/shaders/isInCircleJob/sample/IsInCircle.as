@@ -1,6 +1,8 @@
 package {
+	import caurina.transitions.Tweener;
+	
 	import fr.digitas.flowearth.debug.FPS;
-
+	
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.Shader;
@@ -13,7 +15,7 @@ package {
 	import flash.net.URLLoader;
 	import flash.net.URLLoaderDataFormat;
 	import flash.net.URLRequest;
-	import flash.utils.ByteArray;
+	import flash.utils.ByteArray;	
 
 	/**
 	 * @author plepers
@@ -21,7 +23,7 @@ package {
 	public class IsInCircle extends Sprite {
 
 //		private static const MAX_PARTICLES : int = 500000;
-		private static const MAX_PARTICLES : int = 10000;
+		private static const MAX_PARTICLES : int = 40000;
 
 		public function IsInCircle () {
 			
@@ -59,23 +61,60 @@ package {
 			shader.data.src.input = _pDatas;
              
 			addEventListener( Event.ENTER_FRAME, compute ); 
-			stage.addEventListener( MouseEvent.CLICK, compute ); 
+			stage.addEventListener( MouseEvent.MOUSE_DOWN, mouseDown ); 
+			stage.addEventListener( MouseEvent.MOUSE_UP, mouseUp ); 
+		}
+		
+		private function mouseUp(event : MouseEvent) : void {
+			Tweener.addTween( this, { _radius : 100, time : 1.2 } );
+		}
+
+		private function mouseDown(event : MouseEvent) : void {
+			Tweener.addTween( this, { _radius : 200, time : 1.2 } );
+			
 		} 
 
-
+		
 		//_____________________________________________________________________________
 		//																  RUN SHADERJOB
 		
 		private function compute (event : Event) : void {
 			shader.data.center.value = [ mouseX, mouseY ];
-			shader.data.radius.value = [ 100.0 ];
+			shader.data.radius.value = [ _radius ];
 			
 			_result.position = 0;
 			var job : ShaderJob = new ShaderJob( shader, _result, dims.x, dims.y );
 			job.start( true );
-			handleResults( );
+			handleResults2( );
+		}
+		
+		private function handleResults2() : void {
+			
+			
+			var bmp:  BitmapData = _debugdisplay.bitmapData;
+			bmp.fillRect( bmp.rect, 0xFFFFFF);
+			dShape.graphics.clear( );
+			dShape.graphics.lineStyle( 1, 0xAAAAAA, .1 );
+			
+			_result.position = 0;
+			var c : int = 0;
+
+			bmp.lock();
+			
+			while( _result.bytesAvailable > 0 ) {
+			//	_result.readFloat();
+				if( _result.readFloat() > 0 )
+					bmp.setPixel( _particles[c].x, _particles[c].y, 0 );
+//				_result.readFloat();
+				c++;
+			}
+			
+			bmp.unlock();
+			
 		}
 
+		
+		
 		private function handleResults () : void {
 			
 			var bmp:  BitmapData = _debugdisplay.bitmapData;
@@ -110,8 +149,8 @@ package {
 				bmp.lock();
 				
 				if( isInRadius > 0 ) {
-					dShape.graphics.moveTo( mouseX, mouseY );
-					dShape.graphics.lineTo( mouseX + dist *Math.sin( angle ), mouseY+ dist *Math.cos( angle ) );
+//					dShape.graphics.moveTo( mouseX, mouseY );
+//					dShape.graphics.lineTo( mouseX + dist *Math.sin( angle ), mouseY+ dist *Math.cos( angle ) );
 					bmp.setPixel( _particles[c].x, _particles[c].y, 0 );
 				}
 				
@@ -202,6 +241,8 @@ package {
 		
 		
 		private var dShape : Shape;
+		
+		public var _radius : Number = 100;
 	}
 }
 
