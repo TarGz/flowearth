@@ -79,7 +79,7 @@ package fr.digitas.flowearth.media.player.caption
 		protected function loadCaption ( request : MediaRequest ) : void {
 			reset();
 			_captionProvider = null;
-			Logger.log( "bi.media.player.caption.CaptionView - loadCaption -- ", request );
+			trace( "bi.media.player.caption.CaptionView - loadCaption -- ", request );
 			if( !( request is CaptionRequest ) ) return;
 			var loader : URLLoader = new URLLoader();
 			var req : URLRequest = ( request as CaptionRequest ).captionReq ;
@@ -88,7 +88,7 @@ package fr.digitas.flowearth.media.player.caption
 		}
 
 		protected function onCaptionLoaded (event : Event) : void {
-			Logger.log( "bi.media.player.caption.CaptionView - onCaptionLoaded -- " );
+			trace( "bi.media.player.caption.CaptionView - onCaptionLoaded -- " );
 			var loader : URLLoader = event.target as URLLoader;
 			loader.removeEventListener( Event.COMPLETE, onCaptionLoaded );
 			_captionProvider = _captionParser.parse( loader.data );
@@ -123,7 +123,7 @@ package fr.digitas.flowearth.media.player.caption
 				if( _currentCaptionId != currentCaptionData.id )
 				{
 					_currentCaptionId = currentCaptionData.id;
-					Logger.log("new caption : " + currentCaptionData.htmlData);
+					trace("new caption : " + currentCaptionData.htmlData);
 					captions.tf.htmlText=currentCaptionData.htmlData;
 				}
 			} else {
