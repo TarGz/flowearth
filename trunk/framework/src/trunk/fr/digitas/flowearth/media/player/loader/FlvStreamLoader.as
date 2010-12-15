@@ -48,7 +48,7 @@ package fr.digitas.flowearth.media.player.loader {
 		
 		override public function set display ( disp : IMediaDisplay ) : void {
 			if( _display ) {
-				Logger.fatal( "bi.media.player.loader.FlvLoader - display -- dispose" );
+				trace( "bi.media.player.loader.FlvLoader - display -- dispose" );
 				_display.getVideoHolder( ).attachNetStream( null );
 				_display.getVideoHolder( ).clear( );
 			}
@@ -117,7 +117,7 @@ package fr.digitas.flowearth.media.player.loader {
 			_nc.addEventListener( IOErrorEvent.IO_ERROR, ncError, false, 0, true );
 			_nc.addEventListener( AsyncErrorEvent.ASYNC_ERROR, ncError, false, 0, true );
             
-			//Logger.debug( "FlvStreamLoader.initConnection()", _request );
+			trace( "FlvStreamLoader.initConnection()", _request );
             
 			_nc.connect( _request.urlRequest.url );
 //            if( FlvStreamRequest( _request ).isRTMP )
@@ -131,7 +131,7 @@ package fr.digitas.flowearth.media.player.loader {
 
 		private function connectStream () : void {
 			
-			//Logger.fatal( "_nc.connectedProxyType : "+_nc.connectedProxyType );
+			trace( "_nc.connectedProxyType : "+_nc.connectedProxyType );
 			
 			
 			_ns = new NetStream( _nc );
@@ -157,9 +157,9 @@ package fr.digitas.flowearth.media.player.loader {
 		}
 
 		public function onBWDone ( ...args ) : void {
-			//Logger.log( "bi.media.player.loader.FlvStreamLoader - onBWDone -- " );
+			trace( "bi.media.player.loader.FlvStreamLoader - onBWDone -- " );
 			for each(var i : * in args ) {
-				Logger.log( "bi.media.player.loader.FlvStreamLoader - onBWDone -- ", i );
+				//trace( "bi.media.player.loader.FlvStreamLoader - onBWDone -- ", i );
 			}
 		}
 
@@ -183,7 +183,7 @@ package fr.digitas.flowearth.media.player.loader {
 		//															  NetStream Handler
 
 		private function nsStatus ( e : NetStatusEvent ) : void {
-			Logger.log( "bi.media.player.loader.FlvStreamLoader - nsStatus -- ", e.info.code );
+			trace( "bi.media.player.loader.FlvStreamLoader - nsStatus -- ", e.info.code );
 			if( e.info.level == "error" ) error( e.info.code + " - " + _request.urlRequest.url + "  ##  " + _request.urlRequest.data );
 			
 			dispatchEvent( new StatusEvent( MediaPlayer.STATUS , false, false, e.info.code, e.info.level ) );
