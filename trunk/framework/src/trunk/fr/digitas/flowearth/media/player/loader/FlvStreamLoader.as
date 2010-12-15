@@ -48,7 +48,6 @@ package fr.digitas.flowearth.media.player.loader {
 		
 		override public function set display ( disp : IMediaDisplay ) : void {
 			if( _display ) {
-				trace( "bi.media.player.loader.FlvLoader - display -- dispose" );
 				_display.getVideoHolder( ).attachNetStream( null );
 				_display.getVideoHolder( ).clear( );
 			}
