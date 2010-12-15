@@ -29,10 +29,9 @@ package fr.digitas.flowearth.media.player.loader {
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
 	import flash.net.ObjectEncoding;
-	
-	import bi.debug.log.Logger;
-	import bi.event.BoolEvent;
-	import bi.event.NumberEvent;
+	import fr.digitas.flowearth.event.BoolEvent;
+	import fr.digitas.flowearth.event.NumberEvent;
+
 	import fr.digitas.flowearth.media.player.MediaPlayer;
 	import fr.digitas.flowearth.media.player.MediaPlayerConfig;
 	import fr.digitas.flowearth.media.player.display.IMediaDisplay;
@@ -118,7 +117,7 @@ package fr.digitas.flowearth.media.player.loader {
 			_nc.addEventListener( IOErrorEvent.IO_ERROR, ncError, false, 0, true );
 			_nc.addEventListener( AsyncErrorEvent.ASYNC_ERROR, ncError, false, 0, true );
             
-			Logger.debug( "FlvStreamLoader.initConnection()", _request );
+			//Logger.debug( "FlvStreamLoader.initConnection()", _request );
             
 			_nc.connect( _request.urlRequest.url );
 //            if( FlvStreamRequest( _request ).isRTMP )
@@ -132,7 +131,7 @@ package fr.digitas.flowearth.media.player.loader {
 
 		private function connectStream () : void {
 			
-			Logger.fatal( "_nc.connectedProxyType : "+_nc.connectedProxyType );
+			//Logger.fatal( "_nc.connectedProxyType : "+_nc.connectedProxyType );
 			
 			
 			_ns = new NetStream( _nc );
@@ -158,7 +157,7 @@ package fr.digitas.flowearth.media.player.loader {
 		}
 
 		public function onBWDone ( ...args ) : void {
-			Logger.log( "bi.media.player.loader.FlvStreamLoader - onBWDone -- " );
+			//Logger.log( "bi.media.player.loader.FlvStreamLoader - onBWDone -- " );
 			for each(var i : * in args ) {
 				Logger.log( "bi.media.player.loader.FlvStreamLoader - onBWDone -- ", i );
 			}
@@ -169,14 +168,14 @@ package fr.digitas.flowearth.media.player.loader {
 		//														  NetConnection Handler
 
 		protected function ncStatus ( e : NetStatusEvent ) : void {
-			Logger.info( e.info.level, e.info.code );
+			//Logger.info( e.info.level, e.info.code );
 			if( e.info.code == "NetConnection.Connect.Success" )		connectStream( );
 			if( e.info.level == "error" ) 	error( e.info.code );
 		}
 
 		
 		protected function ncError ( e : ErrorEvent ) : void {
-			Logger.error( "bi.media.player.loader.FlvLoader - ncError -- " + e.text );
+			//Logger.error( "bi.media.player.loader.FlvLoader - ncError -- " + e.text );
 			error( e.text );
 		}
 
@@ -198,9 +197,9 @@ package fr.digitas.flowearth.media.player.loader {
 //					break;
 				case "NetStream.Play.Stop":
 					
-					Logger.log( "bi.media.player.loader.FlvStreamLoader - ns stop -- __id: " , (_id) );
-					Logger.log( "bi.media.player.loader.FlvStreamLoader - ns stop -- _md.duration : " , (_md.duration) );
-					Logger.log( "bi.media.player.loader.FlvStreamLoader - ns stop -- _ns.time : " , (_ns.time) );
+					//Logger.log( "bi.media.player.loader.FlvStreamLoader - ns stop -- __id: " , (_id) );
+					//Logger.log( "bi.media.player.loader.FlvStreamLoader - ns stop -- _md.duration : " , (_md.duration) );
+					//Logger.log( "bi.media.player.loader.FlvStreamLoader - ns stop -- _ns.time : " , (_ns.time) );
 //					Logger.debug( "_buffFlushed:" + _buffFlushed );
 //				
 //					if(  _player && _player.play ) // && _buffFlushed 
@@ -247,7 +246,7 @@ package fr.digitas.flowearth.media.player.loader {
 
 		public function onPlayStatus ( infoObj : Object ) : void {
 			if( infoObj.code == "NetStream.Play.Complete" ) {
-				Logger.focus( "bi.media.player.loader.FlvStreamLoader - onPlayStatus -- playComplete();" );
+				//Logger.focus( "bi.media.player.loader.FlvStreamLoader - onPlayStatus -- playComplete();" );
 				playComplete();	
 			}
 		}
@@ -259,7 +258,7 @@ package fr.digitas.flowearth.media.player.loader {
 				playProgress( _ns.time, _md.duration );
 				if( _completeMode && _ns.time < _md.duration / 3 ) {
 					_completeMode = false;
-					Logger.focus( "bi.media.player.loader.FlvStreamLoader - dispatchPlayProgress -- playComplete();" );
+					//Logger.focus( "bi.media.player.loader.FlvStreamLoader - dispatchPlayProgress -- playComplete();" );
 					playComplete( );
 				}
 			}
@@ -289,27 +288,27 @@ package fr.digitas.flowearth.media.player.loader {
 			super.onPlay( e );
 			if( ! _ns ) return;
 			if( e.flag ){
-				Logger.log( "bi.media.player.loader.FlvStreamLoader - Resume " );
+				//trace( "bi.media.player.loader.FlvStreamLoader - Resume " );
 				// avoid complete browser crash !!!
 
-				Logger.log( "bi.media.player.loader.FlvStreamLoader - onPlay -- __id: " , (_id) );
-				Logger.log( "bi.media.player.loader.FlvStreamLoader - onPlay -- _md.duration : " , (_md.duration) );
-				Logger.log( "bi.media.player.loader.FlvStreamLoader - onPlay -- _ns.time : " , (_ns.time) );
+				//trace( "bi.media.player.loader.FlvStreamLoader - onPlay -- __id: " , (_id) );
+				//trace( "bi.media.player.loader.FlvStreamLoader - onPlay -- _md.duration : " , (_md.duration) );
+				//trace( "bi.media.player.loader.FlvStreamLoader - onPlay -- _ns.time : " , (_ns.time) );
 				if( _md.duration - _ns.time > 3 )
 					_ns.resume( );
 				else {
-					Logger.focus( "bi.media.player.loader.FlvStreamLoader - onPlay -- playComplete();" );
+					//trace( "bi.media.player.loader.FlvStreamLoader - onPlay -- playComplete();" );
 					playComplete();
 				}
 			}
 			else {
-				Logger.log( "bi.media.player.loader.FlvStreamLoader - Pause" );
+				//trace( "bi.media.player.loader.FlvStreamLoader - Pause" );
 				_ns.pause( );
 			}
 		}
 
 		override protected function onSeek ( e : NumberEvent ) : void {
-			Logger.log( "bi.media.player.loader.FlvStreamLoader - onSeek" );
+			//Logger.log( "bi.media.player.loader.FlvStreamLoader - onSeek" );
 			_trytoSeek = true;
 			if( _ns && _md ) _ns.seek( e.value * _md.duration );
 //			dispatchPlayProgress( null );

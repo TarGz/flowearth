@@ -19,6 +19,7 @@
 
 package fr.digitas.flowearth.ui.controls {
 	import flash.events.ProgressEvent;
+	import fr.digitas.flowearth.event.NumberEvent;
 	
 
 	

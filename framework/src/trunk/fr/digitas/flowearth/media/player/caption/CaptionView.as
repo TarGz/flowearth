@@ -19,7 +19,6 @@
 
 package fr.digitas.flowearth.media.player.caption 
 {
-	import bi.debug.log.Logger;
 	import fr.digitas.flowearth.media.player.MediaPlayer;
 	import fr.digitas.flowearth.media.player.caption.data.CaptionData;
 	import fr.digitas.flowearth.media.player.caption.data.CaptionProvider;
@@ -30,7 +29,7 @@ package fr.digitas.flowearth.media.player.caption
 	import fr.digitas.flowearth.media.player.metadata.Metadata;
 	import fr.digitas.flowearth.media.player.request.CaptionRequest;
 	import fr.digitas.flowearth.media.player.request.MediaRequest;
-	import bi.ui.Label;
+	import fr.digitas.flowearth.ui.text.Label;
 	
 	import flash.display.MovieClip;
 	import flash.events.Event;
