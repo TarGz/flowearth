@@ -81,12 +81,15 @@ package fr.digitas.flowearth.media.player.display {
 		}
 		
 		
-		public function resize( evt : MetaDataEvent ) : void
+		public function resize( evt : MetaDataEvent = null ) : void
 		{			
 			if ( !background ) return;
 			
-			_mediaWidth 	= evt.metadata.width;
-			_mediaHeight	= evt.metadata.height;
+			if ( evt && evt is MetaDataEvent)
+			{
+				_mediaWidth 	= evt.metadata.width;
+				_mediaHeight	= evt.metadata.height;
+			}
 			
 			_width 			= background.width;
 			_height			= background.height;
