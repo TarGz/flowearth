@@ -18,6 +18,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 package fr.digitas.flowearth.media.player {
+	import flash.display.StageDisplayState;
 	import flash.events.TextEvent;
 	import fr.digitas.flowearth.media.player.event.CuePointDataEvent;	
 	import fr.digitas.flowearth.media.player.cuePoint.CuePointData;	
@@ -605,7 +606,10 @@ package fr.digitas.flowearth.media.player {
 			 * Override requested for customization
 			 */
 			 
-			trace(e); 
+			if ( stage.displayState == StageDisplayState.NORMAL )
+				stage.displayState = StageDisplayState.FULL_SCREEN;
+			else
+				stage.displayState = StageDisplayState.NORMAL;
 	
 		}
 		
