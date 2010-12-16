@@ -150,7 +150,9 @@ final class ZoningRegistering {
 	 * height non implementé
 	 */
 	public function setSize( width : Number, height : Number ) : void {
+		/*FDT_IGNORE*/
 		alignNs::setSize( width );
+		/*FDT_IGNORE*/
 	}
 
 	leftalign 	 function setSize( width : Number ) : void {		
