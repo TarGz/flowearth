@@ -18,19 +18,13 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-package fr.digitas.flowearth {
-	/**
-	 * Classe autogénéré par la tacheAnt du framework
-	 * 
-	 * @author AntTask
-	 */
-	final public class Version {
-
-		static public const major : uint = 2;
-		static public const minor : uint = 5;
-		static public const build : uint = 531;
-
-		static public const player : String = "9";
-
+package fr.digitas.flowearth.utils
+{
+	public class Random
+	{
+		public static function range(min:Number, max:Number):Number {
+	    	var randomNum:Number = Math.floor(Math.random() * (max - min + 1)) + min;
+	    	return randomNum;
+		}
 	}
 }

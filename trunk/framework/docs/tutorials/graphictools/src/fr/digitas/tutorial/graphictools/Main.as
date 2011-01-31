@@ -31,13 +31,13 @@ package fr.digitas.tutorial.graphictools {
 		}
 
 		private function draw() : void {
-			circleSegment1.graphics.lineStyle( 2 , 0 );
+			circleSegment1.graphics.lineStyle( 2 , 0x808080 );
 			
-			circleSegment2.graphics.lineStyle( 1 , 0 );
-			circleSegment2.graphics.beginFill( 0 , .5 );
+			circleSegment2.graphics.lineStyle( 1 , 0x808080 );
+			circleSegment2.graphics.beginFill( 0x808080 , .5 );
 			
-			circleSegment4.graphics.lineStyle( 1 , 0 );
-			circleSegment4.graphics.beginFill( 0 , .5 );
+			circleSegment4.graphics.lineStyle( 1 , 0x808080 );
+			circleSegment4.graphics.beginFill( 0x808080 , .5 );
 			
 			GraphicTools.drawCircleSegment( circleSegment1.graphics , 25 , 0 , Math.PI / 2 , 100 , 100 );
 			GraphicTools.drawCircleSegment( circleSegment1.graphics , 25 , 0 , Math.PI , 200 , 100 );

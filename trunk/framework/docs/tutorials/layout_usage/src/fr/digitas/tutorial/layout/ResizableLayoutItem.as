@@ -26,8 +26,8 @@ package fr.digitas.tutorial.layout {
 			bg.addEventListener( MouseEvent.DOUBLE_CLICK , onDoubleClick );
 			guizmo.addEventListener( Event.RESIZE, onResize );
 			
-			var w : int = 20;
-			var h : int = 20;
+			var w : int = 50;
+			var h : int = 25;
 			guizmo.x = bg.width = w;
 			guizmo.y = bg.height = h;
 			

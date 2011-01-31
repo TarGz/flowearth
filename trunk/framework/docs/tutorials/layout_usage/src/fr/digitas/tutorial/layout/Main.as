@@ -31,10 +31,10 @@ package fr.digitas.tutorial.layout {
 
 			l = new LayoutExample( );
 			l.renderer = new HBlockRenderer();
-//			l.margin = new Rectangle( 5 , 5 , 5 , 5 );
-//			l.padding = new Rectangle( 10 , 10 , 10 , 10 );
+			l.margin = new Rectangle( 5 , 5 , 5 , 5 );
+			l.padding = new Rectangle( 10 , 10 , 10 , 10 );
 
-			for (var i : int = 0; i < 100; i++) {
+			for (var i : int = 0; i < 5; i++) {
 				l.addChild( new ResizableLayoutItem_FC );
 			}
 			

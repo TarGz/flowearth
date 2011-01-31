@@ -72,5 +72,10 @@ v2.5.451
 	add ns hierarchy in conf props
 	start pixel bender library
 
-v2.5.?
+v2.5.533
 	add player + improvements SizeDisplay
+	Rename fr.digitas.flowearth.mvc.address.structs.descriptor.BaseDescriptor to SimpleDescriptor
+	fix RectGradientFill bug
+	fix BatchableDecorator event dispatch error
+	add getter to textFormat propertie in AdvancedFormat
+	
