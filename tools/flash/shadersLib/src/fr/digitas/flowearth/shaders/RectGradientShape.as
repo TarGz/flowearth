@@ -149,7 +149,7 @@ package fr.digitas.flowearth.shaders {
 			v[12] = r.x;		v[13] = r.bottom;	c[6] = 2;
 			v[14] = r.right;	v[15] = r.bottom;	c[7] = 2;
 			v[16] = r.right;	v[17] = r.y;		c[8] = 2;
-			v[18] = r.y;		v[19] = r.y;		c[9] = 2;
+			v[18] = r.x;		v[19] = r.y;		c[9] = 2;
 			
 			v[20] = b.x;		v[21] = b.y;		c[10] = 2;
 			
@@ -172,7 +172,7 @@ package fr.digitas.flowearth.shaders {
 			v[12] = r.x;		v[13] = r.bottom;	c[6] = 2;
 			v[14] = r.right;	v[15] = r.bottom;	c[7] = 2;
 			v[16] = r.right;	v[17] = r.y;		c[8] = 2;
-			v[18] = r.y;		v[19] = r.y;		c[9] = 2;
+			v[18] = r.x;		v[19] = r.y;		c[9] = 2;
 			
 			v[20] = 0;			v[21] = 0;			c[10] = 0;
 			
