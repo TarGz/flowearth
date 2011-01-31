@@ -27,33 +27,37 @@ package fr.digitas.flowearth.ui.layout.renderer {
 	/**
 	 * @author Pierre Lepers
 	 */
-	public class HBlockRenderer extends BlockRenderer {
+	public class HBlockJustifiedRenderer extends BlockRenderer {
 
 		
 		
-		public function HBlockRenderer () {
+		public function HBlockJustifiedRenderer () {
 		}
 
 		override public function init (padding : Rectangle, margin : Rectangle, w : Number, h : Number) : void {
 			super.init( padding, margin, w, h );
+			_lineStock = [];
 			_baseLine 	= _padding.top + _margin.top;
 			_offset = padding.left;
-			_rheight = _rwidth = 0;
+			_rheight = 0;
+			_rwidth = w;
 		}
 
 		override public function render (child : ILayoutItem) : void {
 			var w : Number = child.getWidth();
 			var h : Number = child.getHeight();
 			var _do : DisplayObject = child.getDisplay();
-			  
-			if( _offset + w + _margin.right + _padding.width > _mawWidth && ! _firstItem ) lineBreak();
+			
+			if( _offset + w + _margin.right + _padding.width > _mawWidth && ! _firstItem ) lineBreak( _mawWidth - _offset - _padding.width );
+
+			_lineStock.push( _do );
+
 			_baseOffset = Math.max( _baseOffset , h );
 			
 			_offset += _margin.left;
 			_do.x = _offset;
 			_do.y = _baseLine;
 			
-			_rwidth = ( _rwidth > _offset+w ) ? _rwidth : _offset+w;
 
 			_offset += _margin.width + w;
 			
@@ -61,16 +65,28 @@ package fr.digitas.flowearth.ui.layout.renderer {
 		}
 
 		override public function complete() : void {
-			_rheight = _baseLine + _baseOffset;
-			super.complete( );
+			_rheight = _baseLine + _baseOffset +_padding.height + _margin.height;
 		}
 
-		private function lineBreak() : void {
+		private function lineBreak( space : Number ) : void {
 			_baseLine += _baseOffset + _margin.height + _margin.top;
 			_lineBreaks.push( _baseLine - _margin.top );
 			_baseOffset = 0;
 			_offset = _padding.left;
+			
+			var len : int = _lineStock.length;
+			var decay : Number = space/(len-1);
+			var doDecay : Number = decay;
+			
+			for (var i : int = 1; i < len; i++) {
+				_lineStock[i].x += doDecay;
+				doDecay += decay;
+			}
+			
+			_lineStock = [];
 		}
+		
+		private var _lineStock : Array;
 		
 	}
 }

@@ -81,8 +81,8 @@ package fr.digitas.flowearth.command {
 		}
 	
 		override public function removeEventListener (type : String, listener : Function, useCapture : Boolean = false) : void {
-			_sub.removeEventListener( type, proxyListener, useCapture );
 			super.removeEventListener( type, listener, useCapture );
+			if( ! hasEventListener(type) ) _sub.removeEventListener( type, proxyListener, useCapture );
 		}
 
 		override public function addEventListener (type : String, listener : Function, useCapture : Boolean = false, priority : int = 0, useWeakReference : Boolean = false) : void {

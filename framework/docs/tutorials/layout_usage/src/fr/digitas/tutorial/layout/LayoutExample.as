@@ -1,4 +1,6 @@
 package fr.digitas.tutorial.layout {
+	import fr.digitas.flowearth.ui.layout.renderer.LeftJustifyRenderer;	
+	import fr.digitas.flowearth.ui.layout.renderer.HBlockJustifiedRenderer;	
 	import fr.digitas.flowearth.ui.layout.renderer.HTidyBlockRenderer;	
 	
 	import fl.controls.ComboBox;
@@ -24,6 +26,7 @@ package fr.digitas.tutorial.layout {
 		public function LayoutExample() {
 			_buildLayout( );
 			_buildRenderCb();
+			
 		}
 		
 		
@@ -48,6 +51,9 @@ package fr.digitas.tutorial.layout {
 			_sborders.graphics.clear();
 			_sborders.graphics.lineStyle( 1, 0x800000 );
 			_sborders.graphics.drawRect( 0 , 0 , _resizer.x , _resizer.y );
+
+			_sborders.graphics.lineStyle( 1, 0x008000, .5 );
+			_sborders.graphics.drawRect( padding.x , padding.y , _resizer.x - padding.width- padding.x , _resizer.y - padding.height - padding.y );
 			
 			
 		}
@@ -69,15 +75,17 @@ package fr.digitas.tutorial.layout {
 
 		private function _buildRenderCb() : void {
 			_renderCb = new ComboBox( );
-			_renderCb.dataProvider = new DataProvider( [ { label : "LeftRenderer" }, { label : "TopRenderer" }, { label : "VBlockRenderer" }, { label : "HBlockRenderer" }, { label : "HTidyBlockRenderer" } ] );
+			_renderCb.dataProvider = new DataProvider( [ { label : "LeftRenderer" }, { label : "LeftJustifyRenderer" }, { label : "TopRenderer" }, { label : "VBlockRenderer" }, { label : "HBlockRenderer" }, { label : "HBlockJustifiedRenderer" }, { label : "HTidyBlockRenderer" } ] );
 			_renderCb.addEventListener( Event.CHANGE , onRendererChange );
 			bi_internal::addChild( _renderCb );
 			
 			_rendererMap = new Dictionary( );
 			_rendererMap[ "TopRenderer" ] = TopRenderer;
 			_rendererMap[ "LeftRenderer" ] = LeftRenderer;
+			_rendererMap[ "LeftJustifyRenderer" ] = LeftJustifyRenderer;
 			_rendererMap[ "VBlockRenderer" ] = VBlockRenderer;
 			_rendererMap[ "HBlockRenderer" ] = HBlockRenderer;
+			_rendererMap[ "HBlockJustifiedRenderer" ] = HBlockJustifiedRenderer;
 			_rendererMap[ "HTidyBlockRenderer" ] = HTidyBlockRenderer;
 		}
 

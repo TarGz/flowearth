@@ -111,6 +111,8 @@ package fr.digitas.flowearth.net {
 		 * Lance le loading
 		 */
 		public override function execute () : void {
+			if( request.url == "" )
+				throw new Error( "fr.digitas.flowearth.net.AbstractBLoader - execute : empty url" );
 			sendStatus(  new StatusEvent ( StatusEvent.STATUS, false, false, _statusMessage || ( "loading media : "+request.url ), "status" ) );
 		}
 		

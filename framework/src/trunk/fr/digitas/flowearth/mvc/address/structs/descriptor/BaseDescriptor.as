@@ -13,8 +13,7 @@ package fr.digitas.flowearth.mvc.address.structs.descriptor {
 		public var defaultId : String;
 
 
-		public function BaseDescriptor( datas : XML ) {
-			_parse( datas );
+		public function BaseDescriptor() {
 		}
 
 		public function getDefaultId( ) : String {
@@ -28,19 +27,6 @@ package fr.digitas.flowearth.mvc.address.structs.descriptor {
 		public function getId() : String {
 			return id;
 		}
-		
-		private function _parse(datas : XML) : void {
-			childs = [];
-			
-			id = datas.@id;
-			
-			if( datas.@default.length() )
-				defaultId = datas.@default;
-
-			for each ( var nodeData : XML in datas.node )
-				childs.push( new BaseDescriptor( nodeData ) );
-		}
-		
 
 	}
 }

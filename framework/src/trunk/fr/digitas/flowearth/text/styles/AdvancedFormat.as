@@ -33,6 +33,10 @@ package fr.digitas.flowearth.text.styles {
 	public class AdvancedFormat { 
 
 		
+		public function get textFormat() : TextFormat {
+			return _format;
+		}
+		
 		public function format( tf : TextField ) : void {
 			_formatter.format( tf );
 			tf.defaultTextFormat = _format;
@@ -72,6 +76,7 @@ package fr.digitas.flowearth.text.styles {
 
 		private var _format : TextFormat;
 		private var _formatter : Formatter;
+		
 	}
 }
 

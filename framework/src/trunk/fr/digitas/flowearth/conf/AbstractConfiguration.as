@@ -79,8 +79,6 @@ package fr.digitas.flowearth.conf {
 			if( inheritSpace ) {
 				xml.addNamespace( inheritSpace );
 				xml.setNamespace( inheritSpace );
-//				var nxml :  XML = XML( xml.toXMLString() );
-//				xml = nxml;
 			}
 			_parseDatas( xml );
 		}		
@@ -136,9 +134,8 @@ package fr.digitas.flowearth.conf {
 		 * @throws Error if property with the given QName doesn't exist.
 		 */
 		public function getDatas ( propName : Object ) : XML {
-			var prop : ConfProperty = getProperty( propName );
 			var qn : QName = new QName( propName );
-			return XML( "<" + qn.localName + ">" + prop.value + "</" + qn.localName + ">" );
+			return XML( "<" + qn.localName + ">" + getProperty( propName ).value + "</" + qn.localName + ">" );
 		}	
 
 	
@@ -150,9 +147,7 @@ package fr.digitas.flowearth.conf {
 		 */	
 		public function hasProperty( propName : Object ) : Boolean 
 		{
-			var name : QName = new QName( propName );
-			var prop : ConfProperty = _pProvider.getProperty( name );
-			return ( prop != null );
+			return ( _pProvider.getProperty( new QName( propName ) ) != null );
 		}
 
 		
@@ -241,23 +236,6 @@ package fr.digitas.flowearth.conf {
 			return new LazySolver( new ConfProperty( propNode), _pProvider ).solve();
 		}
 
-		
-
-		
-		
-		public function toString () : String 
-		{
-			
-			var str : String = "";
-			var properties : Dictionary;
-			for ( var uri : String in _pProvider._spaces ) {
-				str += "<b>-- " + uri + " -------------------------------------</b>  <br/>\n" ;
-				properties = _pProvider._spaces[uri];
-				for each( var prop : ConfProperty in properties )
-					str += "\t" + prop.name + " --> " + prop.source + " --> " + (( ! prop.resolved )? _resolveProperty( prop ) : prop.value ) + "  <br/>\n" ;
-			}
-			return str;
-		}
 		
 		protected function addExternalRequest( req : URLRequest, params : Object, index : int = -1 ) : void {
 		
