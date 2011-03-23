@@ -143,10 +143,21 @@ package fr.digitas.flowearth.media.player.loader {
 				var duration : Number = (getContent().totalFrames - 1) / fps;
 				playProgress(position, duration);
 				
-				if( getContent().currentFrame == getContent().totalFrames && _player.autoRewind ) 
+				if ( getContent().currentFrame == getContent().totalFrames )
 				{
-					play(false);
-					getContent().gotoAndStop( 1 );
+					playComplete();
+					if(_player.autoRewind ) 
+					{
+						play(false);
+						getContent().gotoAndStop( 1 );
+						checkProgress(null);
+					}
+					loader.removeEventListener( Event.ENTER_FRAME, checkProgress );
+					if (_player.loop)
+					{
+						getContent().gotoAndStop( 1 );
+						play(true);
+					}
 				}
 			}
 			catch( error : Error ) {
@@ -162,6 +173,7 @@ package fr.digitas.flowearth.media.player.loader {
 //			if( e.flag ) getContent().play();
 //			else		 getContent().stop();
 			isPlaying = e.flag;
+			if(e.flag)	loader.addEventListener( Event.ENTER_FRAME, checkProgress );
 		}
 		
 		override protected function onSeek( e : NumberEvent ) : void {
