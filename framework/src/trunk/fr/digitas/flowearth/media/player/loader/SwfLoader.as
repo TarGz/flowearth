@@ -170,8 +170,6 @@ package fr.digitas.flowearth.media.player.loader {
 		
 		override protected function onPlay( e : BoolEvent ) : void {
 			super.onPlay(e);
-//			if( e.flag ) getContent().play();
-//			else		 getContent().stop();
 			isPlaying = e.flag;
 			if(e.flag)	loader.addEventListener( Event.ENTER_FRAME, checkProgress );
 		}

@@ -40,15 +40,6 @@ package fr.digitas.flowearth.text.styles {
 			
 			
 			_map = new Dictionary();
-			
-			trace( _int_transtyper );
-			trace( _int_transtyper( "2000" ) );
-			trace( _map );
-			trace( MapData );
-			trace( TypeMapping );
-			trace( TypeMapping.STYLESHEET );
-			trace( new MapData( TypeMapping.STYLESHEET, _int_transtyper ) );
-
 
 			//_____________________________________________________________________________
 			//																	 STYLESHEET
