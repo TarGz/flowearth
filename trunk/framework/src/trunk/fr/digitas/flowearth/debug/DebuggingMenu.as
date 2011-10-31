@@ -52,7 +52,8 @@ package fr.digitas.flowearth.debug {
 			var ct : ContextMenu = new ContextMenu( );
 			ct.hideBuiltInItems( );
 			ct.customItems = [titleItem( ),
-            					objectUnderPointItem( )];
+            					objectUnderPointItem( ),
+								measureSystemItem( )];
             ct.builtInItems.quality = true;
 			return ct;
 		}
@@ -82,6 +83,22 @@ package fr.digitas.flowearth.debug {
 			_stage.addChild( new ObjectUnderPointWatcher( ) );
 		}
 
+		
+		//______________________________________________________________
+		//												MEASURE SYSTEM
+
+		
+		private static function measureSystemItem () : ContextMenuItem {
+			var item : ContextMenuItem = new ContextMenuItem( "D - measure system" );
+			item.addEventListener( ContextMenuEvent.MENU_ITEM_SELECT, measureSystemHandler );
+			return item;
+		}
+
+		private static function measureSystemHandler ( event : ContextMenuEvent ) : void {
+			if( _stage == null ) return ;
+			
+			_stage.addChild( new MeasureSystem( ) );
+		}
 		
 		private static const ct : ContextMenu = getCt( );
 		private static var _stage : Stage;
