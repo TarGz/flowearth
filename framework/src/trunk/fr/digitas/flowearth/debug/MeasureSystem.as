@@ -842,7 +842,7 @@ class MeasureConsole extends Sprite
 		BLabel= getTextField();
 		BLabel.y = RLabel.y + RLabel.height;
 		BLabel.x = 3;
-		BLabel.text = "G : ";
+		BLabel.text = "B : ";
 		bodyColors.addChild(BLabel);
 		hexaLabel = getTextField();
 		hexaLabel.y = BLabel.y + BLabel.height;
@@ -870,7 +870,7 @@ class MeasureConsole extends Sprite
 	{
 		RLabel.text = "R : "+r;
 		GLabel.text = "G : " + g;
-		BLabel.text = "G : " + b;
+		BLabel.text = "B : " + b;
 		
 		//var alph:String = (a.toString(16).length > 1)?a.toString(16):"0" + a.toString(16);
 		var red:String = (r.toString(16).length > 1)?r.toString(16):"0" + r.toString(16);
