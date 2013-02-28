@@ -43,11 +43,11 @@ package fr.digitas.flowearth.media.player.loader {
 		public function _defaultHandler( infoObj : Object ) : void {
 			
 		}
-		
+
 		override flash_proxy function callProperty( methodName : *, ... args ) : * {
 			trace( "fr.digitas.flowearth.media.player.loader.ProxyClient - callProperty -- ", methodName, args );
-			if( ! _loader.hasOwnProperty( methodName ) ) return;
-	        if( ! ( _loader[ methodName ] is Function ) ) return;
+			if( ! _loader.hasOwnProperty( methodName ) ) return null;
+	        if( ! ( _loader[ methodName ] is Function ) ) return null;
 			return _loader[ methodName ].apply( _loader, args );
 		}
 

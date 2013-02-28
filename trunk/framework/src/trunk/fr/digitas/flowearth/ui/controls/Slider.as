@@ -28,7 +28,7 @@ package fr.digitas.flowearth.ui.controls {
 	/**
 	 * <p>dispatch un NumberEvent lorsque la valeur du slider est modifié</p>
 	 * @see Event#CHANGE
-	 */[Event(name="change", type="bi.event.NumberEvent")]
+	 */[Event(name="change", type="fr.digitas.flowearth.event.NumberEvent")]
 
 	/**
 	 * <p>dispatché quand on commence a dragger le slider</p>

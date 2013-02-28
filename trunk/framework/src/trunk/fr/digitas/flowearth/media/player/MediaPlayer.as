@@ -43,27 +43,27 @@ package fr.digitas.flowearth.media.player {
 	/**
 	 * <p>dispatché lorsque le player est mis en lecture (true) ou en pause (false)</p>
 	 * @see MediaPlayer#PLAY
-	 */[Event(name="play", type="bi.event.BoolEvent")]
+	 */[Event(name="play", type="fr.digitas.flowearth.event.BoolEvent")]
 	 
 	/**
 	 * <p>dispatché lorsque la tete de lecture est deplacé</p>
 	 * @see MediaPlayer#SEEK
-	 */[Event(name="seek", type="bi.event.NumberEvent")]
+	 */[Event(name="seek", type="fr.digitas.flowearth.event.NumberEvent")]
 	 
 	/**
 	 * <p>dispatché lorsque le volume est modifié.</p>
 	 * @see MediaPlayer#VOLUME
-	 */[Event(name="volume", type="bi.event.NumberEvent")]
+	 */[Event(name="volume", type="fr.digitas.flowearth.event.NumberEvent")]
 	 
 	/**
 	 * <p>dispatché lorsque l'etat du buffer change</p>
 	 * @see MediaPlayer#BUFFER
-	 */[Event(name="buffer", type="bi.event.BoolEvent")]
+	 */[Event(name="buffer", type="fr.digitas.flowearth.event.BoolEvent")]
 	 
 	/**
 	 * <p>dispatché lors du remplissage du buffer </p>
 	 * @see MediaPlayer#BUFFER_PROGRESS
-	 */[Event(name="buffer_progress", type="bi.media.player.event.PlayProgressEvent")]
+	 */[Event(name="buffer_progress", type="fr.digitas.flowearth.media.player.event.PlayProgressEvent")]
 	 
 	/**
 	 * <p>dispatché pendant la progression du loading du media</p>
@@ -78,7 +78,7 @@ package fr.digitas.flowearth.media.player {
 	/**
 	 * <p>dispatche a chaque enterFrame si le media est en lecture</p>
 	 * @see MediaPlayer#PLAY_PROGRESS
-	 */[Event(name="playProgress", type="bi.media.player.event.PlayProgressEvent")]
+	 */[Event(name="playProgress", type="fr.digitas.flowearth.media.player.event.PlayProgressEvent")]
 	 
 	/**
 	 * <p>dispatche a chaque enterFrame si le media est en lecture</p>
@@ -88,7 +88,7 @@ package fr.digitas.flowearth.media.player {
 	/**
 	 * <p>dispatché quand les metadata du media sont dispos</p>
 	 * @see MediaPlayer#METADATA
-	 */[Event(name="metadata", type="bi.media.player.event.MetaDataEvent")]
+	 */[Event(name="metadata", type="fr.digitas.flowearth.media.player.event.MetaDataEvent")]
 	 
 	/**
 	 * <p>dispatché quand le loader change</p>

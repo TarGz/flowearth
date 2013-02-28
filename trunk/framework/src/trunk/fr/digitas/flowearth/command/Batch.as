@@ -42,7 +42,6 @@ package fr.digitas.flowearth.command {
 			super();
 		}
 	
-		
 		public function next() : Object {
 			if( _type == 1 ) return removeItemAt( length-1 );
 			return removeItemAt( 0 );

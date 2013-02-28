@@ -18,13 +18,14 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-package fr.digitas.flowearth.debug {
+package fr.digitas.flowearth.debug
+{
 	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
-	import flash.ui.Keyboard;	
+	import flash.ui.Keyboard;
 
 	/**
 	 * Enregistre une sequence video d'un zone de l'ecran et la rejouer a differentes vitesses. Impec pour affiner les animations.
@@ -169,10 +170,8 @@ package fr.digitas.flowearth.debug {
 		private var _readyToRec : Boolean = false;
 	}
 }
-
 import flash.display.Bitmap;
 import flash.display.BitmapData;
-import flash.display.DisplayObject;
 import flash.display.Shape;
 import flash.display.Sprite;
 import flash.display.Stage;
@@ -300,7 +299,7 @@ class RectFrame extends Sprite {
 //		CC   CC AAAAAAA MM M MM CC   CC OO  OO RR  RR  DD   DD EE      RR  RR  
 //		 CCCCC  AA   AA MM   MM  CCCCC   OOOO  RR   RR DDDDDD  EEEEEEE RR   RR 
 
-
+import fr.digitas.flowearth.debug.Recorder;
 
 
 class CamCorder {
@@ -339,7 +338,7 @@ class CamCorder {
 	}
 
 	private function _snap (event : Event) : void {
-		var bd : BitmapData = new BitmapData( _rect.width, _rect.height, false, fr.digitas.flowearth.debug.Recorder.BG_COLOR );
+		var bd : BitmapData = new BitmapData( _rect.width, _rect.height, false, Recorder.BG_COLOR );
 		bd.draw( _stage, _mtrx );
 		if( _frames.length > 0 ) {
 			var prev : BitmapData = _frames[ _frames.length-1 ];
