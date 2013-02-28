@@ -36,7 +36,7 @@
 		<buildnumber file="${digitas.dir.fmk}/build/buildnumber.txt" />
 		<loadproperties srcfile="${digitas.dir.fmk}/build/buildnumber.txt" />
 
-		<antcall target="FP9 Build" />
+		<!--<antcall target="FP9 Build" />-->
 		<antcall target="FP10 Build" />
 		<antcall target="buildDocs" />
 	</target>
@@ -100,6 +100,8 @@
          - - - - - - - - - - - - - - - - - -->
 	<target name="_pre_Build" unless="swc.uptodate">
 		<antcall target="_version_class" />
+		<delete dir="${temp_src}${target-player}" />
+		
 		<copy todir="${temp_src}${target-player}">
 			<fileset dir="${digitas.dir.fmk}/src/trunk" includes="**/*" />
 			<filterchain refid="fc_fp${target-player}" />
@@ -199,7 +201,7 @@
           target: _post_Build                      
          - - - - - - - - - - - - - - - - - -->
 	<target name="_post_Build" unless="swc.uptodate">
-		<delete dir="${temp_src}${target-player}" />
+		<!-- <delete dir="${temp_src}${target-player}" />-->
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 

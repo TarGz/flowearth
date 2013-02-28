@@ -536,8 +536,13 @@ final internal class ConfProperty {
 	internal function invalidate( properties : PropProvider ) : void {
 		resolved = nresolved = false;
 		if( _dependers == null ) return;
+		
+		var p : ConfProperty;
 		for (var i : int = 0; i < _dependers.length; i++)
-			properties.getProperty( _dependers[i] ).invalidate(properties);
+		{
+			p = properties.getProperty( _dependers[i] );
+			if( p )	p.invalidate(properties);
+		}
 	}
 
 	internal function addDepender ( propName : QName ) : void {

@@ -1,40 +1,1588 @@
 <report>
   <scripts>
-    <script name="D:\work\librairies\Flex SDKs\flex_4_0_0_14159\frameworks\libs\textLayout.swc(flashx.textLayout.edit:SelectionFormat)" mod="1264794041744" size="2023" optimizedsize="852">
-      <def id="flashx.textLayout.edit:SelectionFormat" />
-      <pre id="Object" />
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:StringPropertyHandler)" mod="1295643053813" size="804" optimizedsize="319">
+      <def id="flashx.textLayout.property:StringPropertyHandler" />
+      <pre id="flashx.textLayout.property:PropertyHandler" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\workspaces\as3\Flowearth\framework\src\fp10\fr\digitas\flowearth\text\styles\ITlfFactory.as" mod="1273583396234" size="399" optimizedsize="399">
-      <def id="fr.digitas.flowearth.text.styles:ITlfFactory" />
-      <pre id="Object" />
-      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:ListElement)" mod="1295643054047" size="14131" optimizedsize="7654">
+      <def id="flashx.textLayout.elements:ListElement" />
+      <pre id="flashx.textLayout.elements:ContainerFormattedElement" />
+      <dep id="flashx.textLayout.elements:SubParagraphGroupElementBase" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flashx.textLayout.formats:Direction" />
+      <dep id="flashx.textLayout.elements:FlowLeafElement" />
+      <dep id="flashx.textLayout.formats:Suffix" />
       <dep id="AS3" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:ListStyleType" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flashx.textLayout.events:ModelChange" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flashx.textLayout.formats:IListMarkerFormat" />
+      <dep id="flashx.textLayout.elements:ListItemElement" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:SpecialCharacterElement)" mod="1295643053766" size="1446" optimizedsize="789">
+      <def id="flashx.textLayout.elements:SpecialCharacterElement" />
+      <pre id="flashx.textLayout.elements:SpanElement" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.formats:WhiteSpaceCollapse" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:TextLayoutFormat" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:FlowValueHolder)" mod="1295643054141" size="1693" optimizedsize="756">
+      <def id="flashx.textLayout.elements:FlowValueHolder" />
+      <pre id="flashx.textLayout.formats:TextLayoutFormat" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.factory:StringTextLineFactory)" mod="1295643054094" size="8199" optimizedsize="4525">
+      <def id="flashx.textLayout.factory:StringTextLineFactory" />
+      <pre id="flashx.textLayout.factory:TextLineFactoryBase" />
+      <dep id="flashx.textLayout.elements:SpanElement" />
+      <dep id="flashx.textLayout.compose:SimpleCompose" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flashx.textLayout.elements:Configuration" />
       <dep id="flashx.textLayout.elements:IConfiguration" />
-    </script>
-    <script name="D:\work\librairies\Flex SDKs\flex_4_0_0_14159\frameworks\libs\textLayout.swc(flashx.textLayout.elements:IConfiguration)" mod="1264794041963" size="3416" optimizedsize="892">
-      <def id="flashx.textLayout.elements:IConfiguration" />
-      <pre id="Object" />
-      <dep id="flashx.textLayout.edit:SelectionFormat" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+      <dep id="flashx.textLayout.compose:FlowComposerBase" />
+      <dep id="AS3" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:LineBreak" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
       <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="flashx.textLayout.container:ScrollPolicy" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.utils:CharacterUtil)" mod="1295643053797" size="1456" optimizedsize="691">
+      <def id="flashx.textLayout.utils:CharacterUtil" />
+      <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="_52b401b4312ad428b6c30e26f86770fe8e0c14651d19f06f179de0bbe25a8a2b_flash_display_Sprite.as" mod="1273585978010" size="550" optimizedsize="511">
-      <def id="_52b401b4312ad428b6c30e26f86770fe8e0c14651d19f06f179de0bbe25a8a2b_flash_display_Sprite" />
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.container:ContainerController)" mod="1295643054094" size="82581" optimizedsize="36377">
+      <def id="flashx.textLayout.container:ContainerController" />
+      <pre id="flash.events:MouseEvent" />
+      <pre id="flashx.textLayout.edit:IInteractionEventHandler" />
+      <pre id="flashx.textLayout.container:ISandboxSupport" />
+      <pre id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <pre id="Object" />
+      <dep id="flash.display:DisplayObjectContainer" />
+      <dep id="flashx.textLayout.elements:Configuration" />
+      <dep id="flashx.textLayout.elements:FlowValueHolder" />
+      <dep id="Math" />
+      <dep id="flash.ui:ContextMenu" />
+      <dep id="flash.display:InteractiveObject" />
+      <dep id="flash.display:Shape" />
+      <dep id="flashx.textLayout.elements:FlowLeafElement" />
+      <dep id="flashx.textLayout.edit:EditingMode" />
+      <dep id="flashx.textLayout.compose:FloatCompositionData" />
+      <dep id="flashx.textLayout.compose:TextLineRecycler" />
+      <dep id="flash.geom:Matrix" />
+      <dep id="flash.events:TimerEvent" />
+      <dep id="flashx.textLayout.edit:SelectionFormat" />
+      <dep id="flashx.textLayout.elements:BackgroundManager" />
+      <dep id="flashx.textLayout.events:ScrollEventDirection" />
+      <dep id="flashx.textLayout.container:ScrollPolicy" />
+      <dep id="flash.display:Sprite" />
+      <dep id="flash.text.engine:TextLineValidity" />
+      <dep id="flashx.textLayout.compose:TextFlowLine" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flashx.textLayout.edit:ISelectionManager" />
+      <dep id="flashx.textLayout.events:UpdateCompleteEvent" />
+      <dep id="flashx.textLayout.elements:ContainerFormattedElement" />
+      <dep id="flashx.textLayout.events:TextLayoutEvent" />
+      <dep id="flash.display:BlendMode" />
+      <dep id="flashx.textLayout.formats:TextLayoutFormat" />
+      <dep id="flash.geom:Point" />
+      <dep id="flash.events:ContextMenuEvent" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flash.display:DisplayObject" />
+      <dep id="flashx.textLayout.formats:Float" />
+      <dep id="flash.events:IMEEvent" />
+      <dep id="flashx.textLayout.events:ModelChange" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flash.events:Event" />
+      <dep id="flashx.textLayout.events:FlowElementMouseEventManager" />
+      <dep id="flash.ui:ContextMenuClipboardItems" />
+      <dep id="flash.events:KeyboardEvent" />
+      <dep id="flashx.textLayout.elements:InlineGraphicElement" />
+      <dep id="flashx.textLayout.utils:Twips" />
+      <dep id="flash.text.engine:TextBlock" />
+      <dep id="flash.events:TextEvent" />
+      <dep id="flashx.textLayout.compose:IFlowComposer" />
+      <dep id="AS3" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flashx.textLayout.events:ScrollEvent" />
+      <dep id="flashx.textLayout.elements:TCYElement" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+      <dep id="flashx.textLayout.container:ColumnState" />
+      <dep id="Error" />
+      <dep id="flash.utils:Timer" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flash.events:FocusEvent" />
+      <dep id="flashx.textLayout.compose:FlowDamageType" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.events:CompositionCompleteEvent)" mod="1295643054000" size="1904" optimizedsize="758">
+      <def id="flashx.textLayout.events:CompositionCompleteEvent" />
+      <pre id="flash.events:Event" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:FlowGroupElement)" mod="1295643054000" size="13653" optimizedsize="7090">
+      <def id="flashx.textLayout.elements:FlowGroupElement" />
+      <pre id="flashx.textLayout.elements:FlowElement" />
+      <dep id="RangeError" />
+      <dep id="flashx.textLayout.elements:SubParagraphGroupElementBase" />
+      <dep id="ArgumentError" />
+      <dep id="flashx.textLayout.elements:SpanElement" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flashx.textLayout.elements:ContainerFormattedElement" />
+      <dep id="Math" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+      <dep id="flash.text.engine:ContentElement" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+      <dep id="flashx.textLayout.elements:GlobalSettings" />
+      <dep id="TypeError" />
+      <dep id="flashx.textLayout.elements:FlowLeafElement" />
+      <dep id="flash.utils:getQualifiedClassName" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flash.text.engine:GroupElement" />
+      <dep id="flashx.textLayout.events:ModelChange" />
+      <dep id="flashx.textLayout.elements:ParagraphFormattedElement" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="flashx.textLayout.elements:ListItemElement" />
+      <dep id="flashx.textLayout.compose:FlowDamageType" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:Configuration)" mod="1295643053782" size="9375" optimizedsize="3923">
+      <def id="flashx.textLayout.elements:Configuration" />
+      <pre id="flashx.textLayout.elements:IConfiguration" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.elements:OverflowPolicy" />
+      <dep id="flash.display:BlendMode" />
+      <dep id="flashx.textLayout.formats:TextLayoutFormat" />
+      <dep id="flashx.textLayout.compose:StandardFlowComposer" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flashx.textLayout.formats:TextDecoration" />
+      <dep id="flash.system:Capabilities" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.edit:SelectionFormat" />
+      <dep id="flashx.textLayout.formats:ListMarkerFormat" />
+      <dep id="flashx.textLayout.formats:IListMarkerFormat" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="flash.display:Sprite" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:IVerticalJustificationLine)" mod="1295643054172" size="1573" optimizedsize="307">
+      <def id="flashx.textLayout.compose:IVerticalJustificationLine" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:InlineGraphicElement)" mod="1295643054282" size="19541" optimizedsize="10244">
+      <def id="flashx.textLayout.elements:InlineGraphicElement" />
+      <pre id="flashx.textLayout.elements:FlowLeafElement" />
+      <dep id="flash.events:Event" />
+      <dep id="flashx.textLayout.events:StatusChangeEvent" />
+      <dep id="flash.display:DisplayObjectContainer" />
+      <dep id="Math" />
+      <dep id="flash.display:LoaderInfo" />
+      <dep id="RegExp" />
+      <dep id="flashx.textLayout.compose:ISWFContext" />
+      <dep id="flash.text.engine:ContentElement" />
+      <dep id="flash.display:Shape" />
+      <dep id="flash.text.engine:ElementFormat" />
+      <dep id="flash.text.engine:FontMetrics" />
+      <dep id="AS3" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flash.display:Sprite" />
+      <dep id="flash.events:ErrorEvent" />
+      <dep id="flash.display:MovieClip" />
+      <dep id="flashx.textLayout.formats:JustificationRule" />
+      <dep id="flashx.textLayout.property:Property" />
+      <dep id="flashx.textLayout.compose:TextFlowLine" />
+      <dep id="flash.net:URLRequest" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flash.text.engine:GraphicElement" />
+      <dep id="flash.events:IOErrorEvent" />
+      <dep id="flash.display:Loader" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+      <dep id="Error" />
+      <dep id="flash.text.engine:TextBaseline" />
+      <dep id="flashx.textLayout.elements:InlineGraphicElementStatus" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flash.system:Capabilities" />
+      <dep id="flash.display:DisplayObject" />
+      <dep id="flashx.textLayout.formats:Float" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flashx.textLayout.events:ModelChange" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="flash.text.engine:TextRotation" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.events:TextLayoutEvent)" mod="1295643053797" size="849" optimizedsize="359">
+      <def id="flashx.textLayout.events:TextLayoutEvent" />
+      <pre id="flash.events:Event" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:ITabStopFormat)" mod="1295643053750" size="1045" optimizedsize="271">
+      <def id="flashx.textLayout.formats:ITabStopFormat" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:StandardFlowComposer)" mod="1295643053875" size="11245" optimizedsize="5799">
+      <def id="flashx.textLayout.compose:StandardFlowComposer" />
+      <pre id="flashx.textLayout.compose:IFlowComposer" />
+      <pre id="flashx.textLayout.compose:FlowComposerBase" />
+      <dep id="flashx.textLayout.compose:TextFlowLine" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flashx.textLayout.edit:ISelectionManager" />
+      <dep id="flashx.textLayout.elements:ContainerFormattedElement" />
+      <dep id="Math" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+      <dep id="flashx.textLayout.accessibility:TextAccImpl" />
+      <dep id="Error" />
+      <dep id="flashx.textLayout.events:CompositionCompleteEvent" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.compose:ComposeState" />
+      <dep id="flash.system:Capabilities" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flashx.textLayout.elements:BackgroundManager" />
+      <dep id="flashx.textLayout.compose:FlowDamageType" />
+      <dep id="flashx.textLayout.container:ScrollPolicy" />
+      <dep id="flash.display:Sprite" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:IFormatResolver)" mod="1295643053985" size="1352" optimizedsize="400">
+      <def id="flashx.textLayout.elements:IFormatResolver" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:UintPropertyHandler)" mod="1295643053953" size="1637" optimizedsize="867">
+      <def id="flashx.textLayout.property:UintPropertyHandler" />
+      <pre id="flashx.textLayout.property:PropertyHandler" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:TextFlowLine)" mod="1295643053907" size="42151" optimizedsize="22518">
+      <def id="flashx.textLayout.compose:TextFlowLine" />
+      <pre id="flashx.textLayout.compose:IVerticalJustificationLine" />
+      <pre id="flashx.textLayout.factory:StringTextLineFactory" />
+      <pre id="Object" />
+      <dep id="Math" />
+      <dep id="flashx.textLayout.utils:CharacterUtil" />
+      <dep id="flashx.textLayout.elements:LinkElement" />
+      <dep id="flash.display:Shape" />
+      <dep id="flashx.textLayout.elements:FlowLeafElement" />
+      <dep id="flashx.textLayout.compose:FloatCompositionData" />
+      <dep id="flashx.textLayout.compose:TextLineRecycler" />
+      <dep id="flashx.textLayout.edit:SelectionFormat" />
+      <dep id="flashx.textLayout.elements:BackgroundManager" />
+      <dep id="flash.text.engine:TextLineValidity" />
+      <dep id="flashx.textLayout.formats:JustificationRule" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flashx.textLayout.edit:ISelectionManager" />
+      <dep id="flashx.textLayout.elements:ContainerFormattedElement" />
+      <dep id="flashx.textLayout.formats:TextLayoutFormat" />
+      <dep id="flash.geom:Point" />
+      <dep id="flashx.textLayout.elements:ListElement" />
+      <dep id="flash.text.engine:TextBaseline" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flash.display:DisplayObject" />
+      <dep id="flashx.textLayout.formats:Float" />
+      <dep id="flashx.textLayout.formats:LeadingModel" />
+      <dep id="flashx.textLayout.compose:BaseCompose" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="flashx.textLayout.compose:TextFlowLineLocation" />
+      <dep id="flashx.textLayout.elements:SubParagraphGroupElementBase" />
+      <dep id="flashx.textLayout.elements:InlineGraphicElement" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+      <dep id="flashx.textLayout.elements:LinkState" />
+      <dep id="flashx.textLayout.compose:ISWFContext" />
+      <dep id="flashx.textLayout.utils:Twips" />
+      <dep id="flash.text.engine:ElementFormat" />
+      <dep id="flash.text.engine:TextBlock" />
+      <dep id="flashx.textLayout.compose:IFlowComposer" />
+      <dep id="flashx.textLayout.formats:ListStylePosition" />
+      <dep id="flash.text.engine:FontMetrics" />
+      <dep id="AS3" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flash.utils:Dictionary" />
+      <dep id="flashx.textLayout.elements:TCYElement" />
+      <dep id="flashx.textLayout.elements:SpanElement" />
+      <dep id="flashx.textLayout.formats:Direction" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+      <dep id="flash.display:GraphicsPathWinding" />
+      <dep id="flashx.textLayout.formats:TextAlign" />
+      <dep id="flash.display:GraphicsPathCommand" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flashx.textLayout.formats:IListMarkerFormat" />
+      <dep id="flashx.textLayout.formats:LineBreak" />
+      <dep id="flashx.textLayout.compose:FlowDamageType" />
+      <dep id="flash.text.engine:TextRotation" />
+      <dep id="flashx.textLayout.elements:ListItemElement" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.factory:TextLineFactoryBase)" mod="1295643053750" size="6793" optimizedsize="2977">
+      <def id="flashx.textLayout.factory:TextLineFactoryBase" />
+      <pre id="Object" />
+      <dep id="flash.text.engine:TextLineValidity" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flashx.textLayout.compose:SimpleCompose" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+      <dep id="flashx.textLayout.compose:ISWFContext" />
+      <dep id="flashx.textLayout.factory:TruncationOptions" />
+      <dep id="flash.display:Shape" />
+      <dep id="flash.text.engine:TextBlock" />
+      <dep id="flashx.textLayout.compose:IFlowComposer" />
+      <dep id="AS3" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.factory:FactoryDisplayComposer" />
+      <dep id="flashx.textLayout.container:ScrollPolicy" />
+      <dep id="flash.display:Sprite" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:FormatPropertyHandler)" mod="1295643054032" size="1207" optimizedsize="457">
+      <def id="flashx.textLayout.property:FormatPropertyHandler" />
+      <pre id="flashx.textLayout.property:PropertyHandler" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:OverflowPolicy)" mod="1295643053828" size="656" optimizedsize="284">
+      <def id="flashx.textLayout.elements:OverflowPolicy" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.events:FlowElementEventDispatcher)" mod="1295643054157" size="1677" optimizedsize="858">
+      <def id="flashx.textLayout.events:FlowElementEventDispatcher" />
+      <pre id="flash.events:EventDispatcher" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flashx.textLayout.events:ModelChange" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:ParcelList)" mod="1295643054141" size="8561" optimizedsize="4070">
+      <def id="flashx.textLayout.compose:ParcelList" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.compose:Parcel" />
+      <dep id="flashx.textLayout.compose:Slug" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="Math" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+      <dep id="flashx.textLayout.container:ColumnState" />
+      <dep id="flashx.textLayout.compose:IFlowComposer" />
+      <dep id="AS3" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:LineBreak" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="flashx.textLayout.container:ScrollPolicy" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:ListStylePosition)" mod="1295643054016" size="655" optimizedsize="274">
+      <def id="flashx.textLayout.formats:ListStylePosition" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:ListStyleType)" mod="1295643053891" size="2412" optimizedsize="1430">
+      <def id="flashx.textLayout.formats:ListStyleType" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:ContainerFormattedElement)" mod="1295643054016" size="1747" optimizedsize="859">
+      <def id="flashx.textLayout.elements:ContainerFormattedElement" />
+      <pre id="flashx.textLayout.elements:ParagraphFormattedElement" />
+      <dep id="flashx.textLayout.compose:IFlowComposer" />
+      <dep id="flashx.textLayout.elements:SpanElement" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:BooleanPropertyHandler)" mod="1295643054125" size="852" optimizedsize="351">
+      <def id="flashx.textLayout.property:BooleanPropertyHandler" />
+      <pre id="flashx.textLayout.property:PropertyHandler" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:FlowDamageType)" mod="1295643054125" size="642" optimizedsize="272">
+      <def id="flashx.textLayout.compose:FlowDamageType" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.events:FlowElementMouseEvent)" mod="1295643053953" size="1819" optimizedsize="797">
+      <def id="flashx.textLayout.events:FlowElementMouseEvent" />
+      <pre id="flash.events:Event" />
+      <dep id="flash.events:MouseEvent" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:TextAlign)" mod="1295643053735" size="781" optimizedsize="360">
+      <def id="flashx.textLayout.formats:TextAlign" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="_f342bda208f506e2cd83f72d1b4462ef76b767ce70d90a75572a788e58ad91cc_flash_display_Sprite.as" mod="1362042712404" size="601" optimizedsize="562">
+      <def id="_f342bda208f506e2cd83f72d1b4462ef76b767ce70d90a75572a788e58ad91cc_flash_display_Sprite" />
       <pre id="flash.display:Sprite" />
       <dep id="flash.system:Security" />
       <dep id="AS3" />
     </script>
-    <script name="D:\work\librairies\Flex SDKs\flex_4_0_0_14159\frameworks\libs\textLayout.swc(flashx.textLayout.formats:ITextLayoutFormat)" mod="1264794041994" size="8013" optimizedsize="1437">
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:BaselineShift)" mod="1295643054000" size="646" optimizedsize="280">
+      <def id="flashx.textLayout.formats:BaselineShift" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:VerticalJustifier)" mod="1295643054250" size="7982" optimizedsize="3430">
+      <def id="flashx.textLayout.compose:VerticalJustifier" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.compose:IVerticalJustificationLine" />
+      <dep id="flashx.textLayout.compose:FloatCompositionData" />
+      <dep id="flashx.textLayout.compose:TextFlowLine" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.elements:InlineGraphicElement" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:Float" />
+      <dep id="Math" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flashx.textLayout.formats:VerticalAlign" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:ISWFContext)" mod="1295643053953" size="679" optimizedsize="234">
+      <def id="flashx.textLayout.compose:ISWFContext" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.edit:EditingMode)" mod="1295643054250" size="670" optimizedsize="304">
+      <def id="flashx.textLayout.edit:EditingMode" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:BackgroundColor)" mod="1295643053922" size="604" optimizedsize="249">
+      <def id="flashx.textLayout.formats:BackgroundColor" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.undo:IUndoManager)" mod="1295643054063" size="1765" optimizedsize="446">
+      <def id="flashx.undo:IUndoManager" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="flashx.undo:IOperation" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:SimpleCompose)" mod="1295643053891" size="9007" optimizedsize="5082">
+      <def id="flashx.textLayout.compose:SimpleCompose" />
+      <pre id="flashx.textLayout.compose:IVerticalJustificationLine" />
+      <pre id="flashx.textLayout.compose:BaseCompose" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.compose:Parcel" />
+      <dep id="flashx.textLayout.compose:ParcelList" />
+      <dep id="flashx.textLayout.compose:TextFlowLine" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="Math" />
+      <dep id="flashx.textLayout.formats:Direction" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+      <dep id="flashx.textLayout.formats:VerticalAlign" />
+      <dep id="flashx.textLayout.compose:StandardFlowComposer" />
+      <dep id="flashx.textLayout.elements:FlowLeafElement" />
+      <dep id="flashx.textLayout.compose:IFlowComposer" />
+      <dep id="flashx.textLayout.elements:FlowGroupElement" />
+      <dep id="AS3" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:Suffix)" mod="1295643054016" size="579" optimizedsize="242">
+      <def id="flashx.textLayout.formats:Suffix" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:Direction)" mod="1295643053907" size="593" optimizedsize="244">
+      <def id="flashx.textLayout.formats:Direction" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.container:ScrollPolicy)" mod="1295643053938" size="873" optimizedsize="467">
+      <def id="flashx.textLayout.container:ScrollPolicy" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.property:Property" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:TextFlowLineLocation)" mod="1295643053985" size="733" optimizedsize="305">
+      <def id="flashx.textLayout.compose:TextFlowLineLocation" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.events:FlowOperationEvent)" mod="1295643053782" size="1905" optimizedsize="818">
+      <def id="flashx.textLayout.events:FlowOperationEvent" />
+      <pre id="flash.events:Event" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.operations:FlowOperation" />
+      <dep id="Error" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:BreakElement)" mod="1295643054282" size="1006" optimizedsize="448">
+      <def id="flashx.textLayout.elements:BreakElement" />
+      <pre id="flashx.textLayout.elements:SpecialCharacterElement" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:TextLineRecycler)" mod="1295643053922" size="1765" optimizedsize="842">
+      <def id="flashx.textLayout.compose:TextLineRecycler" />
+      <pre id="Object" />
+      <dep id="flash.text.engine:TextBlock" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flash.utils:Dictionary" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:TextFlow)" mod="1295643053828" size="14984" optimizedsize="7127">
+      <def id="flashx.textLayout.elements:TextFlow" />
+      <pre id="flash.events:IEventDispatcher" />
+      <pre id="flashx.textLayout.elements:ContainerFormattedElement" />
+      <pre id="Object" />
+      <dep id="flash.events:Event" />
+      <dep id="flashx.textLayout.events:StatusChangeEvent" />
+      <dep id="flashx.textLayout.elements:InlineGraphicElement" />
+      <dep id="flashx.textLayout.elements:Configuration" />
+      <dep id="flashx.textLayout.compose:ISWFContext" />
+      <dep id="flashx.textLayout.events:DamageEvent" />
+      <dep id="flashx.textLayout.compose:IFlowComposer" />
+      <dep id="flashx.textLayout.elements:IFormatResolver" />
+      <dep id="flashx.textLayout.compose:FlowComposerBase" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.elements:BackgroundManager" />
+      <dep id="flash.utils:Dictionary" />
+      <dep id="flashx.textLayout.events:SelectionEvent" />
+      <dep id="flashx.textLayout.events:FlowOperationEvent" />
+      <dep id="flash.text.engine:TextLineValidity" />
+      <dep id="flashx.textLayout.edit:ISelectionManager" />
+      <dep id="flashx.textLayout.events:UpdateCompleteEvent" />
+      <dep id="flashx.textLayout.events:TextLayoutEvent" />
+      <dep id="flashx.textLayout.elements:IConfiguration" />
+      <dep id="flashx.textLayout.events:FlowElementMouseEvent" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+      <dep id="flashx.textLayout.formats:TextLayoutFormat" />
+      <dep id="flashx.textLayout.compose:StandardFlowComposer" />
+      <dep id="flashx.textLayout.events:CompositionCompleteEvent" />
+      <dep id="flash.events:EventDispatcher" />
+      <dep id="flashx.textLayout.elements:FlowGroupElement" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flashx.textLayout.events:ModelChange" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.container:ColumnState)" mod="1295643053766" size="4966" optimizedsize="2829">
+      <def id="flashx.textLayout.container:ColumnState" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flashx.textLayout.formats:Direction" />
+      <dep id="Math" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flashx.textLayout.formats:LineBreak" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="flashx.textLayout.utils:Twips" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout:tlf_internal)" mod="1295643054282" size="224" optimizedsize="122">
+      <def id="flashx.textLayout:tlf_internal" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:ComposeState)" mod="1295643053750" size="8337" optimizedsize="4968">
+      <def id="flashx.textLayout.compose:ComposeState" />
+      <pre id="flashx.textLayout.compose:BaseCompose" />
+      <dep id="flashx.textLayout.compose:Parcel" />
+      <dep id="flashx.textLayout.compose:ParcelList" />
+      <dep id="flashx.textLayout.compose:TextFlowLine" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="Math" />
+      <dep id="flashx.textLayout.formats:Direction" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+      <dep id="flashx.textLayout.formats:VerticalAlign" />
+      <dep id="flashx.textLayout.utils:Twips" />
+      <dep id="flashx.textLayout.compose:StandardFlowComposer" />
+      <dep id="flashx.textLayout.compose:IFlowComposer" />
+      <dep id="flashx.textLayout.compose:FloatCompositionData" />
+      <dep id="flashx.textLayout.elements:FlowGroupElement" />
+      <dep id="AS3" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:Float" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="flashx.textLayout.compose:FlowDamageType" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.accessibility:TextAccImpl)" mod="1295643054250" size="4272" optimizedsize="2413">
+      <def id="flashx.textLayout.accessibility:TextAccImpl" />
+      <pre id="flash.accessibility:AccessibilityImplementation" />
+      <dep id="flash.events:Event" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flashx.textLayout.edit:ISelectionManager" />
+      <dep id="flashx.textLayout.elements:GlobalSettings" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+      <dep id="Error" />
+      <dep id="flashx.textLayout.events:CompositionCompleteEvent" />
+      <dep id="flashx.textLayout.elements:FlowLeafElement" />
+      <dep id="flashx.textLayout.edit:EditingMode" />
+      <dep id="flash.accessibility:AccessibilityProperties" />
+      <dep id="flash.accessibility:Accessibility" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flash.display:DisplayObject" />
+    </script>
+    <script name="C:\workspaces\DIGITAS\FLOW_EARTH\framework\src\fp10\fr\digitas\flowearth\text\styles\ITlfFactory.as" mod="1299686273864" size="432" optimizedsize="432">
+      <def id="fr.digitas.flowearth.text.styles:ITlfFactory" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.elements:IConfiguration" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:IListMarkerFormat)" mod="1295643053985" size="1362" optimizedsize="329">
+      <def id="flashx.textLayout.formats:IListMarkerFormat" />
+      <pre id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.edit:IInteractionEventHandler)" mod="1295643054032" size="3824" optimizedsize="904">
+      <def id="flashx.textLayout.edit:IInteractionEventHandler" />
+      <pre id="Object" />
+      <dep id="flash.events:TextEvent" />
+      <dep id="flash.events:Event" />
+      <dep id="flash.events:MouseEvent" />
+      <dep id="flash.events:ContextMenuEvent" />
+      <dep id="flash.events:KeyboardEvent" />
+      <dep id="AS3" />
+      <dep id="flash.events:FocusEvent" />
+      <dep id="flash.events:IMEEvent" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.events:UpdateCompleteEvent)" mod="1295643053891" size="1548" optimizedsize="666">
+      <def id="flashx.textLayout.events:UpdateCompleteEvent" />
+      <pre id="flash.events:Event" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:TextDecoration)" mod="1295643054188" size="637" optimizedsize="268">
+      <def id="flashx.textLayout.formats:TextDecoration" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.events:StatusChangeEvent)" mod="1295643053735" size="1764" optimizedsize="731">
+      <def id="flashx.textLayout.events:StatusChangeEvent" />
+      <pre id="flash.events:Event" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flash.events:ErrorEvent" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.conversion:ConverterBase)" mod="1295643053813" size="1831" optimizedsize="788">
+      <def id="flashx.textLayout.conversion:ConverterBase" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="Error" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:BackgroundManager)" mod="1295643054110" size="4041" optimizedsize="2327">
+      <def id="flashx.textLayout.elements:BackgroundManager" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.elements:FlowLeafElement" />
+      <dep id="flashx.textLayout.compose:TextFlowLine" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="AS3" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+      <dep id="flash.utils:Dictionary" />
+      <dep id="flash.display:Shape" />
+      <dep id="flash.display:Sprite" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.utils:GeometryUtil)" mod="1295643053797" size="2045" optimizedsize="1355">
+      <def id="flashx.textLayout.utils:GeometryUtil" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.compose:IFlowComposer" />
+      <dep id="flashx.textLayout.compose:TextFlowLine" />
+      <dep id="flashx.textLayout.elements:TextRange" />
+      <dep id="AS3" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flashx.textLayout:tlf_internal" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:SubParagraphGroupElementBase)" mod="1295643054125" size="6511" optimizedsize="3104">
+      <def id="flashx.textLayout.elements:SubParagraphGroupElementBase" />
+      <pre id="flashx.textLayout.elements:FlowGroupElement" />
+      <dep id="flash.events:IEventDispatcher" />
+      <dep id="flashx.textLayout.elements:SpanElement" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flash.text.engine:ContentElement" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+      <dep id="flashx.textLayout.elements:FlowLeafElement" />
+      <dep id="flash.utils:getQualifiedClassName" />
+      <dep id="AS3" />
+      <dep id="__AS3__.vec:Vector" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flash.utils:getDefinitionByName" />
+      <dep id="flashx.textLayout.events:ModelChange" />
+      <dep id="flash.text.engine:GroupElement" />
+      <dep id="flashx.textLayout.events:FlowElementEventDispatcher" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:IntPropertyHandler)" mod="1295643053719" size="1721" optimizedsize="757">
+      <def id="flashx.textLayout.property:IntPropertyHandler" />
+      <pre id="flashx.textLayout.property:PropertyHandler" />
+      <dep id="flashx.textLayout.property:Property" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.utils:HitTestArea)" mod="1295643053938" size="2829" optimizedsize="1639">
+      <def id="flashx.textLayout.utils:HitTestArea" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="Math" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.factory:FactoryDisplayComposer)" mod="1295643053828" size="2375" optimizedsize="1293">
+      <def id="flashx.textLayout.factory:FactoryDisplayComposer" />
+      <pre id="flashx.textLayout.compose:StandardFlowComposer" />
+      <pre id="flashx.textLayout.elements:BackgroundManager" />
+      <dep id="flashx.textLayout.factory:TextLineFactoryBase" />
+      <dep id="flashx.textLayout.compose:TextFlowLine" />
+      <dep id="flashx.textLayout.compose:SimpleCompose" />
+      <dep id="AS3" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.utils:LocaleUtil)" mod="1295643054016" size="4048" optimizedsize="1948">
+      <def id="flashx.textLayout.utils:LocaleUtil" />
+      <pre id="Object" />
+      <dep id="flash.text.engine:JustificationStyle" />
+      <dep id="flashx.textLayout.formats:JustificationRule" />
+      <dep id="AS3" />
+      <dep id="flash.text.engine:TextBaseline" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:LeadingModel" />
+      <dep id="flash.utils:Dictionary" />
+      <dep id="flashx.textLayout.formats:TextLayoutFormat" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:ListMarkerFormat)" mod="1295643053907" size="6744" optimizedsize="3239">
+      <def id="flashx.textLayout.formats:ListMarkerFormat" />
+      <pre id="flashx.textLayout.formats:IListMarkerFormat" />
+      <pre id="flashx.textLayout.formats:TextLayoutFormat" />
+      <dep id="flashx.textLayout.property:Property" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.formats:Suffix" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flashx.textLayout.property:CounterPropHandler" />
+      <dep id="flashx.textLayout.formats:Category" />
+      <dep id="flashx.textLayout.property:CounterContentHandler" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="flashx.textLayout.property:EnumPropertyHandler" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.events:ScrollEventDirection)" mod="1295643053735" size="677" optimizedsize="288">
+      <def id="flashx.textLayout.events:ScrollEventDirection" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:TCYElement)" mod="1295643054172" size="3628" optimizedsize="1959">
+      <def id="flashx.textLayout.elements:TCYElement" />
+      <pre id="flashx.textLayout.elements:SubParagraphGroupElementBase" />
+      <dep id="flashx.textLayout.elements:FlowLeafElement" />
+      <dep id="flashx.textLayout.elements:FlowGroupElement" />
+      <dep id="AS3" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flashx.textLayout.elements:InlineGraphicElement" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.elements:ContainerFormattedElement" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flash.text.engine:TextRotation" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:BaselineOffset)" mod="1295643053750" size="688" optimizedsize="300">
+      <def id="flashx.textLayout.formats:BaselineOffset" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:FlowComposerBase)" mod="1295643053782" size="6775" optimizedsize="3537">
+      <def id="flashx.textLayout.compose:FlowComposerBase" />
+      <pre id="Object" />
+      <dep id="flash.text.engine:TextBlock" />
+      <dep id="flashx.textLayout.elements:FlowLeafElement" />
+      <dep id="flash.text.engine:TextLineValidity" />
+      <dep id="flashx.textLayout.compose:TextLineRecycler" />
+      <dep id="flashx.textLayout.compose:TextFlowLine" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="AS3" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.compose:ISWFContext" />
+      <dep id="flashx.textLayout.elements:BackgroundManager" />
+      <dep id="flashx.textLayout.compose:FlowDamageType" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:FormatValue)" mod="1295643054032" size="659" optimizedsize="283">
+      <def id="flashx.textLayout.formats:FormatValue" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:Property)" mod="1295643054016" size="11953" optimizedsize="5543">
+      <def id="flashx.textLayout.property:Property" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.property:UndefinedPropertyHandler" />
+      <dep id="flashx.textLayout.property:SpacingLimitPropertyHandler" />
+      <dep id="flashx.textLayout.property:NumberPropertyHandler" />
+      <dep id="RangeError" />
+      <dep id="flashx.textLayout.property:FormatPropertyHandler" />
+      <dep id="flashx.textLayout.property:BooleanPropertyHandler" />
+      <dep id="flashx.textLayout.elements:GlobalSettings" />
+      <dep id="flashx.textLayout.property:StringPropertyHandler" />
+      <dep id="flashx.textLayout.property:IntPropertyHandler" />
+      <dep id="flashx.textLayout.property:UintPropertyHandler" />
+      <dep id="AS3" />
+      <dep id="__AS3__.vec:Vector" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flashx.textLayout.property:TabStopsProperty" />
+      <dep id="flashx.textLayout.property:PercentPropertyHandler" />
+      <dep id="flashx.textLayout.property:EnumPropertyHandler" />
+      <dep id="flashx.textLayout.property:ArrayProperty" />
+      <dep id="flashx.textLayout.property:PropertyHandler" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:SpanElement)" mod="1295643053797" size="8614" optimizedsize="4846">
+      <def id="flashx.textLayout.elements:SpanElement" />
+      <pre id="flashx.textLayout.elements:FlowLeafElement" />
+      <dep id="RangeError" />
+      <dep id="flashx.textLayout.formats:WhiteSpaceCollapse" />
+      <dep id="flashx.textLayout.utils:CharacterUtil" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+      <dep id="RegExp" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+      <dep id="flashx.textLayout.elements:GlobalSettings" />
+      <dep id="flashx.textLayout.formats:TextLayoutFormat" />
+      <dep id="flashx.textLayout.elements:BreakElement" />
+      <dep id="TypeError" />
+      <dep id="flash.utils:getQualifiedClassName" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flash.text.engine:GroupElement" />
+      <dep id="flashx.textLayout.events:ModelChange" />
+      <dep id="flashx.textLayout.elements:TabElement" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="flash.text.engine:TextElement" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:SubParagraphGroupElement)" mod="1295643054188" size="1891" optimizedsize="891">
+      <def id="flashx.textLayout.elements:SubParagraphGroupElement" />
+      <pre id="flashx.textLayout.elements:SubParagraphGroupElementBase" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:LeadingModel)" mod="1295643053813" size="1106" optimizedsize="616">
+      <def id="flashx.textLayout.formats:LeadingModel" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:IMEStatus)" mod="1295643053985" size="1020" optimizedsize="522">
+      <def id="flashx.textLayout.formats:IMEStatus" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:FlowLeafElement)" mod="1295643054172" size="16774" optimizedsize="9843">
+      <def id="flashx.textLayout.elements:FlowLeafElement" />
+      <pre id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flashx.textLayout.formats:BaselineShift" />
+      <dep id="flashx.textLayout.utils:CharacterUtil" />
+      <dep id="Math" />
+      <dep id="flashx.textLayout.compose:ISWFContext" />
+      <dep id="flash.text.engine:ContentElement" />
+      <dep id="flashx.textLayout.formats:IMEStatus" />
+      <dep id="flash.display:Shape" />
+      <dep id="flash.text.engine:ElementFormat" />
+      <dep id="flashx.textLayout.utils:LocaleUtil" />
+      <dep id="flashx.textLayout.compose:FlowComposerBase" />
+      <dep id="flash.text.engine:FontMetrics" />
+      <dep id="flash.display:Graphics" />
+      <dep id="AS3" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flashx.textLayout.formats:BackgroundColor" />
+      <dep id="flashx.textLayout.formats:TLFTypographicCase" />
+      <dep id="flashx.textLayout.elements:TCYElement" />
+      <dep id="flash.events:IEventDispatcher" />
+      <dep id="flashx.textLayout.compose:TextFlowLine" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flash.text.engine:TypographicCase" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flashx.textLayout.elements:GlobalSettings" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+      <dep id="flashx.textLayout.formats:TextLayoutFormat" />
+      <dep id="flashx.textLayout.elements:FlowGroupElement" />
+      <dep id="flash.text.engine:FontDescription" />
+      <dep id="flash.text.engine:TextBaseline" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flashx.textLayout.formats:TextDecoration" />
+      <dep id="flashx.textLayout.events:ModelChange" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="flash.text.engine:TextElement" />
+      <dep id="flash.text.engine:TextRotation" />
+      <dep id="flashx.textLayout.events:FlowElementEventDispatcher" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:IFlowComposer)" mod="1295643054063" size="4905" optimizedsize="1210">
+      <def id="flashx.textLayout.compose:IFlowComposer" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.compose:TextFlowLine" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.edit:ISelectionManager" />
+      <dep id="flashx.textLayout.elements:ContainerFormattedElement" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+      <dep id="flashx.textLayout.compose:ISWFContext" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:TextRange)" mod="1295643053782" size="2404" optimizedsize="911">
+      <def id="flashx.textLayout.elements:TextRange" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:WhiteSpaceCollapse)" mod="1295643053735" size="667" optimizedsize="282">
+      <def id="flashx.textLayout.formats:WhiteSpaceCollapse" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.undo:IOperation)" mod="1295643053813" size="588" optimizedsize="184">
+      <def id="flashx.undo:IOperation" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:PropertyHandler)" mod="1295643053891" size="1377" optimizedsize="543">
+      <def id="flashx.textLayout.property:PropertyHandler" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.edit:IEditManager)" mod="1295643054125" size="7009" optimizedsize="1882">
+      <def id="flashx.textLayout.edit:IEditManager" />
+      <pre id="flashx.textLayout.edit:ISelectionManager" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.elements:TCYElement" />
+      <dep id="flashx.textLayout.elements:DivElement" />
+      <dep id="flashx.textLayout.elements:InlineGraphicElement" />
+      <dep id="flashx.textLayout.elements:LinkElement" />
+      <dep id="flashx.textLayout.edit:TextScrap" />
+      <dep id="flashx.undo:IUndoManager" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+      <dep id="flashx.textLayout.elements:ListElement" />
+      <dep id="flashx.textLayout.elements:FlowGroupElement" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.elements:SubParagraphGroupElement" />
+      <dep id="flashx.undo:IOperation" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="flashx.textLayout.operations:FlowOperation" />
+      <dep id="flashx.textLayout.edit:SelectionState" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.events:ScrollEvent)" mod="1295643054266" size="912" optimizedsize="417">
+      <def id="flashx.textLayout.events:ScrollEvent" />
+      <pre id="flashx.textLayout.events:TextLayoutEvent" />
+      <dep id="flash.events:Event" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:Category)" mod="1295643054094" size="812" optimizedsize="384">
+      <def id="flashx.textLayout.formats:Category" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:EnumPropertyHandler)" mod="1295643053985" size="1101" optimizedsize="476">
+      <def id="flashx.textLayout.property:EnumPropertyHandler" />
+      <pre id="flashx.textLayout.property:PropertyHandler" />
+      <dep id="flashx.textLayout.property:Property" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:ArrayProperty)" mod="1295643053938" size="3729" optimizedsize="1902">
+      <def id="flashx.textLayout.property:ArrayProperty" />
+      <pre id="flashx.textLayout.property:Property" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.factory:TruncationOptions)" mod="1295643053766" size="1756" optimizedsize="709">
+      <def id="flashx.textLayout.factory:TruncationOptions" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:ClearFloats)" mod="1295643054157" size="782" optimizedsize="354">
+      <def id="flashx.textLayout.formats:ClearFloats" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.edit:SelectionState)" mod="1295643054063" size="1754" optimizedsize="740">
+      <def id="flashx.textLayout.edit:SelectionState" />
+      <pre id="flashx.textLayout.elements:TextRange" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:UndefinedPropertyHandler)" mod="1295643053735" size="950" optimizedsize="359">
+      <def id="flashx.textLayout.property:UndefinedPropertyHandler" />
+      <pre id="flashx.textLayout.property:PropertyHandler" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:Float)" mod="1295643053922" size="702" optimizedsize="317">
+      <def id="flashx.textLayout.formats:Float" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:Slug)" mod="1295643053813" size="684" optimizedsize="303">
+      <def id="flashx.textLayout.compose:Slug" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:ParagraphFormattedElement)" mod="1295643054047" size="827" optimizedsize="328">
+      <def id="flashx.textLayout.elements:ParagraphFormattedElement" />
+      <pre id="flashx.textLayout.elements:FlowGroupElement" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:PercentPropertyHandler)" mod="1295643053782" size="1748" optimizedsize="759">
+      <def id="flashx.textLayout.property:PercentPropertyHandler" />
+      <pre id="flashx.textLayout.property:PropertyHandler" />
+      <dep id="flashx.textLayout.property:Property" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:LinkElement)" mod="1295643054250" size="8388" optimizedsize="3945">
+      <def id="flashx.textLayout.elements:LinkElement" />
+      <pre id="flash.events:IEventDispatcher" />
+      <pre id="flashx.textLayout.elements:SubParagraphGroupElementBase" />
+      <dep id="flash.events:Event" />
+      <dep id="flashx.textLayout.events:FlowElementMouseEventManager" />
+      <dep id="flash.net:URLRequest" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flash.net:navigateToURL" />
+      <dep id="flashx.textLayout.elements:LinkState" />
+      <dep id="flashx.textLayout.events:FlowElementMouseEvent" />
+      <dep id="flashx.textLayout.formats:TextLayoutFormat" />
+      <dep id="flash.events:MouseEvent" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flashx.textLayout.events:ModelChange" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.events:ModelChange)" mod="1295643053938" size="1039" optimizedsize="583">
+      <def id="flashx.textLayout.events:ModelChange" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:FloatCompositionData)" mod="1295643053891" size="1208" optimizedsize="561">
+      <def id="flashx.textLayout.compose:FloatCompositionData" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="flash.display:DisplayObjectContainer" />
+      <dep id="flash.geom:Matrix" />
+      <dep id="flash.display:DisplayObject" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:BlockProgression)" mod="1295643054032" size="631" optimizedsize="254">
+      <def id="flashx.textLayout.formats:BlockProgression" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:IConfiguration)" mod="1295643053953" size="3736" optimizedsize="982">
+      <def id="flashx.textLayout.elements:IConfiguration" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.elements:Configuration" />
+      <dep id="flashx.textLayout.edit:SelectionFormat" />
+      <dep id="flashx.textLayout.formats:IListMarkerFormat" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:VerticalAlign)" mod="1295643054188" size="718" optimizedsize="318">
+      <def id="flashx.textLayout.formats:VerticalAlign" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.utils:Twips)" mod="1295643054094" size="1330" optimizedsize="574">
+      <def id="flashx.textLayout.utils:Twips" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="Math" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:TabStopsProperty)" mod="1295643054094" size="3532" optimizedsize="2184">
+      <def id="flashx.textLayout.property:TabStopsProperty" />
+      <pre id="flashx.textLayout.property:ArrayProperty" />
+      <dep id="flashx.textLayout.formats:TabStopFormat" />
+      <dep id="flashx.textLayout.property:Property" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flash.text.engine:TabAlignment" />
+      <dep id="RegExp" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:Parcel)" mod="1295643054110" size="6862" optimizedsize="3365">
+      <def id="flashx.textLayout.compose:Parcel" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.formats:ClearFloats" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.compose:Slug" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flashx.textLayout.formats:Direction" />
+      <dep id="Math" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+      <dep id="Error" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:ListItemElement)" mod="1295643054188" size="2960" optimizedsize="1767">
+      <def id="flashx.textLayout.elements:ListItemElement" />
+      <pre id="flashx.textLayout.elements:ContainerFormattedElement" />
+      <dep id="flashx.textLayout.elements:FlowGroupElement" />
+      <dep id="flashx.textLayout.elements:ListElement" />
+      <dep id="flashx.textLayout.elements:DivElement" />
+      <dep id="flashx.textLayout.elements:SpanElement" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:IListMarkerFormat" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.edit:TextScrap)" mod="1295643053907" size="2662" optimizedsize="1471">
+      <def id="flashx.textLayout.edit:TextScrap" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.elements:SpanElement" />
+      <dep id="flashx.textLayout.elements:TextRange" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.conversion:ConverterBase" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:ParagraphElement)" mod="1295643054188" size="14124" optimizedsize="7881">
+      <def id="flashx.textLayout.elements:ParagraphElement" />
+      <pre id="flashx.textLayout.elements:ParagraphFormattedElement" />
+      <dep id="flashx.textLayout.elements:SubParagraphGroupElementBase" />
+      <dep id="flashx.textLayout.elements:Configuration" />
+      <dep id="Math" />
+      <dep id="flashx.textLayout.utils:CharacterUtil" />
+      <dep id="flash.text.engine:ContentElement" />
+      <dep id="flashx.textLayout.formats:TabStopFormat" />
+      <dep id="flash.text.engine:TextBlock" />
+      <dep id="flashx.textLayout.elements:FlowLeafElement" />
+      <dep id="flash.utils:getQualifiedClassName" />
+      <dep id="flashx.textLayout.utils:LocaleUtil" />
+      <dep id="AS3" />
+      <dep id="__AS3__.vec:Vector" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flash.text.engine:SpaceJustifier" />
+      <dep id="flash.text.engine:GroupElement" />
+      <dep id="flash.text.engine:EastAsianJustifier" />
+      <dep id="flash.text.engine:LineJustification" />
+      <dep id="flash.text.engine:TextLineValidity" />
+      <dep id="flashx.textLayout.formats:JustificationRule" />
+      <dep id="flashx.textLayout.elements:SpanElement" />
+      <dep id="flashx.textLayout.property:Property" />
+      <dep id="flashx.textLayout.compose:TextFlowLine" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flash.text.engine:TabAlignment" />
+      <dep id="flashx.textLayout.elements:ContainerFormattedElement" />
+      <dep id="flashx.textLayout.formats:Direction" />
+      <dep id="flash.text.engine:TabStop" />
+      <dep id="flashx.textLayout.elements:GlobalSettings" />
+      <dep id="flashx.textLayout.formats:TextLayoutFormat" />
+      <dep id="flashx.textLayout.formats:TextAlign" />
+      <dep id="TypeError" />
+      <dep id="flash.text.engine:TextBaseline" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flashx.textLayout.formats:LeadingModel" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flashx.textLayout.formats:LineBreak" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="flash.text.engine:TextRotation" />
+      <dep id="flashx.textLayout.formats:TextJustify" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.operations:FlowOperation)" mod="1295643053907" size="2510" optimizedsize="1044">
+      <def id="flashx.textLayout.operations:FlowOperation" />
+      <pre id="flashx.undo:IOperation" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.edit:IEditManager" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.edit:SelectionState" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:LineBreak)" mod="1295643053953" size="607" optimizedsize="259">
+      <def id="flashx.textLayout.formats:LineBreak" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:GlobalSettings)" mod="1295643053782" size="4530" optimizedsize="2757">
+      <def id="flashx.textLayout.elements:GlobalSettings" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="RegExp" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:TabStopFormat)" mod="1295643054188" size="4618" optimizedsize="2186">
+      <def id="flashx.textLayout.formats:TabStopFormat" />
+      <pre id="flashx.textLayout.formats:ITabStopFormat" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.property:Property" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flash.text.engine:TabAlignment" />
+      <dep id="flashx.textLayout.formats:Category" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:FlowElement)" mod="1295643054016" size="39177" optimizedsize="13831">
+      <def id="flashx.textLayout.elements:FlowElement" />
+      <pre id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <pre id="Object" />
+      <dep id="flash.events:IEventDispatcher" />
+      <dep id="RangeError" />
+      <dep id="flashx.textLayout.property:Property" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flashx.textLayout.elements:ContainerFormattedElement" />
+      <dep id="flashx.textLayout.elements:FlowValueHolder" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+      <dep id="flashx.textLayout.elements:GlobalSettings" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+      <dep id="flashx.textLayout.formats:TextLayoutFormat" />
+      <dep id="Error" />
+      <dep id="flashx.textLayout.compose:IFlowComposer" />
+      <dep id="flash.utils:getQualifiedClassName" />
+      <dep id="flashx.textLayout.elements:FlowGroupElement" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flash.utils:getDefinitionByName" />
+      <dep id="flashx.textLayout.events:ModelChange" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:SpacingLimitPropertyHandler)" mod="1295643053985" size="2740" optimizedsize="1412">
+      <def id="flashx.textLayout.property:SpacingLimitPropertyHandler" />
+      <pre id="flashx.textLayout.property:PropertyHandler" />
+      <dep id="flashx.textLayout.property:Property" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="RegExp" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.events:FlowElementMouseEventManager)" mod="1295643053891" size="9418" optimizedsize="5236">
+      <def id="flashx.textLayout.events:FlowElementMouseEventManager" />
+      <pre id="Object" />
+      <dep id="flash.events:Event" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flashx.textLayout.elements:TextRange" />
+      <dep id="flash.events:KeyboardEvent" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flash.display:DisplayObjectContainer" />
+      <dep id="flash.ui:MouseCursor" />
+      <dep id="Math" />
+      <dep id="flashx.textLayout.elements:LinkElement" />
+      <dep id="flashx.textLayout.events:FlowElementMouseEvent" />
+      <dep id="flash.geom:Point" />
+      <dep id="flashx.textLayout.elements:FlowGroupElement" />
+      <dep id="flash.events:MouseEvent" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.utils:HitTestArea" />
+      <dep id="flash.geom:Matrix" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.utils:GeometryUtil" />
+      <dep id="flash.ui:Mouse" />
+      <dep id="flash.display:DisplayObject" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flash.display:Sprite" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:LinkState)" mod="1295643053813" size="752" optimizedsize="364">
+      <def id="flashx.textLayout.elements:LinkState" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.events:SelectionEvent)" mod="1295643053985" size="1200" optimizedsize="528">
+      <def id="flashx.textLayout.events:SelectionEvent" />
+      <pre id="flash.events:Event" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.edit:SelectionState" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:DivElement)" mod="1295643053828" size="944" optimizedsize="445">
+      <def id="flashx.textLayout.elements:DivElement" />
+      <pre id="flashx.textLayout.elements:ContainerFormattedElement" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.events:DamageEvent)" mod="1295643053766" size="1373" optimizedsize="621">
+      <def id="flashx.textLayout.events:DamageEvent" />
+      <pre id="flash.events:Event" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:ITextLayoutFormat)" mod="1295643054032" size="9658" optimizedsize="1730">
       <def id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.edit:SelectionFormat)" mod="1295643053797" size="2024" optimizedsize="852">
+      <def id="flashx.textLayout.edit:SelectionFormat" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:NumberPropertyHandler)" mod="1295643054032" size="1925" optimizedsize="845">
+      <def id="flashx.textLayout.property:NumberPropertyHandler" />
+      <pre id="flashx.textLayout.property:PropertyHandler" />
+      <dep id="flashx.textLayout.property:Property" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:TabElement)" mod="1295643053922" size="989" optimizedsize="443">
+      <def id="flashx.textLayout.elements:TabElement" />
+      <pre id="flashx.textLayout.elements:SpecialCharacterElement" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.elements:InlineGraphicElementStatus)" mod="1295643053938" size="873" optimizedsize="399">
+      <def id="flashx.textLayout.elements:InlineGraphicElementStatus" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:TextJustify)" mod="1295643054063" size="633" optimizedsize="275">
+      <def id="flashx.textLayout.formats:TextJustify" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.container:ISandboxSupport)" mod="1295643054188" size="1134" optimizedsize="320">
+      <def id="flashx.textLayout.container:ISandboxSupport" />
+      <pre id="Object" />
+      <dep id="flash.events:Event" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.compose:BaseCompose)" mod="1295643054110" size="39693" optimizedsize="24096">
+      <def id="flashx.textLayout.compose:BaseCompose" />
+      <pre id="flashx.textLayout.compose:ISWFContext" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.elements:OverflowPolicy" />
+      <dep id="flashx.textLayout.compose:Parcel" />
+      <dep id="flashx.textLayout.compose:TextFlowLineLocation" />
+      <dep id="flashx.textLayout.compose:Slug" />
+      <dep id="flashx.textLayout.elements:InlineGraphicElement" />
+      <dep id="flash.text.engine:TextLineCreationResult" />
+      <dep id="flashx.textLayout.elements:Configuration" />
+      <dep id="Math" />
+      <dep id="flashx.textLayout.container:ContainerController" />
+      <dep id="flashx.textLayout.utils:Twips" />
+      <dep id="flash.text.engine:TextBlock" />
+      <dep id="flashx.textLayout.elements:FlowLeafElement" />
+      <dep id="flashx.textLayout.compose:IFlowComposer" />
+      <dep id="flashx.textLayout.compose:FloatCompositionData" />
+      <dep id="flashx.textLayout.formats:ClearFloats" />
+      <dep id="flashx.textLayout.formats:ListStylePosition" />
+      <dep id="flashx.textLayout.utils:LocaleUtil" />
+      <dep id="flashx.textLayout.compose:TextLineRecycler" />
+      <dep id="AS3" />
+      <dep id="flash.text.engine:TextLine" />
+      <dep id="flashx.textLayout.compose:IVerticalJustificationLine" />
+      <dep id="flashx.textLayout.compose:ParcelList" />
+      <dep id="flashx.textLayout.elements:TCYElement" />
+      <dep id="flashx.textLayout.compose:TextFlowLine" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flashx.textLayout.elements:ContainerFormattedElement" />
+      <dep id="flashx.textLayout.formats:Direction" />
+      <dep id="flashx.textLayout.elements:ParagraphElement" />
+      <dep id="flashx.textLayout.formats:VerticalAlign" />
+      <dep id="flashx.textLayout.formats:TextLayoutFormat" />
+      <dep id="flashx.textLayout.compose:VerticalJustifier" />
+      <dep id="flashx.textLayout.formats:TextAlign" />
+      <dep id="flashx.textLayout.elements:FlowGroupElement" />
+      <dep id="flashx.textLayout.elements:ListElement" />
+      <dep id="flash.text.engine:TextBaseline" />
+      <dep id="flashx.textLayout.formats:BaselineOffset" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flash.display:DisplayObject" />
+      <dep id="flashx.textLayout.formats:Float" />
+      <dep id="flashx.textLayout.elements:FlowElement" />
+      <dep id="flashx.textLayout.formats:LeadingModel" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <dep id="flashx.textLayout.elements:ListItemElement" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:CounterPropHandler)" mod="1295643054000" size="1939" optimizedsize="956">
+      <def id="flashx.textLayout.property:CounterPropHandler" />
+      <pre id="flashx.textLayout.property:PropertyHandler" />
+      <dep id="AS3" />
+      <dep id="RegExp" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:JustificationRule)" mod="1295643054188" size="659" optimizedsize="277">
+      <def id="flashx.textLayout.formats:JustificationRule" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.edit:ISelectionManager)" mod="1295643053750" size="4842" optimizedsize="1124">
+      <def id="flashx.textLayout.edit:ISelectionManager" />
+      <pre id="flashx.textLayout.edit:IInteractionEventHandler" />
+      <pre id="Object" />
+      <dep id="flashx.textLayout.elements:TextFlow" />
+      <dep id="flashx.textLayout.elements:TextRange" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout.edit:SelectionFormat" />
+      <dep id="flashx.textLayout.formats:TextLayoutFormat" />
+      <dep id="flashx.textLayout.edit:SelectionState" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.property:CounterContentHandler)" mod="1295643054172" size="4325" optimizedsize="2519">
+      <def id="flashx.textLayout.property:CounterContentHandler" />
+      <pre id="flashx.textLayout.property:PropertyHandler" />
+      <dep id="flashx.textLayout.elements:ListElement" />
+      <dep id="AS3" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="RegExp" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:TextLayoutFormat)" mod="1295643053922" size="37332" optimizedsize="16649">
+      <def id="flashx.textLayout.formats:TextLayoutFormat" />
+      <pre id="flashx.textLayout.formats:ITextLayoutFormat" />
+      <pre id="Object" />
+      <dep id="flash.text.engine:JustificationStyle" />
+      <dep id="flashx.textLayout.formats:BaselineShift" />
+      <dep id="flash.text.engine:RenderingMode" />
+      <dep id="flash.text.engine:Kerning" />
+      <dep id="flash.text.engine:DigitCase" />
+      <dep id="flashx.textLayout.formats:ClearFloats" />
+      <dep id="flashx.textLayout.formats:ListStylePosition" />
+      <dep id="flash.text.engine:CFFHinting" />
+      <dep id="AS3" />
+      <dep id="flash.text.engine:FontPosture" />
+      <dep id="flashx.textLayout.formats:BackgroundColor" />
+      <dep id="flashx.textLayout.formats:TLFTypographicCase" />
+      <dep id="flashx.textLayout.formats:JustificationRule" />
+      <dep id="flashx.textLayout.property:Property" />
+      <dep id="flash.text.engine:FontWeight" />
+      <dep id="flashx.textLayout.formats:WhiteSpaceCollapse" />
+      <dep id="flashx.textLayout.formats:Direction" />
+      <dep id="flash.text.engine:BreakOpportunity" />
+      <dep id="flashx.textLayout.formats:VerticalAlign" />
+      <dep id="flash.text.engine:LigatureLevel" />
+      <dep id="flash.text.engine:FontLookup" />
+      <dep id="flashx.textLayout.formats:TextAlign" />
+      <dep id="flash.text.engine:TextBaseline" />
+      <dep id="flashx.textLayout.formats:BaselineOffset" />
+      <dep id="flashx.textLayout:tlf_internal" />
+      <dep id="flashx.textLayout.formats:FormatValue" />
+      <dep id="flashx.textLayout.formats:TextDecoration" />
+      <dep id="flashx.textLayout.formats:ListStyleType" />
+      <dep id="flashx.textLayout.formats:LeadingModel" />
+      <dep id="flashx.textLayout.formats:Category" />
+      <dep id="flash.text.engine:DigitWidth" />
+      <dep id="flashx.textLayout.formats:BlockProgression" />
+      <dep id="flashx.textLayout.formats:LineBreak" />
+      <dep id="flash.text.engine:TextRotation" />
+      <dep id="flashx.textLayout.formats:TextJustify" />
+    </script>
+    <script name="C:\SDKs\air3.2\frameworks\libs\textLayout.swc(flashx.textLayout.formats:TLFTypographicCase)" mod="1295643053797" size="865" optimizedsize="427">
+      <def id="flashx.textLayout.formats:TLFTypographicCase" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
   </scripts>
   <external-defs>
-    <ext id="flash.system:Security" />
-    <ext id="flash.display:Sprite" />
+    <ext id="Math" />
+    <ext id="RegExp" />
+    <ext id="flash.text.engine:ContentElement" />
+    <ext id="flash.geom:Matrix" />
+    <ext id="flash.text.engine:SpaceJustifier" />
+    <ext id="flash.text.engine:EastAsianJustifier" />
+    <ext id="flash.text.engine:TypographicCase" />
+    <ext id="flash.text.engine:TabAlignment" />
+    <ext id="flash.net:navigateToURL" />
+    <ext id="flash.text.engine:TabStop" />
+    <ext id="flash.text.engine:FontDescription" />
+    <ext id="flash.events:IMEEvent" />
+    <ext id="flash.events:Event" />
+    <ext id="flash.accessibility:AccessibilityImplementation" />
+    <ext id="flash.text.engine:FontMetrics" />
     <ext id="AS3" />
+    <ext id="flash.net:URLRequest" />
+    <ext id="flash.text.engine:FontWeight" />
+    <ext id="flash.events:IOErrorEvent" />
+    <ext id="flash.text.engine:GraphicElement" />
+    <ext id="flash.text.engine:BreakOpportunity" />
+    <ext id="flash.display:GraphicsPathCommand" />
+    <ext id="flash.events:FocusEvent" />
+    <ext id="flash.text.engine:TextRotation" />
+    <ext id="flash.display:InteractiveObject" />
+    <ext id="flash.text.engine:Kerning" />
+    <ext id="flash.ui:ContextMenu" />
+    <ext id="flash.display:LoaderInfo" />
+    <ext id="flash.display:Shape" />
+    <ext id="flash.events:IEventDispatcher" />
+    <ext id="flash.geom:Rectangle" />
+    <ext id="flash.system:Capabilities" />
+    <ext id="flash.text.engine:TextElement" />
+    <ext id="flash.text.engine:JustificationStyle" />
+    <ext id="ArgumentError" />
+    <ext id="flash.text.engine:ElementFormat" />
+    <ext id="flash.utils:Dictionary" />
+    <ext id="flash.events:ErrorEvent" />
+    <ext id="RangeError" />
+    <ext id="Error" />
+    <ext id="flash.display:GraphicsPathWinding" />
+    <ext id="flash.events:EventDispatcher" />
+    <ext id="flash.text.engine:CFFHinting" />
+    <ext id="flash.text.engine:LigatureLevel" />
+    <ext id="flash.events:ContextMenuEvent" />
+    <ext id="flash.ui:Mouse" />
+    <ext id="flash.display:DisplayObject" />
+    <ext id="flash.text.engine:RenderingMode" />
+    <ext id="flash.text.engine:TextLineCreationResult" />
+    <ext id="flash.ui:MouseCursor" />
+    <ext id="flash.text.engine:TextBlock" />
+    <ext id="flash.accessibility:AccessibilityProperties" />
+    <ext id="__AS3__.vec:Vector" />
+    <ext id="flash.text.engine:FontPosture" />
+    <ext id="flash.text.engine:GroupElement" />
     <ext id="Object" />
+    <ext id="flash.display:MovieClip" />
+    <ext id="flash.text.engine:FontLookup" />
+    <ext id="flash.utils:Timer" />
+    <ext id="flash.display:DisplayObjectContainer" />
+    <ext id="flash.text.engine:DigitCase" />
+    <ext id="flash.display:Graphics" />
+    <ext id="flash.events:TimerEvent" />
+    <ext id="flash.display:Sprite" />
+    <ext id="flash.text.engine:LineJustification" />
+    <ext id="flash.text.engine:TextLineValidity" />
+    <ext id="flash.display:Loader" />
+    <ext id="flash.display:BlendMode" />
+    <ext id="flash.geom:Point" />
+    <ext id="TypeError" />
+    <ext id="flash.events:MouseEvent" />
+    <ext id="flash.text.engine:TextBaseline" />
+    <ext id="flash.ui:ContextMenuClipboardItems" />
+    <ext id="flash.system:Security" />
+    <ext id="flash.events:KeyboardEvent" />
+    <ext id="flash.events:TextEvent" />
+    <ext id="flash.utils:getQualifiedClassName" />
+    <ext id="flash.text.engine:TextLine" />
+    <ext id="flash.utils:getDefinitionByName" />
+    <ext id="flash.accessibility:Accessibility" />
+    <ext id="flash.text.engine:DigitWidth" />
   </external-defs>
 </report>
