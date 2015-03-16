@@ -1,0 +1,35 @@
+# Introduction #
+Execute a queue of actions represented by IBatchable items. Each item is executed when the previous one has dispatched a Event.COMPLETE.
+
+Batcher class implement itself IBatchable, in other hand, a batcher can be added as an IBatchable item of a parent batcher.
+
+Batcher events flow is designed to can be use with deep batcher structure. Most of events bubbles into batchers structure, and provide reference to the "leaf" having initiate this event. In most of case, this lets you listening events on the only root batcher to handle all items events.
+
+Batcher internaly use Pile to store his IBatchables collection. Pile's methods are implemented by Batcher to manipulate queue of IBatchables.
+
+  * addItem()
+  * addItemAt()
+  * removeItem()
+  * removeItemAt()
+  * swapItems()
+  * setItemIndex()
+  * ...
+
+# IBatchable #
+
+Interface implemented by object that can be added to a Batcher's queue.
+
+It describe a simple (asynchronous) action. Batcher request the beginning of action by calling #execute() methode on this interface. Then wait for the completion of this action to execute the next items
+
+In order to not freeze the batcher execution, this interface must dispatch one of these events to notify his completion :
+
+  * ErrorEvent.ERROR
+  * Event.COMPLETE
+  * BatchEvent.DISPOSE
+
+It can also dispatch following event to provide additionnal information to a batchers structure :
+
+  * ProgressEvent.PROGRESS, bubbles in Batcher
+  * StatusEvent.STATUS, bubble too.
+
+Note that you don't have to dispatch BatchEvent#ADDED and BatchEvent#REMOVED. Dispatch of these events are automaticaly managed by container Batcher.

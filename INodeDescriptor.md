@@ -1,0 +1,46 @@
+# Introduction #
+
+INodeDescriptor is the pure data representation of a node and his structure. As well as a  a Node (INode implement INodeDescriptor) a INodeDescriptor is defined by :
+
+  * an id
+  * a default child Id
+  * a collection of childs (collection of INodeDescriptor)
+
+Using descriptor provide a safe way to create, to modify and add new nodes to an existing Node's structure. It prevent the replacement of existing node already used.
+
+# BaseDescriptor format #
+
+BaseDescriptor is an implementation of INodeDescriptor based on a specific XML format.
+
+example :
+
+**sitetree.xml**
+```
+
+<node id="product" default="men">
+   <node id="men">
+      <node id="lugages"/>
+      <node id="clothing"/>
+      <node id="accessories"/>
+   </node>
+   <node id="women">
+      <node id="lugages"/>
+      <node id="clothing"/>
+      <node id="accessories"/>
+   </node>
+</node>
+
+```
+
+**as**
+
+```
+var descData : XML = <<<sitetree.xml>>>;
+
+var desc : INodeDescriptor = new BaseDescriptor( descData );
+
+var node : Node = new Node();
+node.describe( desc );
+
+trace( node.hasChild( "men" ) ); // true
+```

@@ -1,0 +1,71 @@
+A dependancy is a reference of a property used as part of the value of another property.
+Dependancies can be define anywere insinde a configuration  property value.
+
+To create dependancy, use the following sytaxe :
+**${**_thePropertyName_**}**
+
+## A simple example ##
+
+```
+<conf>
+   <desc>This ${misc} example has been wrote by ${author}.</desc>
+   <author>Pierre Lepers</author>
+   <misc>first</misc>
+</conf>
+```
+
+```
+trace( Conf.desc );
+// This first example has been wrote by Pierre Lepers
+```
+
+Note that the order of properies in xml file doesn't matter to solve dependancies. Because solving of a property is made when you request the value and not at parsing time.
+If you "manually" change the value of a dependancy, a second call to the prop value will return the expected result :
+
+```
+trace( Conf.desc );
+// This first example has been wrote by Pierre Lepers
+
+Conf.setProperty( "misc", "second" );
+
+trace( Conf.desc );
+// This second example has been wrote by Pierre Lepers
+```
+
+## The dependancy doesn't exist ##
+
+If a dependancy isn't define in your conf files, the dependant property will be solved replacing the unknown prop value by an empty String. But if you define this dependancy latter, the dependant property will be correctly updated.
+
+## Use it with namespaces ##
+
+When solving a property, Configuration class start to find dependancy props into the same namespace than the dependant property. But you can explicitly target the namespace using his prefix inside dependancy pattern :
+
+${nsPrefix::myProperty}
+
+#### example ####
+
+```
+<conf xmlns:fruits="fruitsNs">
+   
+   <orange>0xEE4000</orange>
+
+   <fruits:orange>delicious fruit</fruits:orange>
+
+   
+   <fruits:description>orange is a ${orange}</fruits:description>
+
+   <description>orange hex code is ${orange}, and orange is a ${fruits::orange}</description>
+
+</conf>
+```
+
+```
+namespace ns = "fruitsNs";
+
+trace( Conf.ns::description );
+//orange is a delicious fruit
+
+trace( Conf.description );
+//orange hex code is 0xEE4000, and orange is a delicious fruit
+
+```

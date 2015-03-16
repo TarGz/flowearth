@@ -1,0 +1,120 @@
+Configuration usage
+
+# Introduction #
+
+Configuration class store a collection of properties retreive from a specific xml format.
+
+Here is the list of master features, detailed bellow:
+  * Each properties can depends of other properies
+  * Easily externalize parts of conf files into sub files
+  * Easily externalize misc datas.
+  * switch/case like feature
+  * Namespace support, to avoid naming conflicts.
+
+
+# Conf file format #
+
+As in ECMAScript, a Property is simply defined by a name (or QName) and a value. Native Property's value is always a String.
+
+Properties of a conf file are extract listing all childrens of the root node.
+
+### property name ###
+
+The name of the property is set using the _XML.name()_ value of the given child. The propery is stored inside the same namespace than the child.
+To acces to a property see
+[ConfigurationUsage#Details](ConfigurationUsage#Details.md)
+
+Note that three names are reserved :
+  * externalConf (list of external conf files)
+  * externalData (list of external properties values)
+  * switch ( switch/case parsing )
+
+
+The value of the property is set depending child content type :
+  * if the child has a simple text content (_child.hasSimpleContent()_ equals _true_), the value is set using _child.text()_).
+  * if the children has a more complex content (_child.hasComplexeContent()_ equals _true_), the value is set using _child.children().toXMLString()_).
+
+
+
+### example : ###
+
+Here is a simple conf file, defining three properties.
+
+```
+<conf>
+	<simple>my simple property</simple>
+	<complex>
+		<foo>bar</foo>
+		<foo>bar</foo>
+		<foo>bar</foo>
+	</complexe>
+	<basic_dependancy>${simple} roxx!</basic_dependancy>
+</conf>
+```
+
+  * "simple" have the value "my simple property"
+  * "complex" have the following value :
+```
+"<foo>bar</foo>
+<foo>bar</foo>
+<foo>bar</foo>"
+```
+  * "basic\_dependancy" have the value "my simple property roxx!"
+
+
+# Retreive a property #
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+<conf>
+	<basedir>${basepath}</basedir>
+	
+	<assets_dir>${basedir}/${local}/assets</assets_dir>
+	<flv_dir>${assets_dir}/flvs</flv_dir>
+
+	<local>en_GB</local>
+</conf>
+
+```
+
+```
+public function ConfSampleA() {
+	//-----°1
+	Conf.setProperty( "basepath", "." );
+	Conf.grabParam( loaderInfo );
+	
+	//-----°2
+	Conf.addEventListener( Event.COMPLETE , onConfLoaded );
+	Conf.loadXml( new URLRequest ( Conf.getString("basepath") + "/confSampleA.conf") );
+}
+
+private function onConfLoaded(event : Event) : void {
+	
+	//-----°3
+	trace( "°3",  Conf.getString( "assets_dir" ) );
+	
+	//-----°4
+	Conf.setProperty( "local", "fr_FR" );
+	trace( "°4", Conf.getString( "assets_dir" ) );
+
+	//-----°5
+	trace( "°5", Conf.getString( "basepath" ) );
+	// --> if flashvar exist 		"../../../../../samples/fr/digitas/flowearth/conf"
+	// --> if swf is standalone		"."
+	
+}
+```

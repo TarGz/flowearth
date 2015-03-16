@@ -1,0 +1,83 @@
+# Introduction #
+
+Here is some simple usages examples of Bacther
+
+## Load some pictures ##
+
+```
+
+var batcher : Batcher;
+
+buildBatcher();
+
+function buildBatcher() : void {
+    // 1
+    batcher = new Batcher();
+    // 2
+    batcher.addEventListener( BatchEvent.ITEM_COMPLETE , onItemComplete );
+    // 3
+    batcher.start();
+    // 4
+    loadPicture( "picts/pict_01.jpg" );
+    loadPicture( "picts/pict_02.jpg" );
+    loadPicture( "picts/pict_03.jpg" );
+    
+}
+
+function loadPicture( url : String ) : void {        
+    var request : URLRequest = new URLRequest( url );
+    var item : BatchLoaderItem = new BatchLoaderItem( request );
+    batcher.addItem( item );
+}
+
+private function onItemComplete(event : BatchEvent) : void {
+    var item : BatchLoaderItem = event.item as BatchLoaderItem;
+    var loader : Loader = item.loader;
+    
+    addChild( loader );
+}
+
+```
+
+In this example,
+
+  1. we create a new instance of batcher,
+  1. then add listener for BatchEvent.ITEM\_COMPLETE event to handle each item completion. The BatchEvent provide a reference to the IBatchble which has complete.
+> > Note that you could also listen Event.COMPLETE event on each item.
+  1. You can call _start_ method on batcher before add any item. The first item added will start automatically. (Note that if call _start_ method on an emmpty batcher it will immediately dispatch a Event.COMPLETE event.)
+  1. We add 3 BatchLoaderItem instance into it. They will immediatelly start to be sequentially executed.
+
+
+## Handle errors ##
+
+This example is based on teh previous one, we simply adding error handling.
+
+```
+function buildBatcher() : void {
+    
+    batcher = new Batcher();
+    
+    batcher.addEventListener( BatchEvent.ITEM_COMPLETE , onItemComplete );
+    // 1
+    batcher.addEventListener( ErrorEvent.ERROR, onError );
+    
+    batcher.start();
+    
+    loadPicture( "picts/pict_01.jpg" );
+    loadPicture( "picts/missing_file.jpg" );
+    loadPicture( "picts/pict_03.jpg" );
+    
+}
+
+function onError(event : BatchErrorEvent ) : void {
+    // 2
+    trace( "Batcher Item Error : " + event.text );
+}
+
+```
+
+  1. Now we add listener to batcher's ErrorEvent.ERROR.
+> > Batcher automatically listener to this event on Ibatchable added to his queue and redispatch this event. This let you listening all batch error on the same batcher object.
+
+
+> 2. the type of the batcher's ErrorEvent.ERROR is always BatchErrorEvent. BatchErrorEvent  provide additional informations about the initial dispatcher of the error.

@@ -1,0 +1,18 @@
+## Features ##
+  * ## Conf ##
+> > Externalize all your data in XML files. [usage](ConfigurationUsage.md)
+  * ## Batch ##
+> > Exectute queue of tasks with an unlimited level of recursivity [usage](BatcherUsage.md)
+  * ## Style ##
+> > Externalise all font styles in CSS files + use external font files
+  * ## Node ##
+> > Manage navigation, Swfadress and SEO
+
+Each feature can be used as a stand alone or with the full package
+
+## Compatibility ##
+Flash 9 and 10
+  * SwfAdress
+  * SwfObject
+  * Papervision and all other 3D tools
+  * Tweener and all other tweening tools

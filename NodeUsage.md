@@ -1,0 +1,7 @@
+# Concept #
+
+Node object is an element of a tree structure used to represent a website site-tree.
+
+The node structure is design to let you synchronize your views depending on a unique path, cibling node in the structure.
+
+When you activate a node in the nodes tree, each node which has changed (deactivation of the old branch, activation of the new one) notify it. By connecting a view to its proper node, you can easily sync a flash app to a deep site tree.

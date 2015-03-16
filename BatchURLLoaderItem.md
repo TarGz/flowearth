@@ -1,0 +1,13 @@
+A BatchURLLoaderItem instance internally store a native URLLoader object to load text and raw files.
+
+When loading is complete you can acces to loaded datas object via BatchURLLoaderItem.data property.
+
+You can listening for URLLoader events directly on BatchURLLoaderItem instance :
+
+  * Event.COMPLETE
+  * ProgressEvent.PROGRESS
+  * ErrorEvent.ERROR
+  * Event.OPEN
+
+
+IOErrorEvent.IO\_ERROR and SecurityErrorEvent.SECURITY\_ERROR are listening on loaderInfo object and redispatched as a simple ErrorEvent.ERROR event.

@@ -1,0 +1,85 @@
+# Introduction #
+This chapter explain different events dispatch by a nodes structure
+
+### important ###
+Node override EventDispatcher.addEventListener method to listening event in capture phase by default.
+
+# structure changing #
+
+### NodeEvent.ADDED ###
+Dispatched by a INode when it is added to a parent node. This event doesn't bubbles in the structure.
+
+### NodeEvent.CHILD\_ADDED ###
+Dispatched when a child is added to a INode. this event bubbles in node structure. the target is the node in which the child is added. all the parents dispatch this event too.
+
+# activation changing #
+
+Each node in a structure store a "activation" boolean value, automaticaly set depending on the active branch of this structure. When this activation state change, the node notify it using different events :
+
+### NodeEvent.CHANGE ###
+Simply dispatched when activation state of this node change. true to false, false to true.
+this event don't bubbles.
+
+### NodeEvent.CHILD\_CHANGE ###
+Dispatch by a node when one of his child's activation state change. This event does not bubble strictly speaking.
+
+here is an example of CHILD\_CHANGE event flow for the follow activation change.
+
+
+  * <b>main</b>
+    * <b>products</b>
+      * <b>men</b>
+        * product1
+        * <b>product2</b>
+      * women
+        * product1
+        * product2
+    * services
+      * aftersale
+      * warranties
+        * 1year
+        * 2year
+    * contact
+      * jobs
+      * mailinglist
+
+```
+new Path( "main:/services/warranties/1year" ).toNode.activate();
+```
+
+  * <b>main</b>
+    * products
+      * men
+        * product1
+        * product2
+      * women
+        * product1
+        * product2
+    * <b>services</b>
+      * aftersale
+      * <b>warranties</b>
+        * <b>1year</b>
+        * 2year
+    * contact
+      * jobs
+      * mailinglist
+
+
+here is the chronology of CHILD\_CHANGE event dispatch :
+
+| **target node** | **capture** |
+|:----------------|:------------|
+|main:/products |true|
+|main:/products/men |true|
+|main:/products |false|
+|main:/ |true|
+|main:/services |true|
+|main:/services/warranties |true|
+|main:/services |false|
+|main:/ |false|
+
+![http://flowearth.googlecode.com/svn/trunk/framework/docs/samples/fr/digitas/flowearth/mvc/address/structs/flow_illustration.png](http://flowearth.googlecode.com/svn/trunk/framework/docs/samples/fr/digitas/flowearth/mvc/address/structs/flow_illustration.png)
+
+### NodeEvent.PATH\_CHANGE ###
+
+this Event is fired each time the _activePath_ property of a node is modified. This property change each time one descendant's activation state change.

@@ -1,0 +1,158 @@
+How to externalize resources with Conf
+
+# Introduction #
+
+You can use two special xml tag to externalize resources from a conf file :
+  * _externalConf_ : will load one or more conf files
+  * _externalData_ : will load a file and put the content into a property
+
+The "complete" event of Configuration instance is dispatched when all external resources have been loaded.
+
+# externalConf #
+
+## basic example ##
+
+in the following example, we loading an external config, depending local. Note that you can use property define in external conf as dependancy of any other property.
+
+--- conf.xml ---
+```
+
+<config>
+
+   <local>en_GB</local>
+
+   <externalConf>
+      <file>./traduction/${local}/sub_config.xml</file>
+   </externalConf>
+
+   <localized>French word "merci" mean "${localprop}" in ${local}</localized>
+
+</config>
+```
+
+--- ./traduction/en\_GB/sub\_config.xml ---
+```
+<config>
+   <localprop>thanks</localprop>
+</config>
+```
+---
+```
+trace( Conf.localized );
+
+// French word "merci" mean "thanks" in en_GB
+```
+
+## more external! ##
+
+You can put several external request into a externalConf tag.
+
+You can put several externalConf tag into the same conf.
+
+you can also put externalConf tag in external conf.
+
+```
+<config>
+
+   <externalConf>
+      <file>external_A.xml</file>
+      <file>external_B.xml</file>
+   </externalConf>
+
+   <externalConf>
+      <file>external_C.xml</file>
+   </externalConf>
+
+</config>
+```
+
+--- external\_A.xml ---
+```
+<config>
+   
+   <externalConf>
+      <file>external_A_1.xml</file>
+   </externalConf>
+
+</config>
+```
+
+## enforce namespace ##
+
+To enforce an external conf file to be stored in the same namespace than the externalConf tag, use _inheritSpace="true"_
+
+```
+<conf 
+      xmlns="defaultNs" 
+      xmlns:nsa="nsaNs" 
+>
+
+   <externalConf>
+      <file>external_A.xml</file>
+   </externalConf>
+
+   <externalConf inheritSpace="true">
+      <file>external_B.xml</file>
+   </externalConf>
+
+   <nsa:externalConf inheritSpace="true">
+      <file>external_C.xml</file>
+   </nsa:externalConf>
+</conf>
+
+```
+
+in this example :
+  * external\_A.xml will keep his own namespace, or global namespace if the file have no namespace.
+  * external\_B.xml, the **default** namespace of this file will be replaced by the "globalNs" one. If the file have no namespace, all prop will be stored in "defaultNs". But prefixed namespace will not be modified.
+  * external\_C.xml, the same that external\_B, but the new namsepace will be "nsaNs" and not "defaultNs"
+
+# externalData #
+
+## basic example ##
+
+--- conf.xml
+```
+<conf>
+
+   <externalData>
+      <file id="myData">./data/mydatas.xml</file>
+   </externalData>
+
+</conf>
+```
+
+--- mydatas.xml
+```
+<list>
+   <item id="1"/>
+   <item id="2"/>
+   <item id="3"/> 
+</list>
+```
+
+--- AS
+```
+trace( Conf.getString( "myData" ) );
+// String output
+
+"<list>
+   <item id="1"/>
+   <item id="2"/>
+   <item id="3"/> 
+</list>"
+
+trace( Conf.getDatas( "myData" ) );
+// XML output
+<myData>
+  <list>
+     <item id="1"/>
+     <item id="2"/>
+     <item id="3"/> 
+  </list>
+</myData>
+```
+
+Use id attribute if the file node to specify in which property the data will be stored.
+
+An external data can be any text file.

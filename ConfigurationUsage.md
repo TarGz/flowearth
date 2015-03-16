@@ -1,0 +1,42 @@
+Configuration home
+
+# Introduction #
+
+Configuration class store a collection of properties retreive from a specific xml format.
+
+Here is the list of master features, detailed bellow:
+  * Each properties can depends of other properies
+  * Easily externalize parts of conf files into sub files
+  * Easily externalize extra datas.
+  * switch/case like feature
+  * Namespace support, to avoid naming conflicts.
+
+
+# How to start #
+
+Configuration class is a singleton, the simplest way to acces to it is using _Conf_ global property.
+
+```
+import fr.digitas.flowearth.conf.Conf;
+
+trace( Conf.getString( "myProperty" ) );
+
+//---------------------------------------------
+//But you can also use the classic getInstance()
+
+import fr.digitas.flowearth.conf.Configuration;
+
+trace( Configuration.getInstance( ).getString( "myProperty" ) );
+```
+
+But before ask it for properties values, you need to load a property file.
+
+```
+Conf.addEventListener( Event.COMPLETE, onConfLoaded );
+
+Conf.loadXml( "myConfFile.xml" );
+
+private function onConfLoaded( e : Event ) : void {
+   trace( Conf.hasProperty( "myProperty" ) );
+}
+```

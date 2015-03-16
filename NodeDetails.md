@@ -1,0 +1,79 @@
+# Introduction #
+
+Node is the base elements of a site-tree structure, he's defined by :
+  * an id
+  * a parent node
+  * a collection of childs nodes
+  * an activation state (boolean)
+
+# create structure using descriptor #
+
+See [INodeDescriptor details](http://code.google.com/p/flowearth/wiki/INodeDescriptor) for more infos.
+
+# add node to NodeSystem #
+
+In order to be able to cibling nodes with absolute path. You should add the root node of a tree in a INodeSystem.
+
+
+---
+
+```
+main
+  |- products
+    |- men
+    |- women
+  |- services
+    |- aftersale
+    |- warranties
+  |- contact
+    |- jobs
+    |- mailinglist
+```
+
+---
+
+```
+var siteTreeDatas : XML = 
+<node id="main">
+	<node id="products">
+		<node id="men"/>
+		<node id="women"/>
+	</node>
+	<node id="services">
+		<node id="aftersale"/>
+		<node id="warranties"/>
+	</node>
+	<node id="contact">
+		<node id="jobs"/>
+		<node id="mailinglist"/>
+	</node>
+</node>;
+
+//
+// 1
+//					
+var descriptor : BaseDescriptor = new BaseDescriptor( siteTreeDatas );
+
+//
+// 2
+//
+var mainDevice : Node = new Node( descriptor );
+
+//
+// 3
+//
+nodeSystem.addDevice( mainDevice );
+
+//
+//4
+//
+var p : Path = new Path( "main:/services/aftersale" );
+trace( p.toNode() );
+ // --> [object Node id:aftersale]
+
+```
+
+  1. creation of a descriptor
+  1. build the structure based on descriptor
+  1. add root node of the structrue to the nodeSystem
+  1. using absolute path to target a node in the structure
